@@ -2158,7 +2158,7 @@ function renderHome(){
   $("#todayTitle").textContent = done>=goal?"今日の目標は達成 🎉"
     :(dueCards().length?`復習 ${dueCards().length} 枚が待っています`:"10分だけ、始めよう");
   $("#pStreak").innerHTML=`🔥 <b>${streak()}</b>日`;
-  $("#pDue").innerHTML=`復習 <b>${dueCards().length}</b>`;
+  $("#pDue").innerHTML=`復習 <b>${todayPool().due.length}</b>`;
   $("#sTotal").textContent=S.cards.length;
   $("#sMastered").textContent=S.cards.filter(c=>c.iv>=21).length;
   let wk=0; for(let i=0;i<7;i++){ const d=new Date(); d.setDate(d.getDate()-i); wk+=S.log[d.toISOString().slice(0,10)]||0; }
@@ -2242,10 +2242,23 @@ $("#btnGen").onclick=async()=>{
 
 /* ================= 学習 ================= */
 let Q=[], qi=0, revealed=false;
+
+/* 現在のコースに属するカードか（集計と出題で必ず同じ条件を使う） */
+function inCourse(c){
+  const s=sceneOf(c.s);
+  return !s || s.c===S.course || c.s==="ai" || c.s==="custom";
+}
+/* 今日やる分の内訳。renderStudy と startSession の唯一の集計元 */
+function todayPool(){
+  const due = dueCards().filter(inCourse);
+  const fresh = newCards().filter(inCourse).slice(0, S.set.newMax);
+  const other = S.cards.filter(c=>!inCourse(c) &&
+    (c.rep===0 || c.due<=today())).length;
+  return { due, fresh, rest: due.length+fresh.length, other };
+}
 function startSession(mode){
-  const inC=c=>{ const s=sceneOf(c.s); return !s || s.c===S.course || c.s==="ai" || c.s==="custom"; };
-  const d=dueCards().filter(inC).sort(()=>Math.random()-.5);
-  const n=newCards().filter(inC).sort(()=>Math.random()-.5).slice(0,S.set.newMax);
+  const d=dueCards().filter(inCourse).sort(()=>Math.random()-.5);
+  const n=newCards().filter(inCourse).sort(()=>Math.random()-.5).slice(0,S.set.newMax);
   Q = mode==="due"?d : mode==="new"?n : d.concat(n);
   qi=0; show("study"); renderStudy();
 }
@@ -2254,11 +2267,18 @@ function renderStudy(){
   if(!Q.length||qi>=Q.length){
     area.classList.add("hidden"); emp.classList.remove("hidden");
     $("#studyBar").style.width="100%";
-    const rest=dueCards().length+Math.min(newCards().length,S.set.newMax);
+    const t = todayPool();
+    const cname = (COURSES.find(c=>c.id===S.course)||{}).name || "このコース";
     emp.innerHTML = S.cards.length===0
-      ? `カードがまだありません。<br>ホームの「このコースを丸ごと追加」から始めましょう。<br><br><button class="btn sm" onclick="show('home')">ホームへ</button>`
-      : rest>0
-      ? `今日はあと <b style="color:var(--tx)">${rest}</b> 枚あります。<br><br><button class="btn sm" onclick="startSession('mix')">▶ セッションを開始</button>`
+      ? `カードがまだありません。<br>ホームの「このコースを丸ごとカードに追加」から始めましょう。<br><br><button class="btn sm" onclick="show('home')">ホームへ</button>`
+      : t.rest>0
+      ? `今日はあと <b style="color:var(--tx)">${t.rest}</b> 枚あります。<br><br><button class="btn sm" onclick="startSession('mix')">▶ セッションを開始</button>`
+      : t.other>0
+      /* 現在のコースには残っていないが、別コースには残っている場合 */
+      ? `<b style="color:var(--tx)">${esc(cname)}</b> の今日の分は終わりです 🎉<br>
+         別のコースに <b style="color:var(--tx)">${t.other}</b> 枚残っています。<br><br>
+         <button class="btn sm" onclick="switchCourseAndStart()">別コースに切り替えて続ける</button><br>
+         <button class="btn gh sm" style="margin-top:8px" onclick="show('home')">ホームへ</button>`
       : `今日の分は終わりです 🎉<br>やり過ぎず、明日また来てください。<br><br><button class="btn sm" onclick="show('home')">ホームへ</button>`;
     renderHome(); return;
   }
@@ -2487,7 +2507,18 @@ $("#btnReset").onclick=()=>{
 };
 
 /* ================= 起動 ================= */
+/* 別コースへ切り替えてそのまま学習を続ける */
+function switchCourseAndStart(){
+  const other = COURSES.find(c=>c.id!==S.course);
+  if(!other) return;
+  S.course = other.id; save();
+  $("#courseSel").value = other.id;
+  renderHome(); renderPatterns();
+  toast(other.name+" に切り替えました");
+  startSession("mix");
+}
 window.show=show; window.startSession=startSession;
+window.switchCourseAndStart=switchCourseAndStart;
 
 /* 初回のみ：Phase1の入門12枚を投入 */
 if(S.cards.length===0 && !Store.get(KEY+".seeded2")){
