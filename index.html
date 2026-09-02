@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>BizEng Trainer — 会議で通用する英語を、毎日10分</title>
+<title>BizEng Trainer — 旅行英会話からビジネス会議まで</title>
 <meta name="theme-color" content="#0f172a">
 <style>
 :root{
   --bg:#0b1220; --bg2:#111c31; --card:#16233c; --card2:#1d2d4d;
   --line:#27395c; --tx:#e8eefb; --tx2:#9fb0cd; --acc:#4f9cff; --acc2:#22c39a;
-  --warn:#f0a63a; --bad:#f2607a; --good:#39d39a;
+  --warn:#f0a63a; --bad:#f2607a; --good:#39d39a; --kana:#ffd9a8;
   --r:14px; --sh:0 6px 24px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--tx);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;}
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif}
 body{padding-bottom:88px}
 a{color:var(--acc)}
 button{font-family:inherit}
@@ -22,22 +22,20 @@ button{font-family:inherit}
 header.top{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,rgba(11,18,32,.98),rgba(11,18,32,.86));
   backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .topin{max-width:820px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;gap:10px}
-.logo{font-weight:800;letter-spacing:.3px;font-size:16px}
-.logo span{color:var(--acc)}
+.logo{font-weight:800;font-size:16px}.logo span{color:var(--acc)}
 .spacer{flex:1}
 .pill{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:12px;color:var(--tx2);white-space:nowrap}
 .pill b{color:var(--tx)}
 .pill.fire{color:#ffd08a;border-color:#584021}
-.icobtn{background:var(--card);border:1px solid var(--line);color:var(--tx2);border-radius:10px;
-  width:34px;height:34px;font-size:15px;cursor:pointer}
+.icobtn{background:var(--card);border:1px solid var(--line);color:var(--tx2);border-radius:10px;width:34px;height:34px;font-size:15px;cursor:pointer}
 .icobtn:hover{color:var(--tx);border-color:var(--acc)}
 
 nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(13,21,38,.97);
   backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:6px 0 max(6px,env(safe-area-inset-bottom))}
-.tabsin{max-width:820px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
-.tab{background:none;border:0;color:var(--tx2);padding:7px 2px;font-size:10.5px;cursor:pointer;border-radius:10px;
+.tabsin{max-width:820px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:2px}
+.tab{background:none;border:0;color:var(--tx2);padding:7px 1px;font-size:10px;cursor:pointer;border-radius:10px;
   display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.2}
-.tab i{font-style:normal;font-size:18px;filter:grayscale(1) opacity(.75)}
+.tab i{font-style:normal;font-size:17px;filter:grayscale(1) opacity(.75)}
 .tab.on{color:var(--acc);background:rgba(79,156,255,.10)}
 .tab.on i{filter:none}
 
@@ -45,10 +43,9 @@ section.view{display:none;animation:fade .18s ease}
 section.view.on{display:block}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
-h2.t{font-size:15px;margin:18px 0 8px;color:var(--tx)}
+h2.t{font-size:15px;margin:18px 0 8px}
 h2.t:first-child{margin-top:6px}
 .sub{color:var(--tx2);font-size:12.5px;line-height:1.7;margin:0 0 10px}
-
 .box{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:12px}
 .box.tight{padding:11px}
 .box.warn{border-color:#6b4a1e;background:#241d10}
@@ -58,43 +55,43 @@ textarea,input[type=text],input[type=password],select{
   padding:11px 12px;font-size:14px;outline:none;resize:vertical}
 textarea:focus,input:focus,select:focus{border-color:var(--acc)}
 textarea{min-height:78px;line-height:1.6}
-.btn{background:var(--acc);border:0;color:#04122b;font-weight:700;border-radius:11px;padding:12px 16px;
-  font-size:14px;cursor:pointer;width:100%}
+.btn{background:var(--acc);border:0;color:#04122b;font-weight:700;border-radius:11px;padding:12px 16px;font-size:14px;cursor:pointer;width:100%}
 .btn:active{transform:translateY(1px)}
 .btn.sec{background:var(--card2);color:var(--tx);border:1px solid var(--line);font-weight:600}
 .btn.gh{background:transparent;color:var(--tx2);border:1px solid var(--line);font-weight:600}
 .btn.sm{padding:8px 12px;font-size:12.5px;width:auto}
 .btn:disabled{opacity:.5;cursor:not-allowed}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-.row>*{flex:1}
+.row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1}
 .chips{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0 0}
-.chip{background:var(--bg2);border:1px solid var(--line);color:var(--tx2);border-radius:999px;
-  padding:7px 12px;font-size:12px;cursor:pointer}
+.chip{background:var(--bg2);border:1px solid var(--line);color:var(--tx2);border-radius:999px;padding:7px 12px;font-size:12px;cursor:pointer}
 .chip:hover,.chip.on{border-color:var(--acc);color:var(--tx)}
 
 .pc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:13px;margin-bottom:10px}
-.pc .en{font-size:17px;font-weight:650;line-height:1.45;letter-spacing:.1px}
-.pc .kt{color:#ffd9a8;font-size:12.5px;margin-top:6px;letter-spacing:.4px}
+.pc .en{font-size:17px;font-weight:650;line-height:1.45}
+.pc .kt{color:var(--kana);font-size:12.5px;margin-top:6px;letter-spacing:.4px}
+.pc .kc{color:#8ea4c4;font-size:11px;margin-top:3px}
 .pc .ja{color:var(--tx2);font-size:13px;margin-top:5px;line-height:1.6}
-.pc .note{color:#8fd9c4;font-size:11.5px;margin-top:7px;line-height:1.6;
-  border-left:2px solid #2c6b5c;padding-left:8px}
+.pc .note,.pc .gram{font-size:11.5px;margin-top:7px;line-height:1.65;padding-left:8px}
+.pc .note{color:#8fd9c4;border-left:2px solid #2c6b5c}
+.pc .gram{color:#c9b6f0;border-left:2px solid #5a4a8a}
 .pc .bar{display:flex;gap:6px;align-items:center;margin-top:10px;flex-wrap:wrap}
-.tag{font-size:10.5px;color:var(--tx2);background:var(--bg2);border:1px solid var(--line);
-  border-radius:6px;padding:3px 7px}
+.tag{font-size:10.5px;color:var(--tx2);background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:3px 7px}
 .tag.lv{color:#9fd0ff;border-color:#2a4a75}
-.sbtn{background:var(--bg2);border:1px solid var(--line);color:var(--tx);border-radius:9px;
-  padding:7px 11px;font-size:12.5px;cursor:pointer}
+.sbtn{background:var(--bg2);border:1px solid var(--line);color:var(--tx);border-radius:9px;padding:7px 11px;font-size:12.5px;cursor:pointer}
 .sbtn:hover{border-color:var(--acc)}
 .sbtn.added{color:var(--good);border-color:#1f5b48}
 
 .stage{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);
-  border-radius:18px;padding:22px 16px;min-height:260px;display:flex;flex-direction:column;
-  justify-content:center;text-align:center;box-shadow:var(--sh)}
-.stage .prompt{font-size:12px;color:var(--tx2);margin-bottom:12px;letter-spacing:.5px}
+  border-radius:18px;padding:22px 16px;min-height:250px;display:flex;flex-direction:column;justify-content:center;text-align:center;box-shadow:var(--sh)}
+.stage .prompt{font-size:12px;color:var(--tx2);margin-bottom:10px}
+.stage .hint{font-size:12px;color:#9fd0ff;margin-bottom:10px}
 .stage .jabig{font-size:19px;line-height:1.7;font-weight:600}
 .stage .enbig{font-size:22px;line-height:1.5;font-weight:700;margin-top:4px}
-.stage .ktbig{color:#ffd9a8;font-size:13px;margin-top:10px;letter-spacing:.6px}
+.stage .ktbig{color:var(--kana);font-size:14px;margin-top:10px;letter-spacing:.6px}
+.stage .kcsm{color:#8ea4c4;font-size:11.5px;margin-top:4px}
 .stage .jasm{color:var(--tx2);font-size:13.5px;margin-top:8px}
+.stage .info{font-size:11.5px;line-height:1.75;text-align:left;margin-top:10px;padding:8px 10px;border-radius:9px;background:rgba(0,0,0,.22)}
+#stNote{color:#8fd9c4}#stGram{color:#c9b6f0}#stSnd{color:#ffc98a}
 .hidden{display:none!important}
 .grades{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:12px}
 .g{border:0;border-radius:11px;padding:12px 4px;font-size:12.5px;font-weight:700;cursor:pointer;color:#04122b}
@@ -102,7 +99,6 @@ textarea{min-height:78px;line-height:1.6}
 .g1{background:var(--bad);color:#fff}.g2{background:var(--warn)}.g3{background:var(--acc)}.g4{background:var(--good)}
 .prog{height:5px;background:var(--bg2);border-radius:99px;overflow:hidden;margin:10px 0 14px}
 .prog i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0%;transition:width .3s}
-
 .stat{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
 .st{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
 .st b{display:block;font-size:22px;line-height:1.2}
@@ -110,11 +106,31 @@ textarea{min-height:78px;line-height:1.6}
 .heat{display:grid;grid-template-columns:repeat(auto-fill,minmax(13px,1fr));gap:3px;margin-top:8px}
 .hc{aspect-ratio:1;border-radius:3px;background:#1a2740}
 .hc.l1{background:#1d4d40}.hc.l2{background:#25795f}.hc.l3{background:#2fae83}.hc.l4{background:#43e0a8}
-
 .empty{text-align:center;color:var(--tx2);font-size:13px;padding:34px 10px;line-height:1.8}
 .note-sm{font-size:11.5px;color:var(--tx2);line-height:1.7}
 .sp{display:flex;gap:8px;align-items:center;margin-bottom:10px}
 .sp input{flex:1}
+
+/* 型（パターン） */
+.patbig{font-size:20px;font-weight:750;letter-spacing:.2px}
+.patja{color:var(--tx2);font-size:13px;margin-top:5px}
+.pex{display:grid;grid-template-columns:1fr auto;gap:6px 8px;align-items:center;
+  padding:9px 0;border-bottom:1px solid var(--line)}
+.pex:last-child{border-bottom:0}
+.pex .pe{font-size:15px;font-weight:600;grid-column:1}
+.pex .pk{color:var(--kana);font-size:11.5px;grid-column:1}
+.pex .pjj{color:var(--tx2);font-size:12px;grid-column:1}
+.pex .js-psay{grid-column:2;grid-row:1/4}
+.plist{display:flex;flex-direction:column;gap:7px}
+.pat{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);
+  border-radius:11px;padding:11px 13px;cursor:pointer;color:var(--tx)}
+.pat:hover{border-color:var(--acc)}
+.pat.on{border-color:var(--acc);background:var(--card2)}
+.pat .pp{font-size:14.5px;font-weight:700}
+.pat .pj{color:var(--tx2);font-size:11.5px;margin-top:3px}
+.gram{color:#c9b6f0;font-size:11.5px;line-height:1.7;border-left:2px solid #5a4a8a;padding-left:8px}
+.note{color:#8fd9c4;font-size:11.5px;line-height:1.7;border-left:2px solid #2c6b5c;padding-left:8px}
+
 details.acc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:9px}
 details.acc summary{cursor:pointer;font-size:13.5px;font-weight:600;list-style:none}
 details.acc summary::-webkit-details-marker{display:none}
@@ -125,12 +141,14 @@ details.acc .bd{font-size:12.5px;color:var(--tx2);line-height:1.85;margin-top:9p
   background:#22364f;border:1px solid var(--line);color:var(--tx);padding:10px 16px;border-radius:11px;
   font-size:13px;z-index:99;transition:.25s;pointer-events:none;box-shadow:var(--sh);max-width:88%;line-height:1.6}
 .toast.on{opacity:1;transform:translateX(-50%)}
-.load{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);
-  border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px}
+.load{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;
+  border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px}
 @keyframes sp{to{transform:rotate(360deg)}}
 hr.d{border:0;border-top:1px solid var(--line);margin:14px 0}
 .ol{margin:6px 0 0;padding-left:18px;font-size:11.5px;color:var(--tx2);line-height:1.9}
 code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:11px;word-break:break-all}
+.sw{display:flex;align-items:center;gap:9px;margin-top:11px;font-size:12.5px;color:var(--tx2)}
+.sw input{width:auto}
 </style>
 </head>
 <body>
@@ -147,7 +165,20 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
 
 <div class="wrap">
 
+<!-- ================= HOME ================= -->
 <section class="view on" id="v-home">
+  <div class="box">
+    <label class="lb">学習コース</label>
+    <select id="courseSel"></select>
+    <div class="note-sm" id="courseGoal" style="margin-top:8px"></div>
+    <div class="prog" style="margin:11px 0 6px"><i id="courseBar"></i></div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="note-sm" id="courseNote"></div>
+      <div style="font-size:18px;font-weight:800" id="coursePct">0%</div>
+    </div>
+    <button class="btn sec" id="btnAddCourse" style="margin-top:10px">このコースを丸ごとカードに追加</button>
+  </div>
+
   <div class="box">
     <div style="display:flex;align-items:center;gap:10px">
       <div style="flex:1">
@@ -179,28 +210,37 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
     <div class="note-sm" style="margin-top:8px">過去10週間。濃いほどその日の学習量が多い。</div>
   </div>
 
-  <h2 class="t">今日の一言（ランダム復習）</h2>
+  <h2 class="t">今日の一言</h2>
   <div id="randomCard"></div>
 </section>
 
+<!-- ================= PATTERNS ================= -->
+<section class="view" id="v-pat">
+  <h2 class="t">型（チャンク）で覚える</h2>
+  <p class="sub">単語を並べるのではなく、<b>意味の塊</b>ごと口に入れます。中身を入れ替えるだけで何十通りにも使えるので、
+  覚える量が激減し、会議中に考える余裕が生まれます。</p>
+  <div class="plist" id="patList"></div>
+  <div id="patDetail" style="margin-top:14px"></div>
+</section>
+
+<!-- ================= GENERATE ================= -->
 <section class="view" id="v-gen">
   <h2 class="t">場面からフレーズを作る</h2>
-  <p class="sub">会議の場面・状況・言いたいことを日本語で入れると、その場で使える表現を生成します。<br>
-  例：「進捗が遅れている理由を、言い訳に聞こえないように説明したい」</p>
+  <p class="sub">場面・状況・言いたいことを日本語で入れると、その場で使える表現を作ります。</p>
   <div class="box">
     <label class="lb">場面・状況・言いたいこと</label>
-    <textarea id="genInput" placeholder="例）海外チームとのWeb会議で、相手の提案に反対だが角を立てずに懸念を伝えたい"></textarea>
+    <textarea id="genInput" placeholder="例）ホテルで部屋のエアコンが壊れていると伝えたい"></textarea>
     <div class="chips" id="sceneChips"></div>
     <div class="row" style="margin-top:11px">
       <select id="genLevel" style="flex:1.2">
-        <option value="business">ビジネス標準（推奨）</option>
-        <option value="simple">やさしく短く（口に出しやすい）</option>
-        <option value="formal">ややフォーマル（役員会・顧客）</option>
+        <option value="simple">やさしく短く（推奨）</option>
+        <option value="business">標準</option>
+        <option value="formal">ややフォーマル</option>
       </select>
       <select id="genCount" style="flex:.8">
-        <option value="6">6フレーズ</option>
-        <option value="8" selected>8フレーズ</option>
-        <option value="12">12フレーズ</option>
+        <option value="6">6件</option>
+        <option value="8" selected>8件</option>
+        <option value="12">12件</option>
       </select>
     </div>
     <button class="btn" id="btnGen" style="margin-top:10px">✨ フレーズを生成</button>
@@ -209,19 +249,24 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
   <div id="genOut"></div>
 </section>
 
+<!-- ================= STUDY ================= -->
 <section class="view" id="v-study">
   <div class="prog"><i id="studyBar"></i></div>
   <div id="studyEmpty" class="empty hidden"></div>
   <div id="studyArea">
     <div class="stage">
-      <div class="prompt" id="stPrompt">この日本語を、英語で口に出す</div>
+      <div class="prompt">この日本語を、英語で口に出す</div>
+      <div class="hint" id="stHint"></div>
       <div class="jabig" id="stFront">—</div>
       <div id="stBack" class="hidden">
         <hr class="d">
         <div class="enbig" id="stEn"></div>
         <div class="ktbig" id="stKt"></div>
+        <div class="kcsm" id="stKc"></div>
         <div class="jasm" id="stJa"></div>
-        <div class="note" id="stNote" style="text-align:left;margin-top:12px"></div>
+        <div class="info" id="stNote"></div>
+        <div class="info" id="stGram"></div>
+        <div class="info" id="stSnd"></div>
       </div>
     </div>
     <div class="row" style="margin-top:10px">
@@ -239,110 +284,91 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
   </div>
 </section>
 
+<!-- ================= CARDS ================= -->
 <section class="view" id="v-cards">
   <h2 class="t">カード</h2>
   <div class="sp">
-    <input type="text" id="qSearch" placeholder="英語・日本語・タグで検索">
+    <input type="text" id="qSearch" placeholder="英語・日本語で検索">
     <button class="btn gh sm" id="btnAddManual">＋手動</button>
   </div>
   <div class="chips" id="tagChips"></div>
   <div id="cardList" style="margin-top:12px"></div>
 </section>
 
+<!-- ================= MORE ================= -->
 <section class="view" id="v-more">
   <div class="box warn hidden" id="storeWarn">
     <div style="font-size:13px;font-weight:700;color:#ffd08a">保存できない環境で動作中</div>
-    <div class="note-sm" style="margin-top:6px">このプレビュー枠ではブラウザの保存領域が使えないため、学習記録はページを閉じると消えます。
+    <div class="note-sm" style="margin-top:6px">このプレビュー枠では保存領域が使えないため、学習記録はページを閉じると消えます。
     URLで開くか、ファイルをダウンロードしてブラウザで直接開いてください。</div>
   </div>
 
   <h2 class="t">この学習法の根拠</h2>
   <div id="methodList"></div>
 
+  <h2 class="t">Google Drive 同期</h2>
+  <div class="box warn hidden" id="driveLocalWarn">
+    <div style="font-size:13px;font-weight:700;color:#ffd08a">この開き方では同期できません</div>
+    <div class="note-sm" style="margin-top:6px">
+      Googleは認証を許可する場所をURLで登録する必要があり、ファイルを直接開いた状態（<code>file://</code>）は登録できません。
+      <b style="color:var(--tx)">GitHub Pages などに置いてURLで開いてください。</b>
+      <br><br>当面は下部の<b>エクスポート／インポート</b>で手動移行できます。
+    </div>
+  </div>
+  <div class="box hidden" id="drivePanel">
+    <div class="note-sm" id="driveStatus" style="margin-top:0"></div>
+    <button class="btn" id="btnDriveSync" style="margin-top:10px">🔄 今すぐ同期</button>
+    <button class="btn gh sm hidden" id="btnDriveOff" style="margin-top:7px;width:100%">同期を解除</button>
+    <details class="acc" style="margin-top:12px;background:var(--bg2)">
+      <summary>初回セットアップ</summary>
+      <div class="bd">
+        現在のURL：<code id="driveOrigin"></code>
+        <ol class="ol">
+          <li><a href="https://console.cloud.google.com/projectcreate" target="_blank" rel="noopener">Google Cloud</a> でプロジェクト作成</li>
+          <li><a href="https://console.cloud.google.com/apis/library/drive.googleapis.com" target="_blank" rel="noopener">Google Drive API</a> を有効化</li>
+          <li>「Google Auth Platform」→ 開始 → 対象は<b>外部</b></li>
+          <li>「対象」ページで自分のGmailを<b>テストユーザー</b>に追加</li>
+          <li>「クライアント」→ 作成 → 種類は<b>ウェブアプリケーション</b></li>
+          <li><b>承認済みのJavaScript生成元</b>に上のURLを貼る</li>
+          <li>できたクライアントIDを下に貼り「保存」→「今すぐ同期」</li>
+        </ol>
+        保存先はDriveの<b>アプリデータフォルダ</b>（専用の隠し領域）です。あなたの既存ファイルにはアクセスしません。
+      </div>
+    </details>
+    <label class="lb" style="margin-top:11px">OAuth クライアントID</label>
+    <input type="text" id="driveClientId" placeholder="000000-xxxx.apps.googleusercontent.com">
+    <button class="btn sec" id="btnDriveSave" style="margin-top:9px">保存</button>
+    <div class="note-sm" style="margin-top:8px">2台で学習しても、カードと履歴は<b>統合</b>されます。上書きで消えません。</div>
+  </div>
+
   <h2 class="t">AI生成の接続（任意）</h2>
   <div class="box">
-    <p class="note-sm" style="margin-top:0">未設定でも、内蔵の195フレーズから場面に合わせて生成します。
-    キーを入れると、どんな場面でも新規に作れます。キーはこの端末内にのみ保存されます。</p>
-
+    <p class="note-sm" style="margin-top:0">未設定でも内蔵フレーズで学習できます。キーを入れると、どんな場面でも新規に作れます。</p>
     <label class="lb" style="margin-top:12px">提供元</label>
     <select id="setProvider">
       <option value="gemini">Google Gemini（無料・推奨）</option>
       <option value="openai">OpenAI互換（要課金）</option>
     </select>
-
     <div id="gemHelp" class="note-sm" style="margin-top:8px">
-      <b style="color:var(--tx)">取得手順</b>
-      <ol class="ol">
-        <li><a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a> を開く</li>
-        <li>「APIキーを作成」→ 一覧の行の<b>コピーアイコン</b>で全文をコピー</li>
-        <li>下に貼り付け →「使えるモデルを検出」→「接続テスト」</li>
-      </ol>
-      無料枠のまま使えます。お支払い情報の設定は不要です。
+      <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>
+      でキーを作成 → 下に貼り付け →「使えるモデルを検出」→「接続テスト」。無料枠のままで使えます。
     </div>
     <div id="oaiHelp" class="note-sm" style="margin-top:8px;display:none">
-      OpenAIは事前入金が必要です。一部の互換エンドポイントは<b>ブラウザから直接呼べません（CORS）</b>。
-      失敗する場合はGeminiをお使いください。
+      OpenAIは事前入金が必要です。互換エンドポイントは<b>ブラウザから直接呼べない場合があります（CORS）</b>。
     </div>
-
     <div id="rowUrl">
       <label class="lb" style="margin-top:11px">エンドポイント</label>
       <input type="text" id="setUrl" placeholder="https://api.openai.com/v1/chat/completions">
     </div>
-
     <label class="lb" style="margin-top:11px">APIキー</label>
     <input type="password" id="setKey" placeholder="貼り付け">
-
     <label class="lb" style="margin-top:11px">モデル</label>
     <select id="setModel"></select>
     <div class="note-sm" id="modelCount" style="margin-top:5px"></div>
     <button class="btn gh sm" id="btnDetect" style="margin-top:7px;width:100%">使えるモデルを検出</button>
-
     <div class="row" style="margin-top:11px">
       <button class="btn sec" id="btnSaveApi">保存</button>
       <button class="btn gh" id="btnTestApi">接続テスト</button>
-    </div>
-  </div>
-
-  <h2 class="t">Google Drive 同期</h2>
-
-  <div class="box warn hidden" id="driveLocalWarn">
-    <div style="font-size:13px;font-weight:700;color:#ffd08a">この開き方では同期できません</div>
-    <div class="note-sm" style="margin-top:6px">
-      Googleは認証を許可する場所をURLで登録する必要があり、ファイルを直接開いた状態（<code>file://</code>）は登録できません。
-      <b style="color:var(--tx)">GitHub Pages などに置いて、URLで開いてください。</b>
-      そうすればPC・スマホどこからでも同じURLで使えます。
-      <br><br>当面はこのページ下部の<b>エクスポート／インポート</b>で手動移行できます。
-    </div>
-  </div>
-
-  <div class="box hidden" id="drivePanel">
-    <div class="note-sm" id="driveStatus" style="margin-top:0"></div>
-    <button class="btn" id="btnDriveSync" style="margin-top:10px">🔄 今すぐ同期</button>
-    <button class="btn gh sm hidden" id="btnDriveOff" style="margin-top:7px;width:100%">同期を解除</button>
-
-    <details class="acc" style="margin-top:12px;background:var(--bg2)">
-      <summary>初回セットアップ</summary>
-      <div class="bd">
-        現在のURL：<code id="driveOrigin"></code><br>
-        この値をGoogle側に登録します。
-        <ol class="ol">
-          <li><a href="https://console.cloud.google.com/projectcreate" target="_blank" rel="noopener">Google Cloud</a> でプロジェクトを作成</li>
-          <li><a href="https://console.cloud.google.com/apis/library/drive.googleapis.com" target="_blank" rel="noopener">Google Drive API</a> を「有効にする」</li>
-          <li>「APIとサービス」→「OAuth同意画面」を設定（User type は<b>外部</b>、自分のGoogleアカウントを<b>テストユーザー</b>に追加）</li>
-          <li>「認証情報」→「認証情報を作成」→「OAuth クライアント ID」→ 種類は<b>ウェブアプリケーション</b></li>
-          <li><b>承認済みのJavaScript生成元</b>に上のURLを貼り付けて作成</li>
-          <li>できたクライアントIDを下に貼り付けて「保存」→「今すぐ同期」</li>
-        </ol>
-        保存先はDriveの<b>アプリデータフォルダ</b>（このアプリ専用の隠し領域）です。
-        ドライブ画面には出ず、他のアプリからは読めません。あなたのファイルへのアクセス権は要求しません。
-      </div>
-    </details>
-
-    <label class="lb" style="margin-top:11px">OAuth クライアントID</label>
-    <input type="text" id="driveClientId" placeholder="000000-xxxx.apps.googleusercontent.com">
-    <button class="btn sec" id="btnDriveSave" style="margin-top:9px">保存</button>
-    <div class="note-sm" style="margin-top:8px">
-      両方の端末で学習していても、カードと履歴は<b>統合</b>されます（学習が進んでいる方を採用）。上書きで消えることはありません。
     </div>
   </div>
 
@@ -356,6 +382,7 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
     <select id="setVoice"></select>
     <label class="lb" style="margin-top:11px">読み上げ速度 <span id="rateLbl">1.0</span></label>
     <input type="range" id="setRate" min="0.6" max="1.2" step="0.05" value="1" style="width:100%">
+    <div class="sw"><input type="checkbox" id="setCareful"><label for="setCareful">ゆっくり発音（音をつなげない版）も表示する</label></div>
     <button class="btn sec" id="btnSaveSet" style="margin-top:12px">設定を保存</button>
   </div>
 
@@ -376,10 +403,11 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
 <nav class="tabs">
   <div class="tabsin">
     <button class="tab on" data-v="home"><i>🏠</i>ホーム</button>
-    <button class="tab" data-v="gen"><i>✨</i>生成</button>
+    <button class="tab" data-v="pat"><i>🧩</i>型</button>
     <button class="tab" data-v="study"><i>🎯</i>学習</button>
+    <button class="tab" data-v="gen"><i>✨</i>生成</button>
     <button class="tab" data-v="cards"><i>🗂</i>カード</button>
-    <button class="tab" data-v="more"><i>📚</i>方法・設定</button>
+    <button class="tab" data-v="more"><i>📚</i>設定</button>
   </div>
 </nav>
 
@@ -387,35 +415,41 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
 
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
-/* ===== 英語 → カタカナ発音（米国発音の近似） ===== */
+/* ===================================================================
+   英語 → カタカナ発音エンジン v2
+   単語辞書 + 綴り規則で基本形を作り、そのうえで
+   「音声変化」（リダクション / フラッピング / リンキング）を適用して
+   ネイティブが実際に出す音に近づける。変化した箇所は解説として返す。
+   =================================================================== */
+
 const KANA_DICT_RAW = `
-a:ア able:エイボゥ about:アバウト above:アバヴ accept:アクセプト according:アコーディング account:アカウント across:アクロス action:アクション actually:アクチュアリー add:アド additional:アディショナル address:アドレス adjust:アジャスト advance:アドヴァンス after:アフター afternoon:アフタヌーン again:アゲン against:アゲンスト agenda:アジェンダ agree:アグリー agreed:アグリード agreement:アグリーメント ahead:アヘッド aim:エイム align:アライン aligned:アラインド all:オール allow:アラウ almost:オールモウスト already:オールレディ also:オールソウ always:オールウェイズ am:アム an:アン and:アンド angle:アングゥ another:アナザー answer:アンサー any:エニー anymore:エニモア anything:エニシング anytime:エニタイム anyway:エニウェイ apologize:アポロジャイズ apology:アポロジー appreciate:アプリーシエイト approach:アプロウチ approval:アプルーヴァル approve:アプルーヴ april:エイプリル are:アー area:エリア around:アラウンド arrange:アレインジ as:アズ ask:アスク assume:アシューム assumption:アサンプション at:アット attached:アタッチト august:オーガスト available:アヴェイラボゥ avoid:アヴォイド away:アウェイ
-b:ビー back:バック background:バックグラウンド bad:バッド based:ベイスト basically:ベイシカリー be:ビー because:ビコーズ become:ビカム been:ビン before:ビフォー begin:ビギン behind:ビハインド being:ビーイング believe:ビリーヴ below:ビロウ best:ベスト better:ベター between:ビトゥウィーン big:ビッグ bit:ビット blocker:ブロッカー blocking:ブロッキング board:ボード both:ボウス bottleneck:ボトゥネック bottom:ボトム break:ブレイク breaker:ブレイカー breaking:ブレイキング breaks:ブレイクス bring:ブリング budget:バジェット build:ビゥド business:ビズネス busy:ビジー but:バット by:バイ
-calendar:キャレンダー call:コール came:ケイム camera:キャメラ can:キャン cannot:キャナット care:ケア carefully:ケアフリー case:ケイス catch:キャッチ causation:コーゼイション cause:コーズ certain:サートゥン challenge:チャレンジ change:チェインジ changed:チェインジド changes:チェインジズ chase:チェイス chat:チャット check:チェック choice:チョイス circulate:サーキュレイト clarify:クラリファイ clear:クリア clearly:クリアリー close:クロウズ closed:クロウズド closer:クロウサー come:カム comes:カムズ comment:コメント comments:コメンツ commit:コミット common:コモン company:カンパニー compare:コンペア compiling:コンパイリング complete:コンプリート concern:コンサーン concerned:コンサーンド concerns:コンサーンズ conclude:コンクルード condition:コンディション confirm:コンファーム conflict:コンフリクト confusion:コンフュージョン congratulations:コングラチュレイションズ connection:コネクション consider:コンシダー contact:コンタクト continue:コンティニュー correct:コレクト correctly:コレクトリー correlation:コーレレイション cost:コスト could:クド cover:カヴァー create:クリエイト current:カレント customer:カスタマー cut:カット
-data:デイタ date:デイト day:デイ deadline:デッドライン deal:ディーゥ december:ディセンバー decide:ディサイド decision:ディシジョン defer:ディファー definitely:デフィニトリー delay:ディレイ deliver:デリヴァー depend:ディペンド design:ディザイン detail:ディーテイル details:ディーテイルズ development:ディヴェロプメント did:ディド difference:ディファレンス different:ディファレント difficult:ディフィカゥト disagree:ディスアグリー disconnected:ディスコネクティド discuss:ディスカス discussion:ディスカッション dive:ダイヴ do:ドゥ doable:ドゥーアボゥ documentation:ドキュメンテイション does:ダズ doing:ドゥーイング done:ダン down:ダウン draft:ドラフト drive:ドライヴ drop:ドロップ due:デュー during:デュアリング
-each:イーチ earlier:アーリアー early:アーリー easy:イージー echo:エコウ effect:イフェクト effort:エフォート either:イーザー elaborate:イラボレイト else:エゥス end:エンド enough:イナフ ensure:インシュア entire:インタイア error:エラー especially:イスペシャリー even:イーヴン ever:エヴァー every:エヴリー everyone:エヴリワン everything:エヴリシング exactly:イグザクトリー example:イグザンポゥ except:イクセプト expect:イクスペクト expected:イクスペクティド experience:イクスピアリエンス explain:イクスプレイン eye:アイ
-face:フェイス fact:ファクト factory:ファクトリー fail:フェイゥ failed:フェイゥド fair:フェア fall:フォール fallback:フォールバック far:ファー fast:ファスト february:フェブラリー feedback:フィードバック feel:フィーゥ few:フュー fifteen:フィフティーン figure:フィギュア file:ファイゥ final:ファイナゥ finalize:ファイナライズ find:ファインド fine:ファイン finish:フィニッシュ first:ファースト five:ファイヴ fix:フィックス flag:フラッグ flexible:フレクサボゥ floor:フロア focus:フォウカス follow:フォロウ follows:フォロウズ for:フォー forward:フォーワード found:ファウンド four:フォー free:フリー friday:フライデイ from:フロム full:フゥ further:ファーザー future:フューチャー
-gap:ギャップ gentle:ジェントゥ get:ゲット give:ギヴ given:ギヴン glad:グラッド go:ゴウ goal:ゴウゥ going:ゴウイング good:グッド got:ガット great:グレイト ground:グラウンド group:グループ guess:ゲス
-had:ハド half:ハーフ handle:ハンドゥ happen:ハプン happy:ハピー hard:ハード has:ハズ have:ハヴ haven:ハヴン having:ハヴィング he:ヒー hear:ヒア held:ヘゥド hello:ハロウ help:ヘゥプ her:ハー here:ヒア high:ハイ him:ヒム his:ヒズ hold:ホウゥド honest:アネスト hope:ホウプ how:ハウ however:ハウエヴァー
-i:アイ idea:アイディア if:イフ impact:インパクト important:インポータント improve:インプルーヴ improving:インプルーヴィング in:イン incomplete:インコンプリート increase:インクリース increased:インクリースト indeed:インディード information:インフォメイション instead:インステッド interested:イントレスティド interrupt:インタラプト into:イントゥ introduce:イントロデュース introductions:イントロダクションズ invite:インヴァイト involved:インヴォゥヴド is:イズ issue:イシュー it:イット item:アイテム items:アイテムズ its:イツ itself:イトセゥフ
-january:ジャニュアリー japan:ジャパン job:ジョブ join:ジョイン joining:ジョイニング july:ジュライ june:ジューン just:ジャスト
-keep:キープ keeping:キーピング kept:ケプト key:キー kind:カインド know:ノウ known:ノウン
-large:ラージ last:ラスト late:レイト later:レイター latest:レイティスト launch:ローンチ lead:リード learn:ラーン least:リースト leave:リーヴ left:レフト less:レス let:レット level:レヴォゥ like:ライク limit:リミット line:ライン list:リスト little:リトゥ lock:ロック logic:ロジック long:ロング look:ルック looked:ルックト loop:ループ lot:ロット low:ロウ
-made:メイド main:メイン major:メイジャー make:メイク makes:メイクス making:メイキング management:マネジメント manager:マネジャー many:メニー march:マーチ market:マーケット material:マティアリアゥ matter:マター may:メイ maybe:メイビー me:ミー mean:ミーン meaning:ミーニング meet:ミート meeting:ミーティング member:メンバー mention:メンション method:メソッド microphone:マイクロフォウン middle:ミドゥ might:マイト milestone:マイゥストウン mind:マインド minute:ミニット minutes:ミニッツ miss:ミス missed:ミスト misspoke:ミススポウク mistake:ミステイク misunderstandings:ミスアンダースタンディングズ moment:モウメント monday:マンデイ money:マニー month:マンス more:モア morning:モーニング most:モウスト move:ムーヴ much:マッチ must:マスト mute:ミュート my:マイ
-name:ネイム near:ニア necessarily:ネセサリリー need:ニード negotiate:ニゴウシエイト never:ネヴァー new:ニュー next:ネクスト nice:ナイス nicole:ニコウゥ no:ノウ noise:ノイズ not:ナット note:ノウト notes:ノウツ nothing:ナッシング notice:ノウティス november:ノヴェンバー now:ナウ number:ナンバー numbers:ナンバーズ
-october:オクトウバー of:オヴ off:オフ offer:オファー offline:オフライン often:オフン okay:オウケイ on:オン once:ワンス one:ワン only:オウンリー open:オウプン opinion:オピニオン option:オプション or:オア order:オーダー other:アザー our:アワー out:アウト outside:アウトサイド over:オウヴァー overall:オウヴァーオール own:オウン
-page:ペイジ part:パート parts:パーツ park:パーク people:ピーポゥ percent:パーセント perhaps:パハプス person:パースン phone:フォウン pilot:パイロット place:プレイス plan:プラン please:プリーズ point:ポイント pointing:ポインティング position:ポジション possible:ポシボゥ potential:ポテンシャゥ prefer:プリファー preliminary:プリリミネリー prepare:プリペア present:プレゼント previous:プリーヴィアス price:プライス principle:プリンシポゥ prioritize:プライオリタイズ priority:プライオリティ probably:プロバブリー problem:プロブレム process:プロセス product:プロダクト productive:プロダクティヴ project:プロジェクト properly:プロパリー protocol:プロウトコール provide:プロヴァイド pull:プゥ push:プッシュ put:プット
-quality:クォリティ quantify:クォンティファイ quarter:クォーター question:クエスチョン questions:クエスチョンズ quick:クイック quickly:クイックリー quite:クワイト
-raise:レイズ raised:レイズド rather:ラザー raw:ロー reach:リーチ read:リード ready:レディ real:リアゥ really:リアリー reason:リーズン reasoning:リーズニング reasons:リーズンズ recap:リーキャップ receive:リスィーヴ recommend:レコメンド recommendation:レコメンデイション red:レッド reduce:リデュース region:リージョン regarding:リガーディング remember:リメンバー reminder:リマインダー repeat:リピート rephrase:リーフレイズ replace:リプレイス reply:リプライ report:リポート reproduce:リープロデュース request:リクエスト require:リクワイア reschedule:リースケジューゥ resourcing:リーソーシング response:リスポンス responsibility:リスポンサビリティ rest:レスト result:リザゥト results:リザゥツ review:リヴュー revisit:リーヴィジット right:ライト risk:リスク role:ロウゥ room:ルーム root:ルート run:ラン running:ラニング
-safer:セイファー said:セッド sales:セイゥズ same:セイム sample:サンポゥ saturday:サタデイ save:セイヴ saw:ソー say:セイ saying:セイイング schedule:スケジューゥ scope:スコウプ screen:スクリーン second:セカンド see:シー seem:シーム send:センド sense:センス september:セプテンバー set:セット several:セヴラゥ shape:シェイプ share:シェア she:シー short:ショート should:シュド show:ショウ shows:ショウズ side:サイド significant:シグニフィカント similar:シミラー simple:シンポゥ simply:シンプリー since:シンス size:サイズ slide:スライド slides:スライズ slightly:スライトリー slipped:スリップト slot:スロット slow:スロウ slowly:スロウリー small:スモーゥ so:ソウ solution:ソルーション some:サム something:サムシング soon:スーン sorry:サリー sound:サウンド speak:スピーク specific:スペシフィック specification:スペシフィケイション speculate:スペキュレイト speed:スピード spend:スペンド staff:スタッフ standpoint:スタンドポイント start:スタート started:スターティド statistically:スタティスティカリー stay:ステイ step:ステップ still:スティゥ stop:ストップ strongly:ストロングリー such:サッチ suggest:サジェスト summarize:サマライズ sunday:サンデイ supplier:サプライアー support:サポート sure:シュア
-take:テイク talk:トーク talking:トーキング target:ターゲット task:タスク team:ティーム technical:テクニカゥ tell:テゥ test:テスト testing:テスティング than:ザン thank:サンク thanks:サンクス that:ザット the:ザ their:ゼア them:ゼム themselves:ゼムセゥヴズ then:ゼン there:ゼア these:ジーズ they:ゼイ thing:シング things:シングズ think:シンク thirty:サーティ this:ジス those:ゾウズ thought:ソート thoughts:ソーツ three:スリー through:スルー thursday:サーズデイ tight:タイト time:タイム timeline:タイムライン timing:タイミング to:トゥ today:トゥデイ together:トゥゲザー tokyo:トウキョウ tomorrow:トゥマロウ too:トゥー topic:トピック total:トウタゥ track:トラック treat:トリート trend:トレンド true:トゥルー try:トライ tuesday:テューズデイ turn:ターン two:トゥー
-under:アンダー underestimate:アンダーエスティメイト understand:アンダースタンド unfortunately:アンフォーチュニトリー unrealistic:アンリアリスティック unstable:アンステイボゥ until:アンティゥ up:アップ update:アップデイト urgent:アージェント us:アス use:ユーズ used:ユーズド
-value:ヴァリュー verify:ヴェリファイ version:ヴァージョン very:ヴェリー view:ヴュー
-wait:ウェイト waiting:ウェイティング walk:ウォーク want:ウォント was:ワズ way:ウェイ we:ウィー weather:ウェザー wednesday:ウェンズデイ week:ウィーク weekend:ウィーケンド weeks:ウィークス well:ウェゥ were:ワー what:ワット when:ウェン where:ウェア whether:ウェザー which:ウィッチ while:ワイゥ who:フー whole:ホウゥ why:ワイ will:ウィゥ with:ウィズ within:ウィズイン without:ウィズアウト work:ワーク works:ワークス world:ワーゥド worries:ワリーズ worry:ワリー worst:ワースト would:ウド wrap:ラップ writing:ライティング written:リトゥン wrong:ロング
-afraid:アフレイド dead:デッド negotiable:ニゴウシャボゥ non:ナン taro:タロウ boss:ボス client:クライアント email:イーメイル ok:オウケイ
-year:イヤー yes:イエス yesterday:イエスタデイ yet:イエット you:ユー your:ユア zones:ゾウンズ
+a:ア able:エイボゥ about:アバウト above:アバヴ accept:アクセプト access:アクセス according:アコーディング account:アカウント across:アクロス action:アクション actually:アクチュアリー add:アド additional:アディショナル address:アドレス adjust:アジャスト advance:アドヴァンス after:アフター afternoon:アフタヌーン again:アゲン against:アゲンスト agenda:アジェンダ ago:アゴウ agree:アグリー agreed:アグリード agreement:アグリーメント ahead:アヘッド air:エア airport:エアポート aisle:アイゥ alarm:アラーム all:オール allergic:アラージック allow:アラウ almost:オールモウスト already:オールレディ also:オールソウ always:オールウェイズ am:アム amazing:アメイジング an:アン and:アンド angle:アングゥ another:アナザー answer:アンサー any:エニー anything:エニシング anytime:エニタイム anyway:エニウェイ apologize:アポロジャイズ appointment:アポイントメント appreciate:アプリーシエイト approach:アプロウチ approval:アプルーヴァル approve:アプルーヴ are:アー area:エリア around:アラウンド arrive:アライヴ as:アズ ask:アスク assume:アシューム assumption:アサンプション at:アット attach:アタッチ available:アヴェイラボゥ avoid:アヴォイド away:アウェイ
+back:バック background:バックグラウンド bad:バッド bag:バッグ baggage:バギッジ bank:バンク bar:バー based:ベイスト basically:ベイシカリー be:ビー beach:ビーチ because:ビコーズ become:ビカム bed:ベッド been:ビン beer:ビア before:ビフォー begin:ビギン behind:ビハインド being:ビーイング believe:ビリーヴ below:ビロウ best:ベスト better:ベラー between:ビトゥウィーン big:ビッグ bill:ビゥ bit:ビット block:ブロック blocker:ブロッカー board:ボード boarding:ボーディング book:ブック booked:ブックト booking:ブッキング both:ボウス bottle:ボトゥ bottleneck:ボトゥネック bottom:ボトム box:ボックス break:ブレイク breakfast:ブレックファスト bring:ブリング budget:バジェット build:ビゥド burden:バードゥン bus:バス business:ビズネス busy:ビジー but:バット buy:バイ by:バイ
+cab:キャブ cake:ケイク call:コール came:ケイム camera:キャメラ can:キャン cancel:キャンセゥ car:カー card:カード care:ケア carry:キャリー case:ケイス cash:キャッシュ catch:キャッチ cause:コーズ certain:サートゥン chance:チャンス change:チェインジ charge:チャージ chat:チャット cheap:チープ check:チェック cheese:チーズ chicken:チキン choice:チョイス circulate:サーキュレイト city:スィリー clarify:クラリファイ clean:クリーン clear:クリア clearly:クリアリー close:クロウズ closed:クロウズド closer:クロウサー coffee:コーフィ cold:コウゥド come:カム comment:コメント commit:コミット company:カンパニー compare:コンペア complete:コンプリート concern:コンサーン conclude:コンクルード condition:コンディション confirm:コンファーム conflict:コンフリクト confusion:コンフュージョン connect:コネクト connection:コネクション consider:コンシダー contact:コンタクト continue:コンティニュー cool:クーゥ corner:コーナー correct:コレクト cost:コスト could:クド counter:カウンター country:カントリー couple:カポゥ course:コース cover:カヴァー craft:クラフト create:クリエイト credit:クレディット cross:クロス current:カレント customer:カスタマー cut:カット
+data:デイラ date:デイト day:デイ deadline:デッドライン deal:ディーゥ decide:ディサイド decision:ディシジョン delay:ディレイ delayed:ディレイド deliver:デリヴァー department:ディパートメント depend:ディペンド departure:ディパーチャー design:ディザイン desk:デスク detail:ディーテイル develop:ディヴェロプ did:ディド difference:ディファレンス different:ディファレント difficult:ディフィカゥト direct:ダイレクト direction:ダイレクション disagree:ディスアグリー discount:ディスカウント discuss:ディスカス discussion:ディスカッション dive:ダイヴ do:ドゥ doable:ドゥーアボゥ does:ダズ doing:ドゥーイング dollar:ダラー done:ダン door:ドア down:ダウン downtown:ダウンタウン draft:ドラフト drink:ドリンク drive:ドライヴ drop:ドロップ due:デュー during:デュアリング
+each:イーチ earlier:アーリアー early:アーリー easy:イージー eat:イート effect:イフェクト effort:エフォート eight:エイト either:イーザー elaborate:イラボレイト else:エゥス email:イーメイル end:エンド english:イングリッシュ enough:イナフ ensure:インシュア enter:エンター entrance:エントランス error:エラー escalate:エスカレイト especially:イスペシャリー estimate:エスティメット even:イーヴン evening:イーヴニング ever:エヴァー every:エヴリー everyone:エヴリワン everything:エヴリシング exactly:イグザクトリー example:イグザンポゥ except:イクセプト excuse:イクスキューズ exit:エグジット expect:イクスペクト expensive:イクスペンシヴ experience:イクスピアリエンス explain:イクスプレイン extra:エクストラ eye:アイ
+face:フェイス fact:ファクト fail:フェイゥ failed:フェイゥド fair:フェア fall:フォール far:ファー fare:フェア fast:ファスト feature:フィーチャー february:フェブラリー fee:フィー feedback:フィードバック feel:フィーゥ few:フュー fifteen:フィフティーン figure:フィギュア file:ファイゥ fill:フィゥ final:ファイナゥ find:ファインド fine:ファイン finish:フィニッシュ first:ファースト fit:フィット five:ファイヴ fix:フィックス flag:フラッグ flight:フライト floor:フロア focus:フォウカス follow:フォロウ food:フード foot:フット for:フォー forecast:フォーキャスト forget:フォゲット form:フォーム forward:フォーワード found:ファウンド four:フォー free:フリー fresh:フレッシュ friday:フライデイ friend:フレンド from:フロム front:フロント full:フゥ fund:ファンド further:ファーザー future:フューチャー
+gap:ギャップ gate:ゲイト get:ゲット getting:ゲリング give:ギヴ given:ギヴン glad:グラッド glass:グラス go:ゴウ goal:ゴウゥ going:ゴウイング good:グッド got:ガット great:グレイト green:グリーン ground:グラウンド group:グループ guess:ゲス guest:ゲスト guide:ガイド
+had:ハド half:ハーフ hand:ハンド handle:ハンドゥ happen:ハプン happy:ハピー hard:ハード has:ハズ have:ハヴ having:ハヴィング he:ヒー head:ヘッド hear:ヒア heavy:ヘヴィ held:ヘゥド hello:ハロウ help:ヘゥプ her:ハー here:ヒア high:ハイ him:ヒム his:ヒズ hit:ヒット hold:ホウゥド hole:ホウゥ home:ホウム honest:アネスト hope:ホウプ hot:ハット hotel:ホウテゥ hour:アワー house:ハウス how:ハウ however:ハウエヴァー hundred:ハンドレッド hungry:ハングリー hurry:ハーリー
+i:アイ ice:アイス idea:アイディア if:イフ impact:インパクト important:インポータント improve:インプルーヴ in:イン include:インクルード included:インクルーディド incomplete:インコンプリート increase:インクリース indeed:インディード information:インフォメイション inside:インサイド instead:インステッド insurance:インシュアランス interested:イントレスティド internet:インターネット interrupt:インタラプト into:イントゥ introduce:イントロデュース invite:インヴァイト involved:インヴォゥヴド is:イズ issue:イシュー it:イット item:アイテム items:アイテムズ its:イツ
+january:ジャニュアリー japan:ジャパン job:ジョブ join:ジョイン joining:ジョイニング just:ジャスト
+keep:キープ keeping:キーピング kept:ケプト key:キー kind:カインド kitchen:キチン know:ノウ known:ノウン
+land:ランド landing:ランディング large:ラージ last:ラスト late:レイト later:レイター latest:レイティスト launch:ローンチ leave:リーヴ left:レフト less:レス let:レット level:レヴォゥ light:ライト like:ライク limit:リミット line:ライン list:リスト little:リトゥ local:ロウカゥ lock:ロック logic:ロジック long:ロング look:ルック looking:ルッキング loop:ループ lost:ロスト lot:ロット loud:ラウド love:ラヴ low:ロウ luggage:ラギッジ lunch:ランチ
+made:メイド main:メイン major:メイジャー make:メイク making:メイキング manage:マネッジ management:マネジメント manager:マネジャー many:メニー map:マップ march:マーチ market:マーケット matter:マラー may:メイ maybe:メイビー me:ミー meal:ミーゥ mean:ミーン meet:ミート meeting:ミーリング member:メンバー mention:メンション menu:メニュー method:メソッド middle:ミドゥ might:マイト mile:マイゥ milestone:マイゥストウン mind:マインド minute:ミニット minutes:ミニッツ miss:ミス missed:ミスト mistake:ミステイク moment:モウメント monday:マンデイ money:マニー month:マンス more:モア morning:モーニング most:モウスト move:ムーヴ much:マッチ must:マスト mute:ミュート my:マイ
+name:ネイム near:ニア need:ニード never:ネヴァー new:ニュー news:ニューズ next:ネクスト nice:ナイス night:ナイト no:ノウ noise:ノイズ non:ナン not:ナット note:ノウト nothing:ナッシング notice:ノウティス now:ナウ number:ナンバー numbers:ナンバーズ
+off:オフ offer:オファー office:オフィス offline:オフライン often:オフン okay:オウケイ on:オン once:ワンス one:ワン only:オウンリー open:オウプン opinion:オピニオン option:オプション or:オア order:オーダー other:アザー our:アワー out:アウト outside:アウトサイド over:オウヴァー overall:オウヴァーオール own:オウン owner:オウナー
+pack:パック page:ペイジ paid:ペイド pardon:パードゥン park:パーク part:パート pass:パス passport:パスポート pay:ペイ people:ピーポゥ per:パー percent:パーセント perfect:パーフェクト perhaps:パハプス person:パースン phone:フォウン photo:フォウトウ pick:ピック pilot:パイロット place:プレイス plan:プラン plane:プレイン platform:プラットフォーム please:プリーズ point:ポイント police:ポリース pool:プーゥ position:ポジション possible:ポシボゥ potential:ポテンシャゥ pound:パウンド prefer:プリファー prepare:プリペア present:プレゼント press:プレス price:プライス priority:プライオリティ probably:プロバブリー problem:プロブレム process:プロセス product:プロダクト productive:プロダクティヴ project:プロジェクト properly:プロパリー protocol:プロウトコール provide:プロヴァイド pull:プゥ push:プッシュ put:プット
+quality:クォリリー quantify:クォンティファイ quarter:クォーラー question:クエスチョン quick:クイック quickly:クイックリー quiet:クワイエット quite:クワイト
+rain:レイン raise:レイズ rate:レイト rather:ラザー raw:ロー reach:リーチ read:リード ready:レディ real:リアゥ really:リアリー reason:リーズン receipt:リスィート receive:リスィーヴ recommend:レコメンド red:レッド reduce:リデュース refund:リファンド region:リージョン regarding:リガーディング remember:リメンバー reminder:リマインダー rent:レント repeat:リピート replace:リプレイス reply:リプライ report:リポート request:リクエスト require:リクワイア reschedule:リースケジューゥ reservation:レザヴェイション reserve:リザーヴ resource:リーソース response:リスポンス rest:レスト restaurant:レストラント result:リザゥト return:リターン review:リヴュー right:ライト risk:リスク road:ロウド room:ルーム root:ルート round:ラウンド run:ラン running:ラニング
+safe:セイフ said:セッド sales:セイゥズ same:セイム sample:サンポゥ saturday:サラデイ save:セイヴ say:セイ scale:スケイゥ schedule:スケジューゥ scope:スコウプ screen:スクリーン seat:スィート second:セカンド see:シー seem:シーム sell:セゥ send:センド sense:センス serve:サーヴ service:サーヴィス set:セット seven:セヴン several:セヴラゥ share:シェア she:シー ship:シップ shop:ショップ short:ショート should:シュド show:ショウ side:サイド sign:サイン significant:シグニフィカント similar:シミラー simple:シンポゥ since:シンス single:シングゥ sir:サー sit:シット site:サイト six:シックス size:サイズ skip:スキップ sleep:スリープ slide:スライド slightly:スライトリー slot:スロット slow:スロウ slowly:スロウリー small:スモーゥ smoke:スモウク so:ソウ solution:ソルーション some:サム something:サムシング soon:スーン sorry:サリー sound:サウンド speak:スピーク special:スペシャゥ specific:スペシフィック speed:スピード spend:スペンド spot:スパット staff:スタッフ stage:ステイジ stand:スタンド start:スタート started:スターティド station:ステイション status:スタータス stay:ステイ step:ステップ still:スティゥ stop:ストップ store:ストア street:ストリート strong:ストロング stuck:スタック study:スタディ stuff:スタッフ subway:サブウェイ such:サッチ suggest:サジェスト suitcase:スーツケイス summarize:サマライズ sunday:サンデイ supplier:サプライアー support:サポート sure:シュア sweet:スウィート swim:スウィム
+table:テイボゥ take:テイク talk:トーク talking:トーキング target:ターゲット task:タスク taxi:タクシー tea:ティー team:ティーム technical:テクニカゥ tell:テゥ ten:テン terminal:ターミナゥ test:テスト testing:テスティング than:ザン thank:サンク thanks:サンクス that:ザット the:ザ their:ゼア them:ゼム then:ゼン there:ゼア these:ジーズ they:ゼイ thing:シング think:シンク third:サード thirty:サーリー this:ジス those:ゾウズ thought:ソート three:スリー through:スルー thursday:サーズデイ ticket:ティキット tight:タイト time:タイム timeline:タイムライン timing:タイミング tip:ティップ tired:タイアード to:トゥ today:トゥデイ together:トゥゲザー toilet:トイレット tomorrow:トゥマロウ tonight:トゥナイト too:トゥー topic:トピック total:トウタゥ tour:トゥア towel:タウエゥ town:タウン track:トラック traffic:トラフィック train:トレイン transfer:トランスファー travel:トラヴェゥ treat:トリート trend:トレンド trip:トリップ trouble:トラボゥ true:トゥルー try:トライ tuesday:テューズデイ turn:ターン twenty:トゥエニー two:トゥー type:タイプ
+under:アンダー understand:アンダースタンド unfortunately:アンフォーチュニトリー until:アンティゥ up:アップ update:アップデイト urgent:アージェント us:アス use:ユーズ used:ユーズド
+vacation:ヴェイケイション value:ヴァリュー vegetarian:ヴェジテリアン verify:ヴェリファイ version:ヴァージョン very:ヴェリー view:ヴュー visit:ヴィジット
+wait:ウェイト waiting:ウェイティング walk:ウォーク wallet:ワリット want:ウォント warm:ウォーム was:ワズ wash:ウォッシュ watch:ウォッチ water:ワーラー way:ウェイ we:ウィー weather:ウェザー website:ウェブサイト wednesday:ウェンズデイ week:ウィーク weekend:ウィーケンド welcome:ウェゥカム well:ウェゥ went:ウェント were:ワー what:ワット when:ウェン where:ウェア whether:ウェザー which:ウィッチ while:ワイゥ who:フー whole:ホウゥ why:ワイ wifi:ワイファイ will:ウィゥ win:ウィン window:ウィンドウ wine:ワイン wish:ウィッシュ with:ウィズ within:ウィズイン without:ウィズアウト woman:ウーマン wonder:ワンダー word:ワード work:ワーク working:ワーキング world:ワーゥド worry:ワリー worst:ワースト would:ウド wrap:ラップ write:ライト writing:ライティング wrong:ロング
+year:イヤー yes:イエス yesterday:イエスタデイ yet:イエット you:ユー young:ヤング your:ユア
 `;
 
+/* 短縮形 */
 const KANA_CONTR = {
  "i'm":"アイム","i'd":"アイド","i'll":"アイゥ","i've":"アイヴ",
  "you're":"ユア","you'd":"ユード","you'll":"ユーゥ","you've":"ユーヴ",
@@ -423,23 +457,25 @@ const KANA_CONTR = {
  "they're":"ゼア","they'll":"ゼイゥ","they've":"ゼイヴ",
  "it's":"イッツ","that's":"ザッツ","there's":"ゼアズ","here's":"ヒアズ",
  "what's":"ワッツ","how's":"ハウズ","let's":"レッツ","who's":"フーズ",
+ "he's":"ヒーズ","she's":"シーズ",
  "don't":"ドウント","doesn't":"ダズント","didn't":"ディドゥント",
  "can't":"キャント","won't":"ウォウント","wouldn't":"ウドゥント",
  "shouldn't":"シュドゥント","couldn't":"クドゥント","isn't":"イズント",
  "aren't":"アーント","wasn't":"ワズント","weren't":"ワーント",
  "haven't":"ハヴント","hasn't":"ハズント","hadn't":"ハドゥント",
- "supplier's":"サプライアーズ","today's":"トゥデイズ"
+ "i'm'a":"アイマ","gonna":"ガナ","wanna":"ワナ","gotta":"ガラ"
 };
 
 const KANA_DICT = (()=>{
-  const d = {};
+  const d={};
   KANA_DICT_RAW.split(/\s+/).forEach(p=>{
-    const i=p.indexOf(':'); if(i>0) d[p.slice(0,i)] = p.slice(i+1);
+    const i=p.indexOf(':'); if(i>0) d[p.slice(0,i)]=p.slice(i+1);
   });
   Object.assign(d, KANA_CONTR);
   return d;
 })();
 
+/* 綴りベースの近似（辞書にない語） */
 const KRULES = [
  ["tion","ション"],["sion","ジョン"],["ture","チャー"],["sure","シャー"],
  ["ough","オー"],["augh","アフ"],["ight","アイト"],["tch","チ"],
@@ -458,291 +494,1143 @@ const KRULES = [
 ];
 
 function wordToKana(w){
-  const lw = w.toLowerCase();
+  const lw=w.toLowerCase();
   if(KANA_DICT[lw]) return KANA_DICT[lw];
-  const tries = [
-    [/ies$/,"y","ィーズ"],[/es$/,"","ィズ"],[/s$/,"","ス"],
+  const tries=[
+    [/ies$/,"y","ィーズ"],[/es$/,"","ィズ"],[/s$/,"","?S"],
     [/ed$/,"","ト"],[/ing$/,"","ィング"],[/ly$/,"","リー"],[/er$/,"","アー"]
   ];
   for(const [re,rep,suf] of tries){
     if(re.test(lw)){
-      const base = lw.replace(re,rep);
-      if(KANA_DICT[base]) return KANA_DICT[base]+suf;
-      if(KANA_DICT[base+"e"]) return KANA_DICT[base+"e"]+suf;
+      const base=lw.replace(re,rep);
+      const sfx = suf==="?S" ? (/[aeiouybdgjlmnrvwz]$/.test(base)?"ズ":"ス") : suf;
+      if(KANA_DICT[base]) return KANA_DICT[base]+sfx;
+      if(KANA_DICT[base+"e"]) return KANA_DICT[base+"e"]+sfx;
     }
   }
-  let s = lw, out = "";
+  let s=lw,out="";
   outer: while(s.length){
     for(const [pat,kana] of KRULES){
-      if(s.startsWith(pat)){ out += kana; s = s.slice(pat.length); continue outer; }
+      if(s.startsWith(pat)){ out+=kana; s=s.slice(pat.length); continue outer; }
     }
-    s = s.slice(1);
+    s=s.slice(1);
   }
-  return out || w;
+  return out||w;
 }
 
-function toKatakana(sentence){
-  return String(sentence||"").split(/(\s+)/).map(tok=>{
-    if(/^\s+$/.test(tok)) return " ";
-    const core = tok.replace(/^[^A-Za-z']+|[^A-Za-z']+$/g,"");
-    if(!core) return "";
-    const post = tok.slice(tok.indexOf(core)+core.length);
-    let k = core.split("-").map(wordToKana).join("・");
-    if(/[?]$/.test(post)) k += "？";
-    else if(/[!]$/.test(post)) k += "！";
-    return k;
-  }).join(" ").replace(/\s+/g," ").trim();
+/* ============ 音声変化 ============ */
+
+/* 1) 複数語のまとまりで音が大きく変わる定型（最優先で適用） */
+const MULTI = [
+ [["want","to"],"ワナ","want to は t が落ちて「ワナ」。wanna と綴られるのはこの音。"],
+ [["going","to"],"ガナ","going to は会話でほぼ「ガナ」(gonna)。to を「トゥ」と読まない。"],
+ [["got","to"],"ガラ","got to は「ガラ」(gotta)。t がラ行化して繋がる。"],
+ [["have","to"],"ハフタ","have to の ve は「フ」と濁らない。「ハフタ」。"],
+ [["has","to"],"ハスタ","has to も濁らず「ハスタ」。"],
+ [["used","to"],"ユースタ","used to は「ユースタ」。d は消える。"],
+ [["a","lot","of"],"アラーラ","a lot of は全部つながって「アラーラ」。"],
+ [["kind","of"],"カインダ","kind of は「カインダ」(kinda)。"],
+ [["sort","of"],"ソーラ","sort of は「ソーラ」(sorta)。"],
+ [["out","of"],"アウラ","out of は t がラ行化して「アウラ」。"],
+ [["let","me"],"レミ","let me は t が落ちて「レミ」。"],
+ [["give","me"],"ギミ","give me は「ギミ」。v が落ちる。"],
+ [["don't","you"],"ドンチュ","don't you は t+y が「チュ」に変わる。"],
+ [["did","you"],"ディジュ","did you は d+y が「ジュ」に変わる。"],
+ [["would","you"],"ウジュ","would you は「ウジュ」。"],
+ [["could","you"],"クジュ","could you は「クジュ」。"],
+ [["what","do","you"],"ワルユ","what do you は「ワルユ」まで縮む。"],
+ [["what","are","you"],"ワラユ","what are you は「ワラユ」。"],
+ [["how","are","you"],"ハワユ","how are you は「ハワユ」。"],
+ [["nice","to","meet","you"],"ナイストゥミーチュ","meet you は t+y が「チュ」。"],
+ [["i","don't","know"],"アイダノウ","I don't know は「アイダノウ」と一息で。"],
+ [["a","little","bit"],"アリロビット","little は t がラ行化して「リロ」。"],
+ [["check","it","out"],"チェキラウト","check it out は全部つながって「チェキラウト」。"],
+ [["as","soon","as"],"アズスーナズ","as soon as は最後が繋がって「スーナズ」。"],
+ [["thank","you"],"サンキュ","thank you は「サンキュ」。"],
+ [["excuse","me"],"イクスキューズミー","丁寧に呼び止める定番。"],
+ [["would","like"],"ウドライク","would like は「ウドライク」。d は軽く。"],
+ [["i","would","like"],"アイドライク","I would like は I'd like「アイドライク」。"],
+ [["let","us"],"レラス","let us は t がラ行化して「レラス」。"],
+ [["get","it"],"ゲリッ","get it は t がラ行化して「ゲリッ」。"],
+ [["got","it"],"ガリッ","got it は「ガリッ」。"],
+ [["put","it"],"プリッ","put it は「プリッ」。"],
+ [["not","at","all"],"ナラロー","not at all は全部つながって「ナラロー」。"],
+ [["talk","about"],"トーカバウト","talk about は k と a が繋がる。"],
+ [["think","about"],"シンカバウト","think about は k と a が繋がる。"],
+ [["look","at"],"ルカット","look at は k と a が繋がる。"],
+ [["pick","up"],"ピカップ","pick up は k と u が繋がって「ピカップ」。"],
+ [["set","up"],"セラップ","set up は t がラ行化して「セラップ」。"],
+ [["follow","up"],"フォロワップ","follow up は w が繋いで「フォロワップ」。"],
+ [["hold","on"],"ホウルドン","hold on は d と o が繋がる。"],
+ [["come","on"],"カモン","come on は「カモン」。"],
+ [["go","ahead"],"ゴウアヘッド","go ahead は「どうぞ」。促す定番。"],
+ [["how","much"],"ハウマッチ","値段を聞く定番。"],
+ [["how","long"],"ハウロング","所要時間を聞く定番。"],
+ [["first","of","all"],"ファースラヴォール","first of all は繋がって「ファースラヴォール」。"]
+];
+
+/* 2) 機能語の弱形（単独では強く読まない語） */
+const WEAK = {
+ "to":["タ","to は弱く「タ」。「トゥー」と伸ばさない。"],
+ "of":["ァヴ","of は弱く「ァヴ」。"],
+ "for":["ファ","for は弱く「ファ」。「フォー」と伸ばさない。"],
+ "and":["ン","and は弱く「ン」だけになることが多い。"],
+ "or":["ァ","or は弱く「ァ」。"],
+ "at":["ァット","at は弱く「ァット」。"],
+ "as":["ァズ","as は弱く「ァズ」。"],
+ "can":["クン","can は弱く「クン」。can't は強く「キャント」。"],
+ "the":["ザ","the は弱く「ザ」。"],
+ "a":["ァ","a は弱く「ァ」。"],
+ "an":["ァン","an は弱く「ァン」。"],
+ "your":["ヤ","your は会話では「ヤ」に近い。"],
+ "you":["ユ","you は弱く「ユ」。"],
+ "them":["ゥム","them は弱く「ゥム」。"],
+ "from":["フラム","from は弱く「フラム」。"],
+ "was":["ワズ","was は弱く「ワズ」。"],
+ "are":["ァ","are は弱く「ァ」。"],
+ "just":["ジャス","just は語尾の t が落ちて「ジャス」。"],
+ "and":["ン","and は弱く「ン」。"]
+};
+
+/* リンキング用：末尾子音 + 次の母音 → 結合カナ */
+const LINK = {
+ t:{ア:"ラ",イ:"リ",ウ:"ル",エ:"レ",オ:"ロ"},   /* 母音間の t はラ行化 */
+ d:{ア:"ダ",イ:"ディ",ウ:"ドゥ",エ:"デ",オ:"ド"},
+ n:{ア:"ナ",イ:"ニ",ウ:"ヌ",エ:"ネ",オ:"ノ"},
+ k:{ア:"カ",イ:"キ",ウ:"ク",エ:"ケ",オ:"コ"},
+ g:{ア:"ガ",イ:"ギ",ウ:"グ",エ:"ゲ",オ:"ゴ"},
+ p:{ア:"パ",イ:"ピ",ウ:"プ",エ:"ペ",オ:"ポ"},
+ b:{ア:"バ",イ:"ビ",ウ:"ブ",エ:"ベ",オ:"ボ"},
+ m:{ア:"マ",イ:"ミ",ウ:"ム",エ:"メ",オ:"モ"},
+ s:{ア:"サ",イ:"スィ",ウ:"ス",エ:"セ",オ:"ソ"},
+ z:{ア:"ザ",イ:"ズィ",ウ:"ズ",エ:"ゼ",オ:"ゾ"},
+ l:{ア:"ラ",イ:"リ",ウ:"ル",エ:"レ",オ:"ロ"},
+ r:{ア:"ラ",イ:"リ",ウ:"ル",エ:"レ",オ:"ロ"},
+ f:{ア:"ファ",イ:"フィ",ウ:"フ",エ:"フェ",オ:"フォ"},
+ v:{ア:"ヴァ",イ:"ヴィ",ウ:"ヴ",エ:"ヴェ",オ:"ヴォ"}
+};
+/* 末尾がこのカナなら「裸の子音」とみなして差し替えてよい */
+const BARE = {"ト":"t","ド":"d","ン":"n","ク":"k","グ":"g","プ":"p","ブ":"b",
+  "ム":"m","ス":"s","ズ":"z","ル":"l","フ":"f","ヴ":"v","ッ":"t"};
+const VROW = {"ア":"ア","イ":"イ","ウ":"ウ","エ":"エ","オ":"オ"};
+
+function vowelRowOf(kana){
+  const c = kana[0];
+  return VROW[c] || null;
 }
 
+/* メイン：文 → {kana, careful, notes[]} */
+function analyzeKana(sentence){
+  const raw = String(sentence||"");
+  const tokens = raw.split(/\s+/).filter(Boolean);
+  const words = tokens.map(t=>({
+    raw: t,
+    core: t.replace(/^[^A-Za-z']+|[^A-Za-z']+$/g,""),
+    tail: (t.match(/[^A-Za-z']+$/)||[""])[0]
+  })).filter(w=>w.core);
 
-/* ===== 内蔵フレーズライブラリ（会議英語） ===== */
+  const notes = [];
+  const careful = words.map(w=>wordToKana(w.core)).join(" ");
+
+  /* --- 1) 複数語の定型を先に置換 --- */
+  const lw = words.map(w=>w.core.toLowerCase());
+  const slots = new Array(words.length).fill(null);
+  for(const [seq, kana, note] of MULTI){
+    for(let i=0;i+seq.length<=lw.length;i++){
+      if(slots.slice(i,i+seq.length).some(x=>x!==null)) continue;
+      let ok=true;
+      for(let j=0;j<seq.length;j++){ if(lw[i+j]!==seq[j]){ ok=false; break; } }
+      if(ok){
+        slots[i]={kana, span:seq.length, tail:words[i+seq.length-1].tail};
+        for(let j=1;j<seq.length;j++) slots[i+j]={skip:true};
+        if(!notes.includes(note)) notes.push(note);
+      }
+    }
+  }
+
+  /* --- 2) 単語ごとのカナ（弱形を反映） --- */
+  const units = [];
+  for(let i=0;i<words.length;i++){
+    if(slots[i] && slots[i].skip) continue;
+    if(slots[i]){
+      units.push({ k:slots[i].kana, c:"", tail:slots[i].tail, locked:true });
+      continue;
+    }
+    const w = words[i];
+    const key = w.core.toLowerCase();
+    let k = wordToKana(w.core);
+    /* 文頭・文末の機能語は弱くしない（強形が自然） */
+    const isEdge = (i===0) || (i===words.length-1);
+    if(WEAK[key] && !isEdge){
+      k = WEAK[key][0];
+      const nt = WEAK[key][1];
+      if(!notes.includes(nt)) notes.push(nt);
+    }
+    /* 末尾子音の文字を記録（リンキング判定用） */
+    const m = key.replace(/[^a-z]/g,"").match(/([bcdfgklmnprstvz])$/);
+    units.push({ k, c: m?m[1]:"", tail:w.tail, word:key });
+  }
+
+  /* --- 3) リンキング / フラッピング --- */
+  for(let i=0;i<units.length-1;i++){
+    const a=units[i], b=units[i+1];
+    if(a.locked || a.tail) continue;              /* 句読点をまたがない */
+    if(!a.c) continue;
+    const row = vowelRowOf(b.k);
+    if(!row) continue;
+    const last = a.k[a.k.length-1];
+    if(!BARE[last]) continue;
+    const table = LINK[a.c];
+    if(!table || !table[row]) continue;
+
+    a.k = a.k.slice(0,-1) + table[row];
+    b.k = b.k.slice(1);
+    if(b.k==="") b.k="ー";
+    if(a.c==="t" || a.c==="d"){
+      const nt="語尾の t/d が母音に挟まれてラ行の音になる（フラッピング）。";
+      if(!notes.includes(nt)) notes.push(nt);
+    }else{
+      const nt="語尾の子音が次の語の母音とつながる（リンキング）。";
+      if(!notes.includes(nt)) notes.push(nt);
+    }
+    a.linked = true;
+  }
+
+  /* --- 4) 出力 --- */
+  let out="";
+  units.forEach((u,i)=>{
+    out += u.k;
+    const punct = u.tail ? (/\?/.test(u.tail)?"？":/!/.test(u.tail)?"！":/[,]/.test(u.tail)?"、":"") : "";
+    out += punct;
+    if(i<units.length-1) out += u.linked ? "" : " ";
+  });
+
+  return { kana: out.replace(/\s+/g," ").trim(), careful, notes };
+}
+
+/* 旧APIの互換：カナ文字列だけ返す */
+function toKatakana(s){ return analyzeKana(s).kana; }
+
+
+/* ===================================================================
+   コース定義 / 場面 / フレーズ本体
+   各フレーズ: s=場面, lv=難度, en, ja, note=使い方, ch=型, gr=文法解説
+   =================================================================== */
+
+const COURSES = [
+  { id:"travel", name:"Phase 1 ｜ 旅行サバイバル", weeks:8,
+    goal:"ホテル・カフェ・レストラン・機内・電話・道案内・買い物で、要求を伝え、質問に即答できる。",
+    scenes:["hotel","food","air","phone","direction","shop","trouble","talk"] },
+  { id:"biz", name:"Phase 2 ｜ 米国ビジネス会議（PMO）", weeks:24,
+    goal:"台本なしで司会進行・発言・質疑応答・プレゼン。進捗、技術課題、リスク、財務、マイルストーンを扱う。",
+    scenes:["facil","progress","tech","risk","money","stone","present","qa","push","wrap"] }
+];
+
 const SCENES = [
-  {id:"meeting_open", label:"会議の開始・進行", kw:["開始","進行","アジェンダ","司会","始め","ファシリ"]},
-  {id:"opinion",      label:"意見を述べる",     kw:["意見","主張","提案","考え","述べ"]},
-  {id:"agree",        label:"同意・やんわり反対", kw:["同意","賛成","反対","懸念","異論","角を立て","やんわり"]},
-  {id:"clarify",      label:"確認・聞き返し",   kw:["確認","聞き返","聞き取れ","わからな","もう一度","理解"]},
-  {id:"status",       label:"進捗報告",         kw:["進捗","報告","ステータス","遅れ","予定通り","状況"]},
-  {id:"data",         label:"数値・データ説明", kw:["数値","データ","グラフ","結果","比較","傾向","説明"]},
-  {id:"request",      label:"依頼・催促",       kw:["依頼","お願い","催促","リマインド","頼","巻き取"]},
-  {id:"schedule",     label:"日程調整",         kw:["日程","スケジュール","調整","期限","締切","納期"]},
-  {id:"risk",         label:"問題・リスク提起", kw:["問題","リスク","課題","懸念","トラブル","失敗"]},
-  {id:"wrapup",       label:"まとめ・次アクション", kw:["まとめ","次","アクション","締め","決定","合意"]},
-  {id:"call",         label:"Web会議のトラブル", kw:["web会議","オンライン","音声","接続","画面","共有","聞こえ"]},
-  {id:"smalltalk",    label:"雑談・アイスブレイク", kw:["雑談","アイスブレイク","天気","近況","挨拶"]},
-  {id:"qa",           label:"質疑応答",         kw:["質問","質疑","答え","回答","わからない時"]},
-  {id:"negotiation",  label:"交渉・条件調整",   kw:["交渉","条件","価格","譲歩","落とし所","折衝"]},
-  {id:"apology",      label:"謝罪・訂正",       kw:["謝","訂正","修正","ミス","お詫び","間違"]}
+  /* ---- Phase 1：旅行 ---- */
+  {id:"hotel",     c:"travel", label:"ホテル",         kw:["ホテル","チェックイン","部屋","宿","フロント"]},
+  {id:"food",      c:"travel", label:"カフェ・レストラン", kw:["カフェ","レストラン","注文","食事","飲み","会計","メニュー"]},
+  {id:"air",       c:"travel", label:"空港・機内",      kw:["空港","機内","飛行機","搭乗","荷物","税関","乗り継ぎ"]},
+  {id:"phone",     c:"travel", label:"電話",           kw:["電話","予約","問い合わせ","かけ"]},
+  {id:"direction", c:"travel", label:"道案内・移動",     kw:["道","案内","移動","タクシー","電車","駅","行き方"]},
+  {id:"shop",      c:"travel", label:"買い物",          kw:["買い物","ショッピング","店","値段","試着","支払"]},
+  {id:"trouble",   c:"travel", label:"トラブル対応",     kw:["トラブル","困っ","紛失","故障","体調","病院","help"]},
+  {id:"talk",      c:"travel", label:"雑談・あいさつ",   kw:["雑談","挨拶","あいさつ","世間話","お礼"]},
+  /* ---- Phase 2：ビジネス ---- */
+  {id:"facil",     c:"biz", label:"司会・進行",        kw:["司会","進行","ファシリ","アジェンダ","開始","仕切"]},
+  {id:"progress",  c:"biz", label:"進捗報告",          kw:["進捗","報告","ステータス","遅れ","予定通り"]},
+  {id:"tech",      c:"biz", label:"技術課題",          kw:["技術","課題","原因","不具合","試験","検証","データ"]},
+  {id:"risk",      c:"biz", label:"リスク・問題提起",   kw:["リスク","問題","懸念","課題","最悪"]},
+  {id:"money",     c:"biz", label:"財務・コスト",       kw:["財務","コスト","予算","費用","投資","採算"]},
+  {id:"stone",     c:"biz", label:"マイルストーン・日程", kw:["マイルストーン","日程","スケジュール","期限","納期"]},
+  {id:"present",   c:"biz", label:"プレゼン",          kw:["プレゼン","発表","スライド","説明","資料"]},
+  {id:"qa",        c:"biz", label:"質疑応答",          kw:["質問","質疑","回答","答え"]},
+  {id:"push",      c:"biz", label:"意見・やんわり反対",  kw:["意見","反対","懸念","異論","主張","角を立て"]},
+  {id:"wrap",      c:"biz", label:"まとめ・次アクション", kw:["まとめ","締め","アクション","決定","合意","次"]}
 ];
 
 const SEED = [
-{s:"meeting_open",lv:1,en:"Let's get started.",ja:"始めましょう。",note:"最も自然な開始の合図。Let us ではなく Let's。"},
-{s:"meeting_open",lv:1,en:"Thanks for joining on short notice.",ja:"急な招集にご参加いただきありがとうございます。",note:"on short notice＝直前の連絡で。"},
-{s:"meeting_open",lv:2,en:"We have about thirty minutes, so let's keep it tight.",ja:"30分しかないので、手短にいきましょう。",note:"keep it tight＝簡潔に進める。"},
-{s:"meeting_open",lv:2,en:"I'll walk you through the agenda first.",ja:"まずアジェンダをご説明します。",note:"walk 人 through＝順を追って説明する。会議英語の頻出型。"},
-{s:"meeting_open",lv:2,en:"There are three items on the agenda today.",ja:"本日のアジェンダは3件です。",note:"There are + 数 + on the agenda が定型。"},
-{s:"meeting_open",lv:2,en:"Before we dive in, let me give you some background.",ja:"本題に入る前に、背景を少しお話しします。",note:"dive in＝本題に入る。カジュアル寄りだが会議で標準。"},
-{s:"meeting_open",lv:3,en:"The goal today is to make a decision, not just to share information.",ja:"今日のゴールは情報共有ではなく、意思決定です。",note:"not just to ~ で目的を対比させる型。"},
-{s:"meeting_open",lv:2,en:"Could you take notes for us today?",ja:"本日の議事録をお願いできますか。",note:"take notes＝記録を取る。minutes は正式な議事録。"},
-{s:"meeting_open",lv:2,en:"Let's go around and do quick introductions.",ja:"順番に簡単な自己紹介をしましょう。",note:"go around＝順に一周する。"},
-{s:"meeting_open",lv:3,en:"I'd like to park that for now and come back to it later.",ja:"それは一旦保留にして、後ほど戻りましょう。",note:"park＝議題を一旦置く。ファシリテーションの必須表現。"},
-{s:"meeting_open",lv:2,en:"Let's stay on topic and finish this item first.",ja:"論点を戻して、まずこの議題を終えましょう。",note:"stay on topic＝話を脱線させない。"},
-{s:"meeting_open",lv:2,en:"We're running a bit behind, so I'll speed up.",ja:"少し押しているので、巻いていきます。",note:"run behind＝予定より遅れている。"},
-{s:"meeting_open",lv:3,en:"Let's give the floor to Taro for the next item.",ja:"次の議題は太郎さんにお願いします。",note:"give the floor to＝発言権を渡す。ややフォーマル。"},
+/* =========================================================
+   PHASE 1 ｜ 旅行サバイバル
+   ========================================================= */
 
-{s:"opinion",lv:1,en:"In my view, we should go with option B.",ja:"私の考えでは、案Bで進めるべきです。",note:"go with＝〜を採用する。I think より少し強い。"},
-{s:"opinion",lv:2,en:"My recommendation is to start with a small pilot.",ja:"私の提案は、小規模なパイロットから始めることです。",note:"My recommendation is to + 動詞原形。会議で最も使う提案の型。"},
-{s:"opinion",lv:2,en:"I'd like to suggest a slightly different approach.",ja:"少し違うアプローチを提案させてください。",note:"slightly を挟むと反対色が薄れる。"},
-{s:"opinion",lv:2,en:"From a technical standpoint, this is the safer choice.",ja:"技術的な観点では、こちらの方が安全な選択です。",note:"From a ~ standpoint で立場を明示。"},
-{s:"opinion",lv:3,en:"Let me explain the reasoning behind that.",ja:"その理由をご説明します。",note:"reasoning behind＝根拠・考え方。"},
-{s:"opinion",lv:2,en:"There are two reasons for this.",ja:"理由は2つあります。",note:"先に数を言うと聞き手が構造を追いやすい。"},
-{s:"opinion",lv:2,en:"The main point is that we can't verify it in time.",ja:"要点は、期限内に検証できないという点です。",note:"The main point is that + 文。結論を先に置く型。"},
-{s:"opinion",lv:3,en:"If it were up to me, I'd delay the launch by one quarter.",ja:"私に決定権があれば、上市を1四半期遅らせます。",note:"仮定法。If it were up to me＝私次第なら。角が立ちにくい。"},
-{s:"opinion",lv:2,en:"I feel strongly about this point.",ja:"この点については強くそう思っています。",note:"feel strongly＝譲れない、という穏やかな強調。"},
-{s:"opinion",lv:3,en:"I'm not attached to the method, but the deadline is non-negotiable.",ja:"手段にはこだわりませんが、期限は譲れません。",note:"not attached to＝こだわらない。non-negotiable＝交渉の余地なし。"},
-{s:"opinion",lv:2,en:"Just to add one thing to that.",ja:"一点だけ補足させてください。",note:"割り込みを柔らかくする定型。"},
-{s:"opinion",lv:2,en:"Let me build on what Nicole just said.",ja:"ニコルさんの発言に付け加えます。",note:"build on＝人の意見に乗せる。協調的で印象が良い。"},
-{s:"opinion",lv:3,en:"To be clear, I'm not against the plan itself.",ja:"誤解のないように言うと、計画自体に反対ではありません。",note:"To be clear＝念のため明確にすると。"},
+/* ---- ホテル ---- */
+{s:"hotel",lv:1,en:"I have a reservation.",ja:"予約しています。",ch:"I have a ___.",
+ note:"チェックインの第一声。名前を聞かれるので続けて名乗る。",
+ gr:"have は「持っている」。予約という“持ち物”がある、と考えると a reservation が自然に出る。"},
+{s:"hotel",lv:1,en:"Checking in, please.",ja:"チェックインお願いします。",ch:"___ing, please.",
+ note:"主語も動詞も省いて名詞だけ。実際の窓口ではこれで通じる。",
+ gr:"完全な文でなくてよい。動名詞（〜ing）＋please で用件だけ伝える省略形。"},
+{s:"hotel",lv:1,en:"Could I get a late checkout?",ja:"レイトチェックアウトはできますか。",ch:"Could I get ___?",
+ note:"Could I get 〜? は旅行で最も使い回せる型。物にも手続きにも使える。",
+ gr:"Could は can の過去形だが、ここでは丁寧さを出す働き。Can I より柔らかい。"},
+{s:"hotel",lv:2,en:"Is breakfast included?",ja:"朝食は含まれていますか。",ch:"Is ___ included?",
+ note:"included＝含まれた。料金確認の定番。",
+ gr:"be動詞＋過去分詞で受け身。「含む」ではなく「含まれている」側から言う。"},
+{s:"hotel",lv:2,en:"Could you keep my bags until three?",ja:"3時まで荷物を預かってもらえますか。",ch:"Could you ___?",
+ note:"Could you 〜? は相手に何かを頼む型。旅行中の依頼はほぼこれで足りる。",
+ gr:"Could you ＋動詞の原形。until＝〜まで（継続）、by＝〜までに（期限）。"},
+{s:"hotel",lv:2,en:"The air conditioning isn't working.",ja:"エアコンが動きません。",ch:"The ___ isn't working.",
+ note:"故障を伝える万能形。broken より柔らかく、現象だけを伝える。",
+ gr:"isn't working は現在進行形の否定。「今そうなっている」状態を表す。"},
+{s:"hotel",lv:2,en:"Could I have a room on a higher floor?",ja:"もっと上の階の部屋にできますか。",ch:"Could I have ___?",
+ note:"Could I have 〜? も get と同じ感覚で使える。",
+ gr:"a higher floor の higher は high の比較級。「今より上の」という含み。"},
+{s:"hotel",lv:2,en:"What time is checkout?",ja:"チェックアウトは何時ですか。",ch:"What time is ___?",
+ note:"時刻を聞く最短形。",
+ gr:"What time＋be動詞＋主語。When より「何時」と具体的に聞ける。"},
+{s:"hotel",lv:2,en:"Could you call me a taxi?",ja:"タクシーを呼んでもらえますか。",ch:"Could you call me ___?",
+ note:"call me a taxi は「私にタクシーを呼ぶ」。ホテルでそのまま使える。",
+ gr:"call＋人＋物 の語順。「人に物を〜する」型（第4文型）。"},
+{s:"hotel",lv:3,en:"Is there any way to get an early check-in?",ja:"早めのチェックインは何とかなりませんか。",ch:"Is there any way to ___?",
+ note:"無理そうな依頼を柔らかく出す型。交渉の余地を残せる。",
+ gr:"Is there any way to＋動詞原形＝「〜する方法はありますか」。直接頼むより角が立たない。"},
 
-{s:"agree",lv:1,en:"That makes sense to me.",ja:"それは納得できます。",note:"make sense＝筋が通る。同意の最頻出。"},
-{s:"agree",lv:1,en:"I'm on board with that.",ja:"それに賛成です。",note:"on board＝同意している、参加している。"},
-{s:"agree",lv:2,en:"I see your point, but I have a slightly different view.",ja:"おっしゃることは分かりますが、私は少し違う見方をしています。",note:"反対の最も安全な入り方。"},
-{s:"agree",lv:2,en:"I agree in principle, but the timing worries me.",ja:"原則賛成ですが、タイミングが気になります。",note:"in principle＝原則としては。条件付き賛成の型。"},
-{s:"agree",lv:2,en:"I'm not sure I follow that logic.",ja:"その論理についていけていない気がします。",note:"直接的な否定を避けつつ疑問を出す。"},
-{s:"agree",lv:3,en:"I'd push back on that a little.",ja:"その点は少し反論させてください。",note:"push back＝異議を唱える。ビジネス頻出。a little で緩和。"},
-{s:"agree",lv:2,en:"That's a fair point.",ja:"それはもっともな指摘です。",note:"相手を立ててから自分の意見に移る前置き。"},
-{s:"agree",lv:3,en:"Help me understand how that works.",ja:"どういう仕組みなのか教えてください。",note:"批判に聞こえずに矛盾を突ける便利な型。"},
-{s:"agree",lv:2,en:"My only concern is the cost.",ja:"唯一気になるのはコストです。",note:"My only concern is ~ で懸念を1点に絞る。"},
-{s:"agree",lv:2,en:"Can we look at this from another angle?",ja:"別の角度から見てみませんか。",note:"from another angle＝別の視点で。"},
-{s:"agree",lv:3,en:"I hear you, but the data doesn't support that yet.",ja:"おっしゃることは分かりますが、データはまだそれを裏付けていません。",note:"I hear you＝理解はしている（同意ではない）。"},
-{s:"agree",lv:2,en:"I'd rather not commit to that today.",ja:"今日その場で確約するのは避けたいです。",note:"would rather not＝〜したくない。丁寧な拒否。"},
-{s:"agree",lv:3,en:"Let's agree to disagree and move on.",ja:"意見の相違は認めて、先に進みましょう。",note:"議論が平行線のときの締め方。"},
+/* ---- カフェ・レストラン ---- */
+{s:"food",lv:1,en:"Could I get a coffee, please?",ja:"コーヒーをお願いします。",ch:"Could I get ___, please?",
+ note:"注文はこの一型で全部いける。品名を入れ替えるだけ。",
+ gr:"I want は要求が強い。Could I get 〜 が最も無難で自然。"},
+{s:"food",lv:1,en:"For here, please.",ja:"ここで食べます。",ch:"For ___, please.",
+ note:"店内なら For here、持ち帰りは To go。聞かれたら即答する。",
+ gr:"For here or to go? への答え。文にせず語句だけで返すのが自然。"},
+{s:"food",lv:1,en:"A table for two, please.",ja:"2名でお願いします。",ch:"A table for ___, please.",
+ note:"入店時の第一声。人数を入れ替えるだけ。",
+ gr:"for＋数字で「〜人分」。動詞なしの名詞句だけで通じる。"},
+{s:"food",lv:2,en:"Could we get the check, please?",ja:"お会計をお願いします。",ch:"Could we get ___, please?",
+ note:"米国では check、英国では bill。手を挙げて言えばよい。",
+ gr:"we を使うと同席者を含められる。I でも問題ない。"},
+{s:"food",lv:2,en:"What do you recommend?",ja:"おすすめは何ですか。",ch:"What do you ___?",
+ note:"迷ったらこれ。会話も続きやすい。",
+ gr:"What＋do you＋動詞原形。一般動詞の疑問文の基本形。"},
+{s:"food",lv:2,en:"I'll have the same.",ja:"同じものをください。",ch:"I'll have ___.",
+ note:"連れと同じでよいときの最短表現。",
+ gr:"I'll＝I will。その場で決めたことは will で言う。"},
+{s:"food",lv:2,en:"Does this have any nuts in it?",ja:"これにナッツは入っていますか。",ch:"Does this have ___ in it?",
+ note:"アレルギー確認。命に関わるので必ず言えるようにする。",
+ gr:"Does＋主語＋動詞原形。this が三人称単数なので does を使う。"},
+{s:"food",lv:2,en:"Could I get it without onions?",ja:"玉ねぎ抜きにできますか。",ch:"Could I get it without ___?",
+ note:"without＝〜なしで。苦手な食材を外すときに。",
+ gr:"without＋名詞。前置詞の後ろは名詞（動詞なら〜ing）。"},
+{s:"food",lv:2,en:"Could we split the bill?",ja:"別会計にできますか。",ch:"Could we ___?",
+ note:"split＝分ける。割り勘の標準表現。",
+ gr:"Could we＋動詞原形。自分たちの行動を提案・依頼する形。"},
+{s:"food",lv:3,en:"I think there's a mistake on the bill.",ja:"会計が間違っている気がします。",ch:"I think there's ___.",
+ note:"I think を付けると断定を避けられ、角が立たない。",
+ gr:"I think＋文。相手を責めずに問題提起する定番のクッション。"},
 
-{s:"clarify",lv:1,en:"Sorry, could you say that again?",ja:"すみません、もう一度お願いできますか。",note:"最も自然な聞き返し。Pardon? より丁寧に使える。"},
-{s:"clarify",lv:1,en:"Could you speak a little more slowly?",ja:"もう少しゆっくり話していただけますか。",note:"a little を入れると要求が柔らかくなる。"},
-{s:"clarify",lv:2,en:"Just to make sure I understand correctly...",ja:"念のため確認させてください…",note:"確認の前置き。会議で最も使える一言。"},
-{s:"clarify",lv:2,en:"So what you're saying is that the test failed. Is that right?",ja:"つまり、試験は不合格だったということですね。",note:"So what you're saying is ~ で相手の要点を要約確認。"},
-{s:"clarify",lv:2,en:"Could you elaborate on that?",ja:"もう少し詳しく説明していただけますか。",note:"elaborate on＝詳述する。フォーマル寄り。"},
-{s:"clarify",lv:2,en:"What exactly do you mean by 'soon'?",ja:"「近いうち」とは具体的にいつですか。",note:"曖昧な言葉を具体化させる詰め方。"},
-{s:"clarify",lv:2,en:"Let me repeat that back to you.",ja:"復唱させてください。",note:"repeat back＝聞いた内容を返して確認する。"},
-{s:"clarify",lv:2,en:"Sorry, I missed the last part.",ja:"すみません、最後の部分を聞き逃しました。",note:"miss＝聞き逃す。自分の非にして角が立たない。"},
-{s:"clarify",lv:3,en:"Are we talking about the same thing here?",ja:"認識は合っていますか。",note:"議論がかみ合わないときに使う。"},
-{s:"clarify",lv:2,en:"Could you put that in the chat for me?",ja:"チャットに書いていただけますか。",note:"聞き取れない固有名詞・数字に有効。"},
-{s:"clarify",lv:2,en:"Just to confirm, the deadline is the end of March.",ja:"確認ですが、期限は3月末ですね。",note:"Just to confirm ＋ 平叙文で確認。"},
-{s:"clarify",lv:3,en:"I want to make sure we're aligned on this.",ja:"この点で認識を合わせておきたいです。",note:"be aligned on＝認識が揃っている。"},
-{s:"clarify",lv:2,en:"Correct me if I'm wrong.",ja:"違っていたら訂正してください。",note:"自分の理解を述べる前に置く定型。"},
+/* ---- 空港・機内 ---- */
+{s:"air",lv:1,en:"Could I get a window seat?",ja:"窓側の席にできますか。",ch:"Could I get ___?",
+ note:"窓側 window、通路側 aisle（発音はアイゥ）。",
+ gr:"注文と同じ型。旅行英語は同じ型の使い回しで足りる。"},
+{s:"air",lv:1,en:"Just this one.",ja:"これ一つだけです。",ch:"Just ___.",
+ note:"預ける荷物の数を聞かれたとき。語句だけで即答できる。",
+ gr:"just＝ただ〜だけ。文にせず短く返すのが自然。"},
+{s:"air",lv:2,en:"Where do I pick up my baggage?",ja:"荷物はどこで受け取りますか。",ch:"Where do I ___?",
+ note:"pick up＝受け取る。空港で頻出の句動詞。",
+ gr:"Where＋do I＋動詞原形。自分の動作を聞く疑問文。"},
+{s:"air",lv:2,en:"I have a connecting flight to Chicago.",ja:"シカゴへの乗り継ぎ便があります。",ch:"I have a ___ to ___.",
+ note:"乗り継ぎは connecting flight。トラブル時に必ず伝える情報。",
+ gr:"connecting は現在分詞が形容詞化したもの。「繋がっている便」。"},
+{s:"air",lv:2,en:"Could I have some water, please?",ja:"お水をいただけますか。",ch:"Could I have some ___, please?",
+ note:"機内で最も使う一言。some を付けると柔らかい。",
+ gr:"数えられない名詞には a を付けず some を使う。water, coffee, help など。"},
+{s:"air",lv:2,en:"Excuse me, could I get through?",ja:"すみません、通してもらえますか。",ch:"Could I get ___?",
+ note:"席を立つとき。Excuse me を前に付けるのが礼儀。",
+ gr:"get through＝通り抜ける。get＋前置詞で意味が決まる句動詞。"},
+{s:"air",lv:2,en:"How long is the layover?",ja:"乗り継ぎ時間はどれくらいですか。",ch:"How long is ___?",
+ note:"layover＝乗り継ぎの待ち時間。",
+ gr:"How long＋be動詞＋主語。長さ・時間を聞く型。"},
+{s:"air",lv:3,en:"My flight was delayed, so I missed my connection.",ja:"便が遅れて、乗り継ぎに間に合いませんでした。",ch:"___, so ___.",
+ note:"空港で事情を説明する定型。so で理由と結果をつなぐ。",
+ gr:"so＝だから。前が理由、後ろが結果。接続詞ひとつで説明が組み立つ。"},
 
-{s:"status",lv:1,en:"We're on track for the September launch.",ja:"9月の上市に向けて予定通りです。",note:"on track for＝〜に向けて順調。進捗報告の基本形。"},
-{s:"status",lv:2,en:"We're about two weeks behind schedule.",ja:"予定より約2週間遅れています。",note:"behind schedule＝遅延。about で断定を避ける。"},
-{s:"status",lv:2,en:"Testing is complete, and we're now compiling the report.",ja:"試験は完了し、現在報告書を作成中です。",note:"完了と現在進行を1文でつなぐ報告の型。"},
-{s:"status",lv:2,en:"The main blocker is the supplier's response.",ja:"最大の障害はサプライヤーからの回答待ちです。",note:"blocker＝進行を止めている要因。"},
-{s:"status",lv:2,en:"Nothing has changed since the last update.",ja:"前回の報告から変更はありません。",note:"変化なしを短く伝える定型。"},
-{s:"status",lv:3,en:"We've closed two of the five open items.",ja:"未解決5件のうち2件を完了しました。",note:"open item＝未処理項目。close＝完了させる。"},
-{s:"status",lv:3,en:"The delay is due to a change in the test protocol, not resourcing.",ja:"遅延の原因は試験手順の変更で、人員不足ではありません。",note:"due to A, not B で誤解を先回りして潰す。"},
-{s:"status",lv:2,en:"We expect to have the results by the end of next week.",ja:"来週末までに結果が出る見込みです。",note:"We expect to have ~ by ... が見込み報告の型。"},
-{s:"status",lv:3,en:"That milestone has slipped to the first quarter.",ja:"そのマイルストーンは第1四半期にずれ込みました。",note:"slip＝予定がずれ込む。自然な遅延表現。"},
-{s:"status",lv:2,en:"I'll send a written update by Friday.",ja:"金曜までに文書で報告します。",note:"written update＝書面での進捗共有。"},
-{s:"status",lv:3,en:"We need a decision this week to stay on schedule.",ja:"予定を守るには今週中の決定が必要です。",note:"依頼を「必要条件」として言うと圧が自然に伝わる。"},
-{s:"status",lv:2,en:"The risk is low, but I'm keeping an eye on it.",ja:"リスクは低いですが、注視しています。",note:"keep an eye on＝注意して見守る。"},
-{s:"status",lv:3,en:"Overall, I'd say we're in good shape.",ja:"全体としては、良い状態だと思います。",note:"in good shape＝順調な状態。総括の締め。"},
+/* ---- 電話 ---- */
+{s:"phone",lv:1,en:"Hi, this is Hiroki.",ja:"もしもし、ヒロキです。",ch:"This is ___.",
+ note:"電話で名乗るときは I am ではなく This is。",
+ gr:"電話での自己紹介は This is 〜 が決まり。I am は使わない。"},
+{s:"phone",lv:2,en:"I'd like to make a reservation for tomorrow.",ja:"明日の予約を取りたいのですが。",ch:"I'd like to ___.",
+ note:"I'd like to＝〜したいのですが。丁寧に意図を伝える最重要型。",
+ gr:"I'd like to＋動詞原形。I want to より丁寧で、大人の英語に聞こえる。"},
+{s:"phone",lv:2,en:"Could you speak a little more slowly?",ja:"もう少しゆっくり話していただけますか。",ch:"Could you ___ a little more ___?",
+ note:"電話で聞き取れないときの命綱。a little を入れると柔らかい。",
+ gr:"more＋副詞で比較級。a little＝少し、で要求を弱める。"},
+{s:"phone",lv:2,en:"Sorry, I didn't catch that.",ja:"すみません、聞き取れませんでした。",ch:"I didn't catch ___.",
+ note:"catch＝聞き取る。自分の非にするので角が立たない。",
+ gr:"didn't＋動詞原形で過去の否定。catch を「捕まえ損ねた」と捉える。"},
+{s:"phone",lv:2,en:"Could you spell that for me?",ja:"綴りを教えていただけますか。",ch:"Could you ___ for me?",
+ note:"名前や地名が聞き取れないとき。電話で必須。",
+ gr:"spell＝綴りを言う。for me を足すと「私のために」で依頼が柔らかくなる。"},
+{s:"phone",lv:3,en:"Let me repeat that back to you.",ja:"復唱させてください。",ch:"Let me ___.",
+ note:"Let me 〜＝〜させてください。確認・申し出の万能型。",
+ gr:"Let＋人＋動詞原形＝「人に〜させる」。to は付けない点に注意。"},
 
-{s:"data",lv:1,en:"Let me walk you through the numbers.",ja:"数値をご説明します。",note:"データ説明の入りの定番。"},
-{s:"data",lv:2,en:"As you can see on this slide, the trend is improving.",ja:"このスライドの通り、傾向は改善しています。",note:"As you can see on this slide＝スライド指示の定型。"},
-{s:"data",lv:2,en:"Sales increased by fifteen percent year over year.",ja:"売上は前年比15％増加しました。",note:"increase by ＋ 数値。year over year＝前年同期比。"},
-{s:"data",lv:2,en:"The difference is not statistically significant.",ja:"その差は統計的に有意ではありません。",note:"statistically significant＝統計的に有意。技術会議で必須。"},
-{s:"data",lv:3,en:"This is based on a sample size of thirty.",ja:"これはサンプル数30に基づいています。",note:"be based on＝〜に基づく。前提の明示。"},
-{s:"data",lv:2,en:"The red line shows the specification limit.",ja:"赤線が規格値を示しています。",note:"The 色 line shows ~ でグラフを説明する型。"},
-{s:"data",lv:3,en:"Correlation doesn't necessarily mean causation here.",ja:"ここでは相関が必ずしも因果を意味しません。",note:"データの過剰解釈を止める一言。"},
-{s:"data",lv:2,en:"These are preliminary results, so please treat them as such.",ja:"これは暫定結果ですので、その前提でご覧ください。",note:"preliminary＝暫定の。treat as such＝そのように扱う。"},
-{s:"data",lv:3,en:"We haven't been able to reproduce that result yet.",ja:"その結果はまだ再現できていません。",note:"reproduce＝再現する。実験系の頻出。"},
-{s:"data",lv:2,en:"Let me break that down by region.",ja:"地域別に内訳をお見せします。",note:"break down by＝〜別に分解する。"},
-{s:"data",lv:3,en:"The numbers speak for themselves.",ja:"数字が物語っています。",note:"説明不要なほど明確なとき。強い締め。"},
-{s:"data",lv:2,en:"I'd like to see the raw data before we conclude.",ja:"結論を出す前に生データを確認したいです。",note:"raw data＝生データ。慎重な姿勢を示す。"},
-{s:"data",lv:3,en:"Is that a real effect, or just noise?",ja:"それは実際の効果ですか、それとも単なるばらつきですか。",note:"noise＝測定上のばらつき。鋭いが失礼にならない質問。"},
+/* ---- 道案内・移動 ---- */
+{s:"direction",lv:1,en:"How do I get to the station?",ja:"駅へはどう行けばいいですか。",ch:"How do I get to ___?",
+ note:"道を聞く最重要型。行き先を入れ替えるだけ。",
+ gr:"get to＝〜に到着する。go to より「たどり着く」感じが出る。"},
+{s:"direction",lv:1,en:"Is it far from here?",ja:"ここから遠いですか。",ch:"Is it ___ from here?",
+ note:"歩けるかどうかの判断に。",
+ gr:"it は距離や天気を指す形式的な主語。訳さなくてよい。"},
+{s:"direction",lv:2,en:"Could you show me on the map?",ja:"地図で示していただけますか。",ch:"Could you show me ___?",
+ note:"聞き取れなくても地図を見せれば解決する。実用性が高い。",
+ gr:"show＋人＋物。「人に物を見せる」型（第4文型）。"},
+{s:"direction",lv:2,en:"Does this bus go downtown?",ja:"このバスは中心街へ行きますか。",ch:"Does this ___ go to ___?",
+ note:"乗る前の確認。downtown には to を付けない。",
+ gr:"downtown, home, there は副詞なので to が不要。"},
+{s:"direction",lv:2,en:"Could you let me know when we get there?",ja:"着いたら教えていただけますか。",ch:"Could you let me know when ___?",
+ note:"バスや電車で降車駅がわからないとき。",
+ gr:"let me know＝知らせて。when＋文で「〜のときに」。"},
+{s:"direction",lv:2,en:"Could you take me to this address?",ja:"この住所までお願いします。",ch:"Could you take me to ___?",
+ note:"タクシーで住所を見せながら言えば確実。",
+ gr:"take＋人＋to＋場所＝「人を場所へ連れて行く」。"},
+{s:"direction",lv:3,en:"I think I'm lost. Could you help me?",ja:"道に迷ったようです。助けていただけますか。",ch:"I think I'm ___.",
+ note:"素直に助けを求めるほうが早く解決する。",
+ gr:"I think を付けて断定を避ける。lost は「迷った状態」を表す形容詞。"},
 
-{s:"request",lv:1,en:"Could you take care of that?",ja:"それをお願いできますか。",note:"take care of＝対応する。最も汎用的な依頼。"},
-{s:"request",lv:2,en:"Would you be able to send it by Wednesday?",ja:"水曜までに送っていただけますか。",note:"Would you be able to ~ は Can you より丁寧。"},
-{s:"request",lv:2,en:"I'd appreciate it if you could review the draft.",ja:"ドラフトをご確認いただけると助かります。",note:"I'd appreciate it if you could ~ は丁寧依頼の王道。"},
-{s:"request",lv:2,en:"Just a gentle reminder about the report.",ja:"報告書の件、念のためのリマインドです。",note:"gentle reminder＝やわらかい催促。メールでも会議でも使える。"},
-{s:"request",lv:3,en:"Is there anything blocking you on this?",ja:"何か進められない理由はありますか。",note:"催促を「支援の申し出」に変える言い方。"},
-{s:"request",lv:2,en:"Could you keep me in the loop?",ja:"私にも共有を続けてください。",note:"keep 人 in the loop＝情報共有の輪に入れておく。"},
-{s:"request",lv:2,en:"Let me know if you need any support from my side.",ja:"こちらでできることがあれば言ってください。",note:"from my side＝自分の側で。"},
-{s:"request",lv:3,en:"Can I ask you to own this item?",ja:"この件の担当をお願いできますか。",note:"own＝責任を持つ。責任の所在を明確にする。"},
-{s:"request",lv:2,en:"This is a bit urgent, unfortunately.",ja:"恐縮ですが、少し急ぎです。",note:"unfortunately を置くと押し付け感が減る。"},
-{s:"request",lv:3,en:"Could you prioritize this over the other task?",ja:"もう一方の作業より、こちらを優先していただけますか。",note:"prioritize A over B＝BよりAを優先する。"},
-{s:"request",lv:2,en:"I'll follow up with you offline.",ja:"この件は個別に連絡します。",note:"offline＝会議の外で、個別に。会議英語の頻出。"},
-{s:"request",lv:2,en:"Sorry to chase you on this.",ja:"催促してしまいすみません。",note:"chase＝催促する。丁寧な督促の定型。"},
-{s:"request",lv:3,en:"Who would be the right person to ask?",ja:"誰に聞くのが適切でしょうか。",note:"the right person to ask＝適任者。"},
+/* ---- 買い物 ---- */
+{s:"shop",lv:1,en:"I'm just looking, thanks.",ja:"見ているだけです、ありがとう。",ch:"I'm just ___.",
+ note:"声を掛けられたときの決まり文句。これで放っておいてもらえる。",
+ gr:"be動詞＋〜ing の現在進行形。just を入れると「〜してるだけ」。"},
+{s:"shop",lv:1,en:"How much is this?",ja:"これはいくらですか。",ch:"How much is ___?",
+ note:"値段を聞く最短形。",
+ gr:"How much＝どれくらいの量・値段。数えられるものは How many。"},
+{s:"shop",lv:2,en:"Could I try this on?",ja:"試着してもいいですか。",ch:"Could I ___?",
+ note:"try on＝試着する。this を間に挟むのが正しい語順。",
+ gr:"try this on のように、代名詞は句動詞の間に入れる。try on this は誤り。"},
+{s:"shop",lv:2,en:"Do you have this in a larger size?",ja:"これの大きいサイズはありますか。",ch:"Do you have this in ___?",
+ note:"in＋サイズ／色 で言い換えが効く。in blue なども同じ。",
+ gr:"in は「〜の状態で」。サイズや色を表すときの前置詞。"},
+{s:"shop",lv:2,en:"Could I pay by card?",ja:"カードで払えますか。",ch:"Could I pay by ___?",
+ note:"by card / in cash と前置詞が違う点に注意。",
+ gr:"手段は by、現金は in cash が慣用。丸ごと覚えるほうが早い。"},
+{s:"shop",lv:2,en:"I'll take it.",ja:"これにします。",ch:"I'll take ___.",
+ note:"購入を決めたときの一言。buy より自然。",
+ gr:"その場の決断は will。take で「選び取る」意味になる。"},
+{s:"shop",lv:3,en:"Could I get a refund on this?",ja:"これは返金できますか。",ch:"Could I get a refund on ___?",
+ note:"返品交渉の入口。レシートを添えて言う。",
+ gr:"refund on＋商品。前置詞は on を使うのが自然。"},
 
-{s:"schedule",lv:1,en:"Does Thursday afternoon work for you?",ja:"木曜の午後はご都合いかがですか。",note:"work for you＝都合が合う。日程調整の最頻出。"},
-{s:"schedule",lv:2,en:"I'm free anytime after three.",ja:"3時以降ならいつでも空いています。",note:"free anytime after ~ で空き時間を伝える。"},
-{s:"schedule",lv:2,en:"Let's find a slot that works for both time zones.",ja:"両方の時間帯で成立する枠を探しましょう。",note:"slot＝時間枠。海外会議の必須語。"},
-{s:"schedule",lv:2,en:"Can we push it back by a week?",ja:"1週間後ろ倒しにできますか。",note:"push back＝後ろへずらす。前倒しは move up。"},
-{s:"schedule",lv:2,en:"I have a conflict at that time.",ja:"その時間は別の予定と重なっています。",note:"conflict＝予定の重複。ダブルブッキングの標準語。"},
-{s:"schedule",lv:3,en:"Let's lock in the date before we leave today.",ja:"今日中に日程を確定させましょう。",note:"lock in＝確定する。"},
-{s:"schedule",lv:2,en:"I'll send out a calendar invite.",ja:"カレンダー招待を送ります。",note:"calendar invite＝会議招待。send out が自然。"},
-{s:"schedule",lv:2,en:"Can we keep it to thirty minutes?",ja:"30分に収められますか。",note:"keep it to ~＝〜以内に収める。"},
-{s:"schedule",lv:3,en:"The deadline is tight, but it's still doable.",ja:"期限は厳しいですが、まだ実現可能です。",note:"doable＝実行可能。会話で非常によく使う。"},
-{s:"schedule",lv:2,en:"Let's aim for the end of the month.",ja:"月末を目標にしましょう。",note:"aim for＝〜を目指す。"},
-{s:"schedule",lv:3,en:"That timeline is unrealistic for our side.",ja:"そのスケジュールは我々には現実的ではありません。",note:"unrealistic を使うと理由説明がセットで求められる。"},
-{s:"schedule",lv:2,en:"Let's reschedule for next week.",ja:"来週に再設定しましょう。",note:"reschedule for ＋ 日時。"},
-{s:"schedule",lv:2,en:"What's the drop-dead date?",ja:"絶対に落とせない期限はいつですか。",note:"drop-dead date＝最終期限。ネイティブが好む表現。"},
+/* ---- トラブル ---- */
+{s:"trouble",lv:1,en:"Could you help me?",ja:"助けていただけますか。",ch:"Could you help me ___?",
+ note:"困ったらまずこれ。後ろに with 〜 を足せる。",
+ gr:"help＋人＋（with＋名詞／動詞原形）。help me find it のように to は省ける。"},
+{s:"trouble",lv:2,en:"I lost my wallet.",ja:"財布をなくしました。",ch:"I lost my ___.",
+ note:"lose の過去形は lost。物を入れ替えるだけ。",
+ gr:"過去に起きた一回の出来事なので過去形。"},
+{s:"trouble",lv:2,en:"I'm not feeling well.",ja:"体調が良くありません。",ch:"I'm not ___.",
+ note:"体調不良を伝える標準表現。sick より広く使える。",
+ gr:"feel は状態動詞だが、一時的な体調は進行形にできる。"},
+{s:"trouble",lv:2,en:"Could you call a doctor?",ja:"医者を呼んでいただけますか。",ch:"Could you call ___?",
+ note:"緊急時。call an ambulance（救急車）も一緒に覚える。",
+ gr:"call＋名詞で「〜を呼ぶ」。第3文型のシンプルな形。"},
+{s:"trouble",lv:2,en:"My phone doesn't work here.",ja:"ここでは携帯がつながりません。",ch:"My ___ doesn't work.",
+ note:"work＝機能する。機械が動かないときの標準語。",
+ gr:"三人称単数の否定は doesn't＋動詞原形。works にしない。"},
+{s:"trouble",lv:3,en:"Is there anyone who speaks Japanese?",ja:"日本語を話せる人はいますか。",ch:"Is there anyone who ___?",
+ note:"最後の手段。空港やホテルで有効。",
+ gr:"who 以下が anyone を説明する関係代名詞。「〜する人」と後ろから修飾。"},
 
-{s:"risk",lv:1,en:"We've run into a problem.",ja:"問題が発生しました。",note:"run into＝問題にぶつかる。"},
-{s:"risk",lv:2,en:"I want to flag a potential risk.",ja:"潜在的なリスクを一つ挙げさせてください。",note:"flag＝注意喚起する。会議で非常に多用。"},
-{s:"risk",lv:2,en:"The worst case is a three-month delay.",ja:"最悪の場合、3か月の遅延です。",note:"The worst case is ~ で最悪シナリオを提示。"},
-{s:"risk",lv:2,en:"We don't have a fallback plan yet.",ja:"代替案はまだありません。",note:"fallback plan＝万一の代替策。plan B とも言う。"},
-{s:"risk",lv:3,en:"If that assumption breaks, the whole plan changes.",ja:"その前提が崩れると、計画全体が変わります。",note:"assumption＝前提。前提依存を指摘する型。"},
-{s:"risk",lv:2,en:"This could become a bottleneck later.",ja:"これは後々ボトルネックになり得ます。",note:"could become＝〜になり得る。断定を避ける。"},
-{s:"risk",lv:3,en:"I'd like to understand the root cause before we fix it.",ja:"対策の前に、根本原因を理解したいです。",note:"root cause＝根本原因。品質・技術会議の必須語。"},
-{s:"risk",lv:2,en:"What's the impact if we do nothing?",ja:"何もしなかった場合の影響は何ですか。",note:"優先度を判断させる強力な質問。"},
-{s:"risk",lv:3,en:"We're making a decision with incomplete information.",ja:"不完全な情報で意思決定をしています。",note:"事実として述べることで、圧をかけずに警告できる。"},
-{s:"risk",lv:2,en:"Let's not underestimate the effort involved.",ja:"必要な工数を過小評価しないようにしましょう。",note:"the effort involved＝それに伴う工数。"},
-{s:"risk",lv:3,en:"That's outside my area, but it concerns me.",ja:"専門外ですが、気になります。",note:"越権に見せずに懸念を出せる安全な型。"},
-{s:"risk",lv:2,en:"Can we quantify that risk?",ja:"そのリスクを定量化できますか。",note:"quantify＝定量化する。感覚論を止める一言。"},
-{s:"risk",lv:3,en:"I'd rather find out now than after launch.",ja:"上市後より、今わかった方がましです。",note:"would rather A than B＝BよりAの方がよい。"},
+/* ---- 雑談 ---- */
+{s:"talk",lv:1,en:"Thanks, I appreciate it.",ja:"ありがとう、助かります。",ch:"I appreciate ___.",
+ note:"Thank you に一言足すだけで印象が変わる。",
+ gr:"appreciate の後ろは物・事。人を目的語にしない点に注意。"},
+{s:"talk",lv:1,en:"I'm here on business.",ja:"仕事で来ています。",ch:"I'm here on ___.",
+ note:"入国審査でも雑談でも使う。観光なら on vacation。",
+ gr:"on business / on vacation は前置詞込みの決まり文句。"},
+{s:"talk",lv:2,en:"This is my first time here.",ja:"ここは初めてです。",ch:"This is my first time ___.",
+ note:"会話が広がる一言。相手が勧めてくれる。",
+ gr:"my first time＋場所／〜ing。時間を表す名詞句。"},
+{s:"talk",lv:2,en:"How's your day going?",ja:"今日はどんな感じですか。",ch:"How's ___ going?",
+ note:"How are you? より自然で、返事もしやすい。",
+ gr:"go には「進む・調子が〜だ」の意味がある。進行形で今の状況を聞く。"},
+{s:"talk",lv:2,en:"Sorry to bother you, but could I ask you something?",ja:"お邪魔してすみません、ちょっと聞いてもいいですか。",ch:"Sorry to bother you, but ___.",
+ note:"見知らぬ人に話しかける最も安全な入り方。",
+ gr:"Sorry to＋動詞原形＝「〜してすみません」。but の後ろに用件を置く。"},
 
-{s:"wrapup",lv:1,en:"Let me summarize what we've agreed.",ja:"合意事項をまとめます。",note:"会議の締めの定型。"},
-{s:"wrapup",lv:2,en:"So the action items are as follows.",ja:"では、アクションアイテムは以下の通りです。",note:"as follows＝以下の通り。"},
-{s:"wrapup",lv:2,en:"Taro will own this, with a due date of next Friday.",ja:"太郎さんが担当し、期限は来週金曜です。",note:"担当と期限をセットで言うのが英語会議の作法。"},
-{s:"wrapup",lv:2,en:"Are we all aligned on that?",ja:"その点、全員認識は揃っていますか。",note:"aligned＝認識が一致している。"},
-{s:"wrapup",lv:2,en:"Any final comments before we close?",ja:"締める前に、何かありますか。",note:"before we close＝終わる前に。"},
-{s:"wrapup",lv:3,en:"Let's take that offline and report back next week.",ja:"それは別途対応し、来週報告しましょう。",note:"take it offline＝この場では議論せず個別に。"},
-{s:"wrapup",lv:2,en:"I'll circulate the minutes by tomorrow.",ja:"明日までに議事録を回覧します。",note:"circulate＝回覧する。minutes＝議事録（常に複数形）。"},
-{s:"wrapup",lv:2,en:"Thanks, everyone. That was a productive discussion.",ja:"皆さんありがとうございました。有意義な議論でした。",note:"productive＝生産的な。締めの決まり文句。"},
-{s:"wrapup",lv:3,en:"Let's revisit this at the next review.",ja:"次回のレビューで再度取り上げましょう。",note:"revisit＝改めて議論する。"},
-{s:"wrapup",lv:2,en:"So the next step is to get approval from management.",ja:"次のステップは経営層の承認取得です。",note:"the next step is to ＋ 動詞原形。"},
-{s:"wrapup",lv:3,en:"We'll keep this open until the data comes in.",ja:"データが出るまでこの件は保留にします。",note:"keep ~ open＝未決のままにする。"},
-{s:"wrapup",lv:2,en:"Let's wrap up here.",ja:"ここで終わりにしましょう。",note:"wrap up＝締めくくる。"},
-{s:"wrapup",lv:3,en:"To recap, we agreed on the scope but not the timeline.",ja:"要約すると、範囲は合意しましたが、日程は未合意です。",note:"To recap＝要約すると。合意と未合意を分けて示す。"},
+/* =========================================================
+   PHASE 2 ｜ 米国ビジネス会議（PMO）
+   ========================================================= */
 
-{s:"call",lv:1,en:"Sorry, you're breaking up.",ja:"すみません、音声が途切れています。",note:"break up＝音が途切れる。電話・Web会議専用の表現。"},
-{s:"call",lv:1,en:"I think you're on mute.",ja:"ミュートになっていると思います。",note:"on mute＝ミュート状態。最頻出の一言。"},
-{s:"call",lv:2,en:"Can everyone hear me okay?",ja:"皆さん、聞こえていますか。",note:"hear me okay＝ちゃんと聞こえる。"},
-{s:"call",lv:2,en:"Let me share my screen.",ja:"画面を共有します。",note:"share my screen＝画面共有する。"},
-{s:"call",lv:2,en:"Can you see my slides?",ja:"スライドは見えていますか。",note:"共有直後の確認。"},
-{s:"call",lv:2,en:"My connection is unstable, so I'll turn off my camera.",ja:"回線が不安定なので、カメラを切ります。",note:"unstable connection＝不安定な接続。"},
-{s:"call",lv:2,en:"Sorry, I got disconnected.",ja:"すみません、接続が切れました。",note:"get disconnected＝回線が落ちる。"},
-{s:"call",lv:2,en:"There's a bit of an echo on the line.",ja:"少しハウリングしています。",note:"echo＝ハウリング。howling は和製英語なので通じない。"},
-{s:"call",lv:3,en:"I'll drop off now. Thanks, everyone.",ja:"では退出します。皆さんありがとうございました。",note:"drop off＝会議から抜ける。"},
-{s:"call",lv:2,en:"Could you speak closer to the microphone?",ja:"マイクの近くで話していただけますか。",note:"closer to＝より近くで。"},
-{s:"call",lv:2,en:"Let's give it another minute for people to join.",ja:"参加を待って、もう1分だけ待ちましょう。",note:"give it another minute＝もう少し待つ。"},
-{s:"call",lv:3,en:"Sorry to interrupt, but I have a quick question.",ja:"割り込んですみません、手短に質問があります。",note:"Sorry to interrupt＝割り込みの前置き。オンラインで必須。"},
-{s:"call",lv:2,en:"I have a hard stop at four.",ja:"4時に必ず退出しなければなりません。",note:"hard stop＝動かせない終了時刻。"},
+/* ---- 司会・進行 ---- */
+{s:"facil",lv:1,en:"Let's get started.",ja:"始めましょう。",ch:"Let's ___.",
+ note:"開始の合図。これ以上短く自然な言い方はない。",
+ gr:"Let's＝Let us の短縮。後ろは必ず動詞の原形。"},
+{s:"facil",lv:2,en:"I'll walk you through the agenda.",ja:"アジェンダをご説明します。",ch:"I'll walk you through ___.",
+ note:"walk 人 through＝順を追って説明する。会議で極めて頻出。",
+ gr:"walk＋人＋through＋物。「人を物の中を歩かせる」＝順に案内するイメージ。"},
+{s:"facil",lv:2,en:"We have three items today.",ja:"本日は3件あります。",ch:"We have ___ today.",
+ note:"先に件数を言うと、聞き手が構造を追える。",
+ gr:"have で「議題を持っている」と表す。There are 〜 でも言える。"},
+{s:"facil",lv:2,en:"Let's keep this to thirty minutes.",ja:"30分に収めましょう。",ch:"Let's keep ___ to ___.",
+ note:"keep A to B＝AをBに収める。時間管理の定番。",
+ gr:"keep＋目的語＋to＋数量。「〜の範囲に保つ」型。"},
+{s:"facil",lv:3,en:"Let's park that and come back to it.",ja:"それは一旦保留にして、後で戻りましょう。",ch:"Let's park ___.",
+ note:"park＝議題を一旦置く。脱線を止める最重要表現。",
+ gr:"park は「駐車する」から転じて「一時的に置いておく」。会議特有の使い方。"},
+{s:"facil",lv:2,en:"Let's move on to the next item.",ja:"次の議題に移りましょう。",ch:"Let's move on to ___.",
+ note:"move on to＝次へ進む。進行役の必須表現。",
+ gr:"move on to＋名詞。on と to を両方置くのが正しい形。"},
+{s:"facil",lv:3,en:"I want to make sure everyone's on the same page.",ja:"全員の認識を揃えておきたいです。",ch:"I want to make sure ___.",
+ note:"on the same page＝認識が一致している。会議の頻出イディオム。",
+ gr:"make sure＋文＝「〜を確実にする」。that は省略できる。"},
+{s:"facil",lv:2,en:"Let's take that offline.",ja:"それは個別に話しましょう。",ch:"Let's take ___ offline.",
+ note:"take offline＝この場では扱わず別途対応する。米国の会議で多用。",
+ gr:"offline は「会議の外で」の意味。ネット接続とは無関係。"},
 
-{s:"smalltalk",lv:1,en:"How's everything going on your side?",ja:"そちらはいかがですか。",note:"on your side＝そちらでは。海外拠点との定番。"},
-{s:"smalltalk",lv:1,en:"It's early morning here in Japan.",ja:"こちら日本は早朝です。",note:"時差の話は最も安全な雑談。"},
-{s:"smalltalk",lv:2,en:"How was your weekend?",ja:"週末はいかがでしたか。",note:"月曜の定番。Good, thanks. And yours? と返すのが型。"},
-{s:"smalltalk",lv:2,en:"Long time no talk. Good to see you again.",ja:"お久しぶりです。またお会いできて嬉しいです。",note:"Long time no talk はくだけた再会の挨拶。"},
-{s:"smalltalk",lv:2,en:"Thanks for making the time.",ja:"お時間を作っていただきありがとうございます。",note:"make the time＝わざわざ時間を作る。"},
-{s:"smalltalk",lv:2,en:"How's the weather over there?",ja:"そちらの天気はどうですか。",note:"over there＝そちらでは。"},
-{s:"smalltalk",lv:3,en:"I hope you had a nice break.",ja:"良い休暇を過ごされたでしょうか。",note:"休暇明けの相手への一言。"},
-{s:"smalltalk",lv:2,en:"Congratulations on the new role.",ja:"新しいご役職おめでとうございます。",note:"Congratulations on ＋ 名詞。"},
-{s:"smalltalk",lv:2,en:"Let's catch up properly next time you're in Tokyo.",ja:"次に東京に来られたときに、ゆっくりお話ししましょう。",note:"catch up＝近況を話す。properly＝ちゃんと。"},
-{s:"smalltalk",lv:2,en:"Please say hello to the team for me.",ja:"チームの皆さんによろしくお伝えください。",note:"say hello to 人 for me＝よろしく伝える。"},
-{s:"smalltalk",lv:2,en:"I really appreciate your support on this.",ja:"この件でのご支援、本当に感謝しています。",note:"appreciate＋名詞（人ではない）。使用頻度が高い。"},
-{s:"smalltalk",lv:3,en:"Sorry for the late reply. It's been a busy week.",ja:"返信が遅れてすみません。忙しい週でした。",note:"言い訳を短く添えるのが自然。"},
-{s:"smalltalk",lv:2,en:"Have a good rest of your day.",ja:"良い一日の後半をお過ごしください。",note:"時差のある相手との締めに最適。"},
+/* ---- 進捗報告 ---- */
+{s:"progress",lv:1,en:"We're on track.",ja:"予定通りです。",ch:"We're on track for ___.",
+ note:"進捗報告の基本形。これだけで状況が伝わる。",
+ gr:"on track＝線路に乗っている＝順調。前置詞込みで丸ごと覚える。"},
+{s:"progress",lv:2,en:"We're about two weeks behind.",ja:"約2週間遅れています。",ch:"We're about ___ behind.",
+ note:"about を入れて断定を避ける。悪い報告ほど数字を添える。",
+ gr:"behind の後ろの schedule は省略できる。about＝約。"},
+{s:"progress",lv:2,en:"Nothing has changed since the last update.",ja:"前回の報告から変更はありません。",ch:"Nothing has changed since ___.",
+ note:"変化なしを短く伝える。報告が早く終わる。",
+ gr:"現在完了（has＋過去分詞）。過去のある時点から今までを1つの文で表す。"},
+{s:"progress",lv:2,en:"The main blocker is the supplier's response.",ja:"最大の障害はサプライヤーの回答待ちです。",ch:"The main blocker is ___.",
+ note:"blocker＝進行を止めている要因。PMOで最頻出の名詞。",
+ gr:"be動詞で「A＝B」と直結させる。原因を名詞一語で言い切ると強い。"},
+{s:"progress",lv:2,en:"We've closed two of the five open items.",ja:"未解決5件のうち2件を完了しました。",ch:"We've closed ___ of ___.",
+ note:"open item＝未処理項目、close＝完了させる。PMOの標準語。",
+ gr:"現在完了で「今その状態になっている」ことを表す。数字＋of＋全体で割合を示す。"},
+{s:"progress",lv:3,en:"The delay is due to a spec change, not resourcing.",ja:"遅延の原因は仕様変更で、人員不足ではありません。",ch:"___ is due to ___, not ___.",
+ note:"A, not B で誤解を先回りして潰す。責任追及をかわす型。",
+ gr:"due to＝〜が原因で。because of とほぼ同じだが、報告では due to が多い。"},
+{s:"progress",lv:2,en:"I'll send a written update by Friday.",ja:"金曜までに書面で報告します。",ch:"I'll send ___ by ___.",
+ note:"by＝期限。until（継続）と混同しない。",
+ gr:"will で自分の約束を表す。by＋期限は「その時までに完了」。"},
+{s:"progress",lv:3,en:"Overall, we're in good shape.",ja:"全体としては良い状態です。",ch:"Overall, ___.",
+ note:"in good shape＝順調。報告の締めに置くと印象が整う。",
+ gr:"Overall を文頭に置いて総括を示す。副詞ひとつで話の階層が変わる。"},
 
-{s:"qa",lv:1,en:"That's a good question.",ja:"良い質問ですね。",note:"考える時間を稼げる定型。"},
-{s:"qa",lv:2,en:"Let me check and get back to you.",ja:"確認して、改めてご連絡します。",note:"get back to you＝後で回答する。分からない時の最重要フレーズ。"},
-{s:"qa",lv:2,en:"I don't have that number with me right now.",ja:"その数字は今手元にありません。",note:"with me right now＝今手元に。誠実で角が立たない。"},
-{s:"qa",lv:2,en:"Does that answer your question?",ja:"ご質問の答えになっていますか。",note:"回答後の確認。相手の満足度を測れる。"},
-{s:"qa",lv:3,en:"I'd rather not speculate on that.",ja:"その点について憶測は避けたいです。",note:"speculate＝憶測する。答えられない時の防御。"},
-{s:"qa",lv:2,en:"Could you repeat the question, please?",ja:"質問をもう一度お願いできますか。",note:"聞き取れなかった時の安全策。"},
-{s:"qa",lv:3,en:"To be honest, we haven't looked into that yet.",ja:"正直なところ、まだ検討していません。",note:"look into＝調査する。正直に言う方が信用される。"},
-{s:"qa",lv:2,en:"Let me answer that in two parts.",ja:"2つに分けてお答えします。",note:"複雑な質問を構造化して答える型。"},
-{s:"qa",lv:2,en:"Any questions before I move on?",ja:"次に進む前に、ご質問はありますか。",note:"move on＝次へ進む。"},
-{s:"qa",lv:3,en:"I'll defer to Nicole on that one.",ja:"その点はニコルさんにお任せします。",note:"defer to 人＝その人に判断を委ねる。"},
-{s:"qa",lv:2,en:"That's outside the scope of today's discussion.",ja:"それは本日の議題の範囲外です。",note:"outside the scope of＝範囲外。脱線を止める。"},
-{s:"qa",lv:3,en:"Let me rephrase that more simply.",ja:"もっと簡単に言い換えます。",note:"rephrase＝言い換える。伝わらなかった時に。"},
-{s:"qa",lv:2,en:"I'd like to hear your thoughts on this.",ja:"この点についてご意見を伺いたいです。",note:"your thoughts on ~＝〜についての考え。"},
+/* ---- 技術課題 ---- */
+{s:"tech",lv:2,en:"We haven't been able to reproduce it yet.",ja:"まだ再現できていません。",ch:"We haven't been able to ___ yet.",
+ note:"reproduce＝再現する。技術会議で必須の動詞。",
+ gr:"現在完了＋be able to。「今までのところできていない」を表す。"},
+{s:"tech",lv:2,en:"We're still looking into the root cause.",ja:"根本原因はまだ調査中です。",ch:"We're still looking into ___.",
+ note:"look into＝調査する。root cause＝根本原因。",
+ gr:"still＋現在進行形で「まだ〜している最中」。未完了を明確にする。"},
+{s:"tech",lv:2,en:"The data doesn't support that yet.",ja:"データはまだそれを裏付けていません。",ch:"The data doesn't support ___.",
+ note:"相手の主張を人格でなくデータで止める。角が立たない。",
+ gr:"support＝裏付ける。data は単数扱いが一般的（doesn't）。"},
+{s:"tech",lv:3,en:"Is that a real effect, or just noise?",ja:"それは実際の効果ですか、単なるばらつきですか。",ch:"Is that ___, or just ___?",
+ note:"noise＝測定上のばらつき。鋭いが失礼にならない質問。",
+ gr:"A or B の選択疑問文。just を添えると「単なる」と軽く扱える。"},
+{s:"tech",lv:2,en:"These are preliminary results.",ja:"これは暫定結果です。",ch:"These are ___.",
+ note:"preliminary＝暫定の。先に言えば後で覆せる。",
+ gr:"複数形の主語には are。results は常に複数で使うことが多い。"},
+{s:"tech",lv:3,en:"I'd like to see the raw data before we conclude.",ja:"結論の前に生データを見たいです。",ch:"I'd like to ___ before we ___.",
+ note:"慎重さを示しつつ議論を止められる。",
+ gr:"before＋主語＋動詞。時を表す接続詞の後ろは未来でも現在形。"},
+{s:"tech",lv:2,en:"Let me break that down.",ja:"分解して説明します。",ch:"Let me break down ___.",
+ note:"break down＝細かく分ける。説明の前置きに便利。",
+ gr:"break that down のように代名詞は間に入れる。break down that は不可。"},
+{s:"tech",lv:3,en:"That assumption hasn't been verified.",ja:"その前提は検証されていません。",ch:"___ hasn't been verified.",
+ note:"assumption＝前提。誰も検証していない点を静かに突く。",
+ gr:"現在完了の受け身（has been＋過去分詞）の否定。行為者を出さずに済む。"},
 
-{s:"negotiation",lv:2,en:"What would it take to move that date up?",ja:"その日程を前倒しするには何が必要ですか。",note:"What would it take to ~＝〜には何が必要か。交渉の万能質問。"},
-{s:"negotiation",lv:2,en:"We can be flexible on the scope, but not on quality.",ja:"範囲は柔軟に対応できますが、品質は譲れません。",note:"flexible on A, not on B で譲れる線を明確化。"},
-{s:"negotiation",lv:3,en:"If you can cover the testing, we can cover the documentation.",ja:"試験を負担いただけるなら、文書はこちらで持ちます。",note:"条件付き譲歩。If you can ~, we can ~ の型。"},
-{s:"negotiation",lv:2,en:"That's not something we can commit to today.",ja:"それは本日お約束できる内容ではありません。",note:"commit to＝確約する。丁寧な保留。"},
-{s:"negotiation",lv:3,en:"Let's look for a middle ground.",ja:"落とし所を探しましょう。",note:"middle ground＝妥協点。"},
-{s:"negotiation",lv:2,en:"Is there any room to negotiate on the price?",ja:"価格に交渉の余地はありますか。",note:"room to negotiate＝交渉余地。"},
-{s:"negotiation",lv:3,en:"I need to run this by my manager first.",ja:"まず上司に確認する必要があります。",note:"run A by B＝BにAの確認を取る。持ち帰りの定型。"},
-{s:"negotiation",lv:2,en:"That works for us.",ja:"それで問題ありません。",note:"合意の最も簡潔な言い方。"},
-{s:"negotiation",lv:3,en:"Let's put that in writing to avoid misunderstandings.",ja:"誤解を避けるため、文書に残しましょう。",note:"put in writing＝書面化する。"},
-{s:"negotiation",lv:2,en:"What's your bottom line here?",ja:"最低限譲れない線はどこですか。",note:"bottom line＝譲れない最終ライン。"},
-{s:"negotiation",lv:3,en:"We're closer than I expected. Let's close the gap.",ja:"思ったより近いですね。差を埋めましょう。",note:"close the gap＝差を埋める。前向きな締め方。"},
-{s:"negotiation",lv:2,en:"Can we revisit that condition?",ja:"その条件を見直せますか。",note:"revisit＝再検討する。"},
-{s:"negotiation",lv:3,en:"That's a deal breaker for us.",ja:"それは我々にとって受け入れられない条件です。",note:"deal breaker＝交渉決裂の要因。強い表現なので使いどころに注意。"},
+/* ---- リスク ---- */
+{s:"risk",lv:2,en:"I want to flag a risk.",ja:"リスクを一つ挙げさせてください。",ch:"I want to flag ___.",
+ note:"flag＝注意喚起する。PMOで最も使う動詞のひとつ。",
+ gr:"want to＋動詞原形。会話では「ワナ」と繋がって発音される。"},
+{s:"risk",lv:2,en:"The worst case is a three-month delay.",ja:"最悪の場合、3か月の遅延です。",ch:"The worst case is ___.",
+ note:"最悪シナリオを先に見せると意思決定が早くなる。",
+ gr:"three-month のようにハイフンで繋ぐと形容詞になり、複数のsを付けない。"},
+{s:"risk",lv:2,en:"We don't have a fallback plan yet.",ja:"代替案はまだありません。",ch:"We don't have ___ yet.",
+ note:"fallback plan＝万一の代替策。plan B とも言う。",
+ gr:"yet は否定文で「まだ〜ない」。文末に置く。"},
+{s:"risk",lv:3,en:"If that assumption breaks, the whole plan changes.",ja:"その前提が崩れると、計画全体が変わります。",ch:"If ___, ___.",
+ note:"前提依存を指摘する型。感情を入れずに警告できる。",
+ gr:"if 節の中は未来のことでも現在形。will breaks とは言わない。"},
+{s:"risk",lv:2,en:"What's the impact if we do nothing?",ja:"何もしなければどうなりますか。",ch:"What's the impact if ___?",
+ note:"優先度を判断させる強力な質問。議論が前に進む。",
+ gr:"What's＝What is。if 節を後ろに置くと質問が主役になる。"},
+{s:"risk",lv:3,en:"We're making a decision with incomplete information.",ja:"不完全な情報で意思決定をしています。",ch:"We're ___ with ___.",
+ note:"事実として述べるだけで警告になる。誰も責めない。",
+ gr:"with＋名詞で状況や条件を添える。前置詞句で情報を足す練習に良い。"},
+{s:"risk",lv:2,en:"Can we quantify that risk?",ja:"そのリスクを定量化できますか。",ch:"Can we quantify ___?",
+ note:"quantify＝定量化する。感覚論を止める一言。",
+ gr:"Can we＋動詞原形。提案とも依頼とも取れる柔らかい形。"},
 
-{s:"apology",lv:1,en:"I apologize for the confusion.",ja:"混乱を招き申し訳ありません。",note:"I apologize for ＋ 名詞。I'm sorry より正式。"},
-{s:"apology",lv:2,en:"That was my mistake, and I'll fix it today.",ja:"私のミスです。本日中に修正します。",note:"謝罪＋対応をセットで言うのが英語圏の作法。"},
-{s:"apology",lv:2,en:"Let me correct what I said earlier.",ja:"先ほどの発言を訂正させてください。",note:"correct what I said＝発言を訂正する。"},
-{s:"apology",lv:2,en:"Sorry, I misspoke.",ja:"すみません、言い間違えました。",note:"misspeak＝言い間違える。短く済ませられる。"},
-{s:"apology",lv:3,en:"I should have raised this earlier.",ja:"もっと早く提起すべきでした。",note:"should have ＋ 過去分詞＝〜すべきだった。"},
-{s:"apology",lv:2,en:"Thanks for pointing that out.",ja:"ご指摘ありがとうございます。",note:"point out＝指摘する。訂正されたときの返し。"},
-{s:"apology",lv:2,en:"We'll make sure this doesn't happen again.",ja:"再発しないようにいたします。",note:"make sure ~ doesn't happen again＝再発防止。"},
-{s:"apology",lv:3,en:"I take full responsibility for the delay.",ja:"遅延の責任は私にあります。",note:"take full responsibility＝全責任を負う。強い誠意表現。"},
-{s:"apology",lv:2,en:"Sorry for the short notice.",ja:"急なご連絡で申し訳ありません。",note:"short notice＝直前の連絡。"},
-{s:"apology",lv:2,en:"I'm afraid I have to disagree.",ja:"恐れ入りますが、賛成しかねます。",note:"I'm afraid ~ で否定を柔らかくする。"},
-{s:"apology",lv:3,en:"The previous version had an error. Please use this one.",ja:"前のバージョンに誤りがありました。こちらをお使いください。",note:"資料差し替えの定型。"},
-{s:"apology",lv:2,en:"Sorry to keep you waiting.",ja:"お待たせして申し訳ありません。",note:"keep 人 waiting＝人を待たせる。"},
-{s:"apology",lv:3,en:"Let me clarify — I didn't mean it that way.",ja:"補足させてください。そういう意図ではありませんでした。",note:"I didn't mean it that way＝そういうつもりではなかった。誤解の解消。"}
+/* ---- 財務・コスト ---- */
+{s:"money",lv:2,en:"We're about ten percent over budget.",ja:"予算を約10％超過しています。",ch:"We're ___ percent over budget.",
+ note:"over budget＝予算超過、under budget＝予算内。",
+ gr:"over／under＋名詞で増減を表す。percent は複数でも s を付けない。"},
+{s:"money",lv:2,en:"That would add about fifty thousand dollars.",ja:"それは約5万ドル増える計算です。",ch:"That would add about ___.",
+ note:"would で「仮にやったら」の含みを出す。断定を避けられる。",
+ gr:"would＝仮定の助動詞。実行前の見積もりに使うと安全。"},
+{s:"money",lv:2,en:"What's the cost impact?",ja:"コストへの影響はどれくらいですか。",ch:"What's the ___ impact?",
+ note:"impact の前に領域を入れるだけで応用できる（schedule impact など）。",
+ gr:"名詞＋名詞で複合名詞を作る。cost impact＝コスト面の影響。"},
+{s:"money",lv:3,en:"We need to justify the spend to management.",ja:"経営層にこの支出を正当化する必要があります。",ch:"We need to justify ___ to ___.",
+ note:"justify＝正当化する。予算承認の場で頻出。",
+ gr:"need to＋動詞原形。must より柔らかく、事情による必要性を表す。"},
+{s:"money",lv:2,en:"Can we absorb that within the current budget?",ja:"現行予算内で吸収できますか。",ch:"Can we absorb ___ within ___?",
+ note:"absorb＝追加費用を既存枠で吸収する。財務会議の実務語。",
+ gr:"within＝〜の範囲内で。in より境界を意識した言い方。"},
+{s:"money",lv:3,en:"The payback period is about two years.",ja:"投資回収期間は約2年です。",ch:"The ___ is about ___.",
+ note:"payback period＝投資回収期間。事業性の説明に必須。",
+ gr:"be動詞で数値を直結。about を添えて概算だと示す。"},
+
+/* ---- マイルストーン・日程 ---- */
+{s:"stone",lv:2,en:"That milestone has slipped to Q1.",ja:"そのマイルストーンは第1四半期にずれ込みました。",ch:"___ has slipped to ___.",
+ note:"slip＝予定がずれ込む。自然で頻出の遅延表現。",
+ gr:"現在完了で「ずれて今その状態」を表す。Q1 はキューワンと読む。"},
+{s:"stone",lv:2,en:"We need a decision this week to stay on schedule.",ja:"予定を守るには今週中の決定が必要です。",ch:"We need ___ to ___.",
+ note:"依頼を必要条件として言うと、圧をかけずに急がせられる。",
+ gr:"to＋動詞原形で目的（〜するために）。文末に置くと理由が明確になる。"},
+{s:"stone",lv:2,en:"Can we pull that in by a week?",ja:"1週間前倒しできますか。",ch:"Can we pull in ___?",
+ note:"pull in＝前倒しする。push out＝後ろ倒し。セットで覚える。",
+ gr:"by＋期間で「〜の分だけ」。差分を表す by の用法。"},
+{s:"stone",lv:3,en:"What would it take to hit that date?",ja:"その日程を守るには何が必要ですか。",ch:"What would it take to ___?",
+ note:"交渉の万能質問。相手に条件を出させられる。",
+ gr:"take はここで「必要とする」。it は状況を指す形式主語。"},
+{s:"stone",lv:2,en:"The deadline is tight, but it's doable.",ja:"期限は厳しいですが、実現可能です。",ch:"___ is tight, but it's doable.",
+ note:"doable＝実行可能。会話で非常によく使う。",
+ gr:"but で逆接。厳しさを認めてから可能性を示すと信頼されやすい。"},
+{s:"stone",lv:3,en:"Let's lock in the date before we leave today.",ja:"今日中に日程を確定させましょう。",ch:"Let's lock in ___.",
+ note:"lock in＝確定する。会議を決着させる一言。",
+ gr:"before＋主語＋動詞。時の副詞節では未来を現在形で表す。"},
+
+/* ---- プレゼン ---- */
+{s:"present",lv:1,en:"Let me walk you through the numbers.",ja:"数値をご説明します。",ch:"Let me walk you through ___.",
+ note:"データ説明の入りの定番。司会でも発表でも使える。",
+ gr:"Let me＋動詞原形。許可を求める形だが実質は宣言。"},
+{s:"present",lv:2,en:"As you can see on this slide, the trend is improving.",ja:"このスライドの通り、傾向は改善しています。",ch:"As you can see on this slide, ___.",
+ note:"スライドを指す定型。これを言ってから中身に入る。",
+ gr:"As＝〜のように。接続詞なので後ろに主語＋動詞が来る。"},
+{s:"present",lv:2,en:"The red line shows the specification limit.",ja:"赤線が規格値を示しています。",ch:"The ___ shows ___.",
+ note:"グラフ説明はこの一型でほぼ足りる。",
+ gr:"show＝示す。図表が主語になれる点が日本語と違う。"},
+{s:"present",lv:2,en:"Let me summarize the key points.",ja:"要点をまとめます。",ch:"Let me summarize ___.",
+ note:"締めの合図。聞き手が集中し直す。",
+ gr:"summarize＝要約する。key points＝要点。"},
+{s:"present",lv:3,en:"I'll come back to that in a moment.",ja:"その点は後ほど触れます。",ch:"I'll come back to ___.",
+ note:"先走った質問を保留にしつつ、無視していないと示せる。",
+ gr:"come back to＝〜に戻る。in a moment＝すぐ後で。"},
+{s:"present",lv:2,en:"Any questions before I move on?",ja:"次に進む前に質問はありますか。",ch:"Any questions before ___?",
+ note:"区切りごとに挟むと、置いていかれる人が減る。",
+ gr:"Are there any questions の Are there を省いた口語形。"},
+
+/* ---- 質疑応答 ---- */
+{s:"qa",lv:1,en:"That's a good question.",ja:"良い質問ですね。",ch:"That's a ___ question.",
+ note:"考える時間を稼げる定型。答えが浮かぶまでの2秒を作る。",
+ gr:"That's＝That is。相手の発言全体を that で受ける。"},
+{s:"qa",lv:1,en:"Let me check and get back to you.",ja:"確認して改めてご連絡します。",ch:"Let me ___ and get back to you.",
+ note:"分からないときの最重要フレーズ。これが言えれば会議は乗り切れる。",
+ gr:"get back to＋人＝後で返答する。and で2つの動作を繋ぐ。"},
+{s:"qa",lv:2,en:"I don't have that number with me right now.",ja:"その数字は今手元にありません。",ch:"I don't have ___ with me right now.",
+ note:"正直に言うほうが信用される。誤魔化さない。",
+ gr:"with me＝手元に。right now＝今この瞬間。"},
+{s:"qa",lv:2,en:"Just to make sure I understand correctly...",ja:"念のため確認させてください…",ch:"Just to make sure ___...",
+ note:"聞き取れなかったときも、確認の体で聞き返せる万能型。",
+ gr:"Just to＋動詞原形で「〜するためだけに」。前置きとして機能する。"},
+{s:"qa",lv:2,en:"So what you're saying is that the test failed.",ja:"つまり試験は不合格だった、ということですね。",ch:"So what you're saying is that ___.",
+ note:"相手の要点を要約して返す。理解の確認と時間稼ぎを兼ねる。",
+ gr:"what you're saying＝あなたが言っていること。what が名詞のかたまりを作る。"},
+{s:"qa",lv:2,en:"Does that answer your question?",ja:"ご質問の答えになっていますか。",ch:"Does that answer ___?",
+ note:"回答後の確認。ずれていたらすぐ修正できる。",
+ gr:"answer は動詞で「答える」。that が主語になれる。"},
+{s:"qa",lv:3,en:"I'd rather not speculate on that.",ja:"その点について憶測は避けたいです。",ch:"I'd rather not ___.",
+ note:"答えられないときの防御。無責任な発言を避けられる。",
+ gr:"would rather＋動詞原形＝「むしろ〜したい」。否定は rather not。"},
+{s:"qa",lv:2,en:"Could you repeat that, please?",ja:"もう一度お願いできますか。",ch:"Could you repeat ___?",
+ note:"聞き取れなかったら必ず聞き返す。分からないまま進めない。",
+ gr:"repeat＝繰り返す。again を付けると重複なので不要。"},
+
+/* ---- 意見・やんわり反対 ---- */
+{s:"push",lv:1,en:"That makes sense.",ja:"それは筋が通っていますね。",ch:"That makes sense.",
+ note:"同意の最頻出。相づちとしても使える。",
+ gr:"make sense＝意味をなす・筋が通る。主語は物や意見。"},
+{s:"push",lv:2,en:"I see your point, but I have a different view.",ja:"おっしゃることは分かりますが、私は違う見方をしています。",ch:"I see your point, but ___.",
+ note:"反対の最も安全な入り方。まず認めてから述べる。",
+ gr:"but の前で譲歩、後ろで主張。英語の反対はこの順番が基本。"},
+{s:"push",lv:2,en:"My only concern is the timing.",ja:"唯一気になるのはタイミングです。",ch:"My only concern is ___.",
+ note:"懸念を1点に絞ると、全否定に聞こえない。",
+ gr:"only を入れて範囲を限定する。これが柔らかさを生む。"},
+{s:"push",lv:3,en:"Help me understand how that works.",ja:"どういう仕組みなのか教えてください。",ch:"Help me understand ___.",
+ note:"批判に聞こえずに矛盾を突ける。米国の会議で非常に有効。",
+ gr:"help＋人＋動詞原形。to understand の to を省くのが自然。"},
+{s:"push",lv:2,en:"I'd push back on that a little.",ja:"その点は少し反論させてください。",ch:"I'd push back on ___.",
+ note:"push back＝異議を唱える。a little で角を落とす。",
+ gr:"would を使うと直接的な対立を避けられる。仮定のニュアンス。"},
+{s:"push",lv:2,en:"Can we look at this from another angle?",ja:"別の角度から見てみませんか。",ch:"Can we look at ___ from ___?",
+ note:"否定せずに議論の枠を変えられる。",
+ gr:"look at＝目を向ける。from＋視点で角度を示す。"},
+{s:"push",lv:3,en:"I'm not against the plan itself.",ja:"計画自体に反対しているわけではありません。",ch:"I'm not against ___ itself.",
+ note:"誤解を先回りして解く。反対の範囲を限定する。",
+ gr:"itself を付けて「それ自体は」と限定。強調の再帰代名詞。"},
+{s:"push",lv:2,en:"I'd rather not commit to that today.",ja:"今日その場で確約するのは避けたいです。",ch:"I'd rather not commit to ___.",
+ note:"持ち帰りたいときの丁寧な拒否。",
+ gr:"commit to＋名詞＝〜を確約する。to の後ろは名詞か動名詞。"},
+
+/* ---- まとめ ---- */
+{s:"wrap",lv:1,en:"Let me summarize what we agreed.",ja:"合意事項をまとめます。",ch:"Let me summarize ___.",
+ note:"締めの定型。ここで認識のずれを潰す。",
+ gr:"what we agreed＝合意したこと。what が名詞節を作る。"},
+{s:"wrap",lv:2,en:"So the action items are as follows.",ja:"ではアクションアイテムは以下の通りです。",ch:"___ are as follows.",
+ note:"as follows＝以下の通り。この後に担当と期限を並べる。",
+ gr:"as follows は常にこの形。follow に s が付く点を丸ごと覚える。"},
+{s:"wrap",lv:2,en:"Taro will own this, due next Friday.",ja:"太郎さんが担当、期限は来週金曜です。",ch:"___ will own ___, due ___.",
+ note:"担当と期限をセットで言うのが米国会議の作法。",
+ gr:"own＝責任を持つ。due＋日付で期限を簡潔に添える。"},
+{s:"wrap",lv:2,en:"Are we all aligned on that?",ja:"その点、認識は揃っていますか。",ch:"Are we aligned on ___?",
+ note:"aligned＝認識が一致している。最後に必ず確認する。",
+ gr:"be aligned on＋名詞。受け身の形で状態を表す。"},
+{s:"wrap",lv:3,en:"To recap, we agreed on the scope but not the timeline.",ja:"要約すると、範囲は合意、日程は未合意です。",ch:"To recap, ___ but not ___.",
+ note:"合意と未合意を分けて示す。宿題が明確になる。",
+ gr:"To recap＝要約すると。文頭の to 不定詞が副詞的に働く。"},
+{s:"wrap",lv:2,en:"I'll circulate the minutes by tomorrow.",ja:"明日までに議事録を回覧します。",ch:"I'll circulate ___ by ___.",
+ note:"minutes＝議事録（常に複数形）。circulate＝回覧する。",
+ gr:"minute（分）と綴りは同じだが、複数形で議事録の意味になる。"},
+{s:"wrap",lv:2,en:"Thanks, everyone. That was productive.",ja:"皆さんありがとうございました。有意義でした。",ch:"That was ___.",
+ note:"締めの決まり文句。短くて印象が良い。",
+ gr:"That was＋形容詞。会議全体を that で受ける。"},
+{s:"shop",lv:2,en:"Could you say that again?",ja:"もう一度言っていただけますか。",ch:"Could you ___?",
+ gr:"Could you ~? は相手にお願いする型。Can you より丁寧。動詞は原形をそのまま置く。",note:"人に動作をしてほしいときの万能形。Can I ~?（自分がもらう）との使い分けだけ覚えれば良い。"},
+{s:"shop",lv:2,en:"Could you speak more slowly?",ja:"もう少しゆっくり話してください。",ch:"Could you ___?",
+ gr:"Could you ~? は相手にお願いする型。Can you より丁寧。動詞は原形をそのまま置く。",note:"人に動作をしてほしいときの万能形。Can I ~?（自分がもらう）との使い分けだけ覚えれば良い。"},
+{s:"shop",lv:2,en:"Could you write it down?",ja:"書いていただけますか。",ch:"Could you ___?",
+ gr:"Could you ~? は相手にお願いする型。Can you より丁寧。動詞は原形をそのまま置く。",note:"人に動作をしてほしいときの万能形。Can I ~?（自分がもらう）との使い分けだけ覚えれば良い。"},
+{s:"shop",lv:2,en:"Could you call a taxi?",ja:"タクシーを呼んでいただけますか。",ch:"Could you ___?",
+ gr:"Could you ~? は相手にお願いする型。Can you より丁寧。動詞は原形をそのまま置く。",note:"人に動作をしてほしいときの万能形。Can I ~?（自分がもらう）との使い分けだけ覚えれば良い。"},
+{s:"shop",lv:2,en:"Could you take a picture?",ja:"写真を撮っていただけますか。",ch:"Could you ___?",
+ gr:"Could you ~? は相手にお願いする型。Can you より丁寧。動詞は原形をそのまま置く。",note:"人に動作をしてほしいときの万能形。Can I ~?（自分がもらう）との使い分けだけ覚えれば良い。"},
+{s:"shop",lv:2,en:"I'd like to check in.",ja:"チェックインしたいのですが。",ch:"I'd like to ___.",
+ gr:"I'd like to = I would like to の短縮。I want to より丁寧で、大人の英語はほぼこちら。後ろは動詞の原形。",note:"受付・窓口で用件を言う最初の一言。これを言えば相手が話を進めてくれる。"},
+{s:"shop",lv:2,en:"I'd like to order.",ja:"注文したいのですが。",ch:"I'd like to ___.",
+ gr:"I'd like to = I would like to の短縮。I want to より丁寧で、大人の英語はほぼこちら。後ろは動詞の原形。",note:"受付・窓口で用件を言う最初の一言。これを言えば相手が話を進めてくれる。"},
+{s:"shop",lv:2,en:"I'd like to change my seat.",ja:"席を変えたいのですが。",ch:"I'd like to ___.",
+ gr:"I'd like to = I would like to の短縮。I want to より丁寧で、大人の英語はほぼこちら。後ろは動詞の原形。",note:"受付・窓口で用件を言う最初の一言。これを言えば相手が話を進めてくれる。"},
+{s:"shop",lv:2,en:"I'd like to pay by card.",ja:"カードで払いたいのですが。",ch:"I'd like to ___.",
+ gr:"I'd like to = I would like to の短縮。I want to より丁寧で、大人の英語はほぼこちら。後ろは動詞の原形。",note:"受付・窓口で用件を言う最初の一言。これを言えば相手が話を進めてくれる。"},
+{s:"shop",lv:2,en:"I'd like to book a table.",ja:"席を予約したいのですが。",ch:"I'd like to ___.",
+ gr:"I'd like to = I would like to の短縮。I want to より丁寧で、大人の英語はほぼこちら。後ろは動詞の原形。",note:"受付・窓口で用件を言う最初の一言。これを言えば相手が話を進めてくれる。"},
+{s:"shop",lv:2,en:"I'd like to see a doctor.",ja:"医者に診てもらいたいのですが。",ch:"I'd like to ___.",
+ gr:"I'd like to = I would like to の短縮。I want to より丁寧で、大人の英語はほぼこちら。後ろは動詞の原形。",note:"受付・窓口で用件を言う最初の一言。これを言えば相手が話を進めてくれる。"},
+{s:"talk",lv:2,en:"Do you have Wi-Fi?",ja:"Wi-Fiはありますか。",ch:"Do you have ___?",
+ gr:"have は「持っている」。店に在庫や設備があるかを聞く定番。",note:"探し物・在庫・設備の確認はすべてこれ。Is there ~? より口が回りやすい。"},
+{s:"talk",lv:2,en:"Do you have a smaller size?",ja:"もっと小さいサイズはありますか。",ch:"Do you have ___?",
+ gr:"have は「持っている」。店に在庫や設備があるかを聞く定番。",note:"探し物・在庫・設備の確認はすべてこれ。Is there ~? より口が回りやすい。"},
+{s:"talk",lv:2,en:"Do you have an English menu?",ja:"英語のメニューはありますか。",ch:"Do you have ___?",
+ gr:"have は「持っている」。店に在庫や設備があるかを聞く定番。",note:"探し物・在庫・設備の確認はすべてこれ。Is there ~? より口が回りやすい。"},
+{s:"talk",lv:2,en:"Do you have a table for two?",ja:"2人の席はありますか。",ch:"Do you have ___?",
+ gr:"have は「持っている」。店に在庫や設備があるかを聞く定番。",note:"探し物・在庫・設備の確認はすべてこれ。Is there ~? より口が回りやすい。"},
+{s:"talk",lv:2,en:"Do you have this in blue?",ja:"これの青はありますか。",ch:"Do you have ___?",
+ gr:"have は「持っている」。店に在庫や設備があるかを聞く定番。",note:"探し物・在庫・設備の確認はすべてこれ。Is there ~? より口が回りやすい。"},
+{s:"talk",lv:2,en:"Where can I get a taxi?",ja:"どこでタクシーに乗れますか。",ch:"Where is ___?",
+ gr:"be動詞の疑問文。is の後ろに場所を知りたいものを置くだけ。",note:"道に迷ったとき最速。指をさしながら言えば通じる。"},
+{s:"air",lv:2,en:"I'm staying at the Hilton.",ja:"ヒルトンに泊まります。",ch:"I'm here ___.",
+ gr:"入国審査の定番。for + 名詞、または to + 動詞で目的を言う。",note:"入国審査は「目的・滞在期間・滞在先」の3点しか聞かれない。答えを用意しておけば怖くない。"},
+{s:"air",lv:2,en:"Could I get a blanket?",ja:"毛布をいただけますか。",ch:"Could I get ___?",
+ gr:"get は「手に入れる」。Can I have ~? とほぼ同じだが、機内やカフェで特に自然。",note:"客室乗務員への依頼はほぼこれ。丁寧さと短さのバランスが良い。"},
+{s:"air",lv:2,en:"Could I get some water?",ja:"お水をいただけますか。",ch:"Could I get ___?",
+ gr:"get は「手に入れる」。Can I have ~? とほぼ同じだが、機内やカフェで特に自然。",note:"客室乗務員への依頼はほぼこれ。丁寧さと短さのバランスが良い。"},
+{s:"air",lv:2,en:"Could I get a headset?",ja:"ヘッドホンをいただけますか。",ch:"Could I get ___?",
+ gr:"get は「手に入れる」。Can I have ~? とほぼ同じだが、機内やカフェで特に自然。",note:"客室乗務員への依頼はほぼこれ。丁寧さと短さのバランスが良い。"},
+{s:"air",lv:2,en:"Could I get the chicken?",ja:"チキンをお願いします。",ch:"Could I get ___?",
+ gr:"get は「手に入れる」。Can I have ~? とほぼ同じだが、機内やカフェで特に自然。",note:"客室乗務員への依頼はほぼこれ。丁寧さと短さのバランスが良い。"},
+{s:"air",lv:2,en:"Could I get through?",ja:"通してもらえますか。",ch:"Could I get ___?",
+ gr:"get は「手に入れる」。Can I have ~? とほぼ同じだが、機内やカフェで特に自然。",note:"客室乗務員への依頼はほぼこれ。丁寧さと短さのバランスが良い。"},
+{s:"hotel",lv:2,en:"I booked online.",ja:"オンラインで予約しました。",ch:"I have a reservation ___.",
+ gr:"have は「持っている」。under the name ~ で「〜の名前で」。",note:"チェックインの第一声。これを言えば相手が全部進めてくれる。"},
+{s:"hotel",lv:2,en:"There's no hot water.",ja:"お湯が出ません。",ch:"There's a problem with ___.",
+ gr:"There is ~ で「〜がある」。with の後ろに問題の対象を置く。",note:"クレームは感情を出さず事実だけ言うのが最も早く解決する。この型が最適。"},
+{s:"hotel",lv:2,en:"The Wi-Fi isn't working.",ja:"Wi-Fiがつながりません。",ch:"There's a problem with ___.",
+ gr:"There is ~ で「〜がある」。with の後ろに問題の対象を置く。",note:"クレームは感情を出さず事実だけ言うのが最も早く解決する。この型が最適。"},
+{s:"food",lv:2,en:"That's all, thanks.",ja:"以上です、ありがとう。",ch:"I'll have ___.",
+ gr:"I'll = I will。その場で決めたことに使う。注文の定番。",note:"メニューを指さしながらでも成立する。I want ~ より自然で丁寧。"},
+{s:"food",lv:2,en:"To go, please.",ja:"持ち帰りでお願いします。",ch:"For here / To go.",
+ gr:"店員の For here or to go? への返答。文にしなくてよい。",note:"レジで必ず聞かれる3つ（サイズ・店内かテイクアウト・支払い方法）は即答を用意しておく。"},
+{s:"food",lv:2,en:"Just a small one.",ja:"小さいのだけで。",ch:"For here / To go.",
+ gr:"店員の For here or to go? への返答。文にしなくてよい。",note:"レジで必ず聞かれる3つ（サイズ・店内かテイクアウト・支払い方法）は即答を用意しておく。"},
+{s:"food",lv:2,en:"No sugar, please.",ja:"砂糖は入れないでください。",ch:"For here / To go.",
+ gr:"店員の For here or to go? への返答。文にしなくてよい。",note:"レジで必ず聞かれる3つ（サイズ・店内かテイクアウト・支払い方法）は即答を用意しておく。"},
+{s:"food",lv:2,en:"Card, please.",ja:"カードでお願いします。",ch:"For here / To go.",
+ gr:"店員の For here or to go? への返答。文にしなくてよい。",note:"レジで必ず聞かれる3つ（サイズ・店内かテイクアウト・支払い方法）は即答を用意しておく。"},
+{s:"food",lv:2,en:"What's popular here?",ja:"ここで人気なのは何ですか。",ch:"What do you recommend?",
+ gr:"recommend=勧める。What do you ~? は相手の考えを聞く型。",note:"メニューが読めなくてもこれ一つで乗り切れる。会話も広がる。"},
+{s:"food",lv:2,en:"What's this like?",ja:"これはどんな料理ですか。",ch:"What do you recommend?",
+ gr:"recommend=勧める。What do you ~? は相手の考えを聞く型。",note:"メニューが読めなくてもこれ一つで乗り切れる。会話も広がる。"},
+{s:"food",lv:2,en:"Is it spicy?",ja:"辛いですか。",ch:"What do you recommend?",
+ gr:"recommend=勧める。What do you ~? は相手の考えを聞く型。",note:"メニューが読めなくてもこれ一つで乗り切れる。会話も広がる。"},
+{s:"food",lv:2,en:"What's in it?",ja:"何が入っていますか。",ch:"What do you recommend?",
+ gr:"recommend=勧める。What do you ~? は相手の考えを聞く型。",note:"メニューが読めなくてもこれ一つで乗り切れる。会話も広がる。"},
+{s:"food",lv:2,en:"I'm allergic to nuts.",ja:"ナッツアレルギーです。",ch:"I can't eat ___.",
+ gr:"can't = できない。アレルギーや宗教上の理由を伝える最短形。",note:"健康に関わるので、遠回しにせず、はっきり短く言うのが正しい。"},
+{s:"food",lv:2,en:"No onions, please.",ja:"玉ねぎは抜いてください。",ch:"I can't eat ___.",
+ gr:"can't = できない。アレルギーや宗教上の理由を伝える最短形。",note:"健康に関わるので、遠回しにせず、はっきり短く言うのが正しい。"},
+{s:"food",lv:2,en:"Does this have pork in it?",ja:"これに豚肉は入っていますか。",ch:"I can't eat ___.",
+ gr:"can't = できない。アレルギーや宗教上の理由を伝える最短形。",note:"健康に関わるので、遠回しにせず、はっきり短く言うのが正しい。"},
+{s:"food",lv:2,en:"I can't eat raw fish.",ja:"生魚が食べられません。",ch:"I can't eat ___.",
+ gr:"can't = できない。アレルギーや宗教上の理由を伝える最短形。",note:"健康に関わるので、遠回しにせず、はっきり短く言うのが正しい。"},
+{s:"shop",lv:2,en:"Which line should I take?",ja:"どの路線に乗ればいいですか。",ch:"How do I get to ___?",
+ gr:"get to=着く。How do I ~? で方法を尋ねる。",note:"道案内を聞く最も自然な形。Where is より「行き方」が返ってくる。"},
+{s:"shop",lv:2,en:"Is it walking distance?",ja:"歩ける距離ですか。",ch:"How do I get to ___?",
+ gr:"get to=着く。How do I ~? で方法を尋ねる。",note:"道案内を聞く最も自然な形。Where is より「行き方」が返ってくる。"},
+{s:"shop",lv:2,en:"How do I get to the airport?",ja:"空港へはどう行きますか。",ch:"How do I get to ___?",
+ gr:"get to=着く。How do I ~? で方法を尋ねる。",note:"道案内を聞く最も自然な形。Where is より「行き方」が返ってくる。"},
+{s:"shop",lv:2,en:"How do I get to this hotel?",ja:"このホテルへはどう行きますか。",ch:"How do I get to ___?",
+ gr:"get to=着く。How do I ~? で方法を尋ねる。",note:"道案内を聞く最も自然な形。Where is より「行き方」が返ってくる。"},
+{s:"trouble",lv:2,en:"I'm calling to confirm my booking.",ja:"予約の確認でお電話しました。",ch:"I'm calling about ___.",
+ gr:"call about=〜の件で電話する。用件を最初に言うのが英語の順序。",note:"電話は最初に用件を言わないと混乱する。名乗り→用件の順で固定する。"},
+{s:"trouble",lv:2,en:"I'd like to cancel my reservation.",ja:"予約をキャンセルしたいのですが。",ch:"I'm calling about ___.",
+ gr:"call about=〜の件で電話する。用件を最初に言うのが英語の順序。",note:"電話は最初に用件を言わないと混乱する。名乗り→用件の順で固定する。"},
+{s:"trouble",lv:2,en:"I'm calling about my reservation.",ja:"予約の件でお電話しました。",ch:"I'm calling about ___.",
+ gr:"call about=〜の件で電話する。用件を最初に言うのが英語の順序。",note:"電話は最初に用件を言わないと混乱する。名乗り→用件の順で固定する。"},
+{s:"trouble",lv:2,en:"I left my bag on the train.",ja:"電車にかばんを忘れました。",ch:"I lost ___.",
+ gr:"lose の過去形 lost。すでに起きたことなので過去形。",note:"緊急時は短く言い切る。丁寧さより明確さを優先する。"},
+{s:"trouble",lv:2,en:"I missed my flight.",ja:"飛行機に乗り遅れました。",ch:"I lost ___.",
+ gr:"lose の過去形 lost。すでに起きたことなので過去形。",note:"緊急時は短く言い切る。丁寧さより明確さを優先する。"},
+{s:"trouble",lv:2,en:"Could you help me? It's an emergency.",ja:"助けてください。緊急です。",ch:"I lost ___.",
+ gr:"lose の過去形 lost。すでに起きたことなので過去形。",note:"緊急時は短く言い切る。丁寧さより明確さを優先する。"},
+{s:"trouble",lv:2,en:"I lost my passport.",ja:"パスポートをなくしました。",ch:"I lost ___.",
+ gr:"lose の過去形 lost。すでに起きたことなので過去形。",note:"緊急時は短く言い切る。丁寧さより明確さを優先する。"},
+{s:"facil",lv:2,en:"I'd like to start with the status.",ja:"まず進捗から始めます。",ch:"I'd like to ___.",
+ gr:"旅行編と同じ型。ビジネスでもそのまま使える。汎用性が非常に高い。",note:"自分がこれから何をするかの宣言。聞き手が構えを作れるので理解されやすい。"},
+{s:"facil",lv:2,en:"I'd like to hear your thoughts.",ja:"ご意見を伺いたいです。",ch:"I'd like to ___.",
+ gr:"旅行編と同じ型。ビジネスでもそのまま使える。汎用性が非常に高い。",note:"自分がこれから何をするかの宣言。聞き手が構えを作れるので理解されやすい。"},
+{s:"facil",lv:2,en:"I'd like to flag one risk.",ja:"リスクを一点挙げたいです。",ch:"I'd like to ___.",
+ gr:"旅行編と同じ型。ビジネスでもそのまま使える。汎用性が非常に高い。",note:"自分がこれから何をするかの宣言。聞き手が構えを作れるので理解されやすい。"},
+{s:"facil",lv:2,en:"I'd like to confirm the timeline.",ja:"日程を確認したいです。",ch:"I'd like to ___.",
+ gr:"旅行編と同じ型。ビジネスでもそのまま使える。汎用性が非常に高い。",note:"自分がこれから何をするかの宣言。聞き手が構えを作れるので理解されやすい。"},
+{s:"facil",lv:2,en:"I'd like to add one thing.",ja:"一点付け加えたいです。",ch:"I'd like to ___.",
+ gr:"旅行編と同じ型。ビジネスでもそのまま使える。汎用性が非常に高い。",note:"自分がこれから何をするかの宣言。聞き手が構えを作れるので理解されやすい。"},
+{s:"progress",lv:2,en:"We're on schedule.",ja:"予定通りです。",ch:"We're on track ___.",
+ gr:"on track=軌道に乗っている。be動詞＋前置詞句だけの簡単な形。",note:"進捗報告は結論を先に言う。順調なら真っ先にこれ。"},
+{s:"progress",lv:2,en:"We're ahead of schedule.",ja:"予定より進んでいます。",ch:"We're on track ___.",
+ gr:"on track=軌道に乗っている。be動詞＋前置詞句だけの簡単な形。",note:"進捗報告は結論を先に言う。順調なら真っ先にこれ。"},
+{s:"progress",lv:2,en:"Everything is on track.",ja:"すべて順調です。",ch:"We're on track ___.",
+ gr:"on track=軌道に乗っている。be動詞＋前置詞句だけの簡単な形。",note:"進捗報告は結論を先に言う。順調なら真っ先にこれ。"},
+{s:"progress",lv:2,en:"Nothing has changed since last time.",ja:"前回から変更はありません。",ch:"We're on track ___.",
+ gr:"on track=軌道に乗っている。be動詞＋前置詞句だけの簡単な形。",note:"進捗報告は結論を先に言う。順調なら真っ先にこれ。"},
+{s:"progress",lv:2,en:"We're on track for the September launch.",ja:"9月の上市に向けて予定通りです。",ch:"We're on track ___.",
+ gr:"on track=軌道に乗っている。be動詞＋前置詞句だけの簡単な形。",note:"進捗報告は結論を先に言う。順調なら真っ先にこれ。"},
+{s:"progress",lv:2,en:"We're slightly behind schedule.",ja:"少し遅れています。",ch:"We're ___ behind.",
+ gr:"behind=遅れて。数字を前に置くだけで具体性が出る。",note:"遅延は隠さず数字で言う。曖昧にすると信用を失う。"},
+{s:"progress",lv:2,en:"That milestone slipped to Q1.",ja:"そのマイルストーンは第1四半期にずれました。",ch:"We're ___ behind.",
+ gr:"behind=遅れて。数字を前に置くだけで具体性が出る。",note:"遅延は隠さず数字で言う。曖昧にすると信用を失う。"},
+{s:"progress",lv:2,en:"We need one more week.",ja:"あと1週間必要です。",ch:"We're ___ behind.",
+ gr:"behind=遅れて。数字を前に置くだけで具体性が出る。",note:"遅延は隠さず数字で言う。曖昧にすると信用を失う。"},
+{s:"progress",lv:2,en:"The main blocker is the supplier.",ja:"主な障害はサプライヤーです。",ch:"The blocker is ___.",
+ gr:"blocker=進行を止めている要因。be動詞で名詞をつなぐだけ。",note:"「何が止めているか」を一語で示すと、支援や判断を引き出せる。"},
+{s:"progress",lv:2,en:"We're waiting on approval.",ja:"承認待ちです。",ch:"The blocker is ___.",
+ gr:"blocker=進行を止めている要因。be動詞で名詞をつなぐだけ。",note:"「何が止めているか」を一語で示すと、支援や判断を引き出せる。"},
+{s:"progress",lv:2,en:"We're blocked by the test results.",ja:"試験結果待ちで止まっています。",ch:"The blocker is ___.",
+ gr:"blocker=進行を止めている要因。be動詞で名詞をつなぐだけ。",note:"「何が止めているか」を一語で示すと、支援や判断を引き出せる。"},
+{s:"progress",lv:2,en:"I need a decision to move forward.",ja:"進めるには決定が必要です。",ch:"The blocker is ___.",
+ gr:"blocker=進行を止めている要因。be動詞で名詞をつなぐだけ。",note:"「何が止めているか」を一語で示すと、支援や判断を引き出せる。"},
+{s:"progress",lv:2,en:"We expect to finish by Friday.",ja:"金曜までに終わる見込みです。",ch:"We expect to ___ by ___.",
+ gr:"expect to+動詞原形＝〜する見込み。by＋期限。断定を避けつつ約束できる。",note:"見込みを言う定型。報告の締めに置くと次の行動が明確になる。"},
+{s:"progress",lv:2,en:"We expect to have results next week.",ja:"来週には結果が出る見込みです。",ch:"We expect to ___ by ___.",
+ gr:"expect to+動詞原形＝〜する見込み。by＋期限。断定を避けつつ約束できる。",note:"見込みを言う定型。報告の締めに置くと次の行動が明確になる。"},
+{s:"progress",lv:2,en:"I'll send an update by tomorrow.",ja:"明日までに報告を送ります。",ch:"We expect to ___ by ___.",
+ gr:"expect to+動詞原形＝〜する見込み。by＋期限。断定を避けつつ約束できる。",note:"見込みを言う定型。報告の締めに置くと次の行動が明確になる。"},
+{s:"progress",lv:2,en:"We should know by the end of the month.",ja:"月末には分かるはずです。",ch:"We expect to ___ by ___.",
+ gr:"expect to+動詞原形＝〜する見込み。by＋期限。断定を避けつつ約束できる。",note:"見込みを言う定型。報告の締めに置くと次の行動が明確になる。"},
+{s:"tech",lv:2,en:"The problem is the timing.",ja:"問題はタイミングです。",ch:"The issue is that ___.",
+ gr:"that の後ろは普通の文。名詞ではなく文をつなげられるので説明に強い。",note:"技術説明は「問題→原因→対策」の順。まずこれで問題を一文にする。"},
+{s:"tech",lv:2,en:"The root cause is still unclear.",ja:"根本原因はまだ不明です。",ch:"The issue is that ___.",
+ gr:"that の後ろは普通の文。名詞ではなく文をつなげられるので説明に強い。",note:"技術説明は「問題→原因→対策」の順。まずこれで問題を一文にする。"},
+{s:"tech",lv:2,en:"The issue is that we can't reproduce it.",ja:"問題は再現できないことです。",ch:"The issue is that ___.",
+ gr:"that の後ろは普通の文。名詞ではなく文をつなげられるので説明に強い。",note:"技術説明は「問題→原因→対策」の順。まずこれで問題を一文にする。"},
+{s:"tech",lv:2,en:"The issue is that the test failed.",ja:"問題は試験が不合格だったことです。",ch:"The issue is that ___.",
+ gr:"that の後ろは普通の文。名詞ではなく文をつなげられるので説明に強い。",note:"技術説明は「問題→原因→対策」の順。まずこれで問題を一文にする。"},
+{s:"tech",lv:2,en:"It seems to be temperature related.",ja:"温度に関係しているようです。",ch:"It looks like ___.",
+ gr:"It looks like + 文。断定を避けて推測を述べる。仮説段階で安全。",note:"確証がないときに使うと、後で覆っても信用を落とさない。技術会議で必須。"},
+{s:"tech",lv:2,en:"That's still a hypothesis.",ja:"それはまだ仮説です。",ch:"It looks like ___.",
+ gr:"It looks like + 文。断定を避けて推測を述べる。仮説段階で安全。",note:"確証がないときに使うと、後で覆っても信用を落とさない。技術会議で必須。"},
+{s:"tech",lv:2,en:"It looks like a material issue.",ja:"材料の問題のようです。",ch:"It looks like ___.",
+ gr:"It looks like + 文。断定を避けて推測を述べる。仮説段階で安全。",note:"確証がないときに使うと、後で覆っても信用を落とさない。技術会議で必須。"},
+{s:"tech",lv:2,en:"It looks like the same failure mode.",ja:"同じ故障モードのようです。",ch:"It looks like ___.",
+ gr:"It looks like + 文。断定を避けて推測を述べる。仮説段階で安全。",note:"確証がないときに使うと、後で覆っても信用を落とさない。技術会議で必須。"},
+{s:"tech",lv:2,en:"We need to verify this before we decide.",ja:"決める前に検証が必要です。",ch:"We need to ___ before ___.",
+ gr:"need to+動詞原形。before の後ろは名詞でも動詞ing でもよい。",note:"順序と前提条件を示す型。議論を「やるべきこと」に着地させられる。"},
+{s:"tech",lv:2,en:"We need more data before we conclude.",ja:"結論の前にデータが必要です。",ch:"We need to ___ before ___.",
+ gr:"need to+動詞原形。before の後ろは名詞でも動詞ing でもよい。",note:"順序と前提条件を示す型。議論を「やるべきこと」に着地させられる。"},
+{s:"tech",lv:2,en:"We should confirm that first.",ja:"まずそれを確認すべきです。",ch:"We need to ___ before ___.",
+ gr:"need to+動詞原形。before の後ろは名詞でも動詞ing でもよい。",note:"順序と前提条件を示す型。議論を「やるべきこと」に着地させられる。"},
+{s:"tech",lv:2,en:"Let's not jump to conclusions.",ja:"結論を急がないようにしましょう。",ch:"We need to ___ before ___.",
+ gr:"need to+動詞原形。before の後ろは名詞でも動詞ing でもよい。",note:"順序と前提条件を示す型。議論を「やるべきこと」に着地させられる。"},
+{s:"risk",lv:2,en:"Just to flag it early.",ja:"早めにお伝えしておきます。",ch:"I want to flag ___.",
+ gr:"flag=注意喚起する。want to+動詞原形。",note:"反対ではなく「情報提供」として出せるので、場を荒らさずに問題提起できる。"},
+{s:"risk",lv:2,en:"This could become a bottleneck.",ja:"これはボトルネックになり得ます。",ch:"I want to flag ___.",
+ gr:"flag=注意喚起する。want to+動詞原形。",note:"反対ではなく「情報提供」として出せるので、場を荒らさずに問題提起できる。"},
+{s:"risk",lv:2,en:"I want to flag a potential risk.",ja:"潜在的なリスクを挙げたいです。",ch:"I want to flag ___.",
+ gr:"flag=注意喚起する。want to+動詞原形。",note:"反対ではなく「情報提供」として出せるので、場を荒らさずに問題提起できる。"},
+{s:"risk",lv:2,en:"I want to flag one concern.",ja:"懸念を一点挙げたいです。",ch:"I want to flag ___.",
+ gr:"flag=注意喚起する。want to+動詞原形。",note:"反対ではなく「情報提供」として出せるので、場を荒らさずに問題提起できる。"},
+{s:"risk",lv:2,en:"If that slips, we miss the launch.",ja:"それがずれると、上市に間に合いません。",ch:"If ___, then ___.",
+ gr:"if の中は現在形。未来のことでも will を入れないのがルール。",note:"条件と結果を分けて示すと、感情論にならずリスクを伝えられる。"},
+{s:"risk",lv:2,en:"If the test fails, we need a plan B.",ja:"試験が不合格なら、代替案が必要です。",ch:"If ___, then ___.",
+ gr:"if の中は現在形。未来のことでも will を入れないのがルール。",note:"条件と結果を分けて示すと、感情論にならずリスクを伝えられる。"},
+{s:"risk",lv:2,en:"If that assumption breaks, the plan changes.",ja:"その前提が崩れると計画が変わります。",ch:"If ___, then ___.",
+ gr:"if の中は現在形。未来のことでも will を入れないのがルール。",note:"条件と結果を分けて示すと、感情論にならずリスクを伝えられる。"},
+{s:"risk",lv:2,en:"How likely is that?",ja:"どのくらい起こりそうですか。",ch:"What's the impact ___?",
+ gr:"What is の短縮。impact=影響。名詞で聞くと答えやすい。",note:"相手を責めずに重大性を確認できる質問。優先度の議論に持ち込める。"},
+{s:"risk",lv:2,en:"What's the impact on the schedule?",ja:"日程への影響は何ですか。",ch:"What's the impact ___?",
+ gr:"What is の短縮。impact=影響。名詞で聞くと答えやすい。",note:"相手を責めずに重大性を確認できる質問。優先度の議論に持ち込める。"},
+{s:"money",lv:2,en:"We're about ten percent over.",ja:"約10％超過しています。",ch:"We're ___ budget.",
+ gr:"over=超過、under=未満、within=範囲内。前置詞を替えるだけ。",note:"財務報告は形容詞を一語替えるだけで足りる。数字を添えれば十分。"},
+{s:"money",lv:2,en:"The cost went up by twenty percent.",ja:"コストが20％上がりました。",ch:"We're ___ budget.",
+ gr:"over=超過、under=未満、within=範囲内。前置詞を替えるだけ。",note:"財務報告は形容詞を一語替えるだけで足りる。数字を添えれば十分。"},
+{s:"money",lv:2,en:"We're within budget.",ja:"予算内です。",ch:"We're ___ budget.",
+ gr:"over=超過、under=未満、within=範囲内。前置詞を替えるだけ。",note:"財務報告は形容詞を一語替えるだけで足りる。数字を添えれば十分。"},
+{s:"money",lv:2,en:"We're slightly over budget.",ja:"予算を少し超えています。",ch:"We're ___ budget.",
+ gr:"over=超過、under=未満、within=範囲内。前置詞を替えるだけ。",note:"財務報告は形容詞を一語替えるだけで足りる。数字を添えれば十分。"},
+{s:"money",lv:2,en:"That would add two months.",ja:"それは2か月追加になります。",ch:"That would cost ___.",
+ gr:"would は仮定。「もしやるとしたら」の含みが出て、押し付けにならない。",note:"代替案のコストを示すときの型。判断材料を渡す言い方。"},
+{s:"money",lv:2,en:"We'd need additional resources.",ja:"追加のリソースが必要になります。",ch:"That would cost ___.",
+ gr:"would は仮定。「もしやるとしたら」の含みが出て、押し付けにならない。",note:"代替案のコストを示すときの型。判断材料を渡す言い方。"},
+{s:"money",lv:2,en:"Is there budget for that?",ja:"その予算はありますか。",ch:"That would cost ___.",
+ gr:"would は仮定。「もしやるとしたら」の含みが出て、押し付けにならない。",note:"代替案のコストを示すときの型。判断材料を渡す言い方。"},
+{s:"money",lv:2,en:"That would cost about fifty thousand dollars.",ja:"それは約5万ドルかかります。",ch:"That would cost ___.",
+ gr:"would は仮定。「もしやるとしたら」の含みが出て、押し付けにならない。",note:"代替案のコストを示すときの型。判断材料を渡す言い方。"},
+{s:"push",lv:2,en:"I'd suggest a different approach.",ja:"別のやり方を提案します。",ch:"My recommendation is to ___.",
+ gr:"recommendation=提案。is to+動詞原形で「〜すること」。",note:"I think より責任のある言い方。会議で意見を求められたらこれで返す。"},
+{s:"push",lv:2,en:"There are two reasons for this.",ja:"理由は2つあります。",ch:"My recommendation is to ___.",
+ gr:"recommendation=提案。is to+動詞原形で「〜すること」。",note:"I think より責任のある言い方。会議で意見を求められたらこれで返す。"},
+{s:"push",lv:2,en:"My recommendation is to start small.",ja:"小さく始めることを提案します。",ch:"My recommendation is to ___.",
+ gr:"recommendation=提案。is to+動詞原形で「〜すること」。",note:"I think より責任のある言い方。会議で意見を求められたらこれで返す。"},
+{s:"push",lv:2,en:"My recommendation is to delay one quarter.",ja:"1四半期遅らせることを提案します。",ch:"My recommendation is to ___.",
+ gr:"recommendation=提案。is to+動詞原形で「〜すること」。",note:"I think より責任のある言い方。会議で意見を求められたらこれで返す。"},
+{s:"push",lv:2,en:"That's a fair point, but the timing worries me.",ja:"もっともですが、時期が気になります。",ch:"I see your point, but ___.",
+ gr:"but の前で一度受け止めるのが要点。文法は単純だが効果が大きい。",note:"英語の反対は「受け止め→but→自分の意見」の順が鉄則。いきなり No は関係を壊す。"},
+{s:"push",lv:2,en:"I agree in principle, but not on the schedule.",ja:"原則賛成ですが、日程は別です。",ch:"I see your point, but ___.",
+ gr:"but の前で一度受け止めるのが要点。文法は単純だが効果が大きい。",note:"英語の反対は「受け止め→but→自分の意見」の順が鉄則。いきなり No は関係を壊す。"},
+{s:"push",lv:2,en:"I see your point, but the data doesn't support it yet.",ja:"分かりますが、データがまだ裏付けていません。",ch:"I see your point, but ___.",
+ gr:"but の前で一度受け止めるのが要点。文法は単純だが効果が大きい。",note:"英語の反対は「受け止め→but→自分の意見」の順が鉄則。いきなり No は関係を壊す。"},
+{s:"push",lv:2,en:"Could you walk me through that?",ja:"順を追って説明してもらえますか。",ch:"Help me understand ___.",
+ gr:"命令形だが Help me ~ は柔らかい依頼になる。慣用表現。",note:"矛盾を突きたいときに、批判ではなく質問の形にできる。非常に安全で強力。"},
+{s:"push",lv:2,en:"What am I missing?",ja:"私は何を見落としていますか。",ch:"Help me understand ___.",
+ gr:"命令形だが Help me ~ は柔らかい依頼になる。慣用表現。",note:"矛盾を突きたいときに、批判ではなく質問の形にできる。非常に安全で強力。"},
+{s:"push",lv:2,en:"Help me understand the assumption here.",ja:"ここでの前提を教えてください。",ch:"Help me understand ___.",
+ gr:"命令形だが Help me ~ は柔らかい依頼になる。慣用表現。",note:"矛盾を突きたいときに、批判ではなく質問の形にできる。非常に安全で強力。"},
+{s:"qa",lv:2,en:"Let me confirm the number and follow up.",ja:"数字を確認して後ほど連絡します。",ch:"Let me ___ and get back to you.",
+ gr:"Let me+動詞原形＝「私に〜させてください」。get back to you=後で回答する。",note:"分からない質問への最重要フレーズ。取り繕うより信用される。"},
+{s:"qa",lv:2,en:"I don't have that with me right now.",ja:"今手元にありません。",ch:"Let me ___ and get back to you.",
+ gr:"Let me+動詞原形＝「私に〜させてください」。get back to you=後で回答する。",note:"分からない質問への最重要フレーズ。取り繕うより信用される。"},
+{s:"qa",lv:2,en:"I'd rather not guess.",ja:"憶測は避けたいです。",ch:"Let me ___ and get back to you.",
+ gr:"Let me+動詞原形＝「私に〜させてください」。get back to you=後で回答する。",note:"分からない質問への最重要フレーズ。取り繕うより信用される。"},
+{s:"qa",lv:2,en:"Just to confirm, the deadline is Friday.",ja:"確認ですが、期限は金曜ですね。",ch:"Just to make sure ___.",
+ gr:"make sure=確実にする。後ろは文でも名詞でもよい。",note:"聞き取れなかったときも、認識を合わせたいときも使える万能の前置き。"},
+{s:"qa",lv:2,en:"So what you're saying is that we need more time.",ja:"つまり、もっと時間が必要ということですね。",ch:"Just to make sure ___.",
+ gr:"make sure=確実にする。後ろは文でも名詞でもよい。",note:"聞き取れなかったときも、認識を合わせたいときも使える万能の前置き。"},
+{s:"qa",lv:2,en:"Correct me if I'm wrong.",ja:"違っていたら訂正してください。",ch:"Just to make sure ___.",
+ gr:"make sure=確実にする。後ろは文でも名詞でもよい。",note:"聞き取れなかったときも、認識を合わせたいときも使える万能の前置き。"},
+{s:"qa",lv:2,en:"Just to make sure I understand correctly.",ja:"正しく理解しているか確認させてください。",ch:"Just to make sure ___.",
+ gr:"make sure=確実にする。後ろは文でも名詞でもよい。",note:"聞き取れなかったときも、認識を合わせたいときも使える万能の前置き。"},
+{s:"qa",lv:2,en:"Let me rephrase that.",ja:"言い換えます。",ch:"Does that ___?",
+ gr:"一般動詞の疑問文。does+動詞原形。",note:"回答後に相手の満足を確認する。プレゼンでは必ず入れる。"},
+{s:"qa",lv:2,en:"Does that make sense?",ja:"伝わっていますか。",ch:"Does that ___?",
+ gr:"一般動詞の疑問文。does+動詞原形。",note:"回答後に相手の満足を確認する。プレゼンでは必ず入れる。"},
+{s:"present",lv:2,en:"I'll cover three points today.",ja:"本日は3点お話しします。",ch:"Let me walk you through ___.",
+ gr:"walk 人 through=順を追って説明する。慣用句なので塊で覚える。",note:"プレゼンの各パートの入り口。これを言うと聞き手が構えを作る。"},
+{s:"present",lv:2,en:"Let me start with the conclusion.",ja:"結論から申し上げます。",ch:"Let me walk you through ___.",
+ gr:"walk 人 through=順を追って説明する。慣用句なので塊で覚える。",note:"プレゼンの各パートの入り口。これを言うと聞き手が構えを作る。"},
+{s:"present",lv:2,en:"Let me walk you through the timeline.",ja:"日程をご説明します。",ch:"Let me walk you through ___.",
+ gr:"walk 人 through=順を追って説明する。慣用句なので塊で覚える。",note:"プレゼンの各パートの入り口。これを言うと聞き手が構えを作る。"},
+{s:"present",lv:2,en:"The red line shows the limit.",ja:"赤線が限界値を示しています。",ch:"As you can see ___.",
+ gr:"as=〜のように。スライドを指しながら使う定型。",note:"資料を指す動作と一緒に使う。聞き手の視線を誘導できる。"},
+{s:"present",lv:2,en:"As you can see here, the gap is closing.",ja:"ご覧の通り、差は縮まっています。",ch:"As you can see ___.",
+ gr:"as=〜のように。スライドを指しながら使う定型。",note:"資料を指す動作と一緒に使う。聞き手の視線を誘導できる。"},
+{s:"present",lv:2,en:"To recap, we agreed on scope but not timing.",ja:"要約すると、範囲は合意、日程は未合意です。",ch:"To sum up, ___.",
+ gr:"To sum up は文頭に置く決まり文句。後ろは普通の文。",note:"締めの合図。これがあると聞き手が要点を記憶しやすい。"},
+{s:"present",lv:2,en:"The key message is that we need a decision.",ja:"要点は、決定が必要だということです。",ch:"To sum up, ___.",
+ gr:"To sum up は文頭に置く決まり文句。後ろは普通の文。",note:"締めの合図。これがあると聞き手が要点を記憶しやすい。"},
+{s:"present",lv:2,en:"So the next step is to get approval.",ja:"次のステップは承認取得です。",ch:"To sum up, ___.",
+ gr:"To sum up は文頭に置く決まり文句。後ろは普通の文。",note:"締めの合図。これがあると聞き手が要点を記憶しやすい。"},
+{s:"present",lv:2,en:"To sum up, we're on track but the risk remains.",ja:"まとめると、順調ですがリスクは残ります。",ch:"To sum up, ___.",
+ gr:"To sum up は文頭に置く決まり文句。後ろは普通の文。",note:"締めの合図。これがあると聞き手が要点を記憶しやすい。"},
+{s:"wrap",lv:2,en:"Taro will own this by next Friday.",ja:"太郎さんが来週金曜までに担当します。",ch:"___ will ___ by ___.",
+ gr:"will=これからやること。担当・action・期限を1文に収める英語会議の作法。",note:"アクションアイテムは必ずこの3点セットで言う。抜けると実行されない。"},
+{s:"wrap",lv:2,en:"I'll send the minutes by tomorrow.",ja:"明日までに議事録を送ります。",ch:"___ will ___ by ___.",
+ gr:"will=これからやること。担当・action・期限を1文に収める英語会議の作法。",note:"アクションアイテムは必ずこの3点セットで言う。抜けると実行されない。"},
+{s:"wrap",lv:2,en:"We'll review this at the next meeting.",ja:"次回会議で見直します。",ch:"___ will ___ by ___.",
+ gr:"will=これからやること。担当・action・期限を1文に収める英語会議の作法。",note:"アクションアイテムは必ずこの3点セットで言う。抜けると実行されない。"},
+{s:"wrap",lv:2,en:"Who's going to own this?",ja:"これは誰が担当しますか。",ch:"___ will ___ by ___.",
+ gr:"will=これからやること。担当・action・期限を1文に収める英語会議の作法。",note:"アクションアイテムは必ずこの3点セットで言う。抜けると実行されない。"},
+{s:"wrap",lv:2,en:"Any final comments?",ja:"最後に何かありますか。",ch:"Are we ___?",
+ gr:"be動詞の疑問文。全員の合意を取る簡単な形。",note:"締める前の最終確認。ここを省くと後で認識違いが出る。"},
+{s:"wrap",lv:2,en:"Thanks, everyone. Good discussion.",ja:"皆さんありがとう。良い議論でした。",ch:"Are we ___?",
+ gr:"be動詞の疑問文。全員の合意を取る簡単な形。",note:"締める前の最終確認。ここを省くと後で認識違いが出る。"},
+{s:"wrap",lv:2,en:"Are we good to move forward?",ja:"進めて問題ないですか。",ch:"Are we ___?",
+ gr:"be動詞の疑問文。全員の合意を取る簡単な形。",note:"締める前の最終確認。ここを省くと後で認識違いが出る。"}
 ];
 
+/* ===================================================================
+   型（チャンク）ドリル：1つの型を入れ替えで反復する
+   =================================================================== */
+const PATTERNS = [
+ { c:"travel", p:"Could I get ___?", ja:"〜をもらえますか / 〜できますか",
+   why:"旅行で最も使い回せる型。物・手続き・席・領収書まで全部これで頼める。",
+   gr:"Could は丁寧さを作る助動詞。get は「手に入れる」で対象を選ばない万能動詞。",
+   ex:[["a coffee","コーヒーを"],["the check","お会計を"],["a receipt","領収書を"],
+       ["a window seat","窓側の席を"],["some water","お水を"],["a late checkout","レイトチェックアウトを"]] },
+ { c:"travel", p:"Could you ___?", ja:"〜していただけますか",
+   why:"相手に動いてもらう依頼はこの型に集約できる。",
+   gr:"Could you の後ろは必ず動詞の原形。丁寧さは Could が担う。",
+   ex:[["help me","手伝って"],["say that again","もう一度言って"],["speak more slowly","もっとゆっくり話して"],
+       ["show me on the map","地図で示して"],["call me a taxi","タクシーを呼んで"]] },
+ { c:"travel", p:"I'd like to ___.", ja:"〜したいのですが",
+   why:"I want to より丁寧で、大人の英語に聞こえる。意図表明の基本。",
+   gr:"I'd＝I would。would like to＋動詞原形で丁寧な希望を表す。",
+   ex:[["make a reservation","予約を取りたい"],["change my seat","席を変えたい"],
+       ["check out now","今チェックアウトしたい"],["confirm my booking","予約を確認したい"]] },
+ { c:"travel", p:"Do you have ___?", ja:"〜はありますか",
+   why:"在庫・空き・設備、あらゆる「ある？」をこれ一つで聞ける。",
+   gr:"一般動詞 have の疑問文。主語が you なので do を使う。",
+   ex:[["a table for two","2名の席は"],["this in a larger size","これの大きいサイズは"],
+       ["any rooms available","空室は"],["a vegetarian option","ベジタリアン向けは"]] },
+ { c:"travel", p:"How do I get to ___?", ja:"〜へはどう行けばいいですか",
+   why:"道を聞く型はこれだけ覚えれば足りる。",
+   gr:"get to＝たどり着く。how が手段を尋ねる。",
+   ex:[["the station","駅"],["the airport","空港"],["this address","この住所"],["downtown","中心街（to不要）"]] },
+ { c:"travel", p:"I'm just ___.", ja:"ちょっと〜しているだけです",
+   why:"店で声を掛けられたときなど、軽くかわす言い方。",
+   gr:"be動詞＋〜ing の現在進行形。just が「〜だけ」を足す。",
+   ex:[["looking","見ているだけ"],["waiting for a friend","友人を待っているだけ"],["passing through","通り抜けるだけ"]] },
+ { c:"travel", p:"The ___ isn't working.", ja:"〜が動きません",
+   why:"故障・不具合を伝える万能形。相手を責めずに現象だけ言える。",
+   gr:"現在進行形の否定。work は「機能する」の意味。",
+   ex:[["air conditioning","エアコン"],["shower","シャワー"],["key card","カードキー"],["wifi","Wi-Fi"]] },
+ { c:"travel", p:"Is there any way to ___?", ja:"〜する方法はありませんか",
+   why:"断られそうな依頼を、余地を残して頼む型。",
+   gr:"Is there＋名詞＋to不定詞。to の後ろは動詞の原形。",
+   ex:[["get an earlier flight","早い便に変える"],["get a refund","返金してもらう"],["change the date","日程を変える"]] },
+
+ { c:"biz", p:"Let me ___.", ja:"〜させてください",
+   why:"会議で主導権を取る最短の型。説明・確認・要約すべてに使える。",
+   gr:"let＋人＋動詞の原形。to は付けない。許可を求める形で実質は宣言。",
+   ex:[["walk you through the numbers","数値を説明"],["summarize the key points","要点をまとめ"],
+       ["check and get back to you","確認して後で回答"],["break that down","分解して説明"],
+       ["clarify one thing","一点だけ明確に"]] },
+ { c:"biz", p:"I want to flag ___.", ja:"〜を挙げておきたいです",
+   why:"リスクや懸念を、対立を作らずにテーブルに乗せる型。",
+   gr:"flag＝旗を立てる＝注意喚起する。want to は会話で「ワナ」と繋がる。",
+   ex:[["a risk","リスクを"],["a potential delay","遅延の可能性を"],
+       ["one concern","懸念を一点"],["a dependency","依存関係を"]] },
+ { c:"biz", p:"We're ___ behind.", ja:"〜遅れています",
+   why:"悪い報告ほど、数字を添えて短く言うほうが信頼される。",
+   gr:"behind の後ろの schedule は省略可。about を足すと断定を避けられる。",
+   ex:[["about two weeks","約2週間"],["a month","1か月"],["slightly","わずかに"],["one sprint","1スプリント"]] },
+ { c:"biz", p:"The main blocker is ___.", ja:"最大の障害は〜です",
+   why:"原因を名詞一語で言い切ると、議論が対策に進む。",
+   gr:"be動詞でA＝Bを直結。blocker はPMOの標準語。",
+   ex:[["the supplier's response","サプライヤーの回答"],["resource availability","人員の確保"],
+       ["the approval process","承認プロセス"],["a spec change","仕様変更"]] },
+ { c:"biz", p:"I see your point, but ___.", ja:"おっしゃることは分かりますが、〜",
+   why:"英語の反対は「まず認める→then 述べる」。この順番が信頼を守る。",
+   gr:"but の前が譲歩、後ろが主張。接続詞ひとつで対立が協調に変わる。",
+   ex:[["I have a different view","私は違う見方です"],["the timing worries me","タイミングが気になります"],
+       ["the data doesn't support it yet","データがまだ裏付けていません"]] },
+ { c:"biz", p:"Could you ___ before we ___?", ja:"〜する前に〜していただけますか",
+   why:"順序を指定して依頼できる。PMOの調整で頻出。",
+   gr:"before は時の接続詞。後ろは未来のことでも現在形にする。",
+   ex:[["confirm the scope / commit the date","範囲確認 / 日程確約"],
+       ["review the draft / send it out","ドラフト確認 / 送付"]] },
+ { c:"biz", p:"What would it take to ___?", ja:"〜するには何が必要ですか",
+   why:"交渉の万能質問。相手に条件を言わせることで前進する。",
+   gr:"take はここで「必要とする」。would で仮定のやわらかさを出す。",
+   ex:[["hit that date","その日程を守る"],["pull it in by a week","1週間前倒しする"],
+       ["get approval this month","今月中に承認を得る"]] },
+ { c:"biz", p:"Let's take ___ offline.", ja:"〜は個別に話しましょう",
+   why:"脱線を止める最重要表現。全員の時間を守れる。",
+   gr:"offline＝会議の場の外で。ネット接続とは無関係の会議用語。",
+   ex:[["that","その件"],["the technical details","技術の詳細"],["the pricing discussion","価格の議論"]] },
+ { c:"biz", p:"Just to make sure ___.", ja:"念のため〜を確認させてください",
+   why:"聞き取れなかったときも「確認」の体で聞き返せる。会議の命綱。",
+   gr:"Just to＋動詞原形で前置き。make sure の後ろは文をそのまま置ける。",
+   ex:[["I understand correctly","正しく理解できているか"],
+       ["we're aligned on the scope","範囲の認識が揃っているか"],
+       ["the deadline is the end of March","期限が3月末か"]] },
+ { c:"biz", p:"___ is due to ___, not ___.", ja:"〜の原因は〜で、〜ではありません",
+   why:"誤解を先回りして潰す。責任追及をかわしつつ事実を示せる。",
+   gr:"due to＝〜が原因で。A, not B の対比で誤解の芽を摘む。",
+   ex:[["The delay / a spec change / resourcing","遅延 / 仕様変更 / 人員不足"],
+       ["The gap / a measurement error / the design","差 / 測定誤差 / 設計"]] },
+{ c:"travel", p:"Can I have ___?", ja:"〜をもらえますか。",
+   why:"店・機内・ホテルで物を頼むときはこれ一本で足りる。Please give me ~ は命令形で強いので避ける。",
+   gr:"Can I ~? は「〜してもいい？」。have は「持つ」ではなく「もらう・食べる」。物を頼むときの最短形。",
+   ex:[["a coffee","コーヒーをください。"],["the check","お会計をお願いします。"],["some water","お水をいただけますか。"],["a receipt","領収書をください。"],["one more","もう一つください。"],["a bag","袋をもらえますか。"]] },
+ { c:"travel", p:"Sorry, ___?", ja:"すみません、〜？",
+   why:"聞き取れなかったときの最重要フレーズ群。黙るのが最悪なので、必ずこの型で返す。",
+   gr:"Sorry を前に置くだけで、あらゆる聞き返しが柔らかくなる。",
+   ex:[["what was that","すみません、何とおっしゃいましたか。"],["one more time","すみません、もう一度いいですか。"],["do you speak Japanese","すみません、日本語は話せますか。"],["how much did you say","すみません、おいくらとおっしゃいましたか。"]] },
+ { c:"travel", p:"How ___?", ja:"どのくらい〜ですか。",
+   why:"数字を聞く質問はこの形に集約できる。覚える数を減らせる。",
+   gr:"How の後ろに形容詞を置くだけで疑問文が作れる。much=量/値段、long=時間、far=距離。",
+   ex:[["much is it","いくらですか。"],["long does it take","どのくらい時間がかかりますか。"],["far is it","どのくらい遠いですか。"],["many stops","いくつ目の駅ですか。"],["late are you open","何時まで開いていますか。"]] },
+ { c:"travel", p:"Where is ___?", ja:"〜はどこですか。",
+   why:"道に迷ったとき最速。指をさしながら言えば通じる。",
+   gr:"be動詞の疑問文。is の後ろに場所を知りたいものを置くだけ。",
+   ex:[["the restroom","トイレはどこですか。"],["the station","駅はどこですか。"],["the exit","出口はどこですか。"],["my gate","私の搭乗口はどこですか。"]] },
+ { c:"travel", p:"I'm here ___.", ja:"〜で来ました。",
+   why:"入国審査は「目的・滞在期間・滞在先」の3点しか聞かれない。答えを用意しておけば怖くない。",
+   gr:"入国審査の定番。for + 名詞、または to + 動詞で目的を言う。",
+   ex:[["for sightseeing","観光で来ました。"],["on business","仕事で来ました。"],["for a conference","会議で来ました。"],["for ten days","10日間の滞在です。"]] },
+ { c:"travel", p:"Is this ___?", ja:"これは〜ですか。",
+   why:"確認の万能形。搭乗口・座席・列車など、間違えたら困る場面で使う。",
+   gr:"be動詞の疑問文。指をさしながら使えば単語だけでも通じる。",
+   ex:[["seat taken","この席は空いていますか。"],["the gate for Tokyo","これは東京行きの搭乗口ですか。"],["the right line","この列で合っていますか。"],["free","これは無料ですか。"],["my stop","ここで降りるのですか。"]] },
+ { c:"travel", p:"I have a reservation ___.", ja:"〜で予約しています。",
+   why:"チェックインの第一声。これを言えば相手が全部進めてくれる。",
+   gr:"have は「持っている」。under the name ~ で「〜の名前で」。",
+   ex:[["under Hosono","細野の名前で予約しています。"],["for two nights","2泊で予約しています。"],["for tonight","今夜で予約しています。"]] },
+ { c:"travel", p:"Is it possible to ___?", ja:"〜することはできますか。",
+   why:"少し面倒なお願いをするときの安全な型。断られても気まずくならない。",
+   gr:"possible=可能な。無理かもしれない依頼を、角を立てずに聞ける。",
+   ex:[["check in early","早めにチェックインできますか。"],["keep my bags","荷物を預かってもらえますか。"],["get a late checkout","チェックアウトを遅らせられますか。"],["change rooms","部屋を変えられますか。"],["get a wake-up call","モーニングコールをお願いできますか。"]] },
+ { c:"travel", p:"There's a problem with ___.", ja:"〜に問題があります。",
+   why:"クレームは感情を出さず事実だけ言うのが最も早く解決する。この型が最適。",
+   gr:"There is ~ で「〜がある」。with の後ろに問題の対象を置く。",
+   ex:[["the air conditioning","エアコンに問題があります。"],["the shower","シャワーに問題があります。"],["my key","鍵に問題があります。"]] },
+ { c:"travel", p:"I'll have ___.", ja:"〜をお願いします。",
+   why:"メニューを指さしながらでも成立する。I want ~ より自然で丁寧。",
+   gr:"I'll = I will。その場で決めたことに使う。注文の定番。",
+   ex:[["a large coffee","コーヒーのLをお願いします。"],["the same","同じものをお願いします。"],["this one","これをお願いします。"]] },
+ { c:"travel", p:"Could we get ___?", ja:"〜をお願いできますか。",
+   why:"食事中の追加注文はこれ。Excuse me を前に付けて店員を呼ぶ。",
+   gr:"we にすると同席者の分も含められる。レストランで自然。",
+   ex:[["the check","お会計をお願いします。"],["some more water","お水のおかわりをお願いします。"],["a to-go box","持ち帰り用の容器をもらえますか。"]] },
+ { c:"travel", p:"I'm looking for ___.", ja:"〜を探しています。",
+   why:"店員に声をかけられたときの返答としても使える。黙って断るより印象が良い。",
+   gr:"look for=探す。進行形にすると「今まさに探している」感が出て自然。",
+   ex:[["a gift","贈り物を探しています。"],["this address","この住所を探しています。"],["the platform","ホームを探しています。"]] },
+ { c:"travel", p:"Can I ___?", ja:"〜してもいいですか。",
+   why:"試着・撮影・支払い方法など、行動の可否を聞くときに使う。",
+   gr:"許可を求める型。Can I have ~?（もらう）と違い、自分の行動の許可。",
+   ex:[["try this on","試着してもいいですか。"],["pay by card","カードで払えますか。"],["take a photo here","ここで写真を撮ってもいいですか。"],["get this tax-free","免税にできますか。"],["return this","これを返品できますか。"]] },
+ { c:"biz", p:"Let's ___.", ja:"〜しましょう。",
+   why:"司会の動作はほぼ Let's で足りる。難しい表現は要らない。",
+   gr:"Let's + 動詞の原形。命令ではなく提案なので、司会が場を動かすのに最適。",
+   ex:[["get started","始めましょう。"],["move on to the next item","次の議題に移りましょう。"],["come back to that later","それは後ほど戻りましょう。"],["take that offline","それは別途にしましょう。"],["wrap up here","ここで締めましょう。"],["keep it to ten minutes","10分以内に収めましょう。"]] },
+ { c:"biz", p:"Can we ___?", ja:"〜できますか。",
+   why:"相手に判断を委ねつつ場を動かす型。司会が最も多用する。",
+   gr:"we を主語にすると、要求ではなく提案に聞こえる。角が立たない。",
+   ex:[["move on","次に進んでもいいですか。"],["park that for now","それは一旦保留にできますか。"],["get a decision today","今日決められますか。"],["hear from Nicole","ニコルさんの話を伺えますか。"],["come back to this next week","来週また取り上げられますか。"]] }
+];
+
+/* ===================================================================
+   学習法の根拠
+   =================================================================== */
 const METHOD = [
- {t:"日→英の「産出」から始める（Production Effect）",
-  b:"このアプリの学習カードは必ず日本語を先に出し、英語を口に出してから答えを見ます。英文を眺めて理解する（受容）より、自力で作り出す（産出）方が、会議で口が動くようになるまでの距離が短い。読んで分かる英語と、言える英語は別物です。"},
- {t:"想起練習（Testing Effect / Retrieval Practice）",
-  b:"「答えを見る」前に必ず数秒、自力で思い出す時間を取ってください。思い出そうとして失敗した経験こそが記憶を強くします。答えを先に見てしまうと学習効率は大きく落ちます。カードをめくる速さより、思い出そうとした密度が重要です。"},
+ {t:"翻訳をやめ、「型」を反復する",
+  b:"TOEIC400点で話せない最大の原因は、日本語を一語ずつ英語に変換しようとして処理が追いつかないことです。このアプリは Could I get ___? のような型を先に体に入れ、中身だけ入れ替える練習をします。文を作るのではなく、型を呼び出す。これが会話速度を生みます。「型」タブがその専用ドリルです。"},
+ {t:"日→英の産出から始める（Production Effect）",
+  b:"カードは必ず日本語を先に出し、英語を口に出してから答えを見ます。読んで分かる英語と、言える英語は別物です。眺めるだけでは会議で口は動きません。"},
+ {t:"想起練習（Testing Effect）",
+  b:"答えを見る前に必ず数秒、自力で思い出してください。思い出そうとして失敗した経験こそが記憶を強くします。先に答えを見ると学習効率は大きく落ちます。"},
  {t:"間隔反復（Spacing Effect / SM-2）",
-  b:"「もう一度／難しい／できた／余裕」の4段階評価に応じて、次回出題日が自動計算されます。忘れかけたタイミングで再会するのが最も定着します。1日に大量にやるより、毎日10〜15分を続ける方が総学習時間あたりの定着量は大きくなります。"},
- {t:"文脈の中で覚える（場面依存記憶）",
-  b:"単語帳ではなく「場面」からフレーズを作るのは、想起の手がかりを場面と結びつけるためです。実際の会議で同じ状況になったとき、そのフレーズが引き出されやすくなります。自分が本当に出席する会議を場面として入力してください。"},
- {t:"チャンク学習（Formulaic Sequences）",
-  b:"ネイティブの発話の3〜5割は決まり文句（定型連鎖）です。文法から組み立てず、\"Just to make sure I understand correctly...\" のような塊ごと覚えると、発話の負荷が激減し、内容を考える余裕が生まれます。会議英語はこの塊の在庫量が実力を決めます。"},
- {t:"音を先に入れる（音韻ループ）",
-  b:"カタカナは補助輪です。必ず🔊で米国発音を聞き、真似して声に出してください。音のイメージがない語は、聞き取れず、思い出せません。慣れてきたらカタカナを見ずに音だけで練習します。"},
- {t:"少量・毎日（Distributed Practice）",
-  b:"目標は1日20枚・約10分。到達したら止めてください。やり過ぎた翌日にゼロになるより、少量を毎日続ける方が伸びます。連続日数が途切れそうな日は、5枚でも触れておくと習慣が壊れません。"},
+  b:"4段階評価に応じて次回出題日が自動計算されます。忘れかけた頃に再会するのが最も定着します。1日にまとめてやるより、毎日10〜15分のほうが総量あたりの定着は大きくなります。"},
+ {t:"中学文法で足りる。難しい構文を捨てる",
+  b:"収録フレーズは意図的に中学レベルの文型に絞っています。関係代名詞や仮定法を避け、Let me / Could you / I'd like to のような助動詞＋原形の型に寄せています。難しい構文は、話す速度を落とすだけで通じやすさには寄与しません。"},
+ {t:"音声変化を最初から入れる",
+  b:"カタカナは実際の音声変化（リンキング・リダクション・フラッピング）を反映しています。want to は「ウォント トゥ」ではなく「ワナ」。この音で覚えないと、正しく発音しても相手に伝わらず、相手の英語も聞き取れません。カード裏の「音の変化」で理由を確認してください。"},
+ {t:"2段階のゴール設計",
+  b:"Phase 1（旅行）で「口が動く」状態を作り、Phase 2（会議）で「内容を運ぶ」段階に進みます。旅行英語は失敗のコストが低く、反応速度を鍛えるのに最適です。ここで培った即答の反射が、会議での質疑応答にそのまま効きます。"},
  {t:"シャドーイングと自己録音",
-  b:"週に1回、その週に「できた」判定にしたカードを続けて音読し、スマホで録音して聞き返してください。自分の発話を客観的に聞くのは、発音とリズムを直す最短の方法です。"}
+  b:"週に1回、その週に「できた」にしたカードを続けて音読し、録音して聞き返してください。自分の発話を客観的に聞くのが、発音とリズムを直す最短の方法です。"}
 ];
 
 
@@ -752,42 +1640,33 @@ const METHOD = [
 
 const DRIVE_FILE = "bizeng-sync.json";
 const DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.appdata";
-
 const Drive = { token:null, exp:0, fileId:null, client:null, busy:false };
 
-/* OAuth に登録できるのは http/https のオリジンのみ。
-   file:// で開いた場合は同期不可なので null を返す。 */
 function driveOrigin(){
   if(!/^https?:$/.test(location.protocol)) return null;
   const o = location.origin;
-  return (o && o !== "null") ? o : null;
+  return (o && o!=="null") ? o : null;
 }
-function driveAvailable(){
-  return !!driveOrigin() && !!(S.drive && S.drive.clientId);
-}
-function gisReady(){
-  return typeof google !== "undefined" && google.accounts && google.accounts.oauth2;
-}
+function driveAvailable(){ return !!driveOrigin() && !!(S.drive && S.drive.clientId); }
+function gisReady(){ return typeof google!=="undefined" && google.accounts && google.accounts.oauth2; }
 
 function getToken(interactive){
-  return new Promise((resolve, reject)=>{
-    if(Drive.token && Date.now() < Drive.exp - 60000) return resolve(Drive.token);
-    if(!gisReady()) return reject(new Error("Googleの認証ライブラリを読み込めませんでした。ネット接続を確認してください。"));
+  return new Promise((resolve,reject)=>{
+    if(Drive.token && Date.now() < Drive.exp-60000) return resolve(Drive.token);
+    if(!gisReady()) return reject(new Error("Googleの認証ライブラリを読み込めませんでした。"));
     if(!S.drive.clientId) return reject(new Error("クライアントIDが未設定です。"));
     try{
       Drive.client = google.accounts.oauth2.initTokenClient({
-        client_id: S.drive.clientId,
-        scope: DRIVE_SCOPE,
+        client_id:S.drive.clientId, scope:DRIVE_SCOPE,
         prompt: interactive ? "consent" : "",
-        callback: (r)=>{
-          if(r.error) return reject(new Error(r.error_description || r.error));
-          Drive.token = r.access_token;
-          Drive.exp = Date.now() + (r.expires_in||3600)*1000;
+        callback:(r)=>{
+          if(r.error) return reject(new Error(r.error_description||r.error));
+          Drive.token=r.access_token;
+          Drive.exp=Date.now()+(r.expires_in||3600)*1000;
           resolve(Drive.token);
         },
-        error_callback: (e)=> reject(new Error(e && e.type==="popup_closed"
-          ? "サインインがキャンセルされました"
-          : (e && e.message) || "認証に失敗しました"))
+        error_callback:(e)=>reject(new Error(e && e.type==="popup_closed"
+          ? "サインインがキャンセルされました" : (e&&e.message)||"認証に失敗しました"))
       });
       Drive.client.requestAccessToken();
     }catch(e){ reject(e); }
@@ -795,108 +1674,89 @@ function getToken(interactive){
 }
 
 async function dfetch(url, opts={}, retry=true){
-  const t = await getToken(false);
-  const o = Object.assign({}, opts);
-  o.headers = Object.assign({}, opts.headers, { Authorization:"Bearer "+t });
-  const res = await fetch(url, o);
-  if(res.status===401 && retry){
-    Drive.token=null; Drive.exp=0;
-    return dfetch(url, opts, false);
-  }
+  const t=await getToken(false);
+  const o=Object.assign({},opts);
+  o.headers=Object.assign({},opts.headers,{Authorization:"Bearer "+t});
+  const res=await fetch(url,o);
+  if(res.status===401 && retry){ Drive.token=null; Drive.exp=0; return dfetch(url,opts,false); }
   if(!res.ok){
-    const body = await res.text();
-    const e = new Error(`${res.status} ${body.slice(0,160)}`);
-    e.status = res.status; throw e;
+    const e=new Error(`${res.status} ${(await res.text()).slice(0,160)}`);
+    e.status=res.status; throw e;
   }
   return res;
 }
 
 async function findFile(){
   if(Drive.fileId) return Drive.fileId;
-  const u = "https://www.googleapis.com/drive/v3/files?spaces=appDataFolder"
-    + "&fields=files(id,name,modifiedTime)&q=" + encodeURIComponent(`name='${DRIVE_FILE}'`);
-  const j = await (await dfetch(u)).json();
-  Drive.fileId = (j.files && j.files[0] && j.files[0].id) || null;
+  const u="https://www.googleapis.com/drive/v3/files?spaces=appDataFolder"
+    +"&fields=files(id,name,modifiedTime)&q="+encodeURIComponent(`name='${DRIVE_FILE}'`);
+  const j=await (await dfetch(u)).json();
+  Drive.fileId=(j.files&&j.files[0]&&j.files[0].id)||null;
   return Drive.fileId;
 }
-
 async function downloadRemote(){
-  const id = await findFile();
+  const id=await findFile();
   if(!id) return null;
-  const res = await dfetch(`https://www.googleapis.com/drive/v3/files/${id}?alt=media`);
-  try{ return await res.json(); }catch(e){ return null; }
+  try{ return await (await dfetch(`https://www.googleapis.com/drive/v3/files/${id}?alt=media`)).json(); }
+  catch(e){ return null; }
 }
-
 async function uploadRemote(obj){
-  const body = JSON.stringify(obj);
-  const id = await findFile();
+  const body=JSON.stringify(obj);
+  const id=await findFile();
   if(id){
     await dfetch(`https://www.googleapis.com/upload/drive/v3/files/${id}?uploadType=media`,
-      { method:"PATCH", headers:{ "Content-Type":"application/json" }, body });
+      {method:"PATCH",headers:{"Content-Type":"application/json"},body});
     return id;
   }
-  const meta = { name:DRIVE_FILE, parents:["appDataFolder"], mimeType:"application/json" };
-  const form = new FormData();
-  form.append("metadata", new Blob([JSON.stringify(meta)], {type:"application/json"}));
-  form.append("file", new Blob([body], {type:"application/json"}));
-  const res = await dfetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id",
-    { method:"POST", body:form });
-  const j = await res.json();
-  Drive.fileId = j.id;
+  const meta={name:DRIVE_FILE,parents:["appDataFolder"],mimeType:"application/json"};
+  const form=new FormData();
+  form.append("metadata",new Blob([JSON.stringify(meta)],{type:"application/json"}));
+  form.append("file",new Blob([body],{type:"application/json"}));
+  const j=await (await dfetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id",
+    {method:"POST",body:form})).json();
+  Drive.fileId=j.id;
   return j.id;
 }
 
-/* ---- マージ：両方の端末で学習していても消さない ---- */
+/* ---- マージ：両端末で学習していても消さない ---- */
 function pickCard(a,b){
   const ha=(a.hist||[]).length, hb=(b.hist||[]).length;
-  if(ha!==hb) return ha>hb ? a : b;
-  if((a.due||"") !== (b.due||"")) return (a.due>b.due) ? a : b;
+  if(ha!==hb) return ha>hb?a:b;
+  if((a.due||"")!==(b.due||"")) return (a.due>b.due)?a:b;
   return a;
 }
 function mergeState(local, remote){
   if(!remote || !Array.isArray(remote.cards)) return local;
-  const out = structuredClone(local);
-  const rmap = new Map();
-  (remote.cards||[]).forEach(c=>{ if(c && c.en) rmap.set(c.en.toLowerCase(), c); });
-
-  out.cards = (local.cards||[]).map(c=>{
-    const k=(c.en||"").toLowerCase();
-    const r=rmap.get(k);
+  const out=structuredClone(local);
+  const rmap=new Map();
+  (remote.cards||[]).forEach(c=>{ if(c&&c.en) rmap.set(c.en.toLowerCase(),c); });
+  out.cards=(local.cards||[]).map(c=>{
+    const k=(c.en||"").toLowerCase(), r=rmap.get(k);
     if(!r) return c;
     rmap.delete(k);
     return pickCard(c,r);
   });
   rmap.forEach(r=>out.cards.push(r));
-
-  out.log = Object.assign({}, remote.log||{});
-  Object.entries(local.log||{}).forEach(([k,v])=>{
-    out.log[k] = Math.max(v, out.log[k]||0);
-  });
+  out.log=Object.assign({},remote.log||{});
+  Object.entries(local.log||{}).forEach(([k,v])=>{ out.log[k]=Math.max(v,out.log[k]||0); });
   return out;
 }
 
 async function driveSync(opts={}){
   if(Drive.busy) return;
-  Drive.busy = true;
-  const note = opts.note || (()=>{});
+  Drive.busy=true;
+  const note=opts.note||(()=>{});
   try{
     note("接続中…");
-    const remote = await downloadRemote();
+    const remote=await downloadRemote();
     note("照合中…");
-    const merged = mergeState(S, remote);
-    const payload = {
-      cards: merged.cards, log: merged.log,
-      set: S.set, api: S.api,
-      syncedAt: new Date().toISOString()
-    };
+    const merged=mergeState(S,remote);
     note("保存中…");
-    await uploadRemote(payload);
-
-    S.cards = merged.cards;
-    S.log   = merged.log;
-    S.drive.lastSync = new Date().toISOString();
-    save();
-    renderHome();
+    await uploadRemote({ cards:merged.cards, log:merged.log,
+      set:S.set, api:S.api, course:S.course, syncedAt:new Date().toISOString() });
+    S.cards=merged.cards; S.log=merged.log;
+    S.drive.lastSync=new Date().toISOString();
+    save(); renderHome();
     if($("#v-cards").classList.contains("on")) renderCards();
     renderDriveUI();
     return { cards:S.cards.length };
@@ -904,187 +1764,202 @@ async function driveSync(opts={}){
 }
 
 function driveErr(e){
-  const m = String(e && e.message || e);
+  const m=String(e&&e.message||e);
   if(/popup|キャンセル/.test(m)) return "サインインがキャンセルされました";
   if(/idpiframe|origin|not a valid origin|redirect_uri_mismatch/i.test(m))
-    return "このURLがGoogle側に登録されていません。承認済みJavaScript生成元に " + (driveOrigin()||"（不明）") + " を追加してください。";
+    return "このURLがGoogle側に未登録です。承認済みJavaScript生成元に "+(driveOrigin()||"（不明）")+" を追加してください。";
   if(/^403/.test(m)) return "権限がありません。Drive APIが有効か確認してください。";
-  if(/^401/.test(m)) return "認証の有効期限が切れました。もう一度お試しください。";
-  if(/Failed to fetch/i.test(m)) return "通信に失敗しました。ネット接続を確認してください。";
+  if(/^401/.test(m)) return "認証の期限が切れました。もう一度お試しください。";
+  if(/Failed to fetch/i.test(m)) return "通信に失敗しました。";
   return m.slice(0,110);
 }
 
 function renderDriveUI(){
-  const org = driveOrigin();
-  const local = !org;
-  $("#driveLocalWarn").classList.toggle("hidden", !local);
-  $("#drivePanel").classList.toggle("hidden", local);
+  const org=driveOrigin(), local=!org;
+  $("#driveLocalWarn").classList.toggle("hidden",!local);
+  $("#drivePanel").classList.toggle("hidden",local);
   if(local) return;
-  $("#driveOrigin").textContent = org;
-  const on = !!(S.drive && S.drive.clientId);
-  $("#btnDriveSync").disabled = !on;
-  $("#btnDriveOff").classList.toggle("hidden", !on);
-  const t = S.drive && S.drive.lastSync;
-  $("#driveStatus").textContent = !on
-    ? "未設定です。下のクライアントIDを保存すると使えます。"
-    : t ? "最終同期：" + new Date(t).toLocaleString("ja-JP")
-        : "まだ同期していません。";
+  $("#driveOrigin").textContent=org;
+  const on=!!(S.drive&&S.drive.clientId);
+  $("#btnDriveSync").disabled=!on;
+  $("#btnDriveOff").classList.toggle("hidden",!on);
+  const t=S.drive&&S.drive.lastSync;
+  $("#driveStatus").textContent = !on ? "未設定です。下のクライアントIDを保存すると使えます。"
+    : t ? "最終同期："+new Date(t).toLocaleString("ja-JP") : "まだ同期していません。";
 }
 
 function bindDrive(){
-  $("#btnDriveSave").onclick = ()=>{
-    S.drive.clientId = $("#driveClientId").value.trim();
+  $("#btnDriveSave").onclick=()=>{
+    S.drive.clientId=$("#driveClientId").value.trim();
     save(); renderDriveUI();
-    toast(S.drive.clientId ? "クライアントIDを保存しました" : "クライアントIDを消去しました");
+    toast(S.drive.clientId?"クライアントIDを保存しました":"クライアントIDを消去しました");
   };
-  $("#btnDriveSync").onclick = async ()=>{
+  $("#btnDriveSync").onclick=async()=>{
     const b=$("#btnDriveSync"); b.disabled=true;
-    const set = t=>{ b.innerHTML='<span class="load"></span>'+t; };
+    const set=t=>{ b.innerHTML='<span class="load"></span>'+t; };
     set("接続中…");
     try{
       await getToken(!S.drive.lastSync);
-      const r = await driveSync({ note:set });
-      toast(`同期しました（カード ${r.cards} 枚）`, 3500);
-    }catch(e){ console.warn(e); toast("同期に失敗："+driveErr(e), 6500); }
+      const r=await driveSync({note:set});
+      toast(`同期しました（カード ${r.cards} 枚）`,3500);
+    }catch(e){ console.warn(e); toast("同期に失敗："+driveErr(e),6500); }
     finally{ b.disabled=false; b.textContent="🔄 今すぐ同期"; renderDriveUI(); }
   };
-  $("#btnDriveOff").onclick = ()=>{
+  $("#btnDriveOff").onclick=()=>{
     if(!confirm("この端末の同期設定を解除します。Drive上のデータは残ります。")) return;
-    S.drive = { clientId:"", lastSync:"", email:"" };
+    S.drive={clientId:"",lastSync:"",email:""};
     Drive.token=null; Drive.exp=0; Drive.fileId=null;
     save(); $("#driveClientId").value=""; renderDriveUI(); toast("解除しました");
   };
-  $("#driveClientId").value = (S.drive && S.drive.clientId) || "";
+  $("#driveClientId").value=(S.drive&&S.drive.clientId)||"";
   renderDriveUI();
 }
 
 
-/* ================= Storage (sandbox-safe) ================= */
-const KEY = "bizeng.v1";
+/* ================= Storage ================= */
+const KEY = "bizeng.v1";   /* v1 のまま。既存データをそのまま引き継ぐ */
 
 const Store = (()=>{
   let ok=false;
   try{ const t="__probe__"; window.localStorage.setItem(t,"1"); window.localStorage.removeItem(t); ok=true; }
   catch(e){ ok=false; }
   const mem={};
-  return {
-    ok,
+  return { ok,
     get(k){ try{ return ok?localStorage.getItem(k):(k in mem?mem[k]:null); }catch(e){ return k in mem?mem[k]:null; } },
-    set(k,v){ try{ if(ok) localStorage.setItem(k,v); else mem[k]=v; }catch(e){ mem[k]=v; } }
-  };
+    set(k,v){ try{ if(ok) localStorage.setItem(k,v); else mem[k]=v; }catch(e){ mem[k]=v; } } };
 })();
 
 const DEF = {
-  cards: [], log: {}, gen: [],
-  set:   { goal:20, newMax:8, voice:"", rate:1 },
-  drive: { clientId:"", lastSync:"", email:"" },
-  api:   { provider:"gemini", model:"gemini-2.5-flash", key:"",
-           url:"https://api.openai.com/v1/chat/completions" }
+  cards:[], log:{}, gen:[], course:"travel",
+  set:{ goal:20, newMax:8, voice:"", rate:1, showCareful:true },
+  drive:{ clientId:"", lastSync:"", email:"" },
+  api:{ provider:"gemini", model:"gemini-2.5-flash", key:"",
+        url:"https://api.openai.com/v1/chat/completions" }
 };
+
+/* 旧バージョンの場面IDを新IDへ移行 */
+const OLD2NEW = { meeting_open:"facil", opinion:"push", agree:"push", clarify:"qa",
+  status:"progress", data:"tech", request:"facil", schedule:"stone", risk:"risk",
+  wrapup:"wrap", call:"facil", smalltalk:"talk", qa:"qa", negotiation:"push", apology:"qa" };
+
 let S = load();
 
 function load(){
   try{
-    const raw = Store.get(KEY);
+    const raw=Store.get(KEY);
     if(!raw) return structuredClone(DEF);
-    const o = JSON.parse(raw);
-    return Object.assign(structuredClone(DEF), o, {
-      set:   Object.assign({}, DEF.set,   o.set||{}),
-      api:   Object.assign({}, DEF.api,   o.api||{}),
-      drive: Object.assign({}, DEF.drive, o.drive||{})
+    const o=JSON.parse(raw);
+    const st=Object.assign(structuredClone(DEF), o, {
+      set:Object.assign({},DEF.set,o.set||{}),
+      api:Object.assign({},DEF.api,o.api||{}),
+      drive:Object.assign({},DEF.drive,o.drive||{})
     });
+    st.cards=(st.cards||[]).map(migrate);
+    return st;
   }catch(e){ return structuredClone(DEF); }
 }
+/* 既存カードに新項目を補完（データを壊さない） */
+function migrate(c){
+  if(!c || !c.en) return c;
+  if(OLD2NEW[c.s]) c.s = OLD2NEW[c.s];
+  if(c.ch===undefined) c.ch="";
+  if(c.gr===undefined) c.gr="";
+  const a=analyzeKana(c.en);
+  c.kt=a.kana; c.kc=a.careful; c.snd=a.notes;   /* 発音は常に最新エンジンで再計算 */
+  return c;
+}
 function save(){ Store.set(KEY, JSON.stringify(S)); }
-const $ = s => document.querySelector(s);
-const qsa = s => [...document.querySelectorAll(s)];
-const today = () => new Date().toISOString().slice(0,10);
-const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 
-function toast(msg, ms){
-  const t=$("#toast"); t.textContent=msg; t.classList.add("on");
-  clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("on"), ms||2200);
+const $ = s=>document.querySelector(s);
+const qsa = s=>[...document.querySelectorAll(s)];
+const today = ()=>new Date().toISOString().slice(0,10);
+const uid = ()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+function toast(m,ms){ const t=$("#toast"); t.textContent=m; t.classList.add("on");
+  clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("on"), ms||2200); }
+function esc(s){ return String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m])); }
+
+const curCourse = ()=>COURSES.find(c=>c.id===S.course)||COURSES[0];
+const sceneOf = id=>SCENES.find(x=>x.id===id);
+function sceneLabel(id){
+  const s=sceneOf(id);
+  return s?s.label:(id==="ai"?"AI生成":"自分の追加");
 }
 
 /* ================= SRS ================= */
 function newCard(p){
-  return { id:uid(), en:p.en, ja:p.ja, kt:p.kt||toKatakana(p.en), note:p.note||"",
+  const a=analyzeKana(p.en);
+  return { id:uid(), en:p.en, ja:p.ja, note:p.note||"", ch:p.ch||"", gr:p.gr||"",
+    kt:a.kana, kc:a.careful, snd:a.notes,
     s:p.s||"custom", lv:p.lv||2, ef:2.5, rep:0, iv:0, due:today(), hist:[], made:today() };
 }
 function nextIntervals(c){
   if(c.rep===0) return {2:1,3:1,4:3};
   if(c.rep===1) return {2:3,3:6,4:10};
   const b=c.iv||1, ef=c.ef;
-  return {2:Math.max(1,Math.round(b*1.2)), 3:Math.max(1,Math.round(b*ef)), 4:Math.max(1,Math.round(b*ef*1.35))};
+  return {2:Math.max(1,Math.round(b*1.2)),3:Math.max(1,Math.round(b*ef)),4:Math.max(1,Math.round(b*ef*1.35))};
 }
 function grade(c,g){
-  const iv = nextIntervals(c);
-  if(g===1){ c.rep=0; c.iv=0; c.ef=Math.max(1.3,c.ef-0.2); c.due=today(); c.lapse=(c.lapse||0)+1; }
+  const iv=nextIntervals(c);
+  if(g===1){ c.rep=0; c.iv=0; c.ef=Math.max(1.3,c.ef-0.2); c.due=today(); }
   else{
-    c.ef = Math.max(1.3, c.ef + (0.1-(4-g)*(0.08+(4-g)*0.02)));
-    c.iv = iv[g]; c.rep++;
+    c.ef=Math.max(1.3,c.ef+(0.1-(4-g)*(0.08+(4-g)*0.02)));
+    c.iv=iv[g]; c.rep++;
     const d=new Date(); d.setDate(d.getDate()+c.iv);
-    c.due = d.toISOString().slice(0,10);
+    c.due=d.toISOString().slice(0,10);
   }
   c.hist.push({d:today(),g});
-  S.log[today()] = (S.log[today()]||0)+1;
+  S.log[today()]=(S.log[today()]||0)+1;
   save();
 }
-const dueCards = () => S.cards.filter(c=>c.due<=today() && c.rep>0);
-const newCards = () => S.cards.filter(c=>c.rep===0);
+const dueCards = ()=>S.cards.filter(c=>c.due<=today() && c.rep>0);
+const newCards = ()=>S.cards.filter(c=>c.rep===0);
 
 /* ================= TTS ================= */
 let VOICES=[];
 function loadVoices(){
   if(!("speechSynthesis" in window)) return;
-  VOICES = (speechSynthesis.getVoices()||[]).filter(v=>/^en/i.test(v.lang));
+  VOICES=(speechSynthesis.getVoices()||[]).filter(v=>/^en/i.test(v.lang));
   const sel=$("#setVoice"); if(!sel) return;
-  const us = VOICES.filter(v=>/en[-_]US/i.test(v.lang));
-  const list = us.length ? us.concat(VOICES.filter(v=>!/en[-_]US/i.test(v.lang))) : VOICES;
-  sel.innerHTML = list.map(v=>`<option value="${v.name}">${v.name} (${v.lang})</option>`).join("")
-    || `<option value="">この端末に英語音声がありません</option>`;
+  const us=VOICES.filter(v=>/en[-_]US/i.test(v.lang));
+  const list=us.length?us.concat(VOICES.filter(v=>!/en[-_]US/i.test(v.lang))):VOICES;
+  sel.innerHTML=list.map(v=>`<option value="${v.name}">${v.name} (${v.lang})</option>`).join("")
+    ||`<option value="">この端末に英語音声がありません</option>`;
   if(S.set.voice) sel.value=S.set.voice;
   else if(list[0]){ S.set.voice=list[0].name; sel.value=list[0].name; }
 }
 if("speechSynthesis" in window){ speechSynthesis.onvoiceschanged=loadVoices; loadVoices(); }
-
-function speak(text, rate){
+function speak(text,rate){
   if(!("speechSynthesis" in window)) return toast("この端末は読み上げに未対応です");
   try{
     speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(text);
     const v=VOICES.find(x=>x.name===S.set.voice)||VOICES.find(x=>/en[-_]US/i.test(x.lang))||VOICES[0];
     if(v){ u.voice=v; u.lang=v.lang; } else u.lang="en-US";
-    u.rate = rate||S.set.rate||1;
+    u.rate=rate||S.set.rate||1;
     speechSynthesis.speak(u);
   }catch(e){ toast("読み上げできませんでした"); }
 }
 
-/* ================= AI generation ================= */
-const SYS_PROMPT = `You are a coach for Japanese business professionals who need to function in English-language meetings.
-Given a Japanese description of a situation, output natural phrases that a native speaker would actually say in that situation in a business meeting.
-Rules:
+/* ================= AI ================= */
+const SYS_PROMPT = `You coach a Japanese business professional (TOEIC ~400, can read but cannot speak) who needs practical spoken English.
+Given a Japanese description of a situation, output phrases a native speaker would actually say there.
+HARD RULES:
 - Output ONLY a JSON array. No markdown fences, no commentary.
-- Each element: {"en":"...","ja":"...","kt":"...","note":"..."}
-- "en": one natural English sentence or short chunk. Meeting-ready, easy to say aloud. Avoid textbook-stiff English.
-- "ja": natural Japanese translation (not literal).
-- "kt": katakana approximation of American English pronunciation (e.g. "Let's get started." -> "レッツ ゲット スターティド"). Words separated by spaces.
-- "note": ONE short line in Japanese explaining usage, nuance, or the grammar pattern. Max 60 Japanese characters.
-- Order from most useful / most frequent to least.`;
+- Each element: {"en":"...","ja":"...","ch":"...","note":"...","gr":"..."}
+- "en": ONE short, natural sentence. Use junior-high-school level grammar only. Avoid relative clauses, subjunctive, and stiff textbook English. Prefer high-frequency chunks (Could I get ~, Let me ~, I'd like to ~, Could you ~).
+- "ja": natural Japanese translation.
+- "ch": the reusable pattern with a blank, e.g. "Could I get ___?" — the part worth memorizing as a template.
+- "note": ONE line in Japanese on when/how to use it. Max 55 Japanese characters.
+- "gr": ONE line in Japanese explaining the grammar simply, as if to a junior-high student. Explain why the form works, not just what it means. Max 60 Japanese characters.
+- Order from most useful to least.`;
 
-/* 使えるモデルはキーごとに異なるため、推測せず ListModels で取得する */
-let GEMINI_MODELS = [];
-
+let GEMINI_MODELS=[];
 async function geminiListModels(){
-  const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200",
-    { headers:{ "x-goog-api-key":S.api.key } });
-  if(!res.ok){
-    const e=new Error(`${res.status} ${(await res.text()).slice(0,200)}`);
-    e.status=res.status; throw e;
-  }
-  const j = await res.json();
-  return (j.models||[])
-    .filter(m=>(m.supportedGenerationMethods||[]).includes("generateContent"))
+  const res=await fetch("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200",
+    {headers:{"x-goog-api-key":S.api.key}});
+  if(!res.ok){ const e=new Error(`${res.status} ${(await res.text()).slice(0,200)}`); e.status=res.status; throw e; }
+  const j=await res.json();
+  return (j.models||[]).filter(m=>(m.supportedGenerationMethods||[]).includes("generateContent"))
     .map(m=>String(m.name||"").replace(/^models\//,""))
     .filter(n=>n && !/embedding|aqa|imagen|veo|tts|audio|image|live|learnlm/i.test(n));
 }
@@ -1093,176 +1968,156 @@ function rankModel(n){
   if(/flash/.test(n)) s+=100;
   if(/flash-lite/.test(n)) s-=15;
   if(/pro/.test(n)) s+=45;
-  const v=parseFloat((n.match(/(\d+\.\d+)/)||[])[1]||"0");
-  s+=v*12;
+  s+=parseFloat((n.match(/(\d+\.\d+)/)||[])[1]||"0")*12;
   if(/preview|exp|thinking/.test(n)) s-=70;
   if(/latest/.test(n)) s+=6;
   if(/\d{2}-\d{2}$/.test(n)) s-=8;
   return s;
 }
 async function pickGeminiModel(){
-  const list = await geminiListModels();
+  const list=await geminiListModels();
   if(!list.length) throw new Error("このキーで使えるモデルが見つかりませんでした");
-  GEMINI_MODELS = list.sort((a,b)=>rankModel(b)-rankModel(a));
+  GEMINI_MODELS=list.sort((a,b)=>rankModel(b)-rankModel(a));
   fillModelSelect();
   return GEMINI_MODELS[0];
 }
-
 function parseArr(txt){
-  txt = String(txt||"").replace(/^\s*```(json)?/i,"").replace(/```\s*$/,"").trim();
-  const m = txt.match(/\[[\s\S]*\]/);
-  const arr = JSON.parse(m ? m[0] : txt);
+  txt=String(txt||"").replace(/^\s*```(json)?/i,"").replace(/```\s*$/,"").trim();
+  const m=txt.match(/\[[\s\S]*\]/);
+  const arr=JSON.parse(m?m[0]:txt);
   if(!Array.isArray(arr)) throw new Error("配列が返りませんでした");
   return arr.map(o=>({ en:String(o.en||"").trim(), ja:String(o.ja||"").trim(),
-    kt:String(o.kt||"").trim()||toKatakana(o.en||""), note:String(o.note||"").trim(), s:"ai", lv:2 }))
-    .filter(o=>o.en);
+    ch:String(o.ch||"").trim(), note:String(o.note||"").trim(), gr:String(o.gr||"").trim(),
+    s:"ai", lv:2 })).filter(o=>o.en);
 }
-
-async function callGemini(userMsg, model){
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
-  const res = await fetch(url,{
-    method:"POST",
-    headers:{ "Content-Type":"application/json", "x-goog-api-key":S.api.key },
-    body: JSON.stringify({
-      systemInstruction:{ parts:[{text:SYS_PROMPT}] },
-      contents:[{ role:"user", parts:[{text:userMsg}] }],
-      generationConfig:{ temperature:0.7, responseMimeType:"application/json" }
-    })
-  });
-  if(!res.ok){
-    const e=new Error(`${res.status} ${(await res.text()).slice(0,200)}`);
-    e.status=res.status; throw e;
-  }
-  const j = await res.json();
-  const txt = (j.candidates?.[0]?.content?.parts||[]).map(p=>p.text||"").join("");
+async function callGemini(msg,model){
+  const url=`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+  const res=await fetch(url,{method:"POST",
+    headers:{"Content-Type":"application/json","x-goog-api-key":S.api.key},
+    body:JSON.stringify({ systemInstruction:{parts:[{text:SYS_PROMPT}]},
+      contents:[{role:"user",parts:[{text:msg}]}],
+      generationConfig:{temperature:0.7,responseMimeType:"application/json"} })});
+  if(!res.ok){ const e=new Error(`${res.status} ${(await res.text()).slice(0,200)}`); e.status=res.status; throw e; }
+  const j=await res.json();
+  const txt=(j.candidates?.[0]?.content?.parts||[]).map(p=>p.text||"").join("");
   if(!txt) throw new Error("空の応答が返りました");
   return parseArr(txt);
 }
-
-async function callOpenAI(userMsg, model){
-  const res = await fetch(S.api.url,{
-    method:"POST",
-    headers:{ "Content-Type":"application/json", "Authorization":"Bearer "+S.api.key },
-    body: JSON.stringify({ model, temperature:0.7,
-      messages:[{role:"system",content:SYS_PROMPT},{role:"user",content:userMsg}] })
-  });
-  if(!res.ok){
-    const e=new Error(`${res.status} ${(await res.text()).slice(0,200)}`);
-    e.status=res.status; throw e;
-  }
+async function callOpenAI(msg,model){
+  const res=await fetch(S.api.url,{method:"POST",
+    headers:{"Content-Type":"application/json","Authorization":"Bearer "+S.api.key},
+    body:JSON.stringify({model,temperature:0.7,
+      messages:[{role:"system",content:SYS_PROMPT},{role:"user",content:msg}]})});
+  if(!res.ok){ const e=new Error(`${res.status} ${(await res.text()).slice(0,200)}`); e.status=res.status; throw e; }
   const j=await res.json();
   return parseArr(j.choices?.[0]?.message?.content||"");
 }
-
-function buildMsg(query,n,level){
-  const lvTxt = level==="simple" ? "Keep them short and very easy to pronounce."
-             : level==="formal" ? "Slightly formal register, suitable for executives or customers."
-             : "Standard business register.";
-  return `場面: ${query}\n\nGive exactly ${n} phrases. ${lvTxt}`;
+function buildMsg(q,n,level){
+  const ctx = S.course==="travel"
+    ? "Context: overseas travel survival (hotel, cafe, restaurant, flight, phone, directions, shopping)."
+    : "Context: US-based business project meeting (PMO): progress, technical issues, risk, finance, milestones.";
+  const lv = level==="simple" ? "Keep them very short and easy to pronounce."
+           : level==="formal" ? "Slightly more formal, suitable for executives or customers."
+           : "Standard spoken register.";
+  return `${ctx}\n場面: ${q}\n\nGive exactly ${n} phrases. ${lv}`;
 }
-
-const sleep = ms => new Promise(r=>setTimeout(r,ms));
-/* 503/500/429 はサーバー側の一時障害。待って再試行し、駄目なら別モデルへ */
-const TRANSIENT = s => s===503||s===500||s===502||s===504||s===429;
-
-async function geminiWithRetry(msg, onNote){
-  const note = onNote || (()=>{});
-  let model = S.api.model;
-  const tried = new Set();
-
-  for(let attempt=0; attempt<3; attempt++){
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const TRANSIENT=s=>s===503||s===500||s===502||s===504||s===429;
+async function geminiWithRetry(msg,onNote){
+  const note=onNote||(()=>{});
+  let model=S.api.model; const tried=new Set();
+  for(let a=0;a<3;a++){
     try{
-      const r = await callGemini(msg, model);
+      const r=await callGemini(msg,model);
       if(model!==S.api.model){ S.api.model=model; save(); fillModelSelect(); updGenMode(); }
       return r;
     }catch(e){
       tried.add(model);
-      if(e.status===404 || e.status===400){
+      if(e.status===404||e.status===400){
         if(e.status===400 && !/not found|not supported|is not/i.test(e.message)) throw e;
-        const best = await pickGeminiModel();
+        const best=await pickGeminiModel();
         if(tried.has(best)) throw e;
-        model = best; continue;
+        model=best; continue;
       }
       if(!TRANSIENT(e.status)) throw e;
-      if(attempt===0){ note("混雑のため再試行します…"); await sleep(1600); continue; }
+      if(a===0){ note("混雑のため再試行します…"); await sleep(1600); continue; }
       if(!GEMINI_MODELS.length){ try{ await pickGeminiModel(); }catch(_){} }
-      const alt = GEMINI_MODELS.find(m=>!tried.has(m));
+      const alt=GEMINI_MODELS.find(m=>!tried.has(m));
       if(!alt) throw e;
       note(`別のモデル（${alt}）で試します…`);
-      model = alt;
-      await sleep(700);
+      model=alt; await sleep(700);
     }
   }
   throw new Error("503 混雑が続いています");
 }
-
-async function aiGenerate(query,n,level,onNote){
-  const msg = buildMsg(query,n,level);
-  if(S.api.provider==="gemini") return geminiWithRetry(msg, onNote);
-  return callOpenAI(msg, S.api.model);
+async function aiGenerate(q,n,level,onNote){
+  const msg=buildMsg(q,n,level);
+  if(S.api.provider==="gemini") return geminiWithRetry(msg,onNote);
+  return callOpenAI(msg,S.api.model);
 }
-
 function explainErr(e){
-  const m = String(e && e.message || e);
-  if(/Failed to fetch|NetworkError|Load failed/i.test(m)){
+  const m=String(e&&e.message||e);
+  if(/Failed to fetch|NetworkError|Load failed/i.test(m))
     return S.api.provider==="openai"
-      ? "通信がブロックされました。ブラウザから直接呼べないエンドポイントの可能性があります（CORS）。Geminiに切り替えてお試しください。"
+      ? "通信がブロックされました（CORS）。Geminiに切り替えてお試しください。"
       : "通信に失敗しました。ネット接続を確認してください。";
-  }
-  if(/^400/.test(m) && /API_KEY_INVALID|API key not valid/i.test(m)) return "APIキーが正しくありません。";
-  if(/^403/.test(m)) return "キーの権限がありません。AI Studioで作り直してください。";
+  if(/^400/.test(m)&&/API_KEY_INVALID|API key not valid/i.test(m)) return "APIキーが正しくありません。";
+  if(/^403/.test(m)) return "キーの権限がありません。";
   if(/^404/.test(m)) return "モデル名が見つかりません。「使えるモデルを検出」をお試しください。";
   if(/^429/.test(m)) return "無料枠の上限に達しました。少し待って再試行してください。";
-  if(/^(503|500|502|504)/.test(m)) return "Gemini側が混雑しています。数十秒おいて再試行するか、モデルを変えてみてください。";
+  if(/^(503|500|502|504)/.test(m)) return "Gemini側が混雑しています。数十秒おいて再試行してください。";
   return m.slice(0,90);
 }
 
-/* ================= 内蔵ライブラリ生成 ================= */
-function localGenerate(query,n,level){
-  const q=(query||"").toLowerCase();
-  return SEED.map(p=>{
-    let sc=0;
-    const def=SCENES.find(x=>x.id===p.s);
-    if(def){
-      def.kw.forEach(k=>{ if(q.includes(k.toLowerCase())) sc+=5; });
-      if(q.includes(def.label)) sc+=8;
+/* 内蔵ライブラリ生成（現在のコース内から場面一致で抽出） */
+function localGenerate(q,n,level){
+  const s=(q||"").toLowerCase();
+  const pool=SEED.filter(p=>{ const sc=sceneOf(p.s); return sc && sc.c===S.course; });
+  const src=pool.length?pool:SEED;
+  return src.map(p=>{
+    let v=0;
+    const sc=sceneOf(p.s);
+    if(sc){
+      sc.kw.forEach(k=>{ if(s.includes(k.toLowerCase())) v+=5; });
+      if(s.includes(sc.label)) v+=8;
     }
-    for(let i=0;i<q.length-1;i++){
-      const bi=q.slice(i,i+2);
-      if(/[ぁ-んァ-ヶ一-龠]/.test(bi)&&(p.ja.includes(bi)||(p.note||"").includes(bi))) sc+=1.2;
+    for(let i=0;i<s.length-1;i++){
+      const bi=s.slice(i,i+2);
+      if(/[ぁ-んァ-ヶ一-龠]/.test(bi)&&(p.ja.includes(bi)||(p.note||"").includes(bi))) v+=1.2;
     }
-    if(level==="simple") sc+=(3-p.lv)*1.2;
-    if(level==="formal") sc+=(p.lv-2)*1.2;
-    return {p, sc: sc+Math.random()*1.5};
-  }).sort((a,b)=>b.sc-a.sc).slice(0,n).map(x=>({...x.p, kt:toKatakana(x.p.en)}));
+    if(level==="simple") v+=(3-p.lv)*1.2;
+    if(level==="formal") v+=(p.lv-2)*1.2;
+    return {p,v:v+Math.random()*1.5};
+  }).sort((a,b)=>b.v-a.v).slice(0,n).map(x=>x.p);
 }
 
-/* ================= Render ================= */
-function esc(s){ return String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m])); }
-
-function phraseHTML(p,opts={}){
-  const inDeck = S.cards.some(c=>c.en.toLowerCase()===String(p.en).toLowerCase());
-  const label = (SCENES.find(x=>x.id===p.s)||{}).label || (p.s==="ai"?"AI生成":"自分の追加");
+/* ================= フレーズカード描画 ================= */
+function phraseHTML(p,opt={}){
+  const inDeck=S.cards.some(c=>c.en.toLowerCase()===String(p.en).toLowerCase());
+  const a = p.kt ? {kana:p.kt,careful:p.kc,notes:p.snd||[]} : analyzeKana(p.en);
   return `<div class="pc" data-en="${esc(p.en)}">
     <div class="en">${esc(p.en)}</div>
-    <div class="kt">${esc(p.kt||toKatakana(p.en))}</div>
+    <div class="kt">${esc(a.kana)}</div>
+    ${a.careful && a.careful!==a.kana ? `<div class="kc">ゆっくり：${esc(a.careful)}</div>`:""}
     <div class="ja">${esc(p.ja)}</div>
+    ${p.ch?`<div class="chip2">型　${esc(p.ch)}</div>`:""}
     ${p.note?`<div class="note">${esc(p.note)}</div>`:""}
+    ${p.gr?`<div class="gram">文法　${esc(p.gr)}</div>`:""}
+    ${(a.notes&&a.notes.length)?`<div class="snd">音　${a.notes.map(esc).join(" / ")}</div>`:""}
     <div class="bar">
       <button class="sbtn js-say">🔊</button>
       <button class="sbtn js-add ${inDeck?"added":""}" ${inDeck?"disabled":""}>${inDeck?"✓ 追加済":"＋ カードに追加"}</button>
-      ${opts.del?`<button class="sbtn js-del" style="color:var(--bad)">削除</button>`:""}
-      <span class="tag">${esc(label)}</span>
-      ${opts.due?`<span class="tag lv">次回 ${esc(p.due)}</span>`:""}
+      ${opt.del?`<button class="sbtn js-del" style="color:var(--bad)">削除</button>`:""}
+      <span class="tag">${esc(sceneLabel(p.s))}</span>
+      ${opt.due?`<span class="tag lv">次回 ${esc(p.due)}</span>`:""}
     </div></div>`;
 }
-
-document.addEventListener("click", e=>{
+document.addEventListener("click",e=>{
   const pc=e.target.closest(".pc"); if(!pc) return;
   const en=pc.dataset.en;
   if(e.target.closest(".js-say")) speak(en);
   if(e.target.closest(".js-add")){
-    const src=[...(S.gen||[]),...SEED.map(p=>({...p,kt:toKatakana(p.en)}))].find(p=>p.en===en);
+    const src=[...(S.gen||[]),...SEED].find(p=>p.en===en);
     if(!src) return;
     if(S.cards.some(c=>c.en===en)) return toast("すでに追加済みです");
     S.cards.push(newCard(src)); save(); renderHome();
@@ -1272,22 +2127,23 @@ document.addEventListener("click", e=>{
   }
   if(e.target.closest(".js-del")){
     if(!confirm("このカードを削除しますか？")) return;
-    S.cards=S.cards.filter(c=>c.en!==en); save(); renderHome(); renderCards();
-    toast("削除しました");
+    S.cards=S.cards.filter(c=>c.en!==en); save(); renderHome(); renderCards(); toast("削除しました");
   }
 });
 
+/* ================= ビュー切替 ================= */
 function show(v){
-  qsa(".view").forEach(x=>x.classList.toggle("on", x.id==="v-"+v));
-  qsa(".tab").forEach(t=>t.classList.toggle("on", t.dataset.v===v));
+  qsa(".view").forEach(x=>x.classList.toggle("on",x.id==="v-"+v));
+  qsa(".tab").forEach(t=>t.classList.toggle("on",t.dataset.v===v));
   window.scrollTo({top:0});
   if(v==="cards") renderCards();
   if(v==="home") renderHome();
   if(v==="study") renderStudy();
+  if(v==="pat") renderPatterns();
 }
 qsa(".tab").forEach(t=>t.onclick=()=>show(t.dataset.v));
 
-/* ---- Home ---- */
+/* ================= ホーム ================= */
 function streak(){
   let n=0; const d=new Date();
   if(!S.log[today()]) d.setDate(d.getDate()-1);
@@ -1299,8 +2155,8 @@ function renderHome(){
   $("#todayDone").textContent=done;
   $("#todayGoal").textContent=goal;
   $("#todayBar").style.width=Math.min(100,done/goal*100)+"%";
-  $("#todayTitle").textContent = done>=goal ? "今日の目標は達成 🎉"
-    : (dueCards().length ? `復習 ${dueCards().length} 枚が待っています` : "10分だけ、始めよう");
+  $("#todayTitle").textContent = done>=goal?"今日の目標は達成 🎉"
+    :(dueCards().length?`復習 ${dueCards().length} 枚が待っています`:"10分だけ、始めよう");
   $("#pStreak").innerHTML=`🔥 <b>${streak()}</b>日`;
   $("#pDue").innerHTML=`復習 <b>${dueCards().length}</b>`;
   $("#sTotal").textContent=S.cards.length;
@@ -1314,25 +2170,51 @@ function renderHome(){
     h+=`<div class="hc ${n===0?"":n<5?"l1":n<12?"l2":n<25?"l3":"l4"}" title="${k}: ${n}"></div>`;
   }
   $("#heat").innerHTML=h;
-  const pool=S.cards.length?S.cards:SEED.map(p=>({...p,kt:toKatakana(p.en)}));
+
+  const co=curCourse();
+  $("#courseSel").value=S.course;
+  $("#courseGoal").textContent=co.goal;
+  const mine=S.cards.filter(c=>{ const s=sceneOf(c.s); return s && s.c===S.course; });
+  const learned=mine.filter(c=>c.rep>0).length;
+  const inCourse=SEED.filter(p=>{ const s=sceneOf(p.s); return s&&s.c===S.course; }).length;
+  $("#coursePct").textContent = mine.length?Math.round(learned/mine.length*100)+"%":"0%";
+  $("#courseBar").style.width = (mine.length?learned/mine.length*100:0)+"%";
+  $("#courseNote").textContent = `このコースのカード ${mine.length} 枚（学習済 ${learned}）／収録フレーズ ${inCourse}`;
+
+  const pool=S.cards.length?S.cards:SEED;
   const r=pool[Math.floor(Math.random()*pool.length)];
   $("#randomCard").innerHTML=r?phraseHTML(r):"";
 }
+$("#courseSel").onchange=e=>{ S.course=e.target.value; save(); renderHome(); renderPatterns(); updGenMode(); };
+$("#btnAddCourse").onclick=()=>{
+  const co=curCourse();
+  let k=0;
+  SEED.forEach(p=>{
+    const s=sceneOf(p.s);
+    if(s && s.c===co.id && !S.cards.some(c=>c.en===p.en)){ S.cards.push(newCard(p)); k++; }
+  });
+  save(); renderHome();
+  toast(k?`${co.name} の ${k} 枚を追加しました`:"すでに全部追加済みです",3200);
+};
 $("#btnStart").onclick=()=>startSession("mix");
 $("#btnQuickNew").onclick=()=>startSession("new");
 $("#btnQuickDue").onclick=()=>startSession("due");
 
-/* ---- Generate ---- */
-$("#sceneChips").innerHTML=SCENES.map(s=>`<button class="chip" data-l="${s.label}">${s.label}</button>`).join("");
+/* ================= 生成 ================= */
+function renderSceneChips(){
+  $("#sceneChips").innerHTML=SCENES.filter(s=>s.c===S.course)
+    .map(s=>`<button class="chip" data-l="${s.label}">${s.label}</button>`).join("");
+}
 $("#sceneChips").onclick=e=>{
   const c=e.target.closest(".chip"); if(!c) return;
   const t=$("#genInput");
   t.value=(t.value.trim()?t.value.trim()+"／":"")+c.dataset.l;
 };
 function updGenMode(){
+  renderSceneChips();
   $("#genMode").textContent = S.api.key
-    ? `モード：AI生成（${S.api.provider==="gemini"?"Gemini":"OpenAI互換"} / ${S.api.model}）`
-    : `モード：内蔵ライブラリ（${SEED.length}フレーズから場面に合わせて抽出）。設定でAPIキーを入れるとAI生成になります。`;
+    ? `モード：AI生成（${S.api.provider==="gemini"?"Gemini":"OpenAI互換"} / ${S.api.model}）｜コース：${curCourse().name}`
+    : `モード：内蔵ライブラリ（${SEED.length}フレーズ）｜コース：${curCourse().name}`;
 }
 $("#btnGen").onclick=async()=>{
   const q=$("#genInput").value.trim();
@@ -1342,13 +2224,13 @@ $("#btnGen").onclick=async()=>{
   try{
     let out;
     if(S.api.key){
-      try{ out = await aiGenerate(q,n,lv, t=>{ b.innerHTML='<span class="load"></span>'+t; }); }
+      try{ out=await aiGenerate(q,n,lv,t=>{ b.innerHTML='<span class="load"></span>'+t; }); }
       catch(err){ console.warn(err); toast("AI生成に失敗："+explainErr(err)+" 内蔵ライブラリで表示します",4500); out=localGenerate(q,n,lv); }
     } else out=localGenerate(q,n,lv);
     S.gen=out; save(); updGenMode();
     $("#genOut").innerHTML=`<h2 class="t">生成結果（${out.length}件）</h2>
       <button class="btn sec" id="btnAddAll" style="margin-bottom:10px">すべてカードに追加</button>`
-      + out.map(p=>phraseHTML(p)).join("");
+      +out.map(p=>phraseHTML(p)).join("");
     $("#btnAddAll").onclick=()=>{
       let k=0; out.forEach(p=>{ if(!S.cards.some(c=>c.en===p.en)){ S.cards.push(newCard(p)); k++; }});
       save(); renderHome();
@@ -1358,11 +2240,12 @@ $("#btnGen").onclick=async()=>{
   } finally { b.disabled=false; b.innerHTML="✨ フレーズを生成"; }
 };
 
-/* ---- Study ---- */
+/* ================= 学習 ================= */
 let Q=[], qi=0, revealed=false;
 function startSession(mode){
-  const d=dueCards().sort(()=>Math.random()-.5);
-  const n=newCards().sort(()=>Math.random()-.5).slice(0,S.set.newMax);
+  const inC=c=>{ const s=sceneOf(c.s); return !s || s.c===S.course || c.s==="ai" || c.s==="custom"; };
+  const d=dueCards().filter(inC).sort(()=>Math.random()-.5);
+  const n=newCards().filter(inC).sort(()=>Math.random()-.5).slice(0,S.set.newMax);
   Q = mode==="due"?d : mode==="new"?n : d.concat(n);
   qi=0; show("study"); renderStudy();
 }
@@ -1373,7 +2256,7 @@ function renderStudy(){
     $("#studyBar").style.width="100%";
     const rest=dueCards().length+Math.min(newCards().length,S.set.newMax);
     emp.innerHTML = S.cards.length===0
-      ? `カードがまだありません。<br>「生成」タブで場面を入力して、<br>使えるフレーズを集めましょう。<br><br><button class="btn sm" onclick="show('gen')">生成タブへ</button>`
+      ? `カードがまだありません。<br>ホームの「このコースを丸ごと追加」から始めましょう。<br><br><button class="btn sm" onclick="show('home')">ホームへ</button>`
       : rest>0
       ? `今日はあと <b style="color:var(--tx)">${rest}</b> 枚あります。<br><br><button class="btn sm" onclick="startSession('mix')">▶ セッションを開始</button>`
       : `今日の分は終わりです 🎉<br>やり過ぎず、明日また来てください。<br><br><button class="btn sm" onclick="show('home')">ホームへ</button>`;
@@ -1382,11 +2265,17 @@ function renderStudy(){
   area.classList.remove("hidden"); emp.classList.add("hidden");
   const c=Q[qi]; revealed=false;
   $("#stFront").textContent=c.ja;
+  $("#stHint").textContent=c.ch?("型： "+c.ch):"";
+  $("#stHint").style.display=c.ch?"":"none";
   $("#stEn").textContent=c.en;
-  $("#stKt").textContent=c.kt||toKatakana(c.en);
+  $("#stKt").textContent=c.kt||analyzeKana(c.en).kana;
+  const kc=c.kc||analyzeKana(c.en).careful;
+  $("#stKc").textContent = (S.set.showCareful && kc && kc!==c.kt) ? "ゆっくり： "+kc : "";
   $("#stJa").textContent=c.ja;
-  $("#stNote").textContent=c.note||"";
-  $("#stNote").style.display=c.note?"":"none";
+  const put=(id,label,val)=>{ const el=$(id); el.innerHTML=val?`<b>${label}</b>　${esc(val)}`:""; el.style.display=val?"":"none"; };
+  put("#stNote","使い方",c.note);
+  put("#stGram","文法",c.gr);
+  put("#stSnd","音の変化",(c.snd&&c.snd.length)?c.snd.join(" / "):"");
   $("#stBack").classList.add("hidden");
   $("#grades").classList.add("hidden");
   $("#btnReveal").classList.remove("hidden");
@@ -1405,14 +2294,14 @@ function reveal(){
 }
 $("#btnReveal").onclick=reveal;
 $("#btnSpeak").onclick=()=>{ if(Q[qi]) speak(Q[qi].en); };
-$("#btnSlow").onclick =()=>{ if(Q[qi]) speak(Q[qi].en,0.65); };
+$("#btnSlow").onclick =()=>{ if(Q[qi]) speak(Q[qi].en,0.6); };
 $("#grades").onclick=e=>{
   const b=e.target.closest(".g"); if(!b) return;
   const g=+b.dataset.g, c=Q[qi];
   grade(c,g); if(g===1) Q.push(c);
   qi++; renderStudy();
 };
-document.addEventListener("keydown", e=>{
+document.addEventListener("keydown",e=>{
   if(!$("#v-study").classList.contains("on")) return;
   if(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA") return;
   if(e.code==="Space"){ e.preventDefault(); if(!revealed) reveal(); }
@@ -1420,34 +2309,83 @@ document.addEventListener("keydown", e=>{
   if(e.key==="r"||e.key==="R") $("#btnSpeak").click();
 });
 
-/* ---- Cards ---- */
+/* ================= 型（チャンク）ドリル ================= */
+let curPat=null;
+function renderPatterns(){
+  const list=PATTERNS.filter(p=>p.c===S.course);
+  $("#patList").innerHTML=list.map((p,i)=>
+    `<button class="pat ${curPat===p?"on":""}" data-i="${i}">
+       <div class="pp">${esc(p.p)}</div><div class="pj">${esc(p.ja)}</div></button>`).join("");
+  $("#patList").onclick=e=>{
+    const b=e.target.closest(".pat"); if(!b) return;
+    curPat=list[+b.dataset.i]; renderPatterns(); renderPatDetail();
+  };
+  if(!curPat || curPat.c!==S.course){ curPat=list[0]||null; }
+  renderPatDetail();
+}
+function renderPatDetail(){
+  const p=curPat;
+  if(!p){ $("#patDetail").innerHTML=""; return; }
+  const rows=p.ex.map(([fill,ja])=>{
+    const en=p.p.replace("___",fill.split(" / ")[0]);
+    const a=analyzeKana(en);
+    return `<div class="pex" data-en="${esc(en)}">
+      <div class="pe">${esc(en)}</div>
+      <div class="pk">${esc(a.kana)}</div>
+      <div class="pjj">${esc(ja)}</div>
+      <button class="sbtn js-psay">🔊</button></div>`;
+  }).join("");
+  $("#patDetail").innerHTML=`
+    <div class="box">
+      <div class="patbig">${esc(p.p)}</div>
+      <div class="patja">${esc(p.ja)}</div>
+      <div class="note" style="margin-top:10px"><b>なぜ強いか</b>　${esc(p.why)}</div>
+      <div class="gram" style="margin-top:7px"><b>文法</b>　${esc(p.gr)}</div>
+    </div>
+    <h2 class="t">入れ替えて口に出す</h2>
+    <div class="box tight">${rows}</div>
+    <button class="btn sec" id="btnPatAdd" style="margin-top:4px">この型の例文をカードに追加</button>`;
+  $("#patDetail").querySelectorAll(".js-psay").forEach(b=>{
+    b.onclick=()=>speak(b.closest(".pex").dataset.en);
+  });
+  $("#btnPatAdd").onclick=()=>{
+    let k=0;
+    p.ex.forEach(([fill,ja])=>{
+      const en=p.p.replace("___",fill.split(" / ")[0]);
+      if(S.cards.some(c=>c.en===en)) return;
+      S.cards.push(newCard({en, ja, ch:p.p, gr:p.gr, note:p.why, s:"custom", lv:2}));
+      k++;
+    });
+    save(); renderHome();
+    toast(k?`${k}枚を追加しました`:"すでに追加済みです");
+  };
+}
+
+/* ================= カード一覧 ================= */
 let tagFilter="";
 function renderCards(){
   const q=$("#qSearch").value.trim().toLowerCase();
   const used=[...new Set(S.cards.map(c=>c.s))];
   $("#tagChips").innerHTML=[`<button class="chip ${tagFilter===""?"on":""}" data-t="">すべて (${S.cards.length})</button>`]
-    .concat(used.map(s=>{
-      const l=(SCENES.find(x=>x.id===s)||{}).label||(s==="ai"?"AI生成":"自分の追加");
-      return `<button class="chip ${tagFilter===s?"on":""}" data-t="${s}">${l} (${S.cards.filter(c=>c.s===s).length})</button>`;
-    })).join("");
+    .concat(used.map(s=>`<button class="chip ${tagFilter===s?"on":""}" data-t="${s}">${sceneLabel(s)} (${S.cards.filter(c=>c.s===s).length})</button>`)).join("");
   const list=S.cards.filter(c=>
     (!tagFilter||c.s===tagFilter) &&
-    (!q||(c.en+c.ja+(c.note||"")).toLowerCase().includes(q))
+    (!q||(c.en+c.ja+(c.note||"")+(c.ch||"")).toLowerCase().includes(q))
   ).sort((a,b)=>a.due<b.due?-1:1);
   $("#cardList").innerHTML=list.length
     ? list.map(c=>phraseHTML(c,{del:true,due:true})).join("")
-    : `<div class="empty">カードがありません。<br>「生成」タブでフレーズを作って追加してください。</div>`;
+    : `<div class="empty">カードがありません。<br>ホームからコースを追加してください。</div>`;
 }
 $("#qSearch").oninput=renderCards;
 $("#tagChips").onclick=e=>{ const c=e.target.closest(".chip"); if(!c) return; tagFilter=c.dataset.t; renderCards(); };
 $("#btnAddManual").onclick=()=>{
   const en=prompt("英語フレーズ"); if(!en) return;
-  const ja=prompt("日本語訳")||"", note=prompt("メモ（任意）")||"";
-  S.cards.push(newCard({en:en.trim(),ja:ja.trim(),note:note.trim(),s:"custom"}));
+  const ja=prompt("日本語訳")||"", ch=prompt("型（任意）例: Could I get ___?")||"";
+  S.cards.push(newCard({en:en.trim(),ja:ja.trim(),ch:ch.trim(),s:"custom"}));
   save(); renderCards(); renderHome(); toast("追加しました");
 };
 
-/* ---- Method / Settings ---- */
+/* ================= 設定 ================= */
 $("#methodList").innerHTML=METHOD.map((m,i)=>
   `<details class="acc" ${i===0?"open":""}><summary>${i+1}. ${esc(m.t)}</summary><div class="bd">${esc(m.b)}</div></details>`).join("");
 
@@ -1455,43 +2393,39 @@ function fillModelSelect(){
   const sel=$("#setModel"); if(!sel) return;
   const cur=S.api.model;
   const opts=GEMINI_MODELS.length?GEMINI_MODELS.slice():[];
-  if(cur && !opts.includes(cur)) opts.unshift(cur);
+  if(cur&&!opts.includes(cur)) opts.unshift(cur);
   sel.innerHTML=opts.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join("");
   sel.value=cur;
-  $("#modelCount").textContent = GEMINI_MODELS.length
-    ? `このキーで使えるモデル ${GEMINI_MODELS.length} 件を検出しました。` : "";
+  $("#modelCount").textContent=GEMINI_MODELS.length?`使えるモデル ${GEMINI_MODELS.length} 件を検出。`:"";
 }
 $("#btnDetect").onclick=async()=>{
   if(!$("#setKey").value.trim()) return toast("APIキーを入力してください");
   $("#btnSaveApi").click();
   const b=$("#btnDetect"); b.disabled=true; b.innerHTML='<span class="load"></span>検出中…';
-  try{
-    const best=await pickGeminiModel();
-    S.api.model=best; save(); fillModelSelect(); updGenMode();
-    toast(`検出しました：${best} を使用します`,4000);
+  try{ const best=await pickGeminiModel(); S.api.model=best; save(); fillModelSelect(); updGenMode();
+    toast(`検出しました：${best}`,4000);
   }catch(e){ console.warn(e); toast("失敗："+explainErr(e),6000); }
   finally{ b.disabled=false; b.textContent="使えるモデルを検出"; }
 };
 $("#setModel").onchange=()=>{ S.api.model=$("#setModel").value; save(); updGenMode(); };
-
 function syncProviderUI(){
-  const gem = S.api.provider==="gemini";
-  $("#rowUrl").style.display = gem ? "none" : "";
-  $("#gemHelp").style.display = gem ? "" : "none";
-  $("#oaiHelp").style.display = gem ? "none" : "";
+  const gem=S.api.provider==="gemini";
+  $("#rowUrl").style.display=gem?"none":"";
+  $("#gemHelp").style.display=gem?"":"none";
+  $("#oaiHelp").style.display=gem?"none":"";
 }
 $("#setProvider").onchange=e=>{
   S.api.provider=e.target.value;
-  S.api.model = S.api.provider==="gemini" ? "gemini-2.5-flash" : "gpt-4o-mini";
+  S.api.model=S.api.provider==="gemini"?"gemini-2.5-flash":"gpt-4o-mini";
   GEMINI_MODELS=[]; fillModelSelect(); syncProviderUI();
 };
 function fillSettings(){
   $("#setGoal").value=S.set.goal; $("#setNew").value=S.set.newMax;
   $("#setRate").value=S.set.rate; $("#rateLbl").textContent=(+S.set.rate).toFixed(2);
+  $("#setCareful").checked=!!S.set.showCareful;
   $("#setProvider").value=S.api.provider;
   fillModelSelect();
-  $("#setUrl").value=S.api.url;
-  $("#setKey").value=S.api.key;
+  $("#setUrl").value=S.api.url; $("#setKey").value=S.api.key;
   syncProviderUI(); loadVoices(); updGenMode();
   if(!Store.ok) $("#storeWarn").classList.remove("hidden");
 }
@@ -1501,6 +2435,7 @@ $("#btnSaveSet").onclick=()=>{
   S.set.newMax=Math.max(0,+$("#setNew").value||8);
   S.set.rate=+$("#setRate").value||1;
   S.set.voice=$("#setVoice").value||"";
+  S.set.showCareful=$("#setCareful").checked;
   save(); renderHome(); toast("設定を保存しました");
 };
 $("#btnSaveApi").onclick=()=>{
@@ -1516,17 +2451,15 @@ $("#btnTestApi").onclick=async()=>{
   const b=$("#btnTestApi"); b.disabled=true; b.innerHTML='<span class="load"></span>接続中…';
   try{
     if(S.api.provider==="gemini"){
-      const best=await pickGeminiModel();
-      S.api.model=best; save(); fillModelSelect();
+      const best=await pickGeminiModel(); S.api.model=best; save(); fillModelSelect();
       b.innerHTML='<span class="load"></span>'+best+' を確認中…';
     }
     const r=await aiGenerate("会議を始める",2,"business");
-    toast(`接続OK（${S.api.model}）：例）`+r[0].en, 5000);
+    toast(`接続OK（${S.api.model}）：例）`+r[0].en,5000);
   }catch(e){ console.warn(e); toast("失敗："+explainErr(e),6000); }
   finally{ b.disabled=false; b.textContent="接続テスト"; updGenMode(); }
 };
 $("#btnSet").onclick=()=>show("more");
-
 $("#btnExport").onclick=()=>{
   const b=new Blob([JSON.stringify(S,null,2)],{type:"application/json"});
   const a=document.createElement("a");
@@ -1539,6 +2472,7 @@ $("#fileIn").onchange=e=>{
   r.onload=()=>{ try{
     const o=JSON.parse(r.result); if(!o.cards) throw 0;
     S=Object.assign(structuredClone(DEF),o);
+    S.cards=(S.cards||[]).map(migrate);
     save(); fillSettings(); renderHome(); renderCards();
     $("#driveClientId").value=(S.drive&&S.drive.clientId)||""; renderDriveUI();
     toast("復元しました");
@@ -1552,30 +2486,34 @@ $("#btnReset").onclick=()=>{
   $("#driveClientId").value=""; renderDriveUI(); show("home");
 };
 
-/* ================= init ================= */
+/* ================= 起動 ================= */
 window.show=show; window.startSession=startSession;
 
-if(S.cards.length===0 && !Store.get(KEY+".seeded")){
-  const starter=["Let's get started.","Just to make sure I understand correctly...",
-    "Sorry, could you say that again?","We're on track for the September launch.",
-    "I see your point, but I have a slightly different view.","Let me check and get back to you.",
-    "I think you're on mute.","Could you elaborate on that?","I want to flag a potential risk.",
-    "Let me walk you through the numbers.","Does Thursday afternoon work for you?",
-    "Let me summarize what we've agreed."];
-  SEED.filter(p=>starter.includes(p.en)).forEach(p=>S.cards.push(newCard({...p,kt:toKatakana(p.en)})));
-  Store.set(KEY+".seeded","1"); save();
+/* 初回のみ：Phase1の入門12枚を投入 */
+if(S.cards.length===0 && !Store.get(KEY+".seeded2")){
+  const starter=["Could I get a coffee, please?","Could you help me?","How do I get to the station?",
+    "I have a reservation.","A table for two, please.","How much is this?",
+    "Sorry, I didn't catch that.","I'd like to make a reservation for tomorrow.",
+    "Could you speak a little more slowly?","I'm just looking, thanks.",
+    "Could I try this on?","Thanks, I appreciate it."];
+  SEED.filter(p=>starter.includes(p.en)).forEach(p=>S.cards.push(newCard(p)));
+  Store.set(KEY+".seeded2","1"); save();
 }
+
+/* コース選択肢を生成 */
+$("#courseSel").innerHTML = COURSES.map(c=>
+  `<option value="${c.id}">${esc(c.name)}（${c.weeks}週）</option>`).join("");
 
 fillSettings();
 renderHome();
+renderPatterns();
 bindDrive();
 
-/* 設定済みなら起動時に静かに1回同期 */
 if(driveAvailable() && S.drive.lastSync){
-  setTimeout(async ()=>{
+  setTimeout(async()=>{
     try{ await driveSync(); toast("Driveと同期しました"); }
-    catch(e){ console.warn("auto-sync skipped:", e); }
-  }, 1500);
+    catch(e){ console.warn("auto-sync skipped:",e); }
+  },1500);
 }
 
 </script>
