@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BizEng Trainer — 会議で通用する英語を、毎日10分</title>
+<meta name="theme-color" content="#0f172a">
+<style>
+:root{
+  --bg:#0b1220; --bg2:#111c31; --card:#16233c; --card2:#1d2d4d;
+  --line:#27395c; --tx:#e8eefb; --tx2:#9fb0cd; --acc:#4f9cff; --acc2:#22c39a;
+  --warn:#f0a63a; --bad:#f2607a; --good:#39d39a;
+  --r:14px; --sh:0 6px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;}
+body{padding-bottom:88px}
+a{color:var(--acc)}
+button{font-family:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:14px}
+header.top{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,rgba(11,18,32,.98),rgba(11,18,32,.86));
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topin{max-width:820px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.logo{font-weight:800;letter-spacing:.3px;font-size:16px}
+.logo span{color:var(--acc)}
+.spacer{flex:1}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:12px;color:var(--tx2);white-space:nowrap}
+.pill b{color:var(--tx)}
+.pill.fire{color:#ffd08a;border-color:#584021}
+.icobtn{background:var(--card);border:1px solid var(--line);color:var(--tx2);border-radius:10px;
+  width:34px;height:34px;font-size:15px;cursor:pointer}
+.icobtn:hover{color:var(--tx);border-color:var(--acc)}
+
+nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(13,21,38,.97);
+  backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:6px 0 max(6px,env(safe-area-inset-bottom))}
+.tabsin{max-width:820px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.tab{background:none;border:0;color:var(--tx2);padding:7px 2px;font-size:10.5px;cursor:pointer;border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.2}
+.tab i{font-style:normal;font-size:18px;filter:grayscale(1) opacity(.75)}
+.tab.on{color:var(--acc);background:rgba(79,156,255,.10)}
+.tab.on i{filter:none}
+
+section.view{display:none;animation:fade .18s ease}
+section.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+h2.t{font-size:15px;margin:18px 0 8px;color:var(--tx)}
+h2.t:first-child{margin-top:6px}
+.sub{color:var(--tx2);font-size:12.5px;line-height:1.7;margin:0 0 10px}
+
+.box{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:12px}
+.box.tight{padding:11px}
+.box.warn{border-color:#6b4a1e;background:#241d10}
+label.lb{display:block;font-size:12px;color:var(--tx2);margin:0 0 5px}
+textarea,input[type=text],input[type=password],select{
+  width:100%;background:var(--bg2);border:1px solid var(--line);color:var(--tx);border-radius:10px;
+  padding:11px 12px;font-size:14px;outline:none;resize:vertical}
+textarea:focus,input:focus,select:focus{border-color:var(--acc)}
+textarea{min-height:78px;line-height:1.6}
+.btn{background:var(--acc);border:0;color:#04122b;font-weight:700;border-radius:11px;padding:12px 16px;
+  font-size:14px;cursor:pointer;width:100%}
+.btn:active{transform:translateY(1px)}
+.btn.sec{background:var(--card2);color:var(--tx);border:1px solid var(--line);font-weight:600}
+.btn.gh{background:transparent;color:var(--tx2);border:1px solid var(--line);font-weight:600}
+.btn.sm{padding:8px 12px;font-size:12.5px;width:auto}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row>*{flex:1}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0 0}
+.chip{background:var(--bg2);border:1px solid var(--line);color:var(--tx2);border-radius:999px;
+  padding:7px 12px;font-size:12px;cursor:pointer}
+.chip:hover,.chip.on{border-color:var(--acc);color:var(--tx)}
+
+.pc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:13px;margin-bottom:10px}
+.pc .en{font-size:17px;font-weight:650;line-height:1.45;letter-spacing:.1px}
+.pc .kt{color:#ffd9a8;font-size:12.5px;margin-top:6px;letter-spacing:.4px}
+.pc .ja{color:var(--tx2);font-size:13px;margin-top:5px;line-height:1.6}
+.pc .note{color:#8fd9c4;font-size:11.5px;margin-top:7px;line-height:1.6;
+  border-left:2px solid #2c6b5c;padding-left:8px}
+.pc .bar{display:flex;gap:6px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.tag{font-size:10.5px;color:var(--tx2);background:var(--bg2);border:1px solid var(--line);
+  border-radius:6px;padding:3px 7px}
+.tag.lv{color:#9fd0ff;border-color:#2a4a75}
+.sbtn{background:var(--bg2);border:1px solid var(--line);color:var(--tx);border-radius:9px;
+  padding:7px 11px;font-size:12.5px;cursor:pointer}
+.sbtn:hover{border-color:var(--acc)}
+.sbtn.added{color:var(--good);border-color:#1f5b48}
+
+.stage{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);
+  border-radius:18px;padding:22px 16px;min-height:260px;display:flex;flex-direction:column;
+  justify-content:center;text-align:center;box-shadow:var(--sh)}
+.stage .prompt{font-size:12px;color:var(--tx2);margin-bottom:12px;letter-spacing:.5px}
+.stage .jabig{font-size:19px;line-height:1.7;font-weight:600}
+.stage .enbig{font-size:22px;line-height:1.5;font-weight:700;margin-top:4px}
+.stage .ktbig{color:#ffd9a8;font-size:13px;margin-top:10px;letter-spacing:.6px}
+.stage .jasm{color:var(--tx2);font-size:13.5px;margin-top:8px}
+.hidden{display:none!important}
+.grades{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:12px}
+.g{border:0;border-radius:11px;padding:12px 4px;font-size:12.5px;font-weight:700;cursor:pointer;color:#04122b}
+.g small{display:block;font-weight:500;font-size:10px;opacity:.75;margin-top:2px}
+.g1{background:var(--bad);color:#fff}.g2{background:var(--warn)}.g3{background:var(--acc)}.g4{background:var(--good)}
+.prog{height:5px;background:var(--bg2);border-radius:99px;overflow:hidden;margin:10px 0 14px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0%;transition:width .3s}
+
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.st b{display:block;font-size:22px;line-height:1.2}
+.st span{font-size:10.5px;color:var(--tx2)}
+.heat{display:grid;grid-template-columns:repeat(auto-fill,minmax(13px,1fr));gap:3px;margin-top:8px}
+.hc{aspect-ratio:1;border-radius:3px;background:#1a2740}
+.hc.l1{background:#1d4d40}.hc.l2{background:#25795f}.hc.l3{background:#2fae83}.hc.l4{background:#43e0a8}
+
+.empty{text-align:center;color:var(--tx2);font-size:13px;padding:34px 10px;line-height:1.8}
+.note-sm{font-size:11.5px;color:var(--tx2);line-height:1.7}
+.sp{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.sp input{flex:1}
+details.acc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:9px}
+details.acc summary{cursor:pointer;font-size:13.5px;font-weight:600;list-style:none}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary:before{content:"▸ ";color:var(--acc)}
+details.acc[open] summary:before{content:"▾ "}
+details.acc .bd{font-size:12.5px;color:var(--tx2);line-height:1.85;margin-top:9px}
+.toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%) translateY(20px);opacity:0;
+  background:#22364f;border:1px solid var(--line);color:var(--tx);padding:10px 16px;border-radius:11px;
+  font-size:13px;z-index:99;transition:.25s;pointer-events:none;box-shadow:var(--sh);max-width:88%;line-height:1.6}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.load{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);
+  border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes sp{to{transform:rotate(360deg)}}
+hr.d{border:0;border-top:1px solid var(--line);margin:14px 0}
+.ol{margin:6px 0 0;padding-left:18px;font-size:11.5px;color:var(--tx2);line-height:1.9}
+code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:11px;word-break:break-all}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="topin">
+    <div class="logo">Biz<span>Eng</span> Trainer</div>
+    <div class="spacer"></div>
+    <div class="pill fire" id="pStreak">🔥 <b>0</b>日</div>
+    <div class="pill" id="pDue">復習 <b>0</b></div>
+    <button class="icobtn" id="btnSet" title="設定">⚙</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section class="view on" id="v-home">
+  <div class="box">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="flex:1">
+        <div style="font-size:12px;color:var(--tx2)">今日の学習</div>
+        <div style="font-size:20px;font-weight:750;margin-top:2px" id="todayTitle">10分だけ、始めよう</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:26px;font-weight:800" id="todayDone">0</div>
+        <div style="font-size:10.5px;color:var(--tx2)">/ <span id="todayGoal">20</span> 枚</div>
+      </div>
+    </div>
+    <div class="prog" style="margin:12px 0"><i id="todayBar"></i></div>
+    <button class="btn" id="btnStart">▶ 今日のセッションを開始</button>
+    <div class="row" style="margin-top:8px">
+      <button class="btn sec sm" id="btnQuickNew" style="flex:1">新規カードだけ</button>
+      <button class="btn sec sm" id="btnQuickDue" style="flex:1">復習だけ</button>
+    </div>
+  </div>
+
+  <div class="stat">
+    <div class="st"><b id="sTotal">0</b><span>総カード</span></div>
+    <div class="st"><b id="sMastered">0</b><span>定着（21日+）</span></div>
+    <div class="st"><b id="sWeek">0</b><span>今週の回答</span></div>
+  </div>
+
+  <h2 class="t">継続</h2>
+  <div class="box tight">
+    <div class="heat" id="heat"></div>
+    <div class="note-sm" style="margin-top:8px">過去10週間。濃いほどその日の学習量が多い。</div>
+  </div>
+
+  <h2 class="t">今日の一言（ランダム復習）</h2>
+  <div id="randomCard"></div>
+</section>
+
+<section class="view" id="v-gen">
+  <h2 class="t">場面からフレーズを作る</h2>
+  <p class="sub">会議の場面・状況・言いたいことを日本語で入れると、その場で使える表現を生成します。<br>
+  例：「進捗が遅れている理由を、言い訳に聞こえないように説明したい」</p>
+  <div class="box">
+    <label class="lb">場面・状況・言いたいこと</label>
+    <textarea id="genInput" placeholder="例）海外チームとのWeb会議で、相手の提案に反対だが角を立てずに懸念を伝えたい"></textarea>
+    <div class="chips" id="sceneChips"></div>
+    <div class="row" style="margin-top:11px">
+      <select id="genLevel" style="flex:1.2">
+        <option value="business">ビジネス標準（推奨）</option>
+        <option value="simple">やさしく短く（口に出しやすい）</option>
+        <option value="formal">ややフォーマル（役員会・顧客）</option>
+      </select>
+      <select id="genCount" style="flex:.8">
+        <option value="6">6フレーズ</option>
+        <option value="8" selected>8フレーズ</option>
+        <option value="12">12フレーズ</option>
+      </select>
+    </div>
+    <button class="btn" id="btnGen" style="margin-top:10px">✨ フレーズを生成</button>
+    <div class="note-sm" id="genMode" style="margin-top:8px"></div>
+  </div>
+  <div id="genOut"></div>
+</section>
+
+<section class="view" id="v-study">
+  <div class="prog"><i id="studyBar"></i></div>
+  <div id="studyEmpty" class="empty hidden"></div>
+  <div id="studyArea">
+    <div class="stage">
+      <div class="prompt" id="stPrompt">この日本語を、英語で口に出す</div>
+      <div class="jabig" id="stFront">—</div>
+      <div id="stBack" class="hidden">
+        <hr class="d">
+        <div class="enbig" id="stEn"></div>
+        <div class="ktbig" id="stKt"></div>
+        <div class="jasm" id="stJa"></div>
+        <div class="note" id="stNote" style="text-align:left;margin-top:12px"></div>
+      </div>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button class="btn sec" id="btnSpeak">🔊 発音を聞く</button>
+      <button class="btn sec" id="btnSlow">🐢 ゆっくり</button>
+    </div>
+    <button class="btn" id="btnReveal" style="margin-top:8px">答えを見る（Space）</button>
+    <div class="grades hidden" id="grades">
+      <button class="g g1" data-g="1">もう一度<small>&lt;1分</small></button>
+      <button class="g g2" data-g="2">難しい<small id="gi2"></small></button>
+      <button class="g g3" data-g="3">できた<small id="gi3"></small></button>
+      <button class="g g4" data-g="4">余裕<small id="gi4"></small></button>
+    </div>
+    <div class="note-sm" style="margin-top:12px;text-align:center" id="stCounter"></div>
+  </div>
+</section>
+
+<section class="view" id="v-cards">
+  <h2 class="t">カード</h2>
+  <div class="sp">
+    <input type="text" id="qSearch" placeholder="英語・日本語・タグで検索">
+    <button class="btn gh sm" id="btnAddManual">＋手動</button>
+  </div>
+  <div class="chips" id="tagChips"></div>
+  <div id="cardList" style="margin-top:12px"></div>
+</section>
+
+<section class="view" id="v-more">
+  <div class="box warn hidden" id="storeWarn">
+    <div style="font-size:13px;font-weight:700;color:#ffd08a">保存できない環境で動作中</div>
+    <div class="note-sm" style="margin-top:6px">このプレビュー枠ではブラウザの保存領域が使えないため、学習記録はページを閉じると消えます。
+    URLで開くか、ファイルをダウンロードしてブラウザで直接開いてください。</div>
+  </div>
+
+  <h2 class="t">この学習法の根拠</h2>
+  <div id="methodList"></div>
+
+  <h2 class="t">AI生成の接続（任意）</h2>
+  <div class="box">
+    <p class="note-sm" style="margin-top:0">未設定でも、内蔵の195フレーズから場面に合わせて生成します。
+    キーを入れると、どんな場面でも新規に作れます。キーはこの端末内にのみ保存されます。</p>
+
+    <label class="lb" style="margin-top:12px">提供元</label>
+    <select id="setProvider">
+      <option value="gemini">Google Gemini（無料・推奨）</option>
+      <option value="openai">OpenAI互換（要課金）</option>
+    </select>
+
+    <div id="gemHelp" class="note-sm" style="margin-top:8px">
+      <b style="color:var(--tx)">取得手順</b>
+      <ol class="ol">
+        <li><a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a> を開く</li>
+        <li>「APIキーを作成」→ 一覧の行の<b>コピーアイコン</b>で全文をコピー</li>
+        <li>下に貼り付け →「使えるモデルを検出」→「接続テスト」</li>
+      </ol>
+      無料枠のまま使えます。お支払い情報の設定は不要です。
+    </div>
+    <div id="oaiHelp" class="note-sm" style="margin-top:8px;display:none">
+      OpenAIは事前入金が必要です。一部の互換エンドポイントは<b>ブラウザから直接呼べません（CORS）</b>。
+      失敗する場合はGeminiをお使いください。
+    </div>
+
+    <div id="rowUrl">
+      <label class="lb" style="margin-top:11px">エンドポイント</label>
+      <input type="text" id="setUrl" placeholder="https://api.openai.com/v1/chat/completions">
+    </div>
+
+    <label class="lb" style="margin-top:11px">APIキー</label>
+    <input type="password" id="setKey" placeholder="貼り付け">
+
+    <label class="lb" style="margin-top:11px">モデル</label>
+    <select id="setModel"></select>
+    <div class="note-sm" id="modelCount" style="margin-top:5px"></div>
+    <button class="btn gh sm" id="btnDetect" style="margin-top:7px;width:100%">使えるモデルを検出</button>
+
+    <div class="row" style="margin-top:11px">
+      <button class="btn sec" id="btnSaveApi">保存</button>
+      <button class="btn gh" id="btnTestApi">接続テスト</button>
+    </div>
+  </div>
+
+  <h2 class="t">Google Drive 同期</h2>
+
+  <div class="box warn hidden" id="driveLocalWarn">
+    <div style="font-size:13px;font-weight:700;color:#ffd08a">この開き方では同期できません</div>
+    <div class="note-sm" style="margin-top:6px">
+      Googleは認証を許可する場所をURLで登録する必要があり、ファイルを直接開いた状態（<code>file://</code>）は登録できません。
+      <b style="color:var(--tx)">GitHub Pages などに置いて、URLで開いてください。</b>
+      そうすればPC・スマホどこからでも同じURLで使えます。
+      <br><br>当面はこのページ下部の<b>エクスポート／インポート</b>で手動移行できます。
+    </div>
+  </div>
+
+  <div class="box hidden" id="drivePanel">
+    <div class="note-sm" id="driveStatus" style="margin-top:0"></div>
+    <button class="btn" id="btnDriveSync" style="margin-top:10px">🔄 今すぐ同期</button>
+    <button class="btn gh sm hidden" id="btnDriveOff" style="margin-top:7px;width:100%">同期を解除</button>
+
+    <details class="acc" style="margin-top:12px;background:var(--bg2)">
+      <summary>初回セットアップ</summary>
+      <div class="bd">
+        現在のURL：<code id="driveOrigin"></code><br>
+        この値をGoogle側に登録します。
+        <ol class="ol">
+          <li><a href="https://console.cloud.google.com/projectcreate" target="_blank" rel="noopener">Google Cloud</a> でプロジェクトを作成</li>
+          <li><a href="https://console.cloud.google.com/apis/library/drive.googleapis.com" target="_blank" rel="noopener">Google Drive API</a> を「有効にする」</li>
+          <li>「APIとサービス」→「OAuth同意画面」を設定（User type は<b>外部</b>、自分のGoogleアカウントを<b>テストユーザー</b>に追加）</li>
+          <li>「認証情報」→「認証情報を作成」→「OAuth クライアント ID」→ 種類は<b>ウェブアプリケーション</b></li>
+          <li><b>承認済みのJavaScript生成元</b>に上のURLを貼り付けて作成</li>
+          <li>できたクライアントIDを下に貼り付けて「保存」→「今すぐ同期」</li>
+        </ol>
+        保存先はDriveの<b>アプリデータフォルダ</b>（このアプリ専用の隠し領域）です。
+        ドライブ画面には出ず、他のアプリからは読めません。あなたのファイルへのアクセス権は要求しません。
+      </div>
+    </details>
+
+    <label class="lb" style="margin-top:11px">OAuth クライアントID</label>
+    <input type="text" id="driveClientId" placeholder="000000-xxxx.apps.googleusercontent.com">
+    <button class="btn sec" id="btnDriveSave" style="margin-top:9px">保存</button>
+    <div class="note-sm" style="margin-top:8px">
+      両方の端末で学習していても、カードと履歴は<b>統合</b>されます（学習が進んでいる方を採用）。上書きで消えることはありません。
+    </div>
+  </div>
+
+  <h2 class="t">設定</h2>
+  <div class="box">
+    <label class="lb">1日の目標カード数</label>
+    <input type="text" id="setGoal" inputmode="numeric">
+    <label class="lb" style="margin-top:11px">1日の新規カード上限</label>
+    <input type="text" id="setNew" inputmode="numeric">
+    <label class="lb" style="margin-top:11px">読み上げ音声（米国英語）</label>
+    <select id="setVoice"></select>
+    <label class="lb" style="margin-top:11px">読み上げ速度 <span id="rateLbl">1.0</span></label>
+    <input type="range" id="setRate" min="0.6" max="1.2" step="0.05" value="1" style="width:100%">
+    <button class="btn sec" id="btnSaveSet" style="margin-top:12px">設定を保存</button>
+  </div>
+
+  <h2 class="t">データ</h2>
+  <div class="box">
+    <div class="row">
+      <button class="btn gh" id="btnExport">エクスポート</button>
+      <button class="btn gh" id="btnImport">インポート</button>
+    </div>
+    <button class="btn gh" id="btnReset" style="margin-top:8px;color:var(--bad)">すべて削除</button>
+    <input type="file" id="fileIn" accept="application/json" class="hidden">
+  </div>
+  <div style="height:20px"></div>
+</section>
+
+</div>
+
+<nav class="tabs">
+  <div class="tabsin">
+    <button class="tab on" data-v="home"><i>🏠</i>ホーム</button>
+    <button class="tab" data-v="gen"><i>✨</i>生成</button>
+    <button class="tab" data-v="study"><i>🎯</i>学習</button>
+    <button class="tab" data-v="cards"><i>🗂</i>カード</button>
+    <button class="tab" data-v="more"><i>📚</i>方法・設定</button>
+  </div>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+/* ===== 英語 → カタカナ発音（米国発音の近似） ===== */
+const KANA_DICT_RAW = `
+a:ア able:エイボゥ about:アバウト above:アバヴ accept:アクセプト according:アコーディング account:アカウント across:アクロス action:アクション actually:アクチュアリー add:アド additional:アディショナル address:アドレス adjust:アジャスト advance:アドヴァンス after:アフター afternoon:アフタヌーン again:アゲン against:アゲンスト agenda:アジェンダ agree:アグリー agreed:アグリード agreement:アグリーメント ahead:アヘッド aim:エイム align:アライン aligned:アラインド all:オール allow:アラウ almost:オールモウスト already:オールレディ also:オールソウ always:オールウェイズ am:アム an:アン and:アンド angle:アングゥ another:アナザー answer:アンサー any:エニー anymore:エニモア anything:エニシング anytime:エニタイム anyway:エニウェイ apologize:アポロジャイズ apology:アポロジー appreciate:アプリーシエイト approach:アプロウチ approval:アプルーヴァル approve:アプルーヴ april:エイプリル are:アー area:エリア around:アラウンド arrange:アレインジ as:アズ ask:アスク assume:アシューム assumption:アサンプション at:アット attached:アタッチト august:オーガスト available:アヴェイラボゥ avoid:アヴォイド away:アウェイ
+b:ビー back:バック background:バックグラウンド bad:バッド based:ベイスト basically:ベイシカリー be:ビー because:ビコーズ become:ビカム been:ビン before:ビフォー begin:ビギン behind:ビハインド being:ビーイング believe:ビリーヴ below:ビロウ best:ベスト better:ベター between:ビトゥウィーン big:ビッグ bit:ビット blocker:ブロッカー blocking:ブロッキング board:ボード both:ボウス bottleneck:ボトゥネック bottom:ボトム break:ブレイク breaker:ブレイカー breaking:ブレイキング breaks:ブレイクス bring:ブリング budget:バジェット build:ビゥド business:ビズネス busy:ビジー but:バット by:バイ
+calendar:キャレンダー call:コール came:ケイム camera:キャメラ can:キャン cannot:キャナット care:ケア carefully:ケアフリー case:ケイス catch:キャッチ causation:コーゼイション cause:コーズ certain:サートゥン challenge:チャレンジ change:チェインジ changed:チェインジド changes:チェインジズ chase:チェイス chat:チャット check:チェック choice:チョイス circulate:サーキュレイト clarify:クラリファイ clear:クリア clearly:クリアリー close:クロウズ closed:クロウズド closer:クロウサー come:カム comes:カムズ comment:コメント comments:コメンツ commit:コミット common:コモン company:カンパニー compare:コンペア compiling:コンパイリング complete:コンプリート concern:コンサーン concerned:コンサーンド concerns:コンサーンズ conclude:コンクルード condition:コンディション confirm:コンファーム conflict:コンフリクト confusion:コンフュージョン congratulations:コングラチュレイションズ connection:コネクション consider:コンシダー contact:コンタクト continue:コンティニュー correct:コレクト correctly:コレクトリー correlation:コーレレイション cost:コスト could:クド cover:カヴァー create:クリエイト current:カレント customer:カスタマー cut:カット
+data:デイタ date:デイト day:デイ deadline:デッドライン deal:ディーゥ december:ディセンバー decide:ディサイド decision:ディシジョン defer:ディファー definitely:デフィニトリー delay:ディレイ deliver:デリヴァー depend:ディペンド design:ディザイン detail:ディーテイル details:ディーテイルズ development:ディヴェロプメント did:ディド difference:ディファレンス different:ディファレント difficult:ディフィカゥト disagree:ディスアグリー disconnected:ディスコネクティド discuss:ディスカス discussion:ディスカッション dive:ダイヴ do:ドゥ doable:ドゥーアボゥ documentation:ドキュメンテイション does:ダズ doing:ドゥーイング done:ダン down:ダウン draft:ドラフト drive:ドライヴ drop:ドロップ due:デュー during:デュアリング
+each:イーチ earlier:アーリアー early:アーリー easy:イージー echo:エコウ effect:イフェクト effort:エフォート either:イーザー elaborate:イラボレイト else:エゥス end:エンド enough:イナフ ensure:インシュア entire:インタイア error:エラー especially:イスペシャリー even:イーヴン ever:エヴァー every:エヴリー everyone:エヴリワン everything:エヴリシング exactly:イグザクトリー example:イグザンポゥ except:イクセプト expect:イクスペクト expected:イクスペクティド experience:イクスピアリエンス explain:イクスプレイン eye:アイ
+face:フェイス fact:ファクト factory:ファクトリー fail:フェイゥ failed:フェイゥド fair:フェア fall:フォール fallback:フォールバック far:ファー fast:ファスト february:フェブラリー feedback:フィードバック feel:フィーゥ few:フュー fifteen:フィフティーン figure:フィギュア file:ファイゥ final:ファイナゥ finalize:ファイナライズ find:ファインド fine:ファイン finish:フィニッシュ first:ファースト five:ファイヴ fix:フィックス flag:フラッグ flexible:フレクサボゥ floor:フロア focus:フォウカス follow:フォロウ follows:フォロウズ for:フォー forward:フォーワード found:ファウンド four:フォー free:フリー friday:フライデイ from:フロム full:フゥ further:ファーザー future:フューチャー
+gap:ギャップ gentle:ジェントゥ get:ゲット give:ギヴ given:ギヴン glad:グラッド go:ゴウ goal:ゴウゥ going:ゴウイング good:グッド got:ガット great:グレイト ground:グラウンド group:グループ guess:ゲス
+had:ハド half:ハーフ handle:ハンドゥ happen:ハプン happy:ハピー hard:ハード has:ハズ have:ハヴ haven:ハヴン having:ハヴィング he:ヒー hear:ヒア held:ヘゥド hello:ハロウ help:ヘゥプ her:ハー here:ヒア high:ハイ him:ヒム his:ヒズ hold:ホウゥド honest:アネスト hope:ホウプ how:ハウ however:ハウエヴァー
+i:アイ idea:アイディア if:イフ impact:インパクト important:インポータント improve:インプルーヴ improving:インプルーヴィング in:イン incomplete:インコンプリート increase:インクリース increased:インクリースト indeed:インディード information:インフォメイション instead:インステッド interested:イントレスティド interrupt:インタラプト into:イントゥ introduce:イントロデュース introductions:イントロダクションズ invite:インヴァイト involved:インヴォゥヴド is:イズ issue:イシュー it:イット item:アイテム items:アイテムズ its:イツ itself:イトセゥフ
+january:ジャニュアリー japan:ジャパン job:ジョブ join:ジョイン joining:ジョイニング july:ジュライ june:ジューン just:ジャスト
+keep:キープ keeping:キーピング kept:ケプト key:キー kind:カインド know:ノウ known:ノウン
+large:ラージ last:ラスト late:レイト later:レイター latest:レイティスト launch:ローンチ lead:リード learn:ラーン least:リースト leave:リーヴ left:レフト less:レス let:レット level:レヴォゥ like:ライク limit:リミット line:ライン list:リスト little:リトゥ lock:ロック logic:ロジック long:ロング look:ルック looked:ルックト loop:ループ lot:ロット low:ロウ
+made:メイド main:メイン major:メイジャー make:メイク makes:メイクス making:メイキング management:マネジメント manager:マネジャー many:メニー march:マーチ market:マーケット material:マティアリアゥ matter:マター may:メイ maybe:メイビー me:ミー mean:ミーン meaning:ミーニング meet:ミート meeting:ミーティング member:メンバー mention:メンション method:メソッド microphone:マイクロフォウン middle:ミドゥ might:マイト milestone:マイゥストウン mind:マインド minute:ミニット minutes:ミニッツ miss:ミス missed:ミスト misspoke:ミススポウク mistake:ミステイク misunderstandings:ミスアンダースタンディングズ moment:モウメント monday:マンデイ money:マニー month:マンス more:モア morning:モーニング most:モウスト move:ムーヴ much:マッチ must:マスト mute:ミュート my:マイ
+name:ネイム near:ニア necessarily:ネセサリリー need:ニード negotiate:ニゴウシエイト never:ネヴァー new:ニュー next:ネクスト nice:ナイス nicole:ニコウゥ no:ノウ noise:ノイズ not:ナット note:ノウト notes:ノウツ nothing:ナッシング notice:ノウティス november:ノヴェンバー now:ナウ number:ナンバー numbers:ナンバーズ
+october:オクトウバー of:オヴ off:オフ offer:オファー offline:オフライン often:オフン okay:オウケイ on:オン once:ワンス one:ワン only:オウンリー open:オウプン opinion:オピニオン option:オプション or:オア order:オーダー other:アザー our:アワー out:アウト outside:アウトサイド over:オウヴァー overall:オウヴァーオール own:オウン
+page:ペイジ part:パート parts:パーツ park:パーク people:ピーポゥ percent:パーセント perhaps:パハプス person:パースン phone:フォウン pilot:パイロット place:プレイス plan:プラン please:プリーズ point:ポイント pointing:ポインティング position:ポジション possible:ポシボゥ potential:ポテンシャゥ prefer:プリファー preliminary:プリリミネリー prepare:プリペア present:プレゼント previous:プリーヴィアス price:プライス principle:プリンシポゥ prioritize:プライオリタイズ priority:プライオリティ probably:プロバブリー problem:プロブレム process:プロセス product:プロダクト productive:プロダクティヴ project:プロジェクト properly:プロパリー protocol:プロウトコール provide:プロヴァイド pull:プゥ push:プッシュ put:プット
+quality:クォリティ quantify:クォンティファイ quarter:クォーター question:クエスチョン questions:クエスチョンズ quick:クイック quickly:クイックリー quite:クワイト
+raise:レイズ raised:レイズド rather:ラザー raw:ロー reach:リーチ read:リード ready:レディ real:リアゥ really:リアリー reason:リーズン reasoning:リーズニング reasons:リーズンズ recap:リーキャップ receive:リスィーヴ recommend:レコメンド recommendation:レコメンデイション red:レッド reduce:リデュース region:リージョン regarding:リガーディング remember:リメンバー reminder:リマインダー repeat:リピート rephrase:リーフレイズ replace:リプレイス reply:リプライ report:リポート reproduce:リープロデュース request:リクエスト require:リクワイア reschedule:リースケジューゥ resourcing:リーソーシング response:リスポンス responsibility:リスポンサビリティ rest:レスト result:リザゥト results:リザゥツ review:リヴュー revisit:リーヴィジット right:ライト risk:リスク role:ロウゥ room:ルーム root:ルート run:ラン running:ラニング
+safer:セイファー said:セッド sales:セイゥズ same:セイム sample:サンポゥ saturday:サタデイ save:セイヴ saw:ソー say:セイ saying:セイイング schedule:スケジューゥ scope:スコウプ screen:スクリーン second:セカンド see:シー seem:シーム send:センド sense:センス september:セプテンバー set:セット several:セヴラゥ shape:シェイプ share:シェア she:シー short:ショート should:シュド show:ショウ shows:ショウズ side:サイド significant:シグニフィカント similar:シミラー simple:シンポゥ simply:シンプリー since:シンス size:サイズ slide:スライド slides:スライズ slightly:スライトリー slipped:スリップト slot:スロット slow:スロウ slowly:スロウリー small:スモーゥ so:ソウ solution:ソルーション some:サム something:サムシング soon:スーン sorry:サリー sound:サウンド speak:スピーク specific:スペシフィック specification:スペシフィケイション speculate:スペキュレイト speed:スピード spend:スペンド staff:スタッフ standpoint:スタンドポイント start:スタート started:スターティド statistically:スタティスティカリー stay:ステイ step:ステップ still:スティゥ stop:ストップ strongly:ストロングリー such:サッチ suggest:サジェスト summarize:サマライズ sunday:サンデイ supplier:サプライアー support:サポート sure:シュア
+take:テイク talk:トーク talking:トーキング target:ターゲット task:タスク team:ティーム technical:テクニカゥ tell:テゥ test:テスト testing:テスティング than:ザン thank:サンク thanks:サンクス that:ザット the:ザ their:ゼア them:ゼム themselves:ゼムセゥヴズ then:ゼン there:ゼア these:ジーズ they:ゼイ thing:シング things:シングズ think:シンク thirty:サーティ this:ジス those:ゾウズ thought:ソート thoughts:ソーツ three:スリー through:スルー thursday:サーズデイ tight:タイト time:タイム timeline:タイムライン timing:タイミング to:トゥ today:トゥデイ together:トゥゲザー tokyo:トウキョウ tomorrow:トゥマロウ too:トゥー topic:トピック total:トウタゥ track:トラック treat:トリート trend:トレンド true:トゥルー try:トライ tuesday:テューズデイ turn:ターン two:トゥー
+under:アンダー underestimate:アンダーエスティメイト understand:アンダースタンド unfortunately:アンフォーチュニトリー unrealistic:アンリアリスティック unstable:アンステイボゥ until:アンティゥ up:アップ update:アップデイト urgent:アージェント us:アス use:ユーズ used:ユーズド
+value:ヴァリュー verify:ヴェリファイ version:ヴァージョン very:ヴェリー view:ヴュー
+wait:ウェイト waiting:ウェイティング walk:ウォーク want:ウォント was:ワズ way:ウェイ we:ウィー weather:ウェザー wednesday:ウェンズデイ week:ウィーク weekend:ウィーケンド weeks:ウィークス well:ウェゥ were:ワー what:ワット when:ウェン where:ウェア whether:ウェザー which:ウィッチ while:ワイゥ who:フー whole:ホウゥ why:ワイ will:ウィゥ with:ウィズ within:ウィズイン without:ウィズアウト work:ワーク works:ワークス world:ワーゥド worries:ワリーズ worry:ワリー worst:ワースト would:ウド wrap:ラップ writing:ライティング written:リトゥン wrong:ロング
+afraid:アフレイド dead:デッド negotiable:ニゴウシャボゥ non:ナン taro:タロウ boss:ボス client:クライアント email:イーメイル ok:オウケイ
+year:イヤー yes:イエス yesterday:イエスタデイ yet:イエット you:ユー your:ユア zones:ゾウンズ
+`;
+
+const KANA_CONTR = {
+ "i'm":"アイム","i'd":"アイド","i'll":"アイゥ","i've":"アイヴ",
+ "you're":"ユア","you'd":"ユード","you'll":"ユーゥ","you've":"ユーヴ",
+ "we're":"ウィア","we'd":"ウィード","we'll":"ウィーゥ","we've":"ウィーヴ",
+ "they're":"ゼア","they'll":"ゼイゥ","they've":"ゼイヴ",
+ "it's":"イッツ","that's":"ザッツ","there's":"ゼアズ","here's":"ヒアズ",
+ "what's":"ワッツ","how's":"ハウズ","let's":"レッツ","who's":"フーズ",
+ "don't":"ドウント","doesn't":"ダズント","didn't":"ディドゥント",
+ "can't":"キャント","won't":"ウォウント","wouldn't":"ウドゥント",
+ "shouldn't":"シュドゥント","couldn't":"クドゥント","isn't":"イズント",
+ "aren't":"アーント","wasn't":"ワズント","weren't":"ワーント",
+ "haven't":"ハヴント","hasn't":"ハズント","hadn't":"ハドゥント",
+ "supplier's":"サプライアーズ","today's":"トゥデイズ"
+};
+
+const KANA_DICT = (()=>{
+  const d = {};
+  KANA_DICT_RAW.split(/\s+/).forEach(p=>{
+    const i=p.indexOf(':'); if(i>0) d[p.slice(0,i)] = p.slice(i+1);
+  });
+  Object.assign(d, KANA_CONTR);
+  return d;
+})();
+
+const KRULES = [
+ ["tion","ション"],["sion","ジョン"],["ture","チャー"],["sure","シャー"],
+ ["ough","オー"],["augh","アフ"],["ight","アイト"],["tch","チ"],
+ ["ck","ック"],["ch","チ"],["sh","シュ"],["th","ス"],["ph","フ"],["wh","ワ"],
+ ["qu","クワ"],["ng","ング"],["nk","ンク"],
+ ["ee","イー"],["ea","イー"],["oo","ウー"],["ou","アウ"],["ow","アウ"],
+ ["oa","オウ"],["oi","オイ"],["oy","オイ"],["au","オー"],["aw","オー"],
+ ["ai","エイ"],["ay","エイ"],["ei","エイ"],["ey","イー"],["ie","アイ"],
+ ["ar","アー"],["er","アー"],["ir","アー"],["ur","アー"],["or","オー"],
+ ["ce","ス"],["ge","ジ"],["le","ゥ"],["re","アー"],
+ ["a","ア"],["b","ブ"],["c","ク"],["d","ド"],["e",""],["f","フ"],
+ ["g","グ"],["h","ハ"],["i","イ"],["j","ジ"],["k","ク"],["l","ル"],
+ ["m","ム"],["n","ン"],["o","オ"],["p","プ"],["q","ク"],["r","ル"],
+ ["s","ス"],["t","ト"],["u","ア"],["v","ヴ"],["w","ウ"],["x","クス"],
+ ["y","イ"],["z","ズ"],["'",""],["-","・"]
+];
+
+function wordToKana(w){
+  const lw = w.toLowerCase();
+  if(KANA_DICT[lw]) return KANA_DICT[lw];
+  const tries = [
+    [/ies$/,"y","ィーズ"],[/es$/,"","ィズ"],[/s$/,"","ス"],
+    [/ed$/,"","ト"],[/ing$/,"","ィング"],[/ly$/,"","リー"],[/er$/,"","アー"]
+  ];
+  for(const [re,rep,suf] of tries){
+    if(re.test(lw)){
+      const base = lw.replace(re,rep);
+      if(KANA_DICT[base]) return KANA_DICT[base]+suf;
+      if(KANA_DICT[base+"e"]) return KANA_DICT[base+"e"]+suf;
+    }
+  }
+  let s = lw, out = "";
+  outer: while(s.length){
+    for(const [pat,kana] of KRULES){
+      if(s.startsWith(pat)){ out += kana; s = s.slice(pat.length); continue outer; }
+    }
+    s = s.slice(1);
+  }
+  return out || w;
+}
+
+function toKatakana(sentence){
+  return String(sentence||"").split(/(\s+)/).map(tok=>{
+    if(/^\s+$/.test(tok)) return " ";
+    const core = tok.replace(/^[^A-Za-z']+|[^A-Za-z']+$/g,"");
+    if(!core) return "";
+    const post = tok.slice(tok.indexOf(core)+core.length);
+    let k = core.split("-").map(wordToKana).join("・");
+    if(/[?]$/.test(post)) k += "？";
+    else if(/[!]$/.test(post)) k += "！";
+    return k;
+  }).join(" ").replace(/\s+/g," ").trim();
+}
+
+
+/* ===== 内蔵フレーズライブラリ（会議英語） ===== */
+const SCENES = [
+  {id:"meeting_open", label:"会議の開始・進行", kw:["開始","進行","アジェンダ","司会","始め","ファシリ"]},
+  {id:"opinion",      label:"意見を述べる",     kw:["意見","主張","提案","考え","述べ"]},
+  {id:"agree",        label:"同意・やんわり反対", kw:["同意","賛成","反対","懸念","異論","角を立て","やんわり"]},
+  {id:"clarify",      label:"確認・聞き返し",   kw:["確認","聞き返","聞き取れ","わからな","もう一度","理解"]},
+  {id:"status",       label:"進捗報告",         kw:["進捗","報告","ステータス","遅れ","予定通り","状況"]},
+  {id:"data",         label:"数値・データ説明", kw:["数値","データ","グラフ","結果","比較","傾向","説明"]},
+  {id:"request",      label:"依頼・催促",       kw:["依頼","お願い","催促","リマインド","頼","巻き取"]},
+  {id:"schedule",     label:"日程調整",         kw:["日程","スケジュール","調整","期限","締切","納期"]},
+  {id:"risk",         label:"問題・リスク提起", kw:["問題","リスク","課題","懸念","トラブル","失敗"]},
+  {id:"wrapup",       label:"まとめ・次アクション", kw:["まとめ","次","アクション","締め","決定","合意"]},
+  {id:"call",         label:"Web会議のトラブル", kw:["web会議","オンライン","音声","接続","画面","共有","聞こえ"]},
+  {id:"smalltalk",    label:"雑談・アイスブレイク", kw:["雑談","アイスブレイク","天気","近況","挨拶"]},
+  {id:"qa",           label:"質疑応答",         kw:["質問","質疑","答え","回答","わからない時"]},
+  {id:"negotiation",  label:"交渉・条件調整",   kw:["交渉","条件","価格","譲歩","落とし所","折衝"]},
+  {id:"apology",      label:"謝罪・訂正",       kw:["謝","訂正","修正","ミス","お詫び","間違"]}
+];
+
+const SEED = [
+{s:"meeting_open",lv:1,en:"Let's get started.",ja:"始めましょう。",note:"最も自然な開始の合図。Let us ではなく Let's。"},
+{s:"meeting_open",lv:1,en:"Thanks for joining on short notice.",ja:"急な招集にご参加いただきありがとうございます。",note:"on short notice＝直前の連絡で。"},
+{s:"meeting_open",lv:2,en:"We have about thirty minutes, so let's keep it tight.",ja:"30分しかないので、手短にいきましょう。",note:"keep it tight＝簡潔に進める。"},
+{s:"meeting_open",lv:2,en:"I'll walk you through the agenda first.",ja:"まずアジェンダをご説明します。",note:"walk 人 through＝順を追って説明する。会議英語の頻出型。"},
+{s:"meeting_open",lv:2,en:"There are three items on the agenda today.",ja:"本日のアジェンダは3件です。",note:"There are + 数 + on the agenda が定型。"},
+{s:"meeting_open",lv:2,en:"Before we dive in, let me give you some background.",ja:"本題に入る前に、背景を少しお話しします。",note:"dive in＝本題に入る。カジュアル寄りだが会議で標準。"},
+{s:"meeting_open",lv:3,en:"The goal today is to make a decision, not just to share information.",ja:"今日のゴールは情報共有ではなく、意思決定です。",note:"not just to ~ で目的を対比させる型。"},
+{s:"meeting_open",lv:2,en:"Could you take notes for us today?",ja:"本日の議事録をお願いできますか。",note:"take notes＝記録を取る。minutes は正式な議事録。"},
+{s:"meeting_open",lv:2,en:"Let's go around and do quick introductions.",ja:"順番に簡単な自己紹介をしましょう。",note:"go around＝順に一周する。"},
+{s:"meeting_open",lv:3,en:"I'd like to park that for now and come back to it later.",ja:"それは一旦保留にして、後ほど戻りましょう。",note:"park＝議題を一旦置く。ファシリテーションの必須表現。"},
+{s:"meeting_open",lv:2,en:"Let's stay on topic and finish this item first.",ja:"論点を戻して、まずこの議題を終えましょう。",note:"stay on topic＝話を脱線させない。"},
+{s:"meeting_open",lv:2,en:"We're running a bit behind, so I'll speed up.",ja:"少し押しているので、巻いていきます。",note:"run behind＝予定より遅れている。"},
+{s:"meeting_open",lv:3,en:"Let's give the floor to Taro for the next item.",ja:"次の議題は太郎さんにお願いします。",note:"give the floor to＝発言権を渡す。ややフォーマル。"},
+
+{s:"opinion",lv:1,en:"In my view, we should go with option B.",ja:"私の考えでは、案Bで進めるべきです。",note:"go with＝〜を採用する。I think より少し強い。"},
+{s:"opinion",lv:2,en:"My recommendation is to start with a small pilot.",ja:"私の提案は、小規模なパイロットから始めることです。",note:"My recommendation is to + 動詞原形。会議で最も使う提案の型。"},
+{s:"opinion",lv:2,en:"I'd like to suggest a slightly different approach.",ja:"少し違うアプローチを提案させてください。",note:"slightly を挟むと反対色が薄れる。"},
+{s:"opinion",lv:2,en:"From a technical standpoint, this is the safer choice.",ja:"技術的な観点では、こちらの方が安全な選択です。",note:"From a ~ standpoint で立場を明示。"},
+{s:"opinion",lv:3,en:"Let me explain the reasoning behind that.",ja:"その理由をご説明します。",note:"reasoning behind＝根拠・考え方。"},
+{s:"opinion",lv:2,en:"There are two reasons for this.",ja:"理由は2つあります。",note:"先に数を言うと聞き手が構造を追いやすい。"},
+{s:"opinion",lv:2,en:"The main point is that we can't verify it in time.",ja:"要点は、期限内に検証できないという点です。",note:"The main point is that + 文。結論を先に置く型。"},
+{s:"opinion",lv:3,en:"If it were up to me, I'd delay the launch by one quarter.",ja:"私に決定権があれば、上市を1四半期遅らせます。",note:"仮定法。If it were up to me＝私次第なら。角が立ちにくい。"},
+{s:"opinion",lv:2,en:"I feel strongly about this point.",ja:"この点については強くそう思っています。",note:"feel strongly＝譲れない、という穏やかな強調。"},
+{s:"opinion",lv:3,en:"I'm not attached to the method, but the deadline is non-negotiable.",ja:"手段にはこだわりませんが、期限は譲れません。",note:"not attached to＝こだわらない。non-negotiable＝交渉の余地なし。"},
+{s:"opinion",lv:2,en:"Just to add one thing to that.",ja:"一点だけ補足させてください。",note:"割り込みを柔らかくする定型。"},
+{s:"opinion",lv:2,en:"Let me build on what Nicole just said.",ja:"ニコルさんの発言に付け加えます。",note:"build on＝人の意見に乗せる。協調的で印象が良い。"},
+{s:"opinion",lv:3,en:"To be clear, I'm not against the plan itself.",ja:"誤解のないように言うと、計画自体に反対ではありません。",note:"To be clear＝念のため明確にすると。"},
+
+{s:"agree",lv:1,en:"That makes sense to me.",ja:"それは納得できます。",note:"make sense＝筋が通る。同意の最頻出。"},
+{s:"agree",lv:1,en:"I'm on board with that.",ja:"それに賛成です。",note:"on board＝同意している、参加している。"},
+{s:"agree",lv:2,en:"I see your point, but I have a slightly different view.",ja:"おっしゃることは分かりますが、私は少し違う見方をしています。",note:"反対の最も安全な入り方。"},
+{s:"agree",lv:2,en:"I agree in principle, but the timing worries me.",ja:"原則賛成ですが、タイミングが気になります。",note:"in principle＝原則としては。条件付き賛成の型。"},
+{s:"agree",lv:2,en:"I'm not sure I follow that logic.",ja:"その論理についていけていない気がします。",note:"直接的な否定を避けつつ疑問を出す。"},
+{s:"agree",lv:3,en:"I'd push back on that a little.",ja:"その点は少し反論させてください。",note:"push back＝異議を唱える。ビジネス頻出。a little で緩和。"},
+{s:"agree",lv:2,en:"That's a fair point.",ja:"それはもっともな指摘です。",note:"相手を立ててから自分の意見に移る前置き。"},
+{s:"agree",lv:3,en:"Help me understand how that works.",ja:"どういう仕組みなのか教えてください。",note:"批判に聞こえずに矛盾を突ける便利な型。"},
+{s:"agree",lv:2,en:"My only concern is the cost.",ja:"唯一気になるのはコストです。",note:"My only concern is ~ で懸念を1点に絞る。"},
+{s:"agree",lv:2,en:"Can we look at this from another angle?",ja:"別の角度から見てみませんか。",note:"from another angle＝別の視点で。"},
+{s:"agree",lv:3,en:"I hear you, but the data doesn't support that yet.",ja:"おっしゃることは分かりますが、データはまだそれを裏付けていません。",note:"I hear you＝理解はしている（同意ではない）。"},
+{s:"agree",lv:2,en:"I'd rather not commit to that today.",ja:"今日その場で確約するのは避けたいです。",note:"would rather not＝〜したくない。丁寧な拒否。"},
+{s:"agree",lv:3,en:"Let's agree to disagree and move on.",ja:"意見の相違は認めて、先に進みましょう。",note:"議論が平行線のときの締め方。"},
+
+{s:"clarify",lv:1,en:"Sorry, could you say that again?",ja:"すみません、もう一度お願いできますか。",note:"最も自然な聞き返し。Pardon? より丁寧に使える。"},
+{s:"clarify",lv:1,en:"Could you speak a little more slowly?",ja:"もう少しゆっくり話していただけますか。",note:"a little を入れると要求が柔らかくなる。"},
+{s:"clarify",lv:2,en:"Just to make sure I understand correctly...",ja:"念のため確認させてください…",note:"確認の前置き。会議で最も使える一言。"},
+{s:"clarify",lv:2,en:"So what you're saying is that the test failed. Is that right?",ja:"つまり、試験は不合格だったということですね。",note:"So what you're saying is ~ で相手の要点を要約確認。"},
+{s:"clarify",lv:2,en:"Could you elaborate on that?",ja:"もう少し詳しく説明していただけますか。",note:"elaborate on＝詳述する。フォーマル寄り。"},
+{s:"clarify",lv:2,en:"What exactly do you mean by 'soon'?",ja:"「近いうち」とは具体的にいつですか。",note:"曖昧な言葉を具体化させる詰め方。"},
+{s:"clarify",lv:2,en:"Let me repeat that back to you.",ja:"復唱させてください。",note:"repeat back＝聞いた内容を返して確認する。"},
+{s:"clarify",lv:2,en:"Sorry, I missed the last part.",ja:"すみません、最後の部分を聞き逃しました。",note:"miss＝聞き逃す。自分の非にして角が立たない。"},
+{s:"clarify",lv:3,en:"Are we talking about the same thing here?",ja:"認識は合っていますか。",note:"議論がかみ合わないときに使う。"},
+{s:"clarify",lv:2,en:"Could you put that in the chat for me?",ja:"チャットに書いていただけますか。",note:"聞き取れない固有名詞・数字に有効。"},
+{s:"clarify",lv:2,en:"Just to confirm, the deadline is the end of March.",ja:"確認ですが、期限は3月末ですね。",note:"Just to confirm ＋ 平叙文で確認。"},
+{s:"clarify",lv:3,en:"I want to make sure we're aligned on this.",ja:"この点で認識を合わせておきたいです。",note:"be aligned on＝認識が揃っている。"},
+{s:"clarify",lv:2,en:"Correct me if I'm wrong.",ja:"違っていたら訂正してください。",note:"自分の理解を述べる前に置く定型。"},
+
+{s:"status",lv:1,en:"We're on track for the September launch.",ja:"9月の上市に向けて予定通りです。",note:"on track for＝〜に向けて順調。進捗報告の基本形。"},
+{s:"status",lv:2,en:"We're about two weeks behind schedule.",ja:"予定より約2週間遅れています。",note:"behind schedule＝遅延。about で断定を避ける。"},
+{s:"status",lv:2,en:"Testing is complete, and we're now compiling the report.",ja:"試験は完了し、現在報告書を作成中です。",note:"完了と現在進行を1文でつなぐ報告の型。"},
+{s:"status",lv:2,en:"The main blocker is the supplier's response.",ja:"最大の障害はサプライヤーからの回答待ちです。",note:"blocker＝進行を止めている要因。"},
+{s:"status",lv:2,en:"Nothing has changed since the last update.",ja:"前回の報告から変更はありません。",note:"変化なしを短く伝える定型。"},
+{s:"status",lv:3,en:"We've closed two of the five open items.",ja:"未解決5件のうち2件を完了しました。",note:"open item＝未処理項目。close＝完了させる。"},
+{s:"status",lv:3,en:"The delay is due to a change in the test protocol, not resourcing.",ja:"遅延の原因は試験手順の変更で、人員不足ではありません。",note:"due to A, not B で誤解を先回りして潰す。"},
+{s:"status",lv:2,en:"We expect to have the results by the end of next week.",ja:"来週末までに結果が出る見込みです。",note:"We expect to have ~ by ... が見込み報告の型。"},
+{s:"status",lv:3,en:"That milestone has slipped to the first quarter.",ja:"そのマイルストーンは第1四半期にずれ込みました。",note:"slip＝予定がずれ込む。自然な遅延表現。"},
+{s:"status",lv:2,en:"I'll send a written update by Friday.",ja:"金曜までに文書で報告します。",note:"written update＝書面での進捗共有。"},
+{s:"status",lv:3,en:"We need a decision this week to stay on schedule.",ja:"予定を守るには今週中の決定が必要です。",note:"依頼を「必要条件」として言うと圧が自然に伝わる。"},
+{s:"status",lv:2,en:"The risk is low, but I'm keeping an eye on it.",ja:"リスクは低いですが、注視しています。",note:"keep an eye on＝注意して見守る。"},
+{s:"status",lv:3,en:"Overall, I'd say we're in good shape.",ja:"全体としては、良い状態だと思います。",note:"in good shape＝順調な状態。総括の締め。"},
+
+{s:"data",lv:1,en:"Let me walk you through the numbers.",ja:"数値をご説明します。",note:"データ説明の入りの定番。"},
+{s:"data",lv:2,en:"As you can see on this slide, the trend is improving.",ja:"このスライドの通り、傾向は改善しています。",note:"As you can see on this slide＝スライド指示の定型。"},
+{s:"data",lv:2,en:"Sales increased by fifteen percent year over year.",ja:"売上は前年比15％増加しました。",note:"increase by ＋ 数値。year over year＝前年同期比。"},
+{s:"data",lv:2,en:"The difference is not statistically significant.",ja:"その差は統計的に有意ではありません。",note:"statistically significant＝統計的に有意。技術会議で必須。"},
+{s:"data",lv:3,en:"This is based on a sample size of thirty.",ja:"これはサンプル数30に基づいています。",note:"be based on＝〜に基づく。前提の明示。"},
+{s:"data",lv:2,en:"The red line shows the specification limit.",ja:"赤線が規格値を示しています。",note:"The 色 line shows ~ でグラフを説明する型。"},
+{s:"data",lv:3,en:"Correlation doesn't necessarily mean causation here.",ja:"ここでは相関が必ずしも因果を意味しません。",note:"データの過剰解釈を止める一言。"},
+{s:"data",lv:2,en:"These are preliminary results, so please treat them as such.",ja:"これは暫定結果ですので、その前提でご覧ください。",note:"preliminary＝暫定の。treat as such＝そのように扱う。"},
+{s:"data",lv:3,en:"We haven't been able to reproduce that result yet.",ja:"その結果はまだ再現できていません。",note:"reproduce＝再現する。実験系の頻出。"},
+{s:"data",lv:2,en:"Let me break that down by region.",ja:"地域別に内訳をお見せします。",note:"break down by＝〜別に分解する。"},
+{s:"data",lv:3,en:"The numbers speak for themselves.",ja:"数字が物語っています。",note:"説明不要なほど明確なとき。強い締め。"},
+{s:"data",lv:2,en:"I'd like to see the raw data before we conclude.",ja:"結論を出す前に生データを確認したいです。",note:"raw data＝生データ。慎重な姿勢を示す。"},
+{s:"data",lv:3,en:"Is that a real effect, or just noise?",ja:"それは実際の効果ですか、それとも単なるばらつきですか。",note:"noise＝測定上のばらつき。鋭いが失礼にならない質問。"},
+
+{s:"request",lv:1,en:"Could you take care of that?",ja:"それをお願いできますか。",note:"take care of＝対応する。最も汎用的な依頼。"},
+{s:"request",lv:2,en:"Would you be able to send it by Wednesday?",ja:"水曜までに送っていただけますか。",note:"Would you be able to ~ は Can you より丁寧。"},
+{s:"request",lv:2,en:"I'd appreciate it if you could review the draft.",ja:"ドラフトをご確認いただけると助かります。",note:"I'd appreciate it if you could ~ は丁寧依頼の王道。"},
+{s:"request",lv:2,en:"Just a gentle reminder about the report.",ja:"報告書の件、念のためのリマインドです。",note:"gentle reminder＝やわらかい催促。メールでも会議でも使える。"},
+{s:"request",lv:3,en:"Is there anything blocking you on this?",ja:"何か進められない理由はありますか。",note:"催促を「支援の申し出」に変える言い方。"},
+{s:"request",lv:2,en:"Could you keep me in the loop?",ja:"私にも共有を続けてください。",note:"keep 人 in the loop＝情報共有の輪に入れておく。"},
+{s:"request",lv:2,en:"Let me know if you need any support from my side.",ja:"こちらでできることがあれば言ってください。",note:"from my side＝自分の側で。"},
+{s:"request",lv:3,en:"Can I ask you to own this item?",ja:"この件の担当をお願いできますか。",note:"own＝責任を持つ。責任の所在を明確にする。"},
+{s:"request",lv:2,en:"This is a bit urgent, unfortunately.",ja:"恐縮ですが、少し急ぎです。",note:"unfortunately を置くと押し付け感が減る。"},
+{s:"request",lv:3,en:"Could you prioritize this over the other task?",ja:"もう一方の作業より、こちらを優先していただけますか。",note:"prioritize A over B＝BよりAを優先する。"},
+{s:"request",lv:2,en:"I'll follow up with you offline.",ja:"この件は個別に連絡します。",note:"offline＝会議の外で、個別に。会議英語の頻出。"},
+{s:"request",lv:2,en:"Sorry to chase you on this.",ja:"催促してしまいすみません。",note:"chase＝催促する。丁寧な督促の定型。"},
+{s:"request",lv:3,en:"Who would be the right person to ask?",ja:"誰に聞くのが適切でしょうか。",note:"the right person to ask＝適任者。"},
+
+{s:"schedule",lv:1,en:"Does Thursday afternoon work for you?",ja:"木曜の午後はご都合いかがですか。",note:"work for you＝都合が合う。日程調整の最頻出。"},
+{s:"schedule",lv:2,en:"I'm free anytime after three.",ja:"3時以降ならいつでも空いています。",note:"free anytime after ~ で空き時間を伝える。"},
+{s:"schedule",lv:2,en:"Let's find a slot that works for both time zones.",ja:"両方の時間帯で成立する枠を探しましょう。",note:"slot＝時間枠。海外会議の必須語。"},
+{s:"schedule",lv:2,en:"Can we push it back by a week?",ja:"1週間後ろ倒しにできますか。",note:"push back＝後ろへずらす。前倒しは move up。"},
+{s:"schedule",lv:2,en:"I have a conflict at that time.",ja:"その時間は別の予定と重なっています。",note:"conflict＝予定の重複。ダブルブッキングの標準語。"},
+{s:"schedule",lv:3,en:"Let's lock in the date before we leave today.",ja:"今日中に日程を確定させましょう。",note:"lock in＝確定する。"},
+{s:"schedule",lv:2,en:"I'll send out a calendar invite.",ja:"カレンダー招待を送ります。",note:"calendar invite＝会議招待。send out が自然。"},
+{s:"schedule",lv:2,en:"Can we keep it to thirty minutes?",ja:"30分に収められますか。",note:"keep it to ~＝〜以内に収める。"},
+{s:"schedule",lv:3,en:"The deadline is tight, but it's still doable.",ja:"期限は厳しいですが、まだ実現可能です。",note:"doable＝実行可能。会話で非常によく使う。"},
+{s:"schedule",lv:2,en:"Let's aim for the end of the month.",ja:"月末を目標にしましょう。",note:"aim for＝〜を目指す。"},
+{s:"schedule",lv:3,en:"That timeline is unrealistic for our side.",ja:"そのスケジュールは我々には現実的ではありません。",note:"unrealistic を使うと理由説明がセットで求められる。"},
+{s:"schedule",lv:2,en:"Let's reschedule for next week.",ja:"来週に再設定しましょう。",note:"reschedule for ＋ 日時。"},
+{s:"schedule",lv:2,en:"What's the drop-dead date?",ja:"絶対に落とせない期限はいつですか。",note:"drop-dead date＝最終期限。ネイティブが好む表現。"},
+
+{s:"risk",lv:1,en:"We've run into a problem.",ja:"問題が発生しました。",note:"run into＝問題にぶつかる。"},
+{s:"risk",lv:2,en:"I want to flag a potential risk.",ja:"潜在的なリスクを一つ挙げさせてください。",note:"flag＝注意喚起する。会議で非常に多用。"},
+{s:"risk",lv:2,en:"The worst case is a three-month delay.",ja:"最悪の場合、3か月の遅延です。",note:"The worst case is ~ で最悪シナリオを提示。"},
+{s:"risk",lv:2,en:"We don't have a fallback plan yet.",ja:"代替案はまだありません。",note:"fallback plan＝万一の代替策。plan B とも言う。"},
+{s:"risk",lv:3,en:"If that assumption breaks, the whole plan changes.",ja:"その前提が崩れると、計画全体が変わります。",note:"assumption＝前提。前提依存を指摘する型。"},
+{s:"risk",lv:2,en:"This could become a bottleneck later.",ja:"これは後々ボトルネックになり得ます。",note:"could become＝〜になり得る。断定を避ける。"},
+{s:"risk",lv:3,en:"I'd like to understand the root cause before we fix it.",ja:"対策の前に、根本原因を理解したいです。",note:"root cause＝根本原因。品質・技術会議の必須語。"},
+{s:"risk",lv:2,en:"What's the impact if we do nothing?",ja:"何もしなかった場合の影響は何ですか。",note:"優先度を判断させる強力な質問。"},
+{s:"risk",lv:3,en:"We're making a decision with incomplete information.",ja:"不完全な情報で意思決定をしています。",note:"事実として述べることで、圧をかけずに警告できる。"},
+{s:"risk",lv:2,en:"Let's not underestimate the effort involved.",ja:"必要な工数を過小評価しないようにしましょう。",note:"the effort involved＝それに伴う工数。"},
+{s:"risk",lv:3,en:"That's outside my area, but it concerns me.",ja:"専門外ですが、気になります。",note:"越権に見せずに懸念を出せる安全な型。"},
+{s:"risk",lv:2,en:"Can we quantify that risk?",ja:"そのリスクを定量化できますか。",note:"quantify＝定量化する。感覚論を止める一言。"},
+{s:"risk",lv:3,en:"I'd rather find out now than after launch.",ja:"上市後より、今わかった方がましです。",note:"would rather A than B＝BよりAの方がよい。"},
+
+{s:"wrapup",lv:1,en:"Let me summarize what we've agreed.",ja:"合意事項をまとめます。",note:"会議の締めの定型。"},
+{s:"wrapup",lv:2,en:"So the action items are as follows.",ja:"では、アクションアイテムは以下の通りです。",note:"as follows＝以下の通り。"},
+{s:"wrapup",lv:2,en:"Taro will own this, with a due date of next Friday.",ja:"太郎さんが担当し、期限は来週金曜です。",note:"担当と期限をセットで言うのが英語会議の作法。"},
+{s:"wrapup",lv:2,en:"Are we all aligned on that?",ja:"その点、全員認識は揃っていますか。",note:"aligned＝認識が一致している。"},
+{s:"wrapup",lv:2,en:"Any final comments before we close?",ja:"締める前に、何かありますか。",note:"before we close＝終わる前に。"},
+{s:"wrapup",lv:3,en:"Let's take that offline and report back next week.",ja:"それは別途対応し、来週報告しましょう。",note:"take it offline＝この場では議論せず個別に。"},
+{s:"wrapup",lv:2,en:"I'll circulate the minutes by tomorrow.",ja:"明日までに議事録を回覧します。",note:"circulate＝回覧する。minutes＝議事録（常に複数形）。"},
+{s:"wrapup",lv:2,en:"Thanks, everyone. That was a productive discussion.",ja:"皆さんありがとうございました。有意義な議論でした。",note:"productive＝生産的な。締めの決まり文句。"},
+{s:"wrapup",lv:3,en:"Let's revisit this at the next review.",ja:"次回のレビューで再度取り上げましょう。",note:"revisit＝改めて議論する。"},
+{s:"wrapup",lv:2,en:"So the next step is to get approval from management.",ja:"次のステップは経営層の承認取得です。",note:"the next step is to ＋ 動詞原形。"},
+{s:"wrapup",lv:3,en:"We'll keep this open until the data comes in.",ja:"データが出るまでこの件は保留にします。",note:"keep ~ open＝未決のままにする。"},
+{s:"wrapup",lv:2,en:"Let's wrap up here.",ja:"ここで終わりにしましょう。",note:"wrap up＝締めくくる。"},
+{s:"wrapup",lv:3,en:"To recap, we agreed on the scope but not the timeline.",ja:"要約すると、範囲は合意しましたが、日程は未合意です。",note:"To recap＝要約すると。合意と未合意を分けて示す。"},
+
+{s:"call",lv:1,en:"Sorry, you're breaking up.",ja:"すみません、音声が途切れています。",note:"break up＝音が途切れる。電話・Web会議専用の表現。"},
+{s:"call",lv:1,en:"I think you're on mute.",ja:"ミュートになっていると思います。",note:"on mute＝ミュート状態。最頻出の一言。"},
+{s:"call",lv:2,en:"Can everyone hear me okay?",ja:"皆さん、聞こえていますか。",note:"hear me okay＝ちゃんと聞こえる。"},
+{s:"call",lv:2,en:"Let me share my screen.",ja:"画面を共有します。",note:"share my screen＝画面共有する。"},
+{s:"call",lv:2,en:"Can you see my slides?",ja:"スライドは見えていますか。",note:"共有直後の確認。"},
+{s:"call",lv:2,en:"My connection is unstable, so I'll turn off my camera.",ja:"回線が不安定なので、カメラを切ります。",note:"unstable connection＝不安定な接続。"},
+{s:"call",lv:2,en:"Sorry, I got disconnected.",ja:"すみません、接続が切れました。",note:"get disconnected＝回線が落ちる。"},
+{s:"call",lv:2,en:"There's a bit of an echo on the line.",ja:"少しハウリングしています。",note:"echo＝ハウリング。howling は和製英語なので通じない。"},
+{s:"call",lv:3,en:"I'll drop off now. Thanks, everyone.",ja:"では退出します。皆さんありがとうございました。",note:"drop off＝会議から抜ける。"},
+{s:"call",lv:2,en:"Could you speak closer to the microphone?",ja:"マイクの近くで話していただけますか。",note:"closer to＝より近くで。"},
+{s:"call",lv:2,en:"Let's give it another minute for people to join.",ja:"参加を待って、もう1分だけ待ちましょう。",note:"give it another minute＝もう少し待つ。"},
+{s:"call",lv:3,en:"Sorry to interrupt, but I have a quick question.",ja:"割り込んですみません、手短に質問があります。",note:"Sorry to interrupt＝割り込みの前置き。オンラインで必須。"},
+{s:"call",lv:2,en:"I have a hard stop at four.",ja:"4時に必ず退出しなければなりません。",note:"hard stop＝動かせない終了時刻。"},
+
+{s:"smalltalk",lv:1,en:"How's everything going on your side?",ja:"そちらはいかがですか。",note:"on your side＝そちらでは。海外拠点との定番。"},
+{s:"smalltalk",lv:1,en:"It's early morning here in Japan.",ja:"こちら日本は早朝です。",note:"時差の話は最も安全な雑談。"},
+{s:"smalltalk",lv:2,en:"How was your weekend?",ja:"週末はいかがでしたか。",note:"月曜の定番。Good, thanks. And yours? と返すのが型。"},
+{s:"smalltalk",lv:2,en:"Long time no talk. Good to see you again.",ja:"お久しぶりです。またお会いできて嬉しいです。",note:"Long time no talk はくだけた再会の挨拶。"},
+{s:"smalltalk",lv:2,en:"Thanks for making the time.",ja:"お時間を作っていただきありがとうございます。",note:"make the time＝わざわざ時間を作る。"},
+{s:"smalltalk",lv:2,en:"How's the weather over there?",ja:"そちらの天気はどうですか。",note:"over there＝そちらでは。"},
+{s:"smalltalk",lv:3,en:"I hope you had a nice break.",ja:"良い休暇を過ごされたでしょうか。",note:"休暇明けの相手への一言。"},
+{s:"smalltalk",lv:2,en:"Congratulations on the new role.",ja:"新しいご役職おめでとうございます。",note:"Congratulations on ＋ 名詞。"},
+{s:"smalltalk",lv:2,en:"Let's catch up properly next time you're in Tokyo.",ja:"次に東京に来られたときに、ゆっくりお話ししましょう。",note:"catch up＝近況を話す。properly＝ちゃんと。"},
+{s:"smalltalk",lv:2,en:"Please say hello to the team for me.",ja:"チームの皆さんによろしくお伝えください。",note:"say hello to 人 for me＝よろしく伝える。"},
+{s:"smalltalk",lv:2,en:"I really appreciate your support on this.",ja:"この件でのご支援、本当に感謝しています。",note:"appreciate＋名詞（人ではない）。使用頻度が高い。"},
+{s:"smalltalk",lv:3,en:"Sorry for the late reply. It's been a busy week.",ja:"返信が遅れてすみません。忙しい週でした。",note:"言い訳を短く添えるのが自然。"},
+{s:"smalltalk",lv:2,en:"Have a good rest of your day.",ja:"良い一日の後半をお過ごしください。",note:"時差のある相手との締めに最適。"},
+
+{s:"qa",lv:1,en:"That's a good question.",ja:"良い質問ですね。",note:"考える時間を稼げる定型。"},
+{s:"qa",lv:2,en:"Let me check and get back to you.",ja:"確認して、改めてご連絡します。",note:"get back to you＝後で回答する。分からない時の最重要フレーズ。"},
+{s:"qa",lv:2,en:"I don't have that number with me right now.",ja:"その数字は今手元にありません。",note:"with me right now＝今手元に。誠実で角が立たない。"},
+{s:"qa",lv:2,en:"Does that answer your question?",ja:"ご質問の答えになっていますか。",note:"回答後の確認。相手の満足度を測れる。"},
+{s:"qa",lv:3,en:"I'd rather not speculate on that.",ja:"その点について憶測は避けたいです。",note:"speculate＝憶測する。答えられない時の防御。"},
+{s:"qa",lv:2,en:"Could you repeat the question, please?",ja:"質問をもう一度お願いできますか。",note:"聞き取れなかった時の安全策。"},
+{s:"qa",lv:3,en:"To be honest, we haven't looked into that yet.",ja:"正直なところ、まだ検討していません。",note:"look into＝調査する。正直に言う方が信用される。"},
+{s:"qa",lv:2,en:"Let me answer that in two parts.",ja:"2つに分けてお答えします。",note:"複雑な質問を構造化して答える型。"},
+{s:"qa",lv:2,en:"Any questions before I move on?",ja:"次に進む前に、ご質問はありますか。",note:"move on＝次へ進む。"},
+{s:"qa",lv:3,en:"I'll defer to Nicole on that one.",ja:"その点はニコルさんにお任せします。",note:"defer to 人＝その人に判断を委ねる。"},
+{s:"qa",lv:2,en:"That's outside the scope of today's discussion.",ja:"それは本日の議題の範囲外です。",note:"outside the scope of＝範囲外。脱線を止める。"},
+{s:"qa",lv:3,en:"Let me rephrase that more simply.",ja:"もっと簡単に言い換えます。",note:"rephrase＝言い換える。伝わらなかった時に。"},
+{s:"qa",lv:2,en:"I'd like to hear your thoughts on this.",ja:"この点についてご意見を伺いたいです。",note:"your thoughts on ~＝〜についての考え。"},
+
+{s:"negotiation",lv:2,en:"What would it take to move that date up?",ja:"その日程を前倒しするには何が必要ですか。",note:"What would it take to ~＝〜には何が必要か。交渉の万能質問。"},
+{s:"negotiation",lv:2,en:"We can be flexible on the scope, but not on quality.",ja:"範囲は柔軟に対応できますが、品質は譲れません。",note:"flexible on A, not on B で譲れる線を明確化。"},
+{s:"negotiation",lv:3,en:"If you can cover the testing, we can cover the documentation.",ja:"試験を負担いただけるなら、文書はこちらで持ちます。",note:"条件付き譲歩。If you can ~, we can ~ の型。"},
+{s:"negotiation",lv:2,en:"That's not something we can commit to today.",ja:"それは本日お約束できる内容ではありません。",note:"commit to＝確約する。丁寧な保留。"},
+{s:"negotiation",lv:3,en:"Let's look for a middle ground.",ja:"落とし所を探しましょう。",note:"middle ground＝妥協点。"},
+{s:"negotiation",lv:2,en:"Is there any room to negotiate on the price?",ja:"価格に交渉の余地はありますか。",note:"room to negotiate＝交渉余地。"},
+{s:"negotiation",lv:3,en:"I need to run this by my manager first.",ja:"まず上司に確認する必要があります。",note:"run A by B＝BにAの確認を取る。持ち帰りの定型。"},
+{s:"negotiation",lv:2,en:"That works for us.",ja:"それで問題ありません。",note:"合意の最も簡潔な言い方。"},
+{s:"negotiation",lv:3,en:"Let's put that in writing to avoid misunderstandings.",ja:"誤解を避けるため、文書に残しましょう。",note:"put in writing＝書面化する。"},
+{s:"negotiation",lv:2,en:"What's your bottom line here?",ja:"最低限譲れない線はどこですか。",note:"bottom line＝譲れない最終ライン。"},
+{s:"negotiation",lv:3,en:"We're closer than I expected. Let's close the gap.",ja:"思ったより近いですね。差を埋めましょう。",note:"close the gap＝差を埋める。前向きな締め方。"},
+{s:"negotiation",lv:2,en:"Can we revisit that condition?",ja:"その条件を見直せますか。",note:"revisit＝再検討する。"},
+{s:"negotiation",lv:3,en:"That's a deal breaker for us.",ja:"それは我々にとって受け入れられない条件です。",note:"deal breaker＝交渉決裂の要因。強い表現なので使いどころに注意。"},
+
+{s:"apology",lv:1,en:"I apologize for the confusion.",ja:"混乱を招き申し訳ありません。",note:"I apologize for ＋ 名詞。I'm sorry より正式。"},
+{s:"apology",lv:2,en:"That was my mistake, and I'll fix it today.",ja:"私のミスです。本日中に修正します。",note:"謝罪＋対応をセットで言うのが英語圏の作法。"},
+{s:"apology",lv:2,en:"Let me correct what I said earlier.",ja:"先ほどの発言を訂正させてください。",note:"correct what I said＝発言を訂正する。"},
+{s:"apology",lv:2,en:"Sorry, I misspoke.",ja:"すみません、言い間違えました。",note:"misspeak＝言い間違える。短く済ませられる。"},
+{s:"apology",lv:3,en:"I should have raised this earlier.",ja:"もっと早く提起すべきでした。",note:"should have ＋ 過去分詞＝〜すべきだった。"},
+{s:"apology",lv:2,en:"Thanks for pointing that out.",ja:"ご指摘ありがとうございます。",note:"point out＝指摘する。訂正されたときの返し。"},
+{s:"apology",lv:2,en:"We'll make sure this doesn't happen again.",ja:"再発しないようにいたします。",note:"make sure ~ doesn't happen again＝再発防止。"},
+{s:"apology",lv:3,en:"I take full responsibility for the delay.",ja:"遅延の責任は私にあります。",note:"take full responsibility＝全責任を負う。強い誠意表現。"},
+{s:"apology",lv:2,en:"Sorry for the short notice.",ja:"急なご連絡で申し訳ありません。",note:"short notice＝直前の連絡。"},
+{s:"apology",lv:2,en:"I'm afraid I have to disagree.",ja:"恐れ入りますが、賛成しかねます。",note:"I'm afraid ~ で否定を柔らかくする。"},
+{s:"apology",lv:3,en:"The previous version had an error. Please use this one.",ja:"前のバージョンに誤りがありました。こちらをお使いください。",note:"資料差し替えの定型。"},
+{s:"apology",lv:2,en:"Sorry to keep you waiting.",ja:"お待たせして申し訳ありません。",note:"keep 人 waiting＝人を待たせる。"},
+{s:"apology",lv:3,en:"Let me clarify — I didn't mean it that way.",ja:"補足させてください。そういう意図ではありませんでした。",note:"I didn't mean it that way＝そういうつもりではなかった。誤解の解消。"}
+];
+
+const METHOD = [
+ {t:"日→英の「産出」から始める（Production Effect）",
+  b:"このアプリの学習カードは必ず日本語を先に出し、英語を口に出してから答えを見ます。英文を眺めて理解する（受容）より、自力で作り出す（産出）方が、会議で口が動くようになるまでの距離が短い。読んで分かる英語と、言える英語は別物です。"},
+ {t:"想起練習（Testing Effect / Retrieval Practice）",
+  b:"「答えを見る」前に必ず数秒、自力で思い出す時間を取ってください。思い出そうとして失敗した経験こそが記憶を強くします。答えを先に見てしまうと学習効率は大きく落ちます。カードをめくる速さより、思い出そうとした密度が重要です。"},
+ {t:"間隔反復（Spacing Effect / SM-2）",
+  b:"「もう一度／難しい／できた／余裕」の4段階評価に応じて、次回出題日が自動計算されます。忘れかけたタイミングで再会するのが最も定着します。1日に大量にやるより、毎日10〜15分を続ける方が総学習時間あたりの定着量は大きくなります。"},
+ {t:"文脈の中で覚える（場面依存記憶）",
+  b:"単語帳ではなく「場面」からフレーズを作るのは、想起の手がかりを場面と結びつけるためです。実際の会議で同じ状況になったとき、そのフレーズが引き出されやすくなります。自分が本当に出席する会議を場面として入力してください。"},
+ {t:"チャンク学習（Formulaic Sequences）",
+  b:"ネイティブの発話の3〜5割は決まり文句（定型連鎖）です。文法から組み立てず、\"Just to make sure I understand correctly...\" のような塊ごと覚えると、発話の負荷が激減し、内容を考える余裕が生まれます。会議英語はこの塊の在庫量が実力を決めます。"},
+ {t:"音を先に入れる（音韻ループ）",
+  b:"カタカナは補助輪です。必ず🔊で米国発音を聞き、真似して声に出してください。音のイメージがない語は、聞き取れず、思い出せません。慣れてきたらカタカナを見ずに音だけで練習します。"},
+ {t:"少量・毎日（Distributed Practice）",
+  b:"目標は1日20枚・約10分。到達したら止めてください。やり過ぎた翌日にゼロになるより、少量を毎日続ける方が伸びます。連続日数が途切れそうな日は、5枚でも触れておくと習慣が壊れません。"},
+ {t:"シャドーイングと自己録音",
+  b:"週に1回、その週に「できた」判定にしたカードを続けて音読し、スマホで録音して聞き返してください。自分の発話を客観的に聞くのは、発音とリズムを直す最短の方法です。"}
+];
+
+
+/* ================= Google Drive 同期 =================
+   保存先は Drive の「アプリデータフォルダ」。ドライブ画面には表示されず、
+   このアプリ以外からは読めない専用の隠し領域。scope は drive.appdata のみ。 */
+
+const DRIVE_FILE = "bizeng-sync.json";
+const DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.appdata";
+
+const Drive = { token:null, exp:0, fileId:null, client:null, busy:false };
+
+/* OAuth に登録できるのは http/https のオリジンのみ。
+   file:// で開いた場合は同期不可なので null を返す。 */
+function driveOrigin(){
+  if(!/^https?:$/.test(location.protocol)) return null;
+  const o = location.origin;
+  return (o && o !== "null") ? o : null;
+}
+function driveAvailable(){
+  return !!driveOrigin() && !!(S.drive && S.drive.clientId);
+}
+function gisReady(){
+  return typeof google !== "undefined" && google.accounts && google.accounts.oauth2;
+}
+
+function getToken(interactive){
+  return new Promise((resolve, reject)=>{
+    if(Drive.token && Date.now() < Drive.exp - 60000) return resolve(Drive.token);
+    if(!gisReady()) return reject(new Error("Googleの認証ライブラリを読み込めませんでした。ネット接続を確認してください。"));
+    if(!S.drive.clientId) return reject(new Error("クライアントIDが未設定です。"));
+    try{
+      Drive.client = google.accounts.oauth2.initTokenClient({
+        client_id: S.drive.clientId,
+        scope: DRIVE_SCOPE,
+        prompt: interactive ? "consent" : "",
+        callback: (r)=>{
+          if(r.error) return reject(new Error(r.error_description || r.error));
+          Drive.token = r.access_token;
+          Drive.exp = Date.now() + (r.expires_in||3600)*1000;
+          resolve(Drive.token);
+        },
+        error_callback: (e)=> reject(new Error(e && e.type==="popup_closed"
+          ? "サインインがキャンセルされました"
+          : (e && e.message) || "認証に失敗しました"))
+      });
+      Drive.client.requestAccessToken();
+    }catch(e){ reject(e); }
+  });
+}
+
+async function dfetch(url, opts={}, retry=true){
+  const t = await getToken(false);
+  const o = Object.assign({}, opts);
+  o.headers = Object.assign({}, opts.headers, { Authorization:"Bearer "+t });
+  const res = await fetch(url, o);
+  if(res.status===401 && retry){
+    Drive.token=null; Drive.exp=0;
+    return dfetch(url, opts, false);
+  }
+  if(!res.ok){
+    const body = await res.text();
+    const e = new Error(`${res.status} ${body.slice(0,160)}`);
+    e.status = res.status; throw e;
+  }
+  return res;
+}
+
+async function findFile(){
+  if(Drive.fileId) return Drive.fileId;
+  const u = "https://www.googleapis.com/drive/v3/files?spaces=appDataFolder"
+    + "&fields=files(id,name,modifiedTime)&q=" + encodeURIComponent(`name='${DRIVE_FILE}'`);
+  const j = await (await dfetch(u)).json();
+  Drive.fileId = (j.files && j.files[0] && j.files[0].id) || null;
+  return Drive.fileId;
+}
+
+async function downloadRemote(){
+  const id = await findFile();
+  if(!id) return null;
+  const res = await dfetch(`https://www.googleapis.com/drive/v3/files/${id}?alt=media`);
+  try{ return await res.json(); }catch(e){ return null; }
+}
+
+async function uploadRemote(obj){
+  const body = JSON.stringify(obj);
+  const id = await findFile();
+  if(id){
+    await dfetch(`https://www.googleapis.com/upload/drive/v3/files/${id}?uploadType=media`,
+      { method:"PATCH", headers:{ "Content-Type":"application/json" }, body });
+    return id;
+  }
+  const meta = { name:DRIVE_FILE, parents:["appDataFolder"], mimeType:"application/json" };
+  const form = new FormData();
+  form.append("metadata", new Blob([JSON.stringify(meta)], {type:"application/json"}));
+  form.append("file", new Blob([body], {type:"application/json"}));
+  const res = await dfetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id",
+    { method:"POST", body:form });
+  const j = await res.json();
+  Drive.fileId = j.id;
+  return j.id;
+}
+
+/* ---- マージ：両方の端末で学習していても消さない ---- */
+function pickCard(a,b){
+  const ha=(a.hist||[]).length, hb=(b.hist||[]).length;
+  if(ha!==hb) return ha>hb ? a : b;
+  if((a.due||"") !== (b.due||"")) return (a.due>b.due) ? a : b;
+  return a;
+}
+function mergeState(local, remote){
+  if(!remote || !Array.isArray(remote.cards)) return local;
+  const out = structuredClone(local);
+  const rmap = new Map();
+  (remote.cards||[]).forEach(c=>{ if(c && c.en) rmap.set(c.en.toLowerCase(), c); });
+
+  out.cards = (local.cards||[]).map(c=>{
+    const k=(c.en||"").toLowerCase();
+    const r=rmap.get(k);
+    if(!r) return c;
+    rmap.delete(k);
+    return pickCard(c,r);
+  });
+  rmap.forEach(r=>out.cards.push(r));
+
+  out.log = Object.assign({}, remote.log||{});
+  Object.entries(local.log||{}).forEach(([k,v])=>{
+    out.log[k] = Math.max(v, out.log[k]||0);
+  });
+  return out;
+}
+
+async function driveSync(opts={}){
+  if(Drive.busy) return;
+  Drive.busy = true;
+  const note = opts.note || (()=>{});
+  try{
+    note("接続中…");
+    const remote = await downloadRemote();
+    note("照合中…");
+    const merged = mergeState(S, remote);
+    const payload = {
+      cards: merged.cards, log: merged.log,
+      set: S.set, api: S.api,
+      syncedAt: new Date().toISOString()
+    };
+    note("保存中…");
+    await uploadRemote(payload);
+
+    S.cards = merged.cards;
+    S.log   = merged.log;
+    S.drive.lastSync = new Date().toISOString();
+    save();
+    renderHome();
+    if($("#v-cards").classList.contains("on")) renderCards();
+    renderDriveUI();
+    return { cards:S.cards.length };
+  } finally { Drive.busy=false; }
+}
+
+function driveErr(e){
+  const m = String(e && e.message || e);
+  if(/popup|キャンセル/.test(m)) return "サインインがキャンセルされました";
+  if(/idpiframe|origin|not a valid origin|redirect_uri_mismatch/i.test(m))
+    return "このURLがGoogle側に登録されていません。承認済みJavaScript生成元に " + (driveOrigin()||"（不明）") + " を追加してください。";
+  if(/^403/.test(m)) return "権限がありません。Drive APIが有効か確認してください。";
+  if(/^401/.test(m)) return "認証の有効期限が切れました。もう一度お試しください。";
+  if(/Failed to fetch/i.test(m)) return "通信に失敗しました。ネット接続を確認してください。";
+  return m.slice(0,110);
+}
+
+function renderDriveUI(){
+  const org = driveOrigin();
+  const local = !org;
+  $("#driveLocalWarn").classList.toggle("hidden", !local);
+  $("#drivePanel").classList.toggle("hidden", local);
+  if(local) return;
+  $("#driveOrigin").textContent = org;
+  const on = !!(S.drive && S.drive.clientId);
+  $("#btnDriveSync").disabled = !on;
+  $("#btnDriveOff").classList.toggle("hidden", !on);
+  const t = S.drive && S.drive.lastSync;
+  $("#driveStatus").textContent = !on
+    ? "未設定です。下のクライアントIDを保存すると使えます。"
+    : t ? "最終同期：" + new Date(t).toLocaleString("ja-JP")
+        : "まだ同期していません。";
+}
+
+function bindDrive(){
+  $("#btnDriveSave").onclick = ()=>{
+    S.drive.clientId = $("#driveClientId").value.trim();
+    save(); renderDriveUI();
+    toast(S.drive.clientId ? "クライアントIDを保存しました" : "クライアントIDを消去しました");
+  };
+  $("#btnDriveSync").onclick = async ()=>{
+    const b=$("#btnDriveSync"); b.disabled=true;
+    const set = t=>{ b.innerHTML='<span class="load"></span>'+t; };
+    set("接続中…");
+    try{
+      await getToken(!S.drive.lastSync);
+      const r = await driveSync({ note:set });
+      toast(`同期しました（カード ${r.cards} 枚）`, 3500);
+    }catch(e){ console.warn(e); toast("同期に失敗："+driveErr(e), 6500); }
+    finally{ b.disabled=false; b.textContent="🔄 今すぐ同期"; renderDriveUI(); }
+  };
+  $("#btnDriveOff").onclick = ()=>{
+    if(!confirm("この端末の同期設定を解除します。Drive上のデータは残ります。")) return;
+    S.drive = { clientId:"", lastSync:"", email:"" };
+    Drive.token=null; Drive.exp=0; Drive.fileId=null;
+    save(); $("#driveClientId").value=""; renderDriveUI(); toast("解除しました");
+  };
+  $("#driveClientId").value = (S.drive && S.drive.clientId) || "";
+  renderDriveUI();
+}
+
+
+/* ================= Storage (sandbox-safe) ================= */
+const KEY = "bizeng.v1";
+
+const Store = (()=>{
+  let ok=false;
+  try{ const t="__probe__"; window.localStorage.setItem(t,"1"); window.localStorage.removeItem(t); ok=true; }
+  catch(e){ ok=false; }
+  const mem={};
+  return {
+    ok,
+    get(k){ try{ return ok?localStorage.getItem(k):(k in mem?mem[k]:null); }catch(e){ return k in mem?mem[k]:null; } },
+    set(k,v){ try{ if(ok) localStorage.setItem(k,v); else mem[k]=v; }catch(e){ mem[k]=v; } }
+  };
+})();
+
+const DEF = {
+  cards: [], log: {}, gen: [],
+  set:   { goal:20, newMax:8, voice:"", rate:1 },
+  drive: { clientId:"", lastSync:"", email:"" },
+  api:   { provider:"gemini", model:"gemini-2.5-flash", key:"",
+           url:"https://api.openai.com/v1/chat/completions" }
+};
+let S = load();
+
+function load(){
+  try{
+    const raw = Store.get(KEY);
+    if(!raw) return structuredClone(DEF);
+    const o = JSON.parse(raw);
+    return Object.assign(structuredClone(DEF), o, {
+      set:   Object.assign({}, DEF.set,   o.set||{}),
+      api:   Object.assign({}, DEF.api,   o.api||{}),
+      drive: Object.assign({}, DEF.drive, o.drive||{})
+    });
+  }catch(e){ return structuredClone(DEF); }
+}
+function save(){ Store.set(KEY, JSON.stringify(S)); }
+const $ = s => document.querySelector(s);
+const qsa = s => [...document.querySelectorAll(s)];
+const today = () => new Date().toISOString().slice(0,10);
+const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+
+function toast(msg, ms){
+  const t=$("#toast"); t.textContent=msg; t.classList.add("on");
+  clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("on"), ms||2200);
+}
+
+/* ================= SRS ================= */
+function newCard(p){
+  return { id:uid(), en:p.en, ja:p.ja, kt:p.kt||toKatakana(p.en), note:p.note||"",
+    s:p.s||"custom", lv:p.lv||2, ef:2.5, rep:0, iv:0, due:today(), hist:[], made:today() };
+}
+function nextIntervals(c){
+  if(c.rep===0) return {2:1,3:1,4:3};
+  if(c.rep===1) return {2:3,3:6,4:10};
+  const b=c.iv||1, ef=c.ef;
+  return {2:Math.max(1,Math.round(b*1.2)), 3:Math.max(1,Math.round(b*ef)), 4:Math.max(1,Math.round(b*ef*1.35))};
+}
+function grade(c,g){
+  const iv = nextIntervals(c);
+  if(g===1){ c.rep=0; c.iv=0; c.ef=Math.max(1.3,c.ef-0.2); c.due=today(); c.lapse=(c.lapse||0)+1; }
+  else{
+    c.ef = Math.max(1.3, c.ef + (0.1-(4-g)*(0.08+(4-g)*0.02)));
+    c.iv = iv[g]; c.rep++;
+    const d=new Date(); d.setDate(d.getDate()+c.iv);
+    c.due = d.toISOString().slice(0,10);
+  }
+  c.hist.push({d:today(),g});
+  S.log[today()] = (S.log[today()]||0)+1;
+  save();
+}
+const dueCards = () => S.cards.filter(c=>c.due<=today() && c.rep>0);
+const newCards = () => S.cards.filter(c=>c.rep===0);
+
+/* ================= TTS ================= */
+let VOICES=[];
+function loadVoices(){
+  if(!("speechSynthesis" in window)) return;
+  VOICES = (speechSynthesis.getVoices()||[]).filter(v=>/^en/i.test(v.lang));
+  const sel=$("#setVoice"); if(!sel) return;
+  const us = VOICES.filter(v=>/en[-_]US/i.test(v.lang));
+  const list = us.length ? us.concat(VOICES.filter(v=>!/en[-_]US/i.test(v.lang))) : VOICES;
+  sel.innerHTML = list.map(v=>`<option value="${v.name}">${v.name} (${v.lang})</option>`).join("")
+    || `<option value="">この端末に英語音声がありません</option>`;
+  if(S.set.voice) sel.value=S.set.voice;
+  else if(list[0]){ S.set.voice=list[0].name; sel.value=list[0].name; }
+}
+if("speechSynthesis" in window){ speechSynthesis.onvoiceschanged=loadVoices; loadVoices(); }
+
+function speak(text, rate){
+  if(!("speechSynthesis" in window)) return toast("この端末は読み上げに未対応です");
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    const v=VOICES.find(x=>x.name===S.set.voice)||VOICES.find(x=>/en[-_]US/i.test(x.lang))||VOICES[0];
+    if(v){ u.voice=v; u.lang=v.lang; } else u.lang="en-US";
+    u.rate = rate||S.set.rate||1;
+    speechSynthesis.speak(u);
+  }catch(e){ toast("読み上げできませんでした"); }
+}
+
+/* ================= AI generation ================= */
+const SYS_PROMPT = `You are a coach for Japanese business professionals who need to function in English-language meetings.
+Given a Japanese description of a situation, output natural phrases that a native speaker would actually say in that situation in a business meeting.
+Rules:
+- Output ONLY a JSON array. No markdown fences, no commentary.
+- Each element: {"en":"...","ja":"...","kt":"...","note":"..."}
+- "en": one natural English sentence or short chunk. Meeting-ready, easy to say aloud. Avoid textbook-stiff English.
+- "ja": natural Japanese translation (not literal).
+- "kt": katakana approximation of American English pronunciation (e.g. "Let's get started." -> "レッツ ゲット スターティド"). Words separated by spaces.
+- "note": ONE short line in Japanese explaining usage, nuance, or the grammar pattern. Max 60 Japanese characters.
+- Order from most useful / most frequent to least.`;
+
+/* 使えるモデルはキーごとに異なるため、推測せず ListModels で取得する */
+let GEMINI_MODELS = [];
+
+async function geminiListModels(){
+  const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200",
+    { headers:{ "x-goog-api-key":S.api.key } });
+  if(!res.ok){
+    const e=new Error(`${res.status} ${(await res.text()).slice(0,200)}`);
+    e.status=res.status; throw e;
+  }
+  const j = await res.json();
+  return (j.models||[])
+    .filter(m=>(m.supportedGenerationMethods||[]).includes("generateContent"))
+    .map(m=>String(m.name||"").replace(/^models\//,""))
+    .filter(n=>n && !/embedding|aqa|imagen|veo|tts|audio|image|live|learnlm/i.test(n));
+}
+function rankModel(n){
+  let s=0;
+  if(/flash/.test(n)) s+=100;
+  if(/flash-lite/.test(n)) s-=15;
+  if(/pro/.test(n)) s+=45;
+  const v=parseFloat((n.match(/(\d+\.\d+)/)||[])[1]||"0");
+  s+=v*12;
+  if(/preview|exp|thinking/.test(n)) s-=70;
+  if(/latest/.test(n)) s+=6;
+  if(/\d{2}-\d{2}$/.test(n)) s-=8;
+  return s;
+}
+async function pickGeminiModel(){
+  const list = await geminiListModels();
+  if(!list.length) throw new Error("このキーで使えるモデルが見つかりませんでした");
+  GEMINI_MODELS = list.sort((a,b)=>rankModel(b)-rankModel(a));
+  fillModelSelect();
+  return GEMINI_MODELS[0];
+}
+
+function parseArr(txt){
+  txt = String(txt||"").replace(/^\s*```(json)?/i,"").replace(/```\s*$/,"").trim();
+  const m = txt.match(/\[[\s\S]*\]/);
+  const arr = JSON.parse(m ? m[0] : txt);
+  if(!Array.isArray(arr)) throw new Error("配列が返りませんでした");
+  return arr.map(o=>({ en:String(o.en||"").trim(), ja:String(o.ja||"").trim(),
+    kt:String(o.kt||"").trim()||toKatakana(o.en||""), note:String(o.note||"").trim(), s:"ai", lv:2 }))
+    .filter(o=>o.en);
+}
+
+async function callGemini(userMsg, model){
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`;
+  const res = await fetch(url,{
+    method:"POST",
+    headers:{ "Content-Type":"application/json", "x-goog-api-key":S.api.key },
+    body: JSON.stringify({
+      systemInstruction:{ parts:[{text:SYS_PROMPT}] },
+      contents:[{ role:"user", parts:[{text:userMsg}] }],
+      generationConfig:{ temperature:0.7, responseMimeType:"application/json" }
+    })
+  });
+  if(!res.ok){
+    const e=new Error(`${res.status} ${(await res.text()).slice(0,200)}`);
+    e.status=res.status; throw e;
+  }
+  const j = await res.json();
+  const txt = (j.candidates?.[0]?.content?.parts||[]).map(p=>p.text||"").join("");
+  if(!txt) throw new Error("空の応答が返りました");
+  return parseArr(txt);
+}
+
+async function callOpenAI(userMsg, model){
+  const res = await fetch(S.api.url,{
+    method:"POST",
+    headers:{ "Content-Type":"application/json", "Authorization":"Bearer "+S.api.key },
+    body: JSON.stringify({ model, temperature:0.7,
+      messages:[{role:"system",content:SYS_PROMPT},{role:"user",content:userMsg}] })
+  });
+  if(!res.ok){
+    const e=new Error(`${res.status} ${(await res.text()).slice(0,200)}`);
+    e.status=res.status; throw e;
+  }
+  const j=await res.json();
+  return parseArr(j.choices?.[0]?.message?.content||"");
+}
+
+function buildMsg(query,n,level){
+  const lvTxt = level==="simple" ? "Keep them short and very easy to pronounce."
+             : level==="formal" ? "Slightly formal register, suitable for executives or customers."
+             : "Standard business register.";
+  return `場面: ${query}\n\nGive exactly ${n} phrases. ${lvTxt}`;
+}
+
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+/* 503/500/429 はサーバー側の一時障害。待って再試行し、駄目なら別モデルへ */
+const TRANSIENT = s => s===503||s===500||s===502||s===504||s===429;
+
+async function geminiWithRetry(msg, onNote){
+  const note = onNote || (()=>{});
+  let model = S.api.model;
+  const tried = new Set();
+
+  for(let attempt=0; attempt<3; attempt++){
+    try{
+      const r = await callGemini(msg, model);
+      if(model!==S.api.model){ S.api.model=model; save(); fillModelSelect(); updGenMode(); }
+      return r;
+    }catch(e){
+      tried.add(model);
+      if(e.status===404 || e.status===400){
+        if(e.status===400 && !/not found|not supported|is not/i.test(e.message)) throw e;
+        const best = await pickGeminiModel();
+        if(tried.has(best)) throw e;
+        model = best; continue;
+      }
+      if(!TRANSIENT(e.status)) throw e;
+      if(attempt===0){ note("混雑のため再試行します…"); await sleep(1600); continue; }
+      if(!GEMINI_MODELS.length){ try{ await pickGeminiModel(); }catch(_){} }
+      const alt = GEMINI_MODELS.find(m=>!tried.has(m));
+      if(!alt) throw e;
+      note(`別のモデル（${alt}）で試します…`);
+      model = alt;
+      await sleep(700);
+    }
+  }
+  throw new Error("503 混雑が続いています");
+}
+
+async function aiGenerate(query,n,level,onNote){
+  const msg = buildMsg(query,n,level);
+  if(S.api.provider==="gemini") return geminiWithRetry(msg, onNote);
+  return callOpenAI(msg, S.api.model);
+}
+
+function explainErr(e){
+  const m = String(e && e.message || e);
+  if(/Failed to fetch|NetworkError|Load failed/i.test(m)){
+    return S.api.provider==="openai"
+      ? "通信がブロックされました。ブラウザから直接呼べないエンドポイントの可能性があります（CORS）。Geminiに切り替えてお試しください。"
+      : "通信に失敗しました。ネット接続を確認してください。";
+  }
+  if(/^400/.test(m) && /API_KEY_INVALID|API key not valid/i.test(m)) return "APIキーが正しくありません。";
+  if(/^403/.test(m)) return "キーの権限がありません。AI Studioで作り直してください。";
+  if(/^404/.test(m)) return "モデル名が見つかりません。「使えるモデルを検出」をお試しください。";
+  if(/^429/.test(m)) return "無料枠の上限に達しました。少し待って再試行してください。";
+  if(/^(503|500|502|504)/.test(m)) return "Gemini側が混雑しています。数十秒おいて再試行するか、モデルを変えてみてください。";
+  return m.slice(0,90);
+}
+
+/* ================= 内蔵ライブラリ生成 ================= */
+function localGenerate(query,n,level){
+  const q=(query||"").toLowerCase();
+  return SEED.map(p=>{
+    let sc=0;
+    const def=SCENES.find(x=>x.id===p.s);
+    if(def){
+      def.kw.forEach(k=>{ if(q.includes(k.toLowerCase())) sc+=5; });
+      if(q.includes(def.label)) sc+=8;
+    }
+    for(let i=0;i<q.length-1;i++){
+      const bi=q.slice(i,i+2);
+      if(/[ぁ-んァ-ヶ一-龠]/.test(bi)&&(p.ja.includes(bi)||(p.note||"").includes(bi))) sc+=1.2;
+    }
+    if(level==="simple") sc+=(3-p.lv)*1.2;
+    if(level==="formal") sc+=(p.lv-2)*1.2;
+    return {p, sc: sc+Math.random()*1.5};
+  }).sort((a,b)=>b.sc-a.sc).slice(0,n).map(x=>({...x.p, kt:toKatakana(x.p.en)}));
+}
+
+/* ================= Render ================= */
+function esc(s){ return String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m])); }
+
+function phraseHTML(p,opts={}){
+  const inDeck = S.cards.some(c=>c.en.toLowerCase()===String(p.en).toLowerCase());
+  const label = (SCENES.find(x=>x.id===p.s)||{}).label || (p.s==="ai"?"AI生成":"自分の追加");
+  return `<div class="pc" data-en="${esc(p.en)}">
+    <div class="en">${esc(p.en)}</div>
+    <div class="kt">${esc(p.kt||toKatakana(p.en))}</div>
+    <div class="ja">${esc(p.ja)}</div>
+    ${p.note?`<div class="note">${esc(p.note)}</div>`:""}
+    <div class="bar">
+      <button class="sbtn js-say">🔊</button>
+      <button class="sbtn js-add ${inDeck?"added":""}" ${inDeck?"disabled":""}>${inDeck?"✓ 追加済":"＋ カードに追加"}</button>
+      ${opts.del?`<button class="sbtn js-del" style="color:var(--bad)">削除</button>`:""}
+      <span class="tag">${esc(label)}</span>
+      ${opts.due?`<span class="tag lv">次回 ${esc(p.due)}</span>`:""}
+    </div></div>`;
+}
+
+document.addEventListener("click", e=>{
+  const pc=e.target.closest(".pc"); if(!pc) return;
+  const en=pc.dataset.en;
+  if(e.target.closest(".js-say")) speak(en);
+  if(e.target.closest(".js-add")){
+    const src=[...(S.gen||[]),...SEED.map(p=>({...p,kt:toKatakana(p.en)}))].find(p=>p.en===en);
+    if(!src) return;
+    if(S.cards.some(c=>c.en===en)) return toast("すでに追加済みです");
+    S.cards.push(newCard(src)); save(); renderHome();
+    const b=e.target.closest(".js-add");
+    b.textContent="✓ 追加済"; b.classList.add("added"); b.disabled=true;
+    toast("カードに追加しました");
+  }
+  if(e.target.closest(".js-del")){
+    if(!confirm("このカードを削除しますか？")) return;
+    S.cards=S.cards.filter(c=>c.en!==en); save(); renderHome(); renderCards();
+    toast("削除しました");
+  }
+});
+
+function show(v){
+  qsa(".view").forEach(x=>x.classList.toggle("on", x.id==="v-"+v));
+  qsa(".tab").forEach(t=>t.classList.toggle("on", t.dataset.v===v));
+  window.scrollTo({top:0});
+  if(v==="cards") renderCards();
+  if(v==="home") renderHome();
+  if(v==="study") renderStudy();
+}
+qsa(".tab").forEach(t=>t.onclick=()=>show(t.dataset.v));
+
+/* ---- Home ---- */
+function streak(){
+  let n=0; const d=new Date();
+  if(!S.log[today()]) d.setDate(d.getDate()-1);
+  while(S.log[d.toISOString().slice(0,10)]){ n++; d.setDate(d.getDate()-1); }
+  return n;
+}
+function renderHome(){
+  const done=S.log[today()]||0, goal=S.set.goal;
+  $("#todayDone").textContent=done;
+  $("#todayGoal").textContent=goal;
+  $("#todayBar").style.width=Math.min(100,done/goal*100)+"%";
+  $("#todayTitle").textContent = done>=goal ? "今日の目標は達成 🎉"
+    : (dueCards().length ? `復習 ${dueCards().length} 枚が待っています` : "10分だけ、始めよう");
+  $("#pStreak").innerHTML=`🔥 <b>${streak()}</b>日`;
+  $("#pDue").innerHTML=`復習 <b>${dueCards().length}</b>`;
+  $("#sTotal").textContent=S.cards.length;
+  $("#sMastered").textContent=S.cards.filter(c=>c.iv>=21).length;
+  let wk=0; for(let i=0;i<7;i++){ const d=new Date(); d.setDate(d.getDate()-i); wk+=S.log[d.toISOString().slice(0,10)]||0; }
+  $("#sWeek").textContent=wk;
+  let h="";
+  for(let i=69;i>=0;i--){
+    const d=new Date(); d.setDate(d.getDate()-i);
+    const k=d.toISOString().slice(0,10), n=S.log[k]||0;
+    h+=`<div class="hc ${n===0?"":n<5?"l1":n<12?"l2":n<25?"l3":"l4"}" title="${k}: ${n}"></div>`;
+  }
+  $("#heat").innerHTML=h;
+  const pool=S.cards.length?S.cards:SEED.map(p=>({...p,kt:toKatakana(p.en)}));
+  const r=pool[Math.floor(Math.random()*pool.length)];
+  $("#randomCard").innerHTML=r?phraseHTML(r):"";
+}
+$("#btnStart").onclick=()=>startSession("mix");
+$("#btnQuickNew").onclick=()=>startSession("new");
+$("#btnQuickDue").onclick=()=>startSession("due");
+
+/* ---- Generate ---- */
+$("#sceneChips").innerHTML=SCENES.map(s=>`<button class="chip" data-l="${s.label}">${s.label}</button>`).join("");
+$("#sceneChips").onclick=e=>{
+  const c=e.target.closest(".chip"); if(!c) return;
+  const t=$("#genInput");
+  t.value=(t.value.trim()?t.value.trim()+"／":"")+c.dataset.l;
+};
+function updGenMode(){
+  $("#genMode").textContent = S.api.key
+    ? `モード：AI生成（${S.api.provider==="gemini"?"Gemini":"OpenAI互換"} / ${S.api.model}）`
+    : `モード：内蔵ライブラリ（${SEED.length}フレーズから場面に合わせて抽出）。設定でAPIキーを入れるとAI生成になります。`;
+}
+$("#btnGen").onclick=async()=>{
+  const q=$("#genInput").value.trim();
+  if(!q) return toast("場面を入力してください");
+  const n=+$("#genCount").value, lv=$("#genLevel").value;
+  const b=$("#btnGen"); b.disabled=true; b.innerHTML='<span class="load"></span>生成中…';
+  try{
+    let out;
+    if(S.api.key){
+      try{ out = await aiGenerate(q,n,lv, t=>{ b.innerHTML='<span class="load"></span>'+t; }); }
+      catch(err){ console.warn(err); toast("AI生成に失敗："+explainErr(err)+" 内蔵ライブラリで表示します",4500); out=localGenerate(q,n,lv); }
+    } else out=localGenerate(q,n,lv);
+    S.gen=out; save(); updGenMode();
+    $("#genOut").innerHTML=`<h2 class="t">生成結果（${out.length}件）</h2>
+      <button class="btn sec" id="btnAddAll" style="margin-bottom:10px">すべてカードに追加</button>`
+      + out.map(p=>phraseHTML(p)).join("");
+    $("#btnAddAll").onclick=()=>{
+      let k=0; out.forEach(p=>{ if(!S.cards.some(c=>c.en===p.en)){ S.cards.push(newCard(p)); k++; }});
+      save(); renderHome();
+      qsa("#genOut .js-add").forEach(x=>{x.textContent="✓ 追加済";x.classList.add("added");x.disabled=true;});
+      toast(k+"枚を追加しました");
+    };
+  } finally { b.disabled=false; b.innerHTML="✨ フレーズを生成"; }
+};
+
+/* ---- Study ---- */
+let Q=[], qi=0, revealed=false;
+function startSession(mode){
+  const d=dueCards().sort(()=>Math.random()-.5);
+  const n=newCards().sort(()=>Math.random()-.5).slice(0,S.set.newMax);
+  Q = mode==="due"?d : mode==="new"?n : d.concat(n);
+  qi=0; show("study"); renderStudy();
+}
+function renderStudy(){
+  const area=$("#studyArea"), emp=$("#studyEmpty");
+  if(!Q.length||qi>=Q.length){
+    area.classList.add("hidden"); emp.classList.remove("hidden");
+    $("#studyBar").style.width="100%";
+    const rest=dueCards().length+Math.min(newCards().length,S.set.newMax);
+    emp.innerHTML = S.cards.length===0
+      ? `カードがまだありません。<br>「生成」タブで場面を入力して、<br>使えるフレーズを集めましょう。<br><br><button class="btn sm" onclick="show('gen')">生成タブへ</button>`
+      : rest>0
+      ? `今日はあと <b style="color:var(--tx)">${rest}</b> 枚あります。<br><br><button class="btn sm" onclick="startSession('mix')">▶ セッションを開始</button>`
+      : `今日の分は終わりです 🎉<br>やり過ぎず、明日また来てください。<br><br><button class="btn sm" onclick="show('home')">ホームへ</button>`;
+    renderHome(); return;
+  }
+  area.classList.remove("hidden"); emp.classList.add("hidden");
+  const c=Q[qi]; revealed=false;
+  $("#stFront").textContent=c.ja;
+  $("#stEn").textContent=c.en;
+  $("#stKt").textContent=c.kt||toKatakana(c.en);
+  $("#stJa").textContent=c.ja;
+  $("#stNote").textContent=c.note||"";
+  $("#stNote").style.display=c.note?"":"none";
+  $("#stBack").classList.add("hidden");
+  $("#grades").classList.add("hidden");
+  $("#btnReveal").classList.remove("hidden");
+  $("#studyBar").style.width=(qi/Q.length*100)+"%";
+  $("#stCounter").textContent=`${qi+1} / ${Q.length}　（${c.rep===0?"新規":"復習 "+c.rep+"回目"}）`;
+  const iv=nextIntervals(c);
+  $("#gi2").textContent=iv[2]+"日"; $("#gi3").textContent=iv[3]+"日"; $("#gi4").textContent=iv[4]+"日";
+}
+function reveal(){
+  if(revealed) return;
+  revealed=true;
+  $("#stBack").classList.remove("hidden");
+  $("#grades").classList.remove("hidden");
+  $("#btnReveal").classList.add("hidden");
+  speak(Q[qi].en);
+}
+$("#btnReveal").onclick=reveal;
+$("#btnSpeak").onclick=()=>{ if(Q[qi]) speak(Q[qi].en); };
+$("#btnSlow").onclick =()=>{ if(Q[qi]) speak(Q[qi].en,0.65); };
+$("#grades").onclick=e=>{
+  const b=e.target.closest(".g"); if(!b) return;
+  const g=+b.dataset.g, c=Q[qi];
+  grade(c,g); if(g===1) Q.push(c);
+  qi++; renderStudy();
+};
+document.addEventListener("keydown", e=>{
+  if(!$("#v-study").classList.contains("on")) return;
+  if(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA") return;
+  if(e.code==="Space"){ e.preventDefault(); if(!revealed) reveal(); }
+  if(revealed&&"1234".includes(e.key)) $(".g"+e.key)?.click();
+  if(e.key==="r"||e.key==="R") $("#btnSpeak").click();
+});
+
+/* ---- Cards ---- */
+let tagFilter="";
+function renderCards(){
+  const q=$("#qSearch").value.trim().toLowerCase();
+  const used=[...new Set(S.cards.map(c=>c.s))];
+  $("#tagChips").innerHTML=[`<button class="chip ${tagFilter===""?"on":""}" data-t="">すべて (${S.cards.length})</button>`]
+    .concat(used.map(s=>{
+      const l=(SCENES.find(x=>x.id===s)||{}).label||(s==="ai"?"AI生成":"自分の追加");
+      return `<button class="chip ${tagFilter===s?"on":""}" data-t="${s}">${l} (${S.cards.filter(c=>c.s===s).length})</button>`;
+    })).join("");
+  const list=S.cards.filter(c=>
+    (!tagFilter||c.s===tagFilter) &&
+    (!q||(c.en+c.ja+(c.note||"")).toLowerCase().includes(q))
+  ).sort((a,b)=>a.due<b.due?-1:1);
+  $("#cardList").innerHTML=list.length
+    ? list.map(c=>phraseHTML(c,{del:true,due:true})).join("")
+    : `<div class="empty">カードがありません。<br>「生成」タブでフレーズを作って追加してください。</div>`;
+}
+$("#qSearch").oninput=renderCards;
+$("#tagChips").onclick=e=>{ const c=e.target.closest(".chip"); if(!c) return; tagFilter=c.dataset.t; renderCards(); };
+$("#btnAddManual").onclick=()=>{
+  const en=prompt("英語フレーズ"); if(!en) return;
+  const ja=prompt("日本語訳")||"", note=prompt("メモ（任意）")||"";
+  S.cards.push(newCard({en:en.trim(),ja:ja.trim(),note:note.trim(),s:"custom"}));
+  save(); renderCards(); renderHome(); toast("追加しました");
+};
+
+/* ---- Method / Settings ---- */
+$("#methodList").innerHTML=METHOD.map((m,i)=>
+  `<details class="acc" ${i===0?"open":""}><summary>${i+1}. ${esc(m.t)}</summary><div class="bd">${esc(m.b)}</div></details>`).join("");
+
+function fillModelSelect(){
+  const sel=$("#setModel"); if(!sel) return;
+  const cur=S.api.model;
+  const opts=GEMINI_MODELS.length?GEMINI_MODELS.slice():[];
+  if(cur && !opts.includes(cur)) opts.unshift(cur);
+  sel.innerHTML=opts.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join("");
+  sel.value=cur;
+  $("#modelCount").textContent = GEMINI_MODELS.length
+    ? `このキーで使えるモデル ${GEMINI_MODELS.length} 件を検出しました。` : "";
+}
+$("#btnDetect").onclick=async()=>{
+  if(!$("#setKey").value.trim()) return toast("APIキーを入力してください");
+  $("#btnSaveApi").click();
+  const b=$("#btnDetect"); b.disabled=true; b.innerHTML='<span class="load"></span>検出中…';
+  try{
+    const best=await pickGeminiModel();
+    S.api.model=best; save(); fillModelSelect(); updGenMode();
+    toast(`検出しました：${best} を使用します`,4000);
+  }catch(e){ console.warn(e); toast("失敗："+explainErr(e),6000); }
+  finally{ b.disabled=false; b.textContent="使えるモデルを検出"; }
+};
+$("#setModel").onchange=()=>{ S.api.model=$("#setModel").value; save(); updGenMode(); };
+
+function syncProviderUI(){
+  const gem = S.api.provider==="gemini";
+  $("#rowUrl").style.display = gem ? "none" : "";
+  $("#gemHelp").style.display = gem ? "" : "none";
+  $("#oaiHelp").style.display = gem ? "none" : "";
+}
+$("#setProvider").onchange=e=>{
+  S.api.provider=e.target.value;
+  S.api.model = S.api.provider==="gemini" ? "gemini-2.5-flash" : "gpt-4o-mini";
+  GEMINI_MODELS=[]; fillModelSelect(); syncProviderUI();
+};
+function fillSettings(){
+  $("#setGoal").value=S.set.goal; $("#setNew").value=S.set.newMax;
+  $("#setRate").value=S.set.rate; $("#rateLbl").textContent=(+S.set.rate).toFixed(2);
+  $("#setProvider").value=S.api.provider;
+  fillModelSelect();
+  $("#setUrl").value=S.api.url;
+  $("#setKey").value=S.api.key;
+  syncProviderUI(); loadVoices(); updGenMode();
+  if(!Store.ok) $("#storeWarn").classList.remove("hidden");
+}
+$("#setRate").oninput=e=>$("#rateLbl").textContent=(+e.target.value).toFixed(2);
+$("#btnSaveSet").onclick=()=>{
+  S.set.goal=Math.max(1,+$("#setGoal").value||20);
+  S.set.newMax=Math.max(0,+$("#setNew").value||8);
+  S.set.rate=+$("#setRate").value||1;
+  S.set.voice=$("#setVoice").value||"";
+  save(); renderHome(); toast("設定を保存しました");
+};
+$("#btnSaveApi").onclick=()=>{
+  S.api.provider=$("#setProvider").value;
+  S.api.model=($("#setModel").value||"").trim()||(S.api.provider==="gemini"?"gemini-2.5-flash":"gpt-4o-mini");
+  S.api.url=$("#setUrl").value.trim()||DEF.api.url;
+  S.api.key=$("#setKey").value.trim();
+  save(); updGenMode(); toast(S.api.key?"保存しました":"APIキーを消去しました");
+};
+$("#btnTestApi").onclick=async()=>{
+  if(!$("#setKey").value.trim()) return toast("APIキーを入力してください");
+  $("#btnSaveApi").click();
+  const b=$("#btnTestApi"); b.disabled=true; b.innerHTML='<span class="load"></span>接続中…';
+  try{
+    if(S.api.provider==="gemini"){
+      const best=await pickGeminiModel();
+      S.api.model=best; save(); fillModelSelect();
+      b.innerHTML='<span class="load"></span>'+best+' を確認中…';
+    }
+    const r=await aiGenerate("会議を始める",2,"business");
+    toast(`接続OK（${S.api.model}）：例）`+r[0].en, 5000);
+  }catch(e){ console.warn(e); toast("失敗："+explainErr(e),6000); }
+  finally{ b.disabled=false; b.textContent="接続テスト"; updGenMode(); }
+};
+$("#btnSet").onclick=()=>show("more");
+
+$("#btnExport").onclick=()=>{
+  const b=new Blob([JSON.stringify(S,null,2)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(b); a.download=`bizeng-backup-${today()}.json`; a.click();
+};
+$("#btnImport").onclick=()=>$("#fileIn").click();
+$("#fileIn").onchange=e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{ try{
+    const o=JSON.parse(r.result); if(!o.cards) throw 0;
+    S=Object.assign(structuredClone(DEF),o);
+    save(); fillSettings(); renderHome(); renderCards();
+    $("#driveClientId").value=(S.drive&&S.drive.clientId)||""; renderDriveUI();
+    toast("復元しました");
+  }catch(err){ toast("読み込めませんでした"); } };
+  r.readAsText(f);
+};
+$("#btnReset").onclick=()=>{
+  if(!confirm("すべてのカードと学習履歴を削除します。よろしいですか？")) return;
+  S=structuredClone(DEF); Store.set(KEY+".seeded","");
+  save(); fillSettings(); renderHome(); renderCards();
+  $("#driveClientId").value=""; renderDriveUI(); show("home");
+};
+
+/* ================= init ================= */
+window.show=show; window.startSession=startSession;
+
+if(S.cards.length===0 && !Store.get(KEY+".seeded")){
+  const starter=["Let's get started.","Just to make sure I understand correctly...",
+    "Sorry, could you say that again?","We're on track for the September launch.",
+    "I see your point, but I have a slightly different view.","Let me check and get back to you.",
+    "I think you're on mute.","Could you elaborate on that?","I want to flag a potential risk.",
+    "Let me walk you through the numbers.","Does Thursday afternoon work for you?",
+    "Let me summarize what we've agreed."];
+  SEED.filter(p=>starter.includes(p.en)).forEach(p=>S.cards.push(newCard({...p,kt:toKatakana(p.en)})));
+  Store.set(KEY+".seeded","1"); save();
+}
+
+fillSettings();
+renderHome();
+bindDrive();
+
+/* 設定済みなら起動時に静かに1回同期 */
+if(driveAvailable() && S.drive.lastSync){
+  setTimeout(async ()=>{
+    try{ await driveSync(); toast("Driveと同期しました"); }
+    catch(e){ console.warn("auto-sync skipped:", e); }
+  }, 1500);
+}
+
+</script>
+</body>
+</html>
