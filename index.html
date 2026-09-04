@@ -48,8 +48,9 @@ textarea{min-height:78px;line-height:1.6}
 .chip{background:var(--bg2);border:1px solid var(--line);color:var(--tx2);border-radius:999px;padding:7px 12px;font-size:12px;cursor:pointer}
 .chip:hover,.chip.on{border-color:var(--acc);color:var(--tx)}
 .pc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:13px;margin-bottom:10px}
-.pc .en{font-size:17px;font-weight:650;line-height:1.45}
-.pc .kt{color:var(--kana);font-size:12.5px;margin-top:6px;letter-spacing:.4px}
+.pc .ctx{font-size:11.5px;color:#9fd0ff;background:rgba(79,156,255,.10);border-radius:7px;padding:6px 8px;margin-bottom:8px;line-height:1.6}
+.pc .en{font-size:17px;font-weight:650;line-height:1.5}
+.pc .kt{color:var(--kana);font-size:12.5px;margin-top:6px;letter-spacing:.4px;line-height:1.6}
 .pc .kc{color:#8ea4c4;font-size:11px;margin-top:3px}
 .pc .ja{color:var(--tx2);font-size:13px;margin-top:5px;line-height:1.6}
 .pc .note,.pc .gram{font-size:11.5px;margin-top:7px;line-height:1.65;padding-left:8px}
@@ -60,12 +61,25 @@ textarea{min-height:78px;line-height:1.6}
 .tag.lv{color:#9fd0ff;border-color:#2a4a75}
 .sbtn{background:var(--bg2);border:1px solid var(--line);color:var(--tx);border-radius:9px;padding:7px 11px;font-size:12.5px;cursor:pointer}
 .sbtn.added{color:var(--good);border-color:#1f5b48}
+/* 会話表示 */
+.dialog{display:flex;flex-direction:column;gap:9px}
+.turn{display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:start;
+background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px}
+.turn.you{border-color:#2a4a75;background:var(--card2)}
+.turn .who{font-size:10px;color:var(--tx2);background:var(--bg2);border:1px solid var(--line);
+border-radius:6px;padding:3px 6px;white-space:nowrap}
+.turn.you .who{color:#9fd0ff;border-color:#2a4a75}
+.turn .te{font-size:15px;font-weight:600;line-height:1.5}
+.turn .tk{color:var(--kana);font-size:11.5px;margin-top:4px;line-height:1.6}
+.turn .tj{color:var(--tx2);font-size:12px;margin-top:4px;line-height:1.6}
 .stage{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:18px;
 padding:22px 16px;min-height:230px;display:flex;flex-direction:column;justify-content:center;text-align:center;box-shadow:var(--sh)}
 .stage .prompt{font-size:12px;color:var(--tx2);margin-bottom:10px}
+.stage .ctxbig{font-size:12.5px;color:#9fd0ff;background:rgba(79,156,255,.10);border-radius:9px;
+padding:8px 10px;margin-bottom:12px;line-height:1.6;text-align:left}
 .stage .jabig{font-size:19px;line-height:1.7;font-weight:600}
-.stage .enbig{font-size:22px;line-height:1.5;font-weight:700;margin-top:4px}
-.stage .ktbig{color:var(--kana);font-size:14px;margin-top:10px;letter-spacing:.6px}
+.stage .enbig{font-size:21px;line-height:1.55;font-weight:700;margin-top:4px}
+.stage .ktbig{color:var(--kana);font-size:13.5px;margin-top:10px;letter-spacing:.5px;line-height:1.7}
 .stage .kcsm{color:#8ea4c4;font-size:11.5px;margin-top:4px}
 .stage .jasm{color:var(--tx2);font-size:13.5px;margin-top:8px}
 .stage .info{font-size:11.5px;line-height:1.75;text-align:left;margin-top:9px;padding:8px 10px;border-radius:9px;background:rgba(0,0,0,.22)}
@@ -101,7 +115,6 @@ border-radius:11px;padding:11px 13px;cursor:pointer;color:var(--tx)}
 .pex .pk{color:var(--kana);font-size:11.5px;grid-column:1}
 .pex .pjj{color:var(--tx2);font-size:12px;grid-column:1}
 .pex .js-psay{grid-column:2;grid-row:1/4;align-self:center}
-/* 発話採点 */
 #btnMic.rec{background:var(--bad);color:#fff;border-color:var(--bad)}
 .micbox{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:left}
 .mlisten{font-size:14px;color:#9fd0ff;text-align:center;padding:10px 0}
@@ -116,14 +129,12 @@ border-radius:11px;padding:11px 13px;cursor:pointer;color:var(--tx)}
 .w.ok{background:rgba(57,211,154,.16);color:#8ff0cb}
 .w.sub{background:rgba(240,166,58,.18);color:#ffd08a;text-decoration:line-through}
 .w.sub i{font-style:normal;text-decoration:none;color:#fff;margin-left:5px;font-size:12px}
-.w.miss{background:rgba(242,96,122,.18);color:#ffa8ba;}
-.w.miss{border:1px dashed #7a3d4b}
+.w.miss{background:rgba(242,96,122,.18);color:#ffa8ba;border:1px dashed #7a3d4b}
 .w.extra{background:rgba(159,176,205,.14);color:#9fb0cd;font-size:13px}
 .mleg{margin-top:9px;font-size:10.5px;color:var(--tx2);display:flex;gap:6px;flex-wrap:wrap}
 .mleg .w{padding:1px 5px;font-size:10.5px}
 .mai{margin-top:12px;border-top:1px solid var(--line);padding-top:11px;font-size:12.5px}
-.mbetter{font-size:14px;line-height:1.6}
-.mbetter b{color:#8ff0cb}
+.mbetter{font-size:14px;line-height:1.6}.mbetter b{color:#8ff0cb}
 .mwhy{color:var(--tx2);font-size:12px;margin-top:6px;line-height:1.7}
 .mpraise{color:#ffd08a;font-size:12px;margin-top:6px}
 details.acc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:9px}
@@ -195,8 +206,7 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
 
 <section class="view" id="v-pat">
   <h2 class="t">型（チャンク）で覚える</h2>
-  <p class="sub">単語を並べるのではなく、<b>意味の塊</b>ごと口に入れます。中身を入れ替えるだけで何十通りにも使えるので、
-  覚える量が減り、話すときに文法を考える負荷が消えます。</p>
+  <p class="sub">単語を並べるのではなく、<b>意味の塊</b>ごと口に入れます。中身を入れ替えるだけで何十通りにも使えます。</p>
   <div class="plist" id="patList"></div>
   <div id="patDetail" style="margin-top:14px"></div>
 </section>
@@ -206,6 +216,7 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
   <div id="studyEmpty" class="empty hidden"></div>
   <div id="studyArea">
     <div class="stage">
+      <div class="ctxbig" id="stCtx" style="display:none"></div>
       <div class="prompt">この日本語を、英語で口に出す</div>
       <div class="jabig" id="stFront">—</div>
       <div id="hintBox" class="hintbox hidden"></div>
@@ -219,7 +230,7 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
         <div class="info" id="stSnd"></div>
       </div>
     </div>
-    <div class="row" id="speakRow" style="margin-top:10px">
+    <div class="row" style="margin-top:10px">
       <button class="btn sec" id="btnMic">🎤 話す</button>
       <button class="btn sec" id="btnHint">💡 ヒント</button>
     </div>
@@ -241,22 +252,20 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
 
 <section class="view" id="v-gen">
   <h2 class="t">場面からフレーズを作る</h2>
-  <p class="sub">場面・状況・言いたいことを日本語で入れると、その場で使える表現を作ります。</p>
+  <p class="sub">場面を日本語で入れると、その場で使える表現を作ります。<b>長さ・複雑さ</b>を上げると、
+  理由や条件を添えた実戦的な言い方や、往復の会話まで作れます。</p>
   <div class="box">
     <label class="lb">場面・状況・言いたいこと</label>
-    <textarea id="genInput" placeholder="例）ホテルでエアコンが壊れていると伝えたい"></textarea>
+    <textarea id="genInput" placeholder="例）納期が遅れる理由を説明して、代案を提示したい"></textarea>
     <div class="chips" id="sceneChips"></div>
-    <div class="row" style="margin-top:11px">
-      <select id="genLevel" style="flex:1.2">
-        <option value="simple">やさしく短く（推奨）</option>
-        <option value="business">標準</option>
-        <option value="formal">ややフォーマル</option>
-      </select>
-      <select id="genCount" style="flex:.8">
-        <option value="6">6件</option><option value="8" selected>8件</option><option value="12">12件</option>
-      </select>
-    </div>
-    <button class="btn" id="btnGen" style="margin-top:10px">✨ フレーズを生成</button>
+    <label class="lb" style="margin-top:12px">長さ・複雑さ</label>
+    <select id="genDepth"></select>
+    <div class="note-sm" id="depthNote" style="margin-top:5px"></div>
+    <label class="lb" style="margin-top:11px">件数</label>
+    <select id="genCount">
+      <option value="4">4件</option><option value="6" selected>6件</option><option value="8">8件</option>
+    </select>
+    <button class="btn" id="btnGen" style="margin-top:12px">✨ フレーズを生成</button>
     <div class="note-sm" id="genMode" style="margin-top:8px"></div>
   </div>
   <div id="genOut"></div>
@@ -277,10 +286,8 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
   </div>
   <div class="box warn hidden" id="micWarn">
     <div style="font-size:13px;font-weight:700;color:#ffd08a">このブラウザは音声認識に未対応です</div>
-    <div class="note-sm" style="margin-top:6px">発話の採点機能は Chrome / Edge / Safari で使えます。
-    Firefox は既定で無効のため「🎤 話す」は表示されません。他の機能はすべて使えます。</div>
+    <div class="note-sm" style="margin-top:6px">発話の採点は Chrome / Edge / Safari で使えます。他の機能はすべて使えます。</div>
   </div>
-
   <h2 class="t">この学習法の根拠</h2>
   <div id="methodList"></div>
 
@@ -289,8 +296,7 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
     <div style="font-size:13px;font-weight:700;color:#ffd08a">この開き方では同期できません</div>
     <div class="note-sm" style="margin-top:6px">
       Googleは認証を許可する場所をURLで登録する必要があり、<code>file://</code> は登録できません。
-      <b style="color:var(--tx)">GitHub Pages に置いてURLで開いてください。</b><br><br>
-      当面は下部の<b>エクスポート／インポート</b>で手動移行できます。</div>
+      <b style="color:var(--tx)">GitHub Pages に置いてURLで開いてください。</b></div>
   </div>
   <div class="box hidden" id="drivePanel">
     <div class="note-sm" id="driveStatus"></div>
@@ -313,10 +319,10 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
     <button class="btn sec" id="btnDriveSave" style="margin-top:9px">保存</button>
   </div>
 
-  <h2 class="t">AI生成・AI添削の接続（任意）</h2>
+  <h2 class="t">AI生成・AI添削の接続</h2>
   <div class="box">
-    <p class="note-sm" style="margin-top:0">未接続でも、内蔵フレーズの学習と発話採点は使えます。
-    接続すると、場面からの生成に加えて<b>発話のAI添削</b>（より自然な言い方の提案）が有効になります。</p>
+    <p class="note-sm" style="margin-top:0">未接続でも内蔵フレーズの学習と発話採点は使えます。
+    接続すると<b>2〜3文の説明</b>や<b>会話モード</b>、<b>発話のAI添削</b>が使えるようになります。</p>
     <label class="lb" style="margin-top:12px">提供元</label>
     <select id="setProvider">
       <option value="gemini">Google Gemini（無料・推奨）</option>
@@ -376,41 +382,42 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
 <script>
 /* ===== 英語 → カタカナ（米国発音・音声変化つき） ===== */
 const KD_RAW = `
-a:ア about:アバウト above:アバヴ accept:アクセプト across:アクロス action:アクション actually:アクチュアリー add:アド additional:アディショナル address:アドレス after:アフター afternoon:アフタヌーン again:アゲン against:アゲンスト agenda:アジェンダ agree:アグリー agreed:アグリード ahead:アヘッド air:エア airport:エアポート aisle:アイゥ all:オール allergic:アラージック allow:アラウ already:オールレディ also:オールソウ always:オールウェイズ am:アム an:アン and:アンド angle:アングゥ another:アナザー answer:アンサー any:エニー anything:エニシング anytime:エニタイム apologize:アポロジャイズ appreciate:アプリーシエイト approach:アプロウチ approval:アプルーヴァル approve:アプルーヴ are:アー area:エリア around:アラウンド as:アズ ask:アスク assume:アシューム assumption:アサンプション at:アット available:アヴェイラボゥ avoid:アヴォイド
-back:バック bag:バッグ bags:バッグズ baggage:バギッジ bank:バンク be:ビー because:ビコーズ become:ビカム been:ビン before:ビフォー behind:ビハインド being:ビーイング believe:ビリーヴ below:ビロウ best:ベスト better:ベター between:ビトゥウィーン big:ビッグ bill:ビゥ bit:ビット blanket:ブランキット block:ブロック blocked:ブロックト blocker:ブロッカー blue:ブルー board:ボード boarding:ボーディング book:ブック booked:ブックト booking:ブッキング both:ボウス bottleneck:ボトゥネック bottom:ボトム box:ボックス break:ブレイク breakfast:ブレックファスト breaks:ブレイクス budget:バジェット bus:バス business:ビズネス busy:ビジー but:バット buy:バイ by:バイ
-call:コール calling:コーリング came:ケイム can:キャン cancel:キャンセゥ car:カー card:カード cash:キャッシュ catch:キャッチ causation:コーゼイション cause:コーズ change:チェインジ changed:チェインジド changes:チェインジズ charge:チャージ chase:チェイス check:チェック chicken:チキン claim:クレイム clear:クリア close:クロウズ closed:クロウズド closing:クロウジング coffee:コーフィ cold:コウゥド come:カム comes:カムズ comment:コメント comments:コメンツ commit:コミット concern:コンサーン concerns:コンサーンズ conclude:コンクルード conclusion:コンクルージョン conclusions:コンクルージョンズ condition:コンディション conditioning:コンディショニング conference:カンファレンス confirm:コンファーム conflict:コンフリクト confusion:コンフュージョン container:コンテイナー correlation:コーレレイション cost:コスト could:クド cover:カヴァー credit:クレディット customer:カスタマー
-dairy:デアリー data:デイタ date:デイト day:デイ days:デイズ decide:ディサイド decision:ディシジョン delay:ディレイ dependency:ディペンデンシー dessert:デザート did:ディド different:ディファレント discussion:ディスカッション distance:ディスタンス do:ドゥ doctor:ドクター does:ダズ dollars:ダラーズ done:ダン down:ダウン downtown:ダウンタウン drink:ドリンク
-each:イーチ early:アーリー eat:イート eight:エイト either:イーザー elevator:エレヴェイター else:エゥス emergency:イマージェンシー end:エンド english:イングリッシュ enough:イナフ evening:イーヴニング every:エヴリー everyone:エヴリワン everything:エヴリシング exactly:イグザクトリー exit:エグジット expect:イクスペクト expected:イクスペクティド
-fail:フェイゥ failed:フェイゥド failure:フェイリャー fair:フェア fallback:フォールバック far:ファー fast:ファスト fee:フィー feel:フィーゥ few:フュー fifty:フィフティ fill:フィゥ find:ファインド fine:ファイン finish:フィニッシュ first:ファースト fish:フィッシュ five:ファイヴ fix:フィックス flag:フラッグ flexible:フレクサボゥ flight:フライト floor:フロア fly:フライ food:フード for:フォー forward:フォーワード found:ファウンド four:フォー free:フリー from:フロム front:フロント
-gate:ゲイト get:ゲット give:ギヴ go:ゴウ going:ゴウイング good:グッド got:ガット great:グレイト ground:グラウンド guess:ゲス
-had:ハド half:ハーフ hand:ハンド happen:ハプン have:ハヴ he:ヒー headset:ヘッドセット hear:ヒア help:ヘゥプ here:ヒア hilton:ヒゥトン his:ヒズ hold:ホウゥド hot:ハット hotel:ホウテゥ hour:アワー how:ハウ however:ハウエヴァー hypothesis:ハイパセシス
-i:アイ idea:アイディア if:イフ impact:インパクト include:インクルード included:インクルーディッド incomplete:インコンプリート interrupt:インタラプト is:イズ issue:イシュー it:イット item:アイテム items:アイテムズ improving:インプルーヴィング
-japanese:ジャパニーズ just:ジャスト
-keep:キープ key:キー know:ノウ
-large:ラージ last:ラスト late:レイト later:レイター launch:ローンチ leave:リーヴ left:レフト less:レス let:レット like:ライク limit:リミット line:ライン little:リトゥ long:ロング look:ルック looking:ルッキング lost:ロスト lot:ロット luggage:ラギッジ
-made:メイド make:メイク manager:マネジャー many:メニー material:マティアリアゥ may:メイ maybe:メイビー me:ミー meal:ミーゥ mean:ミーン measurement:メジャーメント meeting:ミーティング menu:メニュー message:メシッジ middle:ミドゥ milestone:マイゥストウン minute:ミニット minutes:ミニッツ miss:ミス missed:ミスト mode:モウド moment:モウメント money:マニー month:マンス months:マンス more:モア morning:モーニング much:マッチ my:マイ
-name:ネイム near:ニア need:ニード next:ネクスト night:ナイト nights:ナイツ no:ノウ not:ナット now:ナウ number:ナンバー numbers:ナンバーズ nuts:ナッツ
-of:オヴ off:オフ on:オン one:ワン onion:アニオン onions:アニオンズ online:オンライン only:オウンリー open:オウプン order:オーダー other:アザー our:アワー out:アウト over:オウヴァー own:オウン
-pass:パス passport:パスポート pay:ペイ percent:パーセント phone:フォウン photo:フォウトウ picture:ピクチャー plan:プラン platform:プラットフォーム please:プリーズ point:ポイント police:ポリース popular:パピュラー pork:ポーク possible:ポシボゥ potential:ポテンシャゥ preliminary:プリリミネリー problem:プロブレム progress:プログレス
-quality:クォリティ quarter:クォーター question:クエスチョン questions:クエスチョンズ quick:クイック
-raw:ロー ready:レディ recap:リーキャップ receipt:リシート recommend:レコメンド recommendation:レコメンデイション region:リージョン related:リレイティド rephrase:リーフレイズ reproduce:リープロデュース reservation:レザヴェイション resources:リソーシズ restroom:レストルーム return:リターン review:リヴュー revisit:リーヴィジット right:ライト risk:リスク room:ルーム rooms:ルームズ
-same:セイム say:セイ schedule:スケジューゥ scope:スコウプ seat:シート see:シー send:センド service:サーヴィス shall:シャゥ she:シー shower:シャワー sightseeing:サイトシーイング significant:シグニフィカント size:サイズ slide:スライド slightly:スライトリー slow:スロウ slowly:スロウリー small:スモーゥ smaller:スモーラー some:サム something:サムシング soon:スーン sorry:サリー speak:スピーク speculate:スペキュレイト spicy:スパイシー split:スプリット start:スタート started:スターティド statistically:スタティスティカリー station:ステイション status:スタタス stay:ステイ staying:ステイイング still:スティゥ stop:ストップ sugar:シュガー sum:サム summarize:サマライズ supplier:サプライアー sure:シュア
-table:テイボゥ take:テイク taken:テイクン taxi:タクシー tax-free:タックスフリー technical:テクニカゥ tell:テゥ temperature:テンパラチャー ten:テン test:テスト than:ザン thank:サンク thanks:サンクス that:ザット the:ザ their:ゼア them:ゼム then:ゼン there:ゼア these:ジーズ they:ゼイ thing:シング think:シンク thirty:サーティ this:ジス those:ゾウズ three:スリー through:スルー ticket:ティキット time:タイム timeline:タイムライン timing:タイミング to:トゥ today:トゥデイ together:トゥゲザー tomorrow:トゥマロウ tonight:トゥナイト too:トゥー track:トラック train:トレイン trend:トレンド try:トライ twenty:トゥエンティ two:トゥー
-underestimate:アンダーエスティメイト understand:アンダースタンド up:アップ update:アップデイト us:アス use:ユーズ
-verify:ヴェリファイ very:ヴェリー
-wait:ウェイト waiting:ウェイティング wake-up:ウェイカップ walk:ウォーク walking:ウォーキング wallet:ウォリット want:ウォント was:ワズ water:ウォーター way:ウェイ we:ウィー week:ウィーク weeks:ウィークス what:ワット when:ウェン where:ウェア which:ウィッチ who:フー why:ワイ wifi:ワイファイ will:ウィゥ with:ウィズ within:ウィズイン without:ウィズアウト work:ワーク working:ワーキング works:ワークス worst:ワースト would:ウド write:ライト written:リトゥン
-year:イヤー yes:イエス yet:イエット you:ユー your:ユア
-january:ジャニュアリー february:フェブラリー march:マーチ april:エイプリル june:ジューン july:ジュライ august:オーガスト september:セプテンバー october:オクトウバー november:ノヴェンバー december:ディセンバー monday:マンデイ tuesday:テューズデイ wednesday:ウェンズデイ thursday:サーズデイ friday:フライデイ saturday:サタデイ sunday:サンデイ
+a:ア able:エイボゥ about:アバウト above:アバヴ accept:アクセプト according:アコーディング across:アクロス action:アクション actually:アクチュアリー add:アド additional:アディショナル address:アドレス adjust:アジャスト advance:アドヴァンス after:アフター afternoon:アフタヌーン again:アゲン against:アゲンスト agenda:アジェンダ agree:アグリー agreed:アグリード ahead:アヘッド air:エア airport:エアポート aisle:アイゥ all:オール allergic:アラージック allow:アラウ already:オールレディ also:オールソウ always:オールウェイズ am:アム an:アン and:アンド angle:アングゥ another:アナザー answer:アンサー any:エニー anything:エニシング anytime:エニタイム apologize:アポロジャイズ appreciate:アプリーシエイト approach:アプロウチ approval:アプルーヴァル approve:アプルーヴ are:アー area:エリア around:アラウンド arrive:アライヴ as:アズ ask:アスク assume:アシューム assumption:アサンプション at:アット available:アヴェイラボゥ avoid:アヴォイド
+by:バイ back:バック bag:バッグ bags:バッグズ baggage:バギッジ bank:バンク be:ビー because:ビコーズ become:ビカム been:ビン before:ビフォー behind:ビハインド being:ビーイング believe:ビリーヴ below:ビロウ best:ベスト better:ベター between:ビトゥウィーン big:ビッグ bill:ビゥ bit:ビット blanket:ブランキット block:ブロック blocked:ブロックト blocker:ブロッカー blue:ブルー board:ボード boarding:ボーディング book:ブック booked:ブックト booking:ブッキング both:ボウス bottleneck:ボトゥネック bottom:ボトム box:ボックス break:ブレイク breakfast:ブレックファスト breaks:ブレイクス budget:バジェット bus:バス business:ビズネス busy:ビジー but:バット buy:バイ
+call:コール calling:コーリング came:ケイム can:キャン cancel:キャンセゥ car:カー card:カード care:ケア cash:キャッシュ catch:キャッチ causation:コーゼイション cause:コーズ certain:サートゥン challenge:チャレンジ change:チェインジ changed:チェインジド changes:チェインジズ charge:チャージ chase:チェイス chat:チャット check:チェック chicken:チキン choice:チョイス claim:クレイム clear:クリア close:クロウズ closed:クロウズド closing:クロウジング coffee:コーフィ cold:コウゥド come:カム comes:カムズ comment:コメント comments:コメンツ commit:コミット common:コモン company:カンパニー compare:コンペア complete:コンプリート concern:コンサーン concerns:コンサーンズ conclude:コンクルード conclusion:コンクルージョン conclusions:コンクルージョンズ condition:コンディション conditioning:コンディショニング conference:カンファレンス confirm:コンファーム conflict:コンフリクト confusion:コンフュージョン container:コンテイナー continue:コンティニュー correct:コレクト correctly:コレクトリー correlation:コーレレイション cost:コスト could:クド cover:カヴァー create:クリエイト credit:クレディット current:カレント customer:カスタマー cut:カット
+dairy:デアリー data:デイタ date:デイト day:デイ days:デイズ decide:ディサイド decision:ディシジョン defer:ディファー delay:ディレイ deliver:デリヴァー dependency:ディペンデンシー depend:ディペンド design:ディザイン dessert:デザート detail:ディーテイル details:ディーテイルズ did:ディド difference:ディファレンス different:ディファレント difficult:ディフィカゥト disagree:ディスアグリー discuss:ディスカス discussion:ディスカッション distance:ディスタンス do:ドゥ doable:ドゥーアボゥ doctor:ドクター does:ダズ doing:ドゥーイング dollars:ダラーズ done:ダン down:ダウン downtown:ダウンタウン draft:ドラフト drink:ドリンク drop:ドロップ due:デュー
+each:イーチ earlier:アーリアー early:アーリー easy:イージー eat:イート echo:エコウ effect:イフェクト effort:エフォート eight:エイト either:イーザー elaborate:イラボレイト elevator:エレヴェイター else:エゥス emergency:イマージェンシー end:エンド english:イングリッシュ enough:イナフ ensure:インシュア error:エラー even:イーヴン evening:イーヴニング ever:エヴァー every:エヴリー everyone:エヴリワン everything:エヴリシング exactly:イグザクトリー example:イグザンポゥ except:イクセプト exit:エグジット expect:イクスペクト expected:イクスペクティド experience:イクスピアリエンス explain:イクスプレイン eye:アイ
+face:フェイス fact:ファクト factory:ファクトリー fail:フェイゥ failed:フェイゥド failure:フェイリャー fair:フェア fall:フォール fallback:フォールバック far:ファー fast:ファスト feedback:フィードバック feel:フィーゥ few:フュー fifteen:フィフティーン fifty:フィフティ figure:フィギュア file:ファイゥ final:ファイナゥ find:ファインド fine:ファイン finish:フィニッシュ first:ファースト fish:フィッシュ five:ファイヴ fix:フィックス flag:フラッグ flexible:フレクサボゥ flight:フライト floor:フロア fly:フライ focus:フォウカス follow:フォロウ food:フード for:フォー forward:フォーワード found:ファウンド four:フォー free:フリー front:フロント from:フロム full:フゥ further:ファーザー future:フューチャー
+gap:ギャップ gate:ゲイト gentle:ジェントゥ get:ゲット give:ギヴ given:ギヴン go:ゴウ goal:ゴウゥ going:ゴウイング good:グッド got:ガット great:グレイト ground:グラウンド group:グループ guess:ゲス
+had:ハド half:ハーフ hand:ハンド handle:ハンドゥ happen:ハプン happy:ハピー hard:ハード has:ハズ have:ハヴ having:ハヴィング he:ヒー headset:ヘッドセット hear:ヒア held:ヘゥド hello:ハロウ help:ヘゥプ her:ハー here:ヒア high:ハイ hilton:ヒゥトン him:ヒム his:ヒズ hold:ホウゥド honest:アネスト hope:ホウプ hot:ハット hotel:ホウテゥ hour:アワー how:ハウ however:ハウエヴァー hundred:ハンドレッド hypothesis:ハイパセシス
+i:アイ idea:アイディア if:イフ impact:インパクト important:インポータント improve:インプルーヴ improving:インプルーヴィング in:イン include:インクルード included:インクルーディッド incomplete:インコンプリート increase:インクリース increased:インクリースト indeed:インディード information:インフォメイション instead:インステッド interested:イントレスティド interrupt:インタラプト into:イントゥ introduce:イントロデュース invite:インヴァイト involved:インヴォゥヴド is:イズ issue:イシュー it:イット item:アイテム items:アイテムズ its:イツ
+japanese:ジャパニーズ job:ジョブ join:ジョイン joining:ジョイニング just:ジャスト
+keep:キープ keeping:キーピング kept:ケプト key:キー kind:カインド know:ノウ known:ノウン
+large:ラージ last:ラスト late:レイト later:レイター latest:レイティスト launch:ローンチ lead:リード learn:ラーン least:リースト leave:リーヴ left:レフト less:レス let:レット level:レヴォゥ like:ライク limit:リミット line:ライン list:リスト little:リトゥ lock:ロック logic:ロジック long:ロング look:ルック looked:ルックト looking:ルッキング loop:ループ lost:ロスト lot:ロット low:ロウ luggage:ラギッジ
+made:メイド main:メイン major:メイジャー make:メイク makes:メイクス making:メイキング management:マネジメント manager:マネジャー many:メニー market:マーケット material:マティアリアゥ matter:マター may:メイ maybe:メイビー me:ミー meal:ミーゥ mean:ミーン meaning:ミーニング measurement:メジャーメント meet:ミート meeting:ミーティング member:メンバー mention:メンション menu:メニュー message:メシッジ method:メソッド microphone:マイクロフォウン middle:ミドゥ might:マイト milestone:マイゥストウン mind:マインド minute:ミニット minutes:ミニッツ miss:ミス missed:ミスト mistake:ミステイク mode:モウド moment:モウメント money:マニー month:マンス more:モア morning:モーニング most:モウスト move:ムーヴ much:マッチ must:マスト mute:ミュート my:マイ
+name:ネイム near:ニア necessarily:ネセサリリー need:ニード negotiate:ニゴウシエイト never:ネヴァー new:ニュー next:ネクスト nice:ナイス night:ナイト nights:ナイツ no:ノウ noise:ノイズ not:ナット note:ノウト notes:ノウツ nothing:ナッシング notice:ノウティス now:ナウ number:ナンバー numbers:ナンバーズ nuts:ナッツ
+of:オヴ off:オフ offer:オファー offline:オフライン often:オフン okay:オウケイ on:オン once:ワンス one:ワン onion:アニオン onions:アニオンズ online:オンライン only:オウンリー open:オウプン opinion:オピニオン option:オプション or:オア order:オーダー other:アザー our:アワー out:アウト outside:アウトサイド over:オウヴァー overall:オウヴァーオール own:オウン
+page:ペイジ part:パート parts:パーツ park:パーク pass:パス passport:パスポート pay:ペイ people:ピーポゥ percent:パーセント perhaps:パハプス person:パースン phone:フォウン photo:フォウトウ picture:ピクチャー pilot:パイロット place:プレイス plan:プラン platform:プラットフォーム please:プリーズ point:ポイント police:ポリース popular:パピュラー pork:ポーク position:ポジション possible:ポシボゥ potential:ポテンシャゥ prefer:プリファー preliminary:プリリミネリー prepare:プリペア present:プレゼント previous:プリーヴィアス price:プライス principle:プリンシポゥ priority:プライオリティ probably:プロバブリー problem:プロブレム process:プロセス product:プロダクト productive:プロダクティヴ progress:プログレス project:プロジェクト properly:プロパリー protocol:プロウトコール provide:プロヴァイド pull:プゥ push:プッシュ put:プット
+quality:クォリティ quantify:クォンティファイ quarter:クォーター question:クエスチョン questions:クエスチョンズ quick:クイック quickly:クイックリー quite:クワイト
+raise:レイズ rather:ラザー raw:ロー reach:リーチ read:リード ready:レディ real:リアゥ really:リアリー reason:リーズン reasons:リーズンズ recap:リーキャップ receipt:リシート receive:リスィーヴ recommend:レコメンド recommendation:レコメンデイション red:レッド reduce:リデュース region:リージョン related:リレイティド remember:リメンバー reminder:リマインダー repeat:リピート rephrase:リーフレイズ replace:リプレイス reply:リプライ report:リポート reproduce:リープロデュース request:リクエスト require:リクワイア reschedule:リースケジューゥ reservation:レザヴェイション resources:リソーシズ response:リスポンス responsibility:リスポンサビリティ rest:レスト restroom:レストルーム result:リザゥト results:リザゥツ return:リターン review:リヴュー revisit:リーヴィジット right:ライト risk:リスク role:ロウゥ room:ルーム rooms:ルームズ root:ルート run:ラン running:ラニング
+safer:セイファー said:セッド sales:セイゥズ same:セイム sample:サンポゥ save:セイヴ saw:ソー say:セイ saying:セイイング schedule:スケジューゥ scope:スコウプ screen:スクリーン second:セカンド see:シー seem:シーム send:センド sense:センス set:セット seven:セヴン several:セヴラゥ shape:シェイプ share:シェア she:シー short:ショート should:シュド show:ショウ shower:シャワー shows:ショウズ side:サイド sightseeing:サイトシーイング significant:シグニフィカント similar:シミラー simple:シンポゥ simply:シンプリー since:シンス size:サイズ slide:スライド slides:スライズ slightly:スライトリー slipped:スリップト slot:スロット slow:スロウ slowly:スロウリー small:スモーゥ smaller:スモーラー so:ソウ solution:ソルーション some:サム something:サムシング soon:スーン sorry:サリー sound:サウンド speak:スピーク specific:スペシフィック speculate:スペキュレイト speed:スピード spend:スペンド spicy:スパイシー split:スプリット staff:スタッフ start:スタート started:スターティド statistically:スタティスティカリー station:ステイション status:スタタス stay:ステイ staying:ステイイング step:ステップ still:スティゥ stop:ストップ strongly:ストロングリー such:サッチ sugar:シュガー suggest:サジェスト sum:サム summarize:サマライズ supplier:サプライアー support:サポート sure:シュア
+table:テイボゥ take:テイク taken:テイクン talk:トーク talking:トーキング target:ターゲット task:タスク tax-free:タックスフリー taxi:タクシー team:ティーム technical:テクニカゥ tell:テゥ temperature:テンパラチャー ten:テン test:テスト testing:テスティング than:ザン thank:サンク thanks:サンクス that:ザット the:ザ their:ゼア them:ゼム themselves:ゼムセゥヴズ then:ゼン there:ゼア these:ジーズ they:ゼイ thing:シング things:シングズ think:シンク thirty:サーティ this:ジス those:ゾウズ thought:ソート thoughts:ソーツ three:スリー through:スルー ticket:ティキット tight:タイト time:タイム timeline:タイムライン timing:タイミング to:トゥ today:トゥデイ together:トゥゲザー tokyo:トウキョウ tomorrow:トゥマロウ tonight:トゥナイト too:トゥー topic:トピック total:トウタゥ track:トラック train:トレイン treat:トリート trend:トレンド true:トゥルー try:トライ turn:ターン twenty:トゥエンティ two:トゥー
+under:アンダー underestimate:アンダーエスティメイト understand:アンダースタンド unfortunately:アンフォーチュニトリー unrealistic:アンリアリスティック unstable:アンステイボゥ until:アンティゥ up:アップ update:アップデイト urgent:アージェント us:アス use:ユーズ used:ユーズド
+value:ヴァリュー verify:ヴェリファイ version:ヴァージョン very:ヴェリー view:ヴュー
+wait:ウェイト waiting:ウェイティング wake-up:ウェイカップ walk:ウォーク walking:ウォーキング wallet:ウォリット want:ウォント was:ワズ water:ウォーター way:ウェイ we:ウィー weather:ウェザー week:ウィーク weekend:ウィーケンド weeks:ウィークス well:ウェゥ were:ワー what:ワット when:ウェン where:ウェア whether:ウェザー which:ウィッチ while:ワイゥ who:フー whole:ホウゥ why:ワイ wifi:ワイファイ will:ウィゥ with:ウィズ within:ウィズイン without:ウィズアウト work:ワーク working:ワーキング works:ワークス world:ワーゥド worry:ワリー worst:ワースト would:ウド wrap:ラップ write:ライト writing:ライティング written:リトゥン wrong:ロング
+year:イヤー yes:イエス yesterday:イエスタデイ yet:イエット you:ユー your:ユア
+january:ジャニュアリー february:フェブラリー march:マーチ april:エイプリル may:メイ june:ジューン july:ジュライ august:オーガスト september:セプテンバー october:オクトウバー november:ノヴェンバー december:ディセンバー monday:マンデイ tuesday:テューズデイ wednesday:ウェンズデイ thursday:サーズデイ friday:フライデイ saturday:サタデイ sunday:サンデイ
 `;
 const CONTR = {
  "i'm":"アイム","i'd":"アイド","i'll":"アイゥ","i've":"アイヴ","it's":"イッツ","that's":"ザッツ",
  "there's":"ゼアズ","here's":"ヒアズ","what's":"ワッツ","how's":"ハウズ","let's":"レッツ",
  "we're":"ウィア","we'd":"ウィード","we'll":"ウィーゥ","we've":"ウィーヴ","you're":"ユア",
- "you'd":"ユード","you'll":"ユーゥ","you've":"ユーヴ","they're":"ゼア","don't":"ドウント",
- "doesn't":"ダズント","didn't":"ディドゥント","can't":"キャント","won't":"ウォウント",
- "isn't":"イズント","aren't":"アーント","wasn't":"ワズント","couldn't":"クドゥント",
- "wouldn't":"ウドゥント","shouldn't":"シュドゥント","haven't":"ハヴント","hasn't":"ハズント",
- "who's":"フーズ","supplier's":"サプライアーズ","today's":"トゥデイズ","year's":"イヤーズ"
+ "you'd":"ユード","you'll":"ユーゥ","you've":"ユーヴ","they're":"ゼア","they'll":"ゼイゥ",
+ "don't":"ドウント","doesn't":"ダズント","didn't":"ディドゥント","can't":"キャント",
+ "won't":"ウォウント","isn't":"イズント","aren't":"アーント","wasn't":"ワズント",
+ "couldn't":"クドゥント","wouldn't":"ウドゥント","shouldn't":"シュドゥント",
+ "haven't":"ハヴント","hasn't":"ハズント","who's":"フーズ","supplier's":"サプライアーズ",
+ "today's":"トゥデイズ","year's":"イヤーズ","o'clock":"オクロック"
 };
 const KANA_DICT=(()=>{ const d={};
   KD_RAW.split(/\s+/).forEach(p=>{const i=p.indexOf(':'); if(i>0) d[p.slice(0,i)]=p.slice(i+1);});
@@ -425,8 +432,44 @@ const KRULES=[["tion","ション"],["sion","ジョン"],["ture","チャー"],["o
  ["j","ジ"],["k","ク"],["l","ル"],["m","ム"],["n","ン"],["o","オ"],["p","プ"],["q","ク"],["r","ル"],
  ["s","ス"],["t","ト"],["u","ア"],["v","ヴ"],["w","ウ"],["x","クス"],["y","イ"],["z","ズ"],["'",""]];
 
+/* 子音＋母音は1音節として組み立てる（辞書にない語・固有名詞用） */
+const CV={
+ k:"カキクケコ",g:"ガギグゲゴ",s:"サシスセソ",z:"ザジズゼゾ",t:"タティトゥテト",d:"ダディドゥデド",
+ n:"ナニヌネノ",h:"ハヒフヘホ",b:"バビブベボ",p:"パピプペポ",m:"マミムメモ",y:"ヤイユエヨ",
+ r:"ラリルレロ",l:"ラリルレロ",w:"ワウィウウェウォ",f:"ファフィフフェフォ",v:"ヴァヴィヴヴェヴォ",
+ j:"ジャジジュジェジョ",c:"カシクセコ",
+ sh:"シャシシュシェショ",ch:"チャチチュチェチョ",th:"サシスセソ",ts:"ツァツィツツェツォ"
+};
+const VI={a:0,i:1,u:2,e:3,o:4};
+const VK=["ア","イ","ウ","エ","オ"];
+function cvKana(cons,vow){
+  const t=CV[cons];
+  if(!t) return null;
+  const i=VI[vow];
+  /* 拗音は2文字ぶん取り出す */
+  const chars=[...t];
+  if(chars.length>5){
+    const parts=[]; let buf="";
+    for(const ch of chars){
+      if("ャュョァィゥェォ".includes(ch)) buf+=ch;
+      else { if(buf) parts.push(buf); buf=ch; }
+    }
+    if(buf) parts.push(buf);
+    return parts[i]||null;
+  }
+  return chars[i]||null;
+}
+const NUMK={"0":"ゼロ","1":"ワン","2":"トゥー","3":"スリー","4":"フォー","5":"ファイヴ",
+ "6":"シックス","7":"セヴン","8":"エイト","9":"ナイン","10":"テン"};
 function wordToKana(w){
   const lw=w.toLowerCase();
+  const nm=lw.match(/^(\d+)(st|nd|rd|th)?$/);
+  if(nm){
+    const ORD={"1":"ファースト","2":"セカンド","3":"サード","4":"フォース","5":"フィフス",
+      "6":"シックスス","7":"セヴンス","8":"エイス","9":"ナインス","10":"テンス"};
+    if(nm[2]) return ORD[nm[1]]||(NUMK[nm[1]]||nm[1])+"ス";
+    if(NUMK[nm[1]]) return NUMK[nm[1]];
+  }
   if(KANA_DICT[lw]) return KANA_DICT[lw];
   for(const [re,rep,suf] of [[/ies$/,"y","ィーズ"],[/es$/,"","ィズ"],[/s$/,"","ス"],
       [/ed$/,"","ト"],[/ing$/,"","ィング"],[/ly$/,"","リー"],[/er$/,"","アー"]]){
@@ -436,6 +479,22 @@ function wordToKana(w){
   }
   let s=lw,out="";
   outer: while(s.length){
+    /* 語末の e は読まない（name→ネイム 等は辞書側で吸収） */
+    if(s.length===1&&s==="e"&&out) break;
+    /* 二重子音＋母音（sh/ch/th/ts） */
+    const d2=s.match(/^(sh|ch|th|ts)([aeiou])/);
+    if(d2){
+      const k=cvKana(d2[1],d2[2]);
+      if(k){ out+=k; s=s.slice(3); continue; }
+    }
+    /* 子音＋母音 */
+    const m=s.match(/^([bcdfghjklmnpqrstvwyz])([aeiou])/);
+    if(m){
+      const k=cvKana(m[1],m[2]);
+      if(k){ out+=k; s=s.slice(2); continue; }
+    }
+    /* 語頭の母音はそのまま読む */
+    if(!out&&/^[aeiou]/.test(s)){ out+=VK[VI[s[0]]]; s=s.slice(1); continue; }
     for(const [p,k] of KRULES){ if(s.startsWith(p)){ out+=k; s=s.slice(p.length); continue outer; } }
     s=s.slice(1);
   }
@@ -463,12 +522,11 @@ function linkPair(a,b,aw,bw){
   }
   return {a,b,notes,join:false};
 }
-
 function analyzeKana(sentence){
   const toks=String(sentence||"").trim().split(/\s+/).filter(Boolean);
   let words=[],kanas=[];
   toks.forEach(t=>{
-    const core=t.replace(/^[^A-Za-z']+|[^A-Za-z']+$/g,"").toLowerCase();
+    const core=t.replace(/^[^A-Za-z0-9']+|[^A-Za-z0-9']+$/g,"").toLowerCase();
     if(!core) return;
     words.push(core); kanas.push(core.split("-").map(wordToKana).join(""));
   });
@@ -500,42 +558,35 @@ function analyzeKana(sentence){
 }
 function toKatakana(s){ return analyzeKana(s).kana; }
 
-/* ===== 発話の自動採点（音声認識の結果を突き合わせる） ===== */
+/* ===== 発話の自動採点 ===== */
 function normWords(s){
-  return String(s||"").toLowerCase()
-    .replace(/[’']/g,"'")
-    .replace(/[^a-z0-9'\s]/g," ")
-    .replace(/'/g,"")
+  return String(s||"").toLowerCase().replace(/[’']/g,"'")
+    .replace(/[^a-z0-9'\s]/g," ").replace(/'/g,"")
     .replace(/\s+/g," ").trim().split(" ").filter(Boolean);
 }
-/* 表記ゆれ・同義の吸収 */
-const SPOKEN_EQ = {
-  "gonna":"going to","wanna":"want to","gotta":"got to","cuz":"because",
-  "ok":"okay","alright":"all right","thanks":"thank you"
-};
+const SPOKEN_EQ={gonna:"going to",wanna:"want to",gotta:"got to",cuz:"because",
+  ok:"okay",alright:"all right",thanks:"thank you"};
 function expandEq(ws){
   const out=[];
   ws.forEach(w=>{ const e=SPOKEN_EQ[w]; if(e) out.push(...e.split(" ")); else out.push(w); });
   return out;
 }
-/* 編集距離（単語単位）で一致度を出す */
-function wordDiff(target, said){
-  const a=expandEq(normWords(target)), b=expandEq(normWords(said));
+function wordDiff(target,said){
+  const a=expandEq(normWords(target)),b=expandEq(normWords(said));
   const n=a.length,m=b.length;
   const dp=Array.from({length:n+1},(_,i)=>Array.from({length:m+1},(_,j)=>i===0?j:j===0?i:0));
   for(let i=1;i<=n;i++) for(let j=1;j<=m;j++)
-    dp[i][j]= a[i-1]===b[j-1] ? dp[i-1][j-1] : 1+Math.min(dp[i-1][j-1],dp[i-1][j],dp[i][j-1]);
-  /* バックトレースして差分を作る */
+    dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j-1],dp[i-1][j],dp[i][j-1]);
   let i=n,j=m; const ops=[];
   while(i>0||j>0){
-    if(i>0&&j>0&&a[i-1]===b[j-1]){ ops.push({t:"ok",w:a[i-1]}); i--; j--; }
-    else if(i>0&&j>0&&dp[i][j]===dp[i-1][j-1]+1){ ops.push({t:"sub",w:a[i-1],g:b[j-1]}); i--; j--; }
+    if(i>0&&j>0&&a[i-1]===b[j-1]){ ops.push({t:"ok",w:a[i-1]}); i--;j--; }
+    else if(i>0&&j>0&&dp[i][j]===dp[i-1][j-1]+1){ ops.push({t:"sub",w:a[i-1],g:b[j-1]}); i--;j--; }
     else if(i>0&&dp[i][j]===dp[i-1][j]+1){ ops.push({t:"miss",w:a[i-1]}); i--; }
     else { ops.push({t:"extra",g:b[j-1]}); j--; }
   }
   ops.reverse();
-  const score = n===0?0:Math.max(0,Math.round((1-dp[n][m]/Math.max(n,m||1))*100));
-  return { score, ops, target:a, said:b };
+  const score=n===0?0:Math.max(0,Math.round((1-dp[n][m]/Math.max(n,m||1))*100));
+  return {score,ops};
 }
 
 
@@ -546,7 +597,6 @@ const COURSES = [
   { id:"biz", name:"Phase 2｜米国ビジネス会議（PMO）", weeks:24,
     goal:"台本なしで司会進行・発言・質疑応答・プレゼン。進捗、技術課題、リスク、財務、マイルストーンを扱う。" }
 ];
-
 const SCENES = [
   {id:"hotel",   c:"travel", label:"ホテル",           kw:["ホテル","チェックイン","部屋","宿","フロント","予約"]},
   {id:"food",    c:"travel", label:"カフェ・レストラン", kw:["カフェ","レストラン","注文","食事","飲み","会計","メニュー"]},
@@ -564,200 +614,200 @@ const SCENES = [
   {id:"present", c:"biz", label:"プレゼン",           kw:["プレゼン","説明","スライド","資料","発表"]},
   {id:"wrap",    c:"biz", label:"まとめ・アクション", kw:["まとめ","アクション","決定","合意","次"]}
 ];
-const LEGACY_SCENE = { meeting_open:"facil", opinion:"push", agree:"push", clarify:"qa",
-  status:"progress", data:"tech", request:"facil", schedule:"progress", wrapup:"wrap",
-  call:"facil", smalltalk:"talk", negotiation:"push", apology:"qa" };
+const LEGACY_SCENE={meeting_open:"facil",opinion:"push",agree:"push",clarify:"qa",status:"progress",
+  data:"tech",request:"facil",schedule:"progress",wrapup:"wrap",call:"facil",smalltalk:"talk",
+  negotiation:"push",apology:"qa"};
 
 /* ================= 型（チャンク） ================= */
 const PATTERNS = [
-{c:"travel", s:"food", p:"Could I get ___?", ja:"〜をもらえますか。",
+{c:"travel",s:"food",p:"Could I get ___?",ja:"〜をもらえますか。",
  why:"物を頼むときの最短形。カフェ・機内・ホテル・レストランのすべてで使える。Please give me は命令調なので避ける。",
  gr:"Could I ~? は許可を求める丁寧な形。get は「手に入れる」。後ろに欲しい物の名詞を置くだけ。",
  ex:[["a coffee","コーヒーをください。"],["the check","お会計をお願いします。"],["some water","お水をいただけますか。"],
      ["a receipt","領収書をください。"],["a blanket","毛布をいただけますか。"],["one more","もう一つください。"]]},
-{c:"travel", s:"talk", p:"Could you ___?", ja:"〜していただけますか。",
+{c:"travel",s:"talk",p:"Could you ___?",ja:"〜していただけますか。",
  why:"人に動作をしてほしいときの万能形。Could I（自分がもらう）との使い分けだけ覚えれば足りる。",
  gr:"相手にお願いする型。Can you より丁寧。後ろは動詞の原形をそのまま置く。",
  ex:[["help me","手伝っていただけますか。"],["say that again","もう一度言っていただけますか。"],
      ["speak more slowly","もう少しゆっくり話してください。"],["write it down","書いていただけますか。"],
      ["call a taxi","タクシーを呼んでいただけますか。"],["take a picture","写真を撮っていただけますか。"]]},
-{c:"travel", s:"hotel", p:"I'd like to ___.", ja:"〜したいのですが。",
+{c:"travel",s:"hotel",p:"I'd like to ___.",ja:"〜したいのですが。",
  why:"受付や窓口で用件を言う最初の一言。これを言えば相手が話を進めてくれる。",
  gr:"I would like to の短縮。I want to より丁寧で、大人の英語はほぼこちら。後ろは動詞の原形。",
  ex:[["check in","チェックインしたいのですが。"],["order","注文したいのですが。"],
      ["change my seat","席を変えたいのですが。"],["pay by card","カードで払いたいのですが。"],
      ["book a table","席を予約したいのですが。"],["see a doctor","医者に診てもらいたいのですが。"]]},
-{c:"travel", s:"shop", p:"Do you have ___?", ja:"〜はありますか。",
+{c:"travel",s:"shop",p:"Do you have ___?",ja:"〜はありますか。",
  why:"探し物・在庫・設備の確認はすべてこれ。Is there ~? より口が回りやすい。",
  gr:"have は「持っている」。店や施設にそれがあるかを聞く定番の疑問文。",
  ex:[["Wi-Fi","Wi-Fiはありますか。"],["a smaller size","もっと小さいサイズはありますか。"],
      ["an English menu","英語のメニューはありますか。"],["a table for two","2人の席はありますか。"],
      ["this in blue","これの青はありますか。"]]},
-{c:"travel", s:"shop", p:"Where is ___?", ja:"〜はどこですか。",
+{c:"travel",s:"shop",p:"Where is ___?",ja:"〜はどこですか。",
  why:"道に迷ったとき最速。指をさしながら言えば確実に通じる。",
  gr:"be動詞の疑問文。is の後ろに場所を知りたいものを置くだけ。",
  ex:[["the restroom","トイレはどこですか。"],["the station","駅はどこですか。"],
      ["the exit","出口はどこですか。"],["my gate","私の搭乗口はどこですか。"],
      ["the elevator","エレベーターはどこですか。"]]},
-{c:"travel", s:"shop", p:"How ___?", ja:"どのくらい〜ですか。",
+{c:"travel",s:"shop",p:"How ___?",ja:"どのくらい〜ですか。",
  why:"数字を聞く質問はこの形に集約できる。覚える数を減らせる。",
  gr:"How の後ろに形容詞を置くだけで疑問文になる。much=値段、long=時間、far=距離。",
  ex:[["much is it","いくらですか。"],["long does it take","どのくらい時間がかかりますか。"],
      ["far is it","どのくらい遠いですか。"],["many stops","いくつ目の駅ですか。"]]},
-{c:"travel", s:"talk", p:"Sorry, ___?", ja:"すみません、〜？",
+{c:"travel",s:"talk",p:"Sorry, ___?",ja:"すみません、〜？",
  why:"聞き取れなかったときに黙るのが最悪。この型で必ず返せば会話は止まらない。",
  gr:"Sorry を前に置くだけで、あらゆる聞き返しが柔らかくなる。",
  ex:[["what was that","何とおっしゃいましたか。"],["one more time","もう一度いいですか。"],
      ["could you repeat that","もう一度お願いできますか。"],["do you speak Japanese","日本語は話せますか。"]]},
-{c:"travel", s:"food", p:"I'll have ___.", ja:"〜をお願いします。",
+{c:"travel",s:"food",p:"I'll have ___.",ja:"〜をお願いします。",
  why:"注文の定番。メニューを指さしながらでも成立する。I want より自然で丁寧。",
  gr:"I will の短縮。その場で決めたことに使う。後ろは注文する物の名詞。",
  ex:[["a large coffee","コーヒーのLをお願いします。"],["the same","同じものをお願いします。"],
      ["this one","これをお願いします。"],["the chicken","チキンをお願いします。"]]},
-{c:"travel", s:"shop", p:"Can I ___?", ja:"〜してもいいですか。",
+{c:"travel",s:"shop",p:"Can I ___?",ja:"〜してもいいですか。",
  why:"自分の行動の許可を求める型。試着・撮影・支払い方法など日常的に多用する。",
  gr:"Can I have ~?（物をもらう）と違い、後ろに動詞の原形を置いて行動の可否を聞く。",
  ex:[["try this on","試着してもいいですか。"],["pay by card","カードで払えますか。"],
      ["take a photo here","ここで写真を撮ってもいいですか。"],["return this","これを返品できますか。"]]},
-{c:"travel", s:"hotel", p:"Is it possible to ___?", ja:"〜することはできますか。",
+{c:"travel",s:"hotel",p:"Is it possible to ___?",ja:"〜することはできますか。",
  why:"少し面倒なお願いをするときの安全な型。断られても気まずくならない。",
  gr:"possible=可能な。無理かもしれない依頼を、角を立てずに聞ける。後ろは動詞の原形。",
  ex:[["check in early","早めにチェックインできますか。"],["keep my bags","荷物を預かってもらえますか。"],
      ["change rooms","部屋を変えられますか。"],["get a later checkout","チェックアウトを遅らせられますか。"]]},
-{c:"travel", s:"trouble", p:"There's a problem with ___.", ja:"〜に問題があります。",
+{c:"travel",s:"trouble",p:"There's a problem with ___.",ja:"〜に問題があります。",
  why:"クレームは感情を出さず事実だけ言うのが最も早く解決する。この型が最適。",
  gr:"There is ~ で「〜がある」。with の後ろに問題の対象を置く。",
  ex:[["the air conditioning","エアコンに問題があります。"],["the shower","シャワーに問題があります。"],
      ["my key","鍵に問題があります。"],["my order","注文に問題があります。"]]},
-{c:"travel", s:"shop", p:"I'm looking for ___.", ja:"〜を探しています。",
+{c:"travel",s:"shop",p:"I'm looking for ___.",ja:"〜を探しています。",
  why:"店員に声をかけられたときの返答にも使える。黙って断るより印象が良い。",
  gr:"look for=探す。進行形にすると「今まさに探している」感が出て自然。",
  ex:[["a gift","贈り物を探しています。"],["this address","この住所を探しています。"],
      ["the platform","ホームを探しています。"],["my seat","自分の席を探しています。"]]},
-{c:"travel", s:"shop", p:"How do I get to ___?", ja:"〜にはどうやって行きますか。",
+{c:"travel",s:"shop",p:"How do I get to ___?",ja:"〜にはどうやって行きますか。",
  why:"道案内を聞く最も自然な形。Where is より「行き方」が返ってくる。",
  gr:"get to=着く。How do I ~? で方法を尋ねる。後ろは場所の名詞。",
  ex:[["the airport","空港へはどう行きますか。"],["this hotel","このホテルへはどう行きますか。"],
      ["the station","駅へはどう行きますか。"],["downtown","中心街へはどう行きますか。"]]},
-{c:"travel", s:"hotel", p:"I have a reservation ___.", ja:"〜で予約しています。",
+{c:"travel",s:"hotel",p:"I have a reservation ___.",ja:"〜で予約しています。",
  why:"チェックインの第一声。これを言えば相手が全部進めてくれる。",
  gr:"have は「持っている」。under the name ~ で「〜の名前で」。",
  ex:[["under Hosono","細野の名前で予約しています。"],["for two nights","2泊で予約しています。"],
      ["for tonight","今夜で予約しています。"],["for seven o'clock","7時で予約しています。"]]},
-{c:"travel", s:"air", p:"I'm here ___.", ja:"〜で来ました。",
+{c:"travel",s:"air",p:"I'm here ___.",ja:"〜で来ました。",
  why:"入国審査は「目的・期間・滞在先」の3点しか聞かれない。答えを用意しておけば怖くない。",
  gr:"for + 名詞、on + 名詞で目的を言う。be動詞の文なので難しい活用は不要。",
  ex:[["for sightseeing","観光で来ました。"],["on business","仕事で来ました。"],
      ["for a conference","会議で来ました。"],["for ten days","10日間の滞在です。"]]},
-{c:"travel", s:"air", p:"Is this ___?", ja:"これは〜ですか。",
+{c:"travel",s:"air",p:"Is this ___?",ja:"これは〜ですか。",
  why:"確認の万能形。搭乗口・座席・列車など、間違えたら困る場面で使う。",
  gr:"be動詞の疑問文。指をさしながら使えば単語だけでも通じる。",
  ex:[["seat taken","この席は空いていますか。"],["the gate for Tokyo","これは東京行きの搭乗口ですか。"],
      ["the right line","この列で合っていますか。"],["my stop","ここで降りるのですか。"]]},
-{c:"travel", s:"trouble", p:"I lost ___.", ja:"〜をなくしました。",
+{c:"travel",s:"trouble",p:"I lost ___.",ja:"〜をなくしました。",
  why:"緊急時は短く言い切る。丁寧さより明確さを優先する。",
  gr:"lose の過去形 lost。すでに起きたことなので過去形を使う。",
  ex:[["my passport","パスポートをなくしました。"],["my wallet","財布をなくしました。"],
      ["my phone","携帯をなくしました。"],["my ticket","チケットをなくしました。"]]},
-{c:"travel", s:"food", p:"I can't eat ___.", ja:"〜が食べられません。",
+{c:"travel",s:"food",p:"I can't eat ___.",ja:"〜が食べられません。",
  why:"健康に関わるので、遠回しにせず短く言い切るのが正しい。",
  gr:"can't=できない。後ろは食べ物の名詞。",
  ex:[["raw fish","生魚が食べられません。"],["pork","豚肉が食べられません。"],
      ["nuts","ナッツが食べられません。"],["dairy","乳製品が食べられません。"]]},
 
-{c:"biz", s:"facil", p:"Let's ___.", ja:"〜しましょう。",
+{c:"biz",s:"facil",p:"Let's ___.",ja:"〜しましょう。",
  why:"司会の動作はほぼ Let's で足りる。難しい表現は要らない。",
  gr:"Let's + 動詞の原形。命令ではなく提案なので、場を動かすのに最適。",
  ex:[["get started","始めましょう。"],["move on to the next item","次の議題に移りましょう。"],
      ["come back to that later","それは後ほど戻りましょう。"],["take that offline","それは別途にしましょう。"],
      ["wrap up here","ここで締めましょう。"],["keep it to ten minutes","10分以内に収めましょう。"]]},
-{c:"biz", s:"facil", p:"I'd like to ___.", ja:"〜したいと思います。",
+{c:"biz",s:"facil",p:"I'd like to ___.",ja:"〜したいと思います。",
  why:"旅行編と同じ型がそのまま使える。自分が何をするかの宣言で、聞き手が構えを作れる。",
  gr:"I would like to の短縮。後ろは動詞の原形。丁寧かつ明確。",
  ex:[["start with the status","まず進捗から始めます。"],["hear your thoughts","ご意見を伺いたいです。"],
      ["flag one risk","リスクを一点挙げたいです。"],["confirm the timeline","日程を確認したいです。"]]},
-{c:"biz", s:"facil", p:"Can we ___?", ja:"〜できますか。",
+{c:"biz",s:"facil",p:"Can we ___?",ja:"〜できますか。",
  why:"we を主語にすると要求ではなく提案に聞こえる。司会が最も多用する型。",
  gr:"Can we ~? は許可・提案の両方に使える。後ろは動詞の原形。",
  ex:[["move on","次に進んでもいいですか。"],["park that for now","それは一旦保留にできますか。"],
      ["get a decision today","今日決められますか。"],["quantify that risk","そのリスクを定量化できますか。"]]},
-{c:"biz", s:"progress", p:"We're on track ___.", ja:"〜に向けて予定通りです。",
+{c:"biz",s:"progress",p:"We're on track ___.",ja:"〜に向けて予定通りです。",
  why:"進捗報告は結論を先に言う。順調ならまずこれ。",
  gr:"on track=軌道に乗っている。be動詞＋前置詞句だけの簡単な形。",
  ex:[["for the September launch","9月の上市に向けて予定通りです。"],["for the deadline","期限に向けて予定通りです。"],
      ["so far","今のところ予定通りです。"]]},
-{c:"biz", s:"progress", p:"We're ___ behind.", ja:"〜遅れています。",
+{c:"biz",s:"progress",p:"We're ___ behind.",ja:"〜遅れています。",
  why:"遅延は隠さず数字で言う。曖昧にすると信用を失う。",
  gr:"behind=遅れて。前に期間や程度を置くだけで具体性が出る。",
  ex:[["about two weeks","約2週間遅れています。"],["slightly","少し遅れています。"],
      ["one sprint","1スプリント遅れています。"],["a month","1か月遅れています。"]]},
-{c:"biz", s:"tech", p:"The issue is that ___.", ja:"問題は〜という点です。",
+{c:"biz",s:"tech",p:"The issue is that ___.",ja:"問題は〜という点です。",
  why:"技術説明は「問題→原因→対策」の順。まずこれで問題を一文にする。",
  gr:"that の後ろは普通の文。名詞ではなく文をつなげられるので説明に強い。",
  ex:[["we can't reproduce it","問題は再現できないことです。"],["the test failed","問題は試験が不合格だったことです。"],
      ["we don't have the data","問題はデータがないことです。"]]},
-{c:"biz", s:"tech", p:"It looks like ___.", ja:"〜のようです。",
+{c:"biz",s:"tech",p:"It looks like ___.",ja:"〜のようです。",
  why:"確証がないときに使うと、後で覆っても信用を落とさない。技術会議で必須。",
  gr:"It looks like + 文。断定を避けて推測を述べる。仮説段階で安全。",
  ex:[["a material issue","材料の問題のようです。"],["the same failure mode","同じ故障モードのようです。"],
      ["a measurement error","測定誤差のようです。"]]},
-{c:"biz", s:"risk", p:"I want to flag ___.", ja:"〜を挙げておきたいです。",
+{c:"biz",s:"risk",p:"I want to flag ___.",ja:"〜を挙げておきたいです。",
  why:"反対ではなく情報提供として出せるので、場を荒らさずに問題提起できる。",
  gr:"flag=注意喚起する。want to + 動詞の原形。",
  ex:[["a potential risk","潜在的なリスクを挙げたいです。"],["one concern","懸念を一点挙げたいです。"],
      ["a dependency","依存関係を挙げたいです。"]]},
-{c:"biz", s:"risk", p:"What's the impact ___?", ja:"〜の影響は何ですか。",
+{c:"biz",s:"risk",p:"What's the impact ___?",ja:"〜の影響は何ですか。",
  why:"相手を責めずに重大性を確認できる質問。優先度の議論に持ち込める。",
  gr:"What is の短縮。impact=影響。名詞で聞くと相手が答えやすい。",
  ex:[["if we do nothing","何もしない場合の影響は何ですか。"],["on the schedule","日程への影響は何ですか。"],
      ["on cost","コストへの影響は何ですか。"]]},
-{c:"biz", s:"money", p:"We're ___ budget.", ja:"予算〜です。",
+{c:"biz",s:"money",p:"We're ___ budget.",ja:"予算〜です。",
  why:"財務報告は前置詞を一語替えるだけで足りる。数字を添えれば十分。",
  gr:"within=範囲内、over=超過、under=未満。前置詞の使い分けだけ。",
  ex:[["within","予算内です。"],["slightly over","予算を少し超えています。"],
      ["ten percent over","10％超過しています。"],["under","予算内に収まっています。"]]},
-{c:"biz", s:"push", p:"My recommendation is to ___.", ja:"私の提案は〜することです。",
+{c:"biz",s:"push",p:"My recommendation is to ___.",ja:"私の提案は〜することです。",
  why:"I think より責任のある言い方。意見を求められたらこれで返す。",
  gr:"recommendation=提案。is to + 動詞の原形で「〜すること」。",
  ex:[["start small","小さく始めることを提案します。"],["delay one quarter","1四半期遅らせることを提案します。"],
      ["run a pilot first","まず試行することを提案します。"]]},
-{c:"biz", s:"push", p:"I see your point, but ___.", ja:"おっしゃることは分かりますが、〜。",
+{c:"biz",s:"push",p:"I see your point, but ___.",ja:"おっしゃることは分かりますが、〜。",
  why:"英語の反対は「受け止め→but→自分の意見」が鉄則。いきなり No は関係を壊す。",
  gr:"but の前で一度受け止めるのが要点。文法は単純だが効果が大きい。",
  ex:[["the data doesn't support it yet","データがまだ裏付けていません。"],
      ["the timing worries me","時期が気になります。"],
      ["I'd like to see the numbers first","まず数字を見たいです。"]]},
-{c:"biz", s:"push", p:"Help me understand ___.", ja:"〜を教えてください。",
+{c:"biz",s:"push",p:"Help me understand ___.",ja:"〜を教えてください。",
  why:"矛盾を突きたいときに、批判ではなく質問の形にできる。非常に安全で強力。",
  gr:"命令形だが Help me ~ は柔らかい依頼になる慣用表現。後ろは名詞か文。",
  ex:[["how that works","それがどう機能するか教えてください。"],
      ["the assumption here","ここでの前提を教えてください。"],["what changed","何が変わったのか教えてください。"]]},
-{c:"biz", s:"qa", p:"Let me ___ and get back to you.", ja:"〜して、改めてご連絡します。",
+{c:"biz",s:"qa",p:"Let me ___ and get back to you.",ja:"〜して、改めてご連絡します。",
  why:"分からない質問への最重要フレーズ。取り繕うより信用される。",
  gr:"Let me + 動詞の原形＝「私に〜させてください」。get back to you=後で回答する。",
  ex:[["check","確認して改めてご連絡します。"],["confirm the number","数字を確認して改めてご連絡します。"],
      ["look into it","調べて改めてご連絡します。"]]},
-{c:"biz", s:"qa", p:"Just to make sure ___.", ja:"念のため〜を確認させてください。",
+{c:"biz",s:"qa",p:"Just to make sure ___.",ja:"念のため〜を確認させてください。",
  why:"聞き取れなかったときも、認識を合わせたいときも使える万能の前置き。",
  gr:"make sure=確実にする。後ろは文でも名詞でもよい。",
  ex:[["I understand correctly","正しく理解しているか確認させてください。"],
      ["we're aligned","認識が合っているか確認させてください。"]]},
-{c:"biz", s:"present", p:"Let me walk you through ___.", ja:"〜をご説明します。",
+{c:"biz",s:"present",p:"Let me walk you through ___.",ja:"〜をご説明します。",
  why:"プレゼンの各パートの入り口。これを言うと聞き手が構えを作る。",
  gr:"walk 人 through=順を追って説明する。慣用句なので塊で覚える。",
  ex:[["the numbers","数値をご説明します。"],["the timeline","日程をご説明します。"],
      ["the results","結果をご説明します。"],["the plan","計画をご説明します。"]]},
-{c:"biz", s:"present", p:"As you can see ___.", ja:"ご覧の通り〜。",
+{c:"biz",s:"present",p:"As you can see ___.",ja:"ご覧の通り〜。",
  why:"資料を指す動作と一緒に使う。聞き手の視線を誘導できる。",
  gr:"as=〜のように。スライドを指しながら使う定型。後ろは文。",
  ex:[["on this slide, the trend is improving","このスライドの通り、傾向は改善しています。"],
      ["here, the gap is closing","ご覧の通り、差は縮まっています。"]]},
-{c:"biz", s:"wrap", p:"To sum up, ___.", ja:"まとめると、〜。",
+{c:"biz",s:"wrap",p:"To sum up, ___.",ja:"まとめると、〜。",
  why:"締めの合図。これがあると聞き手が要点を記憶しやすい。",
  gr:"To sum up は文頭に置く決まり文句。後ろは普通の文。",
  ex:[["we're on track but the risk remains","順調ですがリスクは残ります。"],
      ["we need a decision this week","今週中の決定が必要です。"]]},
-{c:"biz", s:"wrap", p:"Are we ___?", ja:"〜で合っていますか。",
+{c:"biz",s:"wrap",p:"Are we ___?",ja:"〜で合っていますか。",
  why:"締める前の最終確認。ここを省くと後で認識違いが出る。",
  gr:"be動詞の疑問文。全員の合意を取る最も簡単な形。",
  ex:[["all aligned on that","その点、認識は揃っていますか。"],["good to move forward","進めて問題ないですか。"],
@@ -808,7 +858,6 @@ const SEED = [
 {s:"talk",lv:1,en:"Excuse me.",ja:"すみません。",gr:"話しかけるとき、通してもらうときの両方に使う。",note:"Sorry は謝罪、Excuse me は呼びかけ。"},
 {s:"talk",lv:2,en:"Have a good one.",ja:"良い一日を。",gr:"one は day の代わり。くだけた別れの挨拶。",note:"店を出るときに言うと自然。"},
 {s:"talk",lv:2,en:"I'm from Japan.",ja:"日本から来ました。",gr:"be from ~＝〜出身。",note:"雑談の入り口。"},
-
 {s:"facil",lv:1,en:"Let's get started.",ja:"始めましょう。",gr:"Let's＋動詞の原形。",note:"最も自然な開始の合図。"},
 {s:"facil",lv:2,en:"Thanks for joining on short notice.",ja:"急な招集にご参加ありがとうございます。",gr:"on short notice＝直前の連絡で。",note:"急な会議の冒頭で使う。"},
 {s:"facil",lv:2,en:"Let's stay on topic.",ja:"論点を戻しましょう。",gr:"stay on ~＝〜から離れない。",note:"脱線を止めるときに使う。"},
@@ -868,19 +917,19 @@ const SEED = [
 
 const METHOD = [
  {t:"ヒントは自分から開けない（Bjorkの原則）",
-  b:"最も効果的な想起練習は、努力を要し、ヒントを伴わないものです。そのためこのアプリでは、型や語頭のヒントを初期状態で隠しています。まず数秒、何も見ずに口に出してください。どうしても出ないときだけ段階的にヒントを開きます。先にヒントが見えていると、それに頼って想起の負荷が消え、学習効果が大きく落ちます。"},
+  b:"最も効果的な想起練習は、努力を要し、ヒントを伴わないものです。そのため型や語頭のヒントは初期状態で隠しています。まず数秒、何も見ずに口に出してください。どうしても出ないときだけ段階的に開きます。"},
  {t:"型（チャンク）で覚える",
-  b:"単語を並べて文を組み立てるのではなく、\"Could I get ___?\" のような意味の塊ごと口に入れます。ネイティブの発話の3〜5割は決まり文句です。塊で持っていると、発話時に文法を考える負荷が消え、内容を考える余裕が生まれます。"},
+  b:"単語を並べて文を組み立てるのではなく、\"Could I get ___?\" のような意味の塊ごと口に入れます。ネイティブの発話の3〜5割は決まり文句です。塊で持っていると、発話時に文法を考える負荷が消えます。"},
+ {t:"長さを段階的に上げる",
+  b:"短いチャンクが口から出るようになったら、1文、2〜3文の説明、そして会話の往復へと段階を上げてください。生成タブの「長さ・複雑さ」で切り替えられます。短文だけを繰り返しても、会議で必要な「理由を添えて説明する力」は伸びません。"},
  {t:"日→英の産出から始める",
-  b:"カードは必ず日本語を先に出し、英語を口に出してから答えを見ます。英文を眺めて理解する（受容）より、自力で作り出す（産出）方が、実際に口が動くまでの距離が短い。読めるのに話せない状態を抜けるには産出の回数を増やすしかありません。"},
+  b:"カードは必ず日本語を先に出し、英語を口に出してから答えを見ます。読めるのに話せない状態を抜けるには産出の回数を増やすしかありません。"},
  {t:"声に出して採点を受ける",
-  b:"黙って思い浮かべるより、実際に発話する方が定着します。学習画面の🎤を押して話すと、認識結果と正解を単語単位で比較し、抜け・違い・余分を色分けして表示します。AIを接続していれば、通じるかどうかに加えて「より自然な言い方」も添削されます。"},
+  b:"黙って思い浮かべるより、実際に発話する方が定着します。🎤を押して話すと、認識結果と正解を単語単位で比較して表示します。AIを接続していれば「より自然な言い方」も添削されます。"},
  {t:"間隔反復（SM-2）",
-  b:"4段階の評価に応じて次回出題日が自動計算されます。忘れかけた頃に再会するのが最も定着します。1日に大量にやるより、毎日10〜15分の方が総学習時間あたりの定着量は大きくなります。"},
+  b:"4段階の評価に応じて次回出題日が自動計算されます。忘れかけた頃に再会するのが最も定着します。毎日10〜15分が最も効率的です。"},
  {t:"音の変化を先に入れる",
-  b:"英語は単語をつなげて発音します。get it は「ゲット イット」ではなく「ゲリッ」、want to は「ワナ」です。カタカナ表記はこの変化を反映しています。音のイメージがない語は聞き取れず、思い出せません。"},
- {t:"少量・毎日",
-  b:"目標は1日20枚・約10分。到達したら止めてください。やり過ぎた翌日にゼロになるより、少量を毎日続ける方が伸びます。"}
+  b:"英語は単語をつなげて発音します。get it は「ゲリッ」、want to は「ワナ」です。カタカナ表記はこの変化を反映しています。"}
 ];
 
 
@@ -889,32 +938,26 @@ const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 const speechSupported = !!SR;
 let recog=null, recognizing=false;
 
-function startRecog(onResult, onErr, onEnd){
+function startRecog(onResult,onErr,onEnd){
   if(!SR){ onErr("この端末のブラウザは音声認識に未対応です。Chrome / Edge / Safari をお使いください。"); return; }
   try{ if(recog) recog.abort(); }catch(e){}
-  recog = new SR();
-  recog.lang="en-US";
-  recog.interimResults=true;
-  recog.maxAlternatives=3;
-  recog.continuous=false;
-  let finalTxt="", alts=[];
+  recog=new SR();
+  recog.lang="en-US"; recog.interimResults=true; recog.maxAlternatives=3; recog.continuous=false;
+  let finalTxt="";
   recog.onresult=e=>{
     let interim="";
     for(let i=e.resultIndex;i<e.results.length;i++){
       const r=e.results[i];
-      if(r.isFinal){
-        finalTxt+=r[0].transcript;
-        for(let k=0;k<r.length;k++) alts.push(r[k].transcript);
-      } else interim+=r[0].transcript;
+      if(r.isFinal) finalTxt+=r[0].transcript; else interim+=r[0].transcript;
     }
-    onResult(finalTxt||interim, !!finalTxt, alts);
+    onResult(finalTxt||interim,!!finalTxt);
   };
   recog.onerror=e=>{
     const m={ "not-allowed":"マイクの使用が許可されていません。ブラウザの設定で許可してください。",
       "no-speech":"音声が聞き取れませんでした。もう一度お試しください。",
       "audio-capture":"マイクが見つかりません。",
-      "network":"通信エラーです。音声認識はネット接続が必要です。",
-      "aborted":"" }[e.error] || ("認識エラー: "+e.error);
+      "network":"通信エラーです。音声認識はネット接続が必要です。","aborted":"" }[e.error]
+      ||("認識エラー: "+e.error);
     if(m) onErr(m);
   };
   recog.onend=()=>{ recognizing=false; onEnd&&onEnd(); };
@@ -923,12 +966,11 @@ function startRecog(onResult, onErr, onEnd){
 }
 function stopRecog(){ try{ recog&&recog.stop(); }catch(e){} }
 
-/* 単語単位の差分を色分けHTMLにする */
 function diffHTML(ops){
   return ops.map(o=>{
-    if(o.t==="ok")    return `<span class="w ok">${esc(o.w)}</span>`;
-    if(o.t==="sub")   return `<span class="w sub">${esc(o.w)}<i>${esc(o.g)}</i></span>`;
-    if(o.t==="miss")  return `<span class="w miss">${esc(o.w)}</span>`;
+    if(o.t==="ok")   return `<span class="w ok">${esc(o.w)}</span>`;
+    if(o.t==="sub")  return `<span class="w sub">${esc(o.w)}<i>${esc(o.g)}</i></span>`;
+    if(o.t==="miss") return `<span class="w miss">${esc(o.w)}</span>`;
     return `<span class="w extra">${esc(o.g)}</span>`;
   }).join(" ");
 }
@@ -939,23 +981,20 @@ function scoreLabel(n){
   return {t:"もう一度",c:"var(--bad)"};
 }
 
-/* AI添削（任意）。未接続なら差分のみ。 */
-const CORRECT_PROMPT = `You are an English speaking coach for a Japanese learner (TOEIC ~400).
-You are given: the TARGET sentence the learner was practicing, and what they actually SAID (speech-to-text, so ignore punctuation and casing).
-Judge the SAID sentence on its own merit as spoken English.
+const CORRECT_PROMPT=`You are an English speaking coach for a Japanese learner (TOEIC ~400).
+You are given the TARGET sentence they practiced and what they actually SAID (speech-to-text: ignore punctuation and casing).
+Judge SAID on its own merit as spoken English.
 Output ONLY a JSON object:
 {"ok":true|false,"better":"...","why":"...","praise":"..."}
-- "ok": true if what they said would be clearly understood by a native speaker in that situation.
+- "ok": true if SAID would be clearly understood by a native speaker in that situation.
 - "better": the most natural short sentence a native would actually say. If SAID is already natural, repeat it unchanged.
-- "why": in JAPANESE, max 70 chars. Explain the single most useful difference between SAID and "better". If identical, explain why it works.
+- "why": in JAPANESE, max 70 chars. The single most useful difference between SAID and "better".
 - "praise": in JAPANESE, max 30 chars. One concrete thing they did well.
 Be encouraging but honest. Prefer simple junior-high grammar in "better".`;
 
-async function aiCorrect(target, said){
+async function aiCorrect(target,said){
   if(!S.api.key) return null;
   const msg=`TARGET: ${target}\nSAID: ${said}`;
-  const body=(S.api.provider==="gemini")
-    ? null : null;
   if(S.api.provider==="gemini"){
     const call=async model=>{
       const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,{
@@ -971,12 +1010,10 @@ async function aiCorrect(target, said){
     try{ txt=await call(S.api.model); }
     catch(e){
       if(e.status===404||e.status===400){
-        try{ const b=await pickGeminiModel(); S.api.model=b; save(); txt=await call(b); }
-        catch(e2){ return null; }
+        try{ const b=await pickGeminiModel(); S.api.model=b; save(); txt=await call(b); }catch(e2){ return null; }
       } else return null;
     }
-    try{ return JSON.parse(txt.replace(/^\s*```(json)?/i,"").replace(/```\s*$/,"").trim()); }
-    catch(e){ return null; }
+    try{ return JSON.parse(txt.replace(/^\s*```(json)?/i,"").replace(/```\s*$/,"").trim()); }catch(e){ return null; }
   }
   try{
     const r=await fetch(S.api.url,{method:"POST",
@@ -1003,7 +1040,6 @@ function driveOrigin(){
 }
 function driveAvailable(){ return !!driveOrigin()&&!!(S.drive&&S.drive.clientId); }
 function gisReady(){ return typeof google!=="undefined"&&google.accounts&&google.accounts.oauth2; }
-
 function getToken(interactive){
   return new Promise((resolve,reject)=>{
     if(Drive.token&&Date.now()<Drive.exp-60000) return resolve(Drive.token);
@@ -1055,7 +1091,7 @@ async function uploadRemote(obj){
   Drive.fileId=j.id; return j.id;
 }
 function pickCard(a,b){
-  const ha=(a.hist||[]).length, hb=(b.hist||[]).length;
+  const ha=(a.hist||[]).length,hb=(b.hist||[]).length;
   if(ha!==hb) return ha>hb?a:b;
   if((a.due||"")!==(b.due||"")) return (a.due>b.due)?a:b;
   return a;
@@ -1151,7 +1187,7 @@ const Store=(()=>{
     set(k,v){ try{ ok?localStorage.setItem(k,v):(mem[k]=v);}catch(e){mem[k]=v;} } };
 })();
 const DEF={ cards:[], log:{}, gen:[], course:"travel",
-  set:{goal:20,newMax:8,voice:"",rate:1,careful:true,autoMic:false},
+  set:{goal:20,newMax:8,voice:"",rate:1,careful:true},
   drive:{clientId:"",lastSync:"",email:""},
   api:{provider:"gemini",model:"gemini-2.5-flash",key:"",url:"https://api.openai.com/v1/chat/completions"} };
 let S=load();
@@ -1190,7 +1226,8 @@ const courseName=id=>(COURSES.find(c=>c.id===id)||{}).name||"";
 function newCard(p){
   const a=analyzeKana(p.en);
   return { id:uid(),en:p.en,ja:p.ja,kt:p.kt||a.kana,kc:a.careful,snd:(a.notes||[]).join("／"),
-    note:p.note||"",gr:p.gr||"",ch:p.ch||"",s:p.s||"custom",co:p.co||S.course,lv:p.lv||2,
+    note:p.note||"",gr:p.gr||"",ch:p.ch||"",ctx:p.ctx||"",
+    s:p.s||"custom",co:p.co||S.course,lv:p.lv||2,
     ef:2.5,rep:0,iv:0,due:today(),hist:[],made:today() };
 }
 function nextIntervals(c){
@@ -1249,27 +1286,83 @@ function speak(text,rate){
   }catch(e){ toast("読み上げできませんでした"); }
 }
 
-/* ================= AI 生成 ================= */
-const PROMPT_TRAVEL=`You are an English coach for a Japanese traveler (TOEIC ~400: can read, cannot speak).
-Given a Japanese situation, output short spoken English phrases actually used by travelers in the US.
+/* ============================================================
+   生成エンジン（再設計）
+   ・depth で長さと複雑さを明示的に指定
+   ・既存カードを「使用済み」として渡し、重複を避けさせる
+   ・角度（切り口）を毎回変え、温度も上げて多様性を出す
+   ============================================================ */
+const DEPTHS={
+  chunk:{ label:"短いチャンク（3〜6語）",
+    spec:`Each "en" must be a SHORT chunk of 3-6 words. No full sentences. These are building blocks to say instantly.` },
+  sentence:{ label:"1文（標準）",
+    spec:`Each "en" must be ONE complete sentence of 8-16 words. Not a fragment, not multiple sentences.` },
+  explain:{ label:"2〜3文で説明する",
+    spec:`Each "en" must be 2-3 connected sentences (25-45 words total) forming a real spoken turn:
+state the point, then add a reason, a condition, a number, or a next step.
+This is what a speaker actually says in a real exchange. Use connectors like "because", "so", "but", "if", "that way".
+Still use simple junior-high grammar. Do NOT write essay English; it must be easy to say aloud.` },
+  dialog:{ label:"会話（往復のやりとり）",
+    spec:`DIALOGUE MODE.` }
+};
+const ANGLES=[
+ "asking politely","explaining your reason","reacting to a problem","confirming details",
+ "declining or pushing back gently","offering an alternative","asking a follow-up question",
+ "apologizing and fixing it","giving a number or a deadline","checking you understood correctly",
+ "making a suggestion","expressing a concern"
+];
+
+function promptFor(course,depth,avoid){
+  const who = course==="travel"
+    ? `a Japanese traveler in the US (TOEIC ~400: can read, cannot speak)`
+    : `a Japanese project manager (PMO) in US business meetings`;
+  const topics = course==="travel"
+    ? `hotels, cafes, restaurants, flights, airports, phone calls, directions, shopping, trouble`
+    : `progress, technical issues, risk, budget, milestones, facilitation, Q&A, negotiation`;
+  const avoidBlock = avoid.length
+    ? `\nALREADY LEARNED — do NOT output these or trivial variations of them:\n${avoid.map(a=>"- "+a).join("\n")}\n`
+    : "";
+  if(depth==="dialog"){
+    return `You are an English coach for ${who}.
+Write a REALISTIC SPOKEN DIALOGUE for the situation the user gives. Context: ${topics}.
+Output ONLY a JSON array of turns, 6 to 10 turns, alternating speakers, starting with the other person.
+Each element: {"role":"them"|"you","en":"...","ja":"...","gr":"...","note":"..."}
+- "them": what the other person (staff / colleague) actually says. Natural, sometimes fast or indirect.
+- "you": what the learner should say back. Simple junior-high grammar, easy to say aloud, but a REAL reply
+  with substance — give a reason, a number, or a condition where natural. Not just one-word answers.
+- The conversation must develop: a complication or follow-up question appears in the middle, and it resolves at the end.
+- "ja": natural Japanese translation.
+- "gr": for "you" turns only, grammar note in JAPANESE, junior-high terms, max 45 chars. Empty string for "them".
+- "note": for "you" turns only, why this reply works, in JAPANESE, max 45 chars. Empty string for "them".
+${avoidBlock}`;
+  }
+  return `You are an English coach for ${who}.
+Given a Japanese situation, output natural spoken English actually used in that situation. Context: ${topics}.
 Rules:
 - Output ONLY a JSON array. No markdown.
 - Each element: {"en":"...","ja":"...","gr":"...","note":"..."}
-- "en": ONE short spoken sentence. Junior-high grammar only. Easy to say aloud. NOT business/meeting English.
-- "ja": natural Japanese.
-- "gr": grammar in Japanese, junior-high terms only, max 45 chars.
-- "note": when/where to use it, in Japanese, max 45 chars.
-- Prefer reusable patterns like "Could I get ~?", "Could you ~?", "Do you have ~?", "I'd like to ~".`;
-const PROMPT_BIZ=`You are an English coach for a Japanese project manager (PMO) attending US business meetings.
-Given a Japanese situation, output phrases a native would actually say in that meeting.
-Rules:
-- Output ONLY a JSON array. No markdown.
-- Each element: {"en":"...","ja":"...","gr":"...","note":"..."}
-- "en": ONE meeting-ready sentence. Simple grammar, easy to say aloud. Avoid stiff textbook English.
-- "ja": natural Japanese.
-- "gr": grammar in Japanese, junior-high terms only, max 45 chars.
-- "note": nuance or when to use it, in Japanese, max 45 chars.
-- Topics: progress, technical issues, risk, budget, milestones, facilitation, Q&A.`;
+- ${DEPTHS[depth].spec}
+- "ja": natural Japanese translation.
+- "gr": grammar in JAPANESE, junior-high terms only, max 45 chars.
+- "note": when/why to use it, in JAPANESE, max 45 chars.
+- VARIETY IS CRITICAL: every item must start with a DIFFERENT opening word or structure.
+  Cover different angles of the situation, not paraphrases of one idea.
+${avoidBlock}`;
+}
+
+/* 重複回避リスト：同じコースの既存カードから、場面が近いものを優先 */
+function avoidList(query,limit){
+  const q=(query||"").toLowerCase();
+  const mine=S.cards.filter(inCourse);
+  const scored=mine.map(c=>{
+    let v=0;
+    const sc=sceneOf(c.s);
+    if(sc){ sc.kw.forEach(k=>{ if(q.includes(k.toLowerCase())) v+=5; }); }
+    v+=(c.made===today()?3:0);
+    return {c,v:v+Math.random()};
+  }).sort((a,b)=>b.v-a.v);
+  return scored.slice(0,limit).map(x=>x.c.en);
+}
 
 let GEMINI_MODELS=[];
 async function geminiListModels(){
@@ -1299,46 +1392,50 @@ async function pickGeminiModel(){
   fillModelSelect();
   return GEMINI_MODELS[0];
 }
-function parseArr(txt){
+function parseArr(txt,depth){
   txt=String(txt||"").replace(/^\s*```(json)?/i,"").replace(/```\s*$/,"").trim();
   const m=txt.match(/\[[\s\S]*\]/);
   const arr=JSON.parse(m?m[0]:txt);
   if(!Array.isArray(arr)) throw new Error("配列が返りませんでした");
+  if(depth==="dialog"){
+    return arr.map(o=>({role:(o.role==="them"?"them":"you"),
+      en:String(o.en||"").trim(),ja:String(o.ja||"").trim(),
+      gr:String(o.gr||"").trim(),note:String(o.note||"").trim(),
+      s:"ai",co:S.course,lv:2})).filter(o=>o.en);
+  }
   return arr.map(o=>({en:String(o.en||"").trim(),ja:String(o.ja||"").trim(),
     gr:String(o.gr||"").trim(),note:String(o.note||"").trim(),s:"ai",co:S.course,lv:2}))
     .filter(o=>o.en);
 }
-async function callGemini(msg,model){
-  const sys=S.course==="travel"?PROMPT_TRAVEL:PROMPT_BIZ;
+async function callGemini(sys,msg,model,temp,depth){
   const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,{
     method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":S.api.key},
     body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},
       contents:[{role:"user",parts:[{text:msg}]}],
-      generationConfig:{temperature:0.7,responseMimeType:"application/json"}})});
+      generationConfig:{temperature:temp,topP:0.95,responseMimeType:"application/json"}})});
   if(!res.ok){ const e=new Error(`${res.status} ${(await res.text()).slice(0,200)}`); e.status=res.status; throw e; }
   const j=await res.json();
   const txt=(j.candidates?.[0]?.content?.parts||[]).map(p=>p.text||"").join("");
   if(!txt) throw new Error("空の応答が返りました");
-  return parseArr(txt);
+  return parseArr(txt,depth);
 }
-async function callOpenAI(msg,model){
-  const sys=S.course==="travel"?PROMPT_TRAVEL:PROMPT_BIZ;
+async function callOpenAI(sys,msg,model,temp,depth){
   const res=await fetch(S.api.url,{method:"POST",
     headers:{"Content-Type":"application/json","Authorization":"Bearer "+S.api.key},
-    body:JSON.stringify({model,temperature:0.7,
+    body:JSON.stringify({model,temperature:temp,
       messages:[{role:"system",content:sys},{role:"user",content:msg}]})});
   if(!res.ok){ const e=new Error(`${res.status} ${(await res.text()).slice(0,200)}`); e.status=res.status; throw e; }
   const j=await res.json();
-  return parseArr(j.choices?.[0]?.message?.content||"");
+  return parseArr(j.choices?.[0]?.message?.content||"",depth);
 }
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const TRANSIENT=s=>[500,502,503,504,429].includes(s);
-async function geminiWithRetry(msg,onNote){
+async function geminiWithRetry(sys,msg,temp,depth,onNote){
   const note=onNote||(()=>{});
   let model=S.api.model; const tried=new Set();
   for(let a=0;a<3;a++){
     try{
-      const r=await callGemini(msg,model);
+      const r=await callGemini(sys,msg,model,temp,depth);
       if(model!==S.api.model){ S.api.model=model; save(); fillModelSelect(); updGenMode(); }
       return r;
     }catch(e){
@@ -1359,15 +1456,15 @@ async function geminiWithRetry(msg,onNote){
   }
   throw new Error("503 混雑が続いています");
 }
-function buildMsg(q,n,lv){
-  const t=lv==="simple"?"Keep them very short and easy to pronounce."
-    :lv==="formal"?"Slightly formal register.":"Standard register.";
-  return `場面: ${q}\n\nGive exactly ${n} phrases. ${t}`;
-}
-async function aiGenerate(q,n,lv,onNote){
-  const msg=buildMsg(q,n,lv);
-  if(S.api.provider==="gemini") return geminiWithRetry(msg,onNote);
-  return callOpenAI(msg,S.api.model);
+async function aiGenerate(query,n,depth,avoid,onNote){
+  const sys=promptFor(S.course,depth,avoid);
+  const angle=ANGLES[Math.floor(Math.random()*ANGLES.length)];
+  const msg = depth==="dialog"
+    ? `場面: ${query}\n\nWrite the dialogue now.`
+    : `場面: ${query}\n\nGive exactly ${n} items. Lead with the angle of "${angle}", then vary from there.`;
+  const temp = depth==="dialog" ? 0.85 : 1.0;
+  if(S.api.provider==="gemini") return geminiWithRetry(sys,msg,temp,depth,onNote);
+  return callOpenAI(sys,msg,S.api.model,temp,depth);
 }
 function explainErr(e){
   const m=String(e&&e.message||e);
@@ -1380,10 +1477,14 @@ function explainErr(e){
   if(/^(503|500|502|504)/.test(m)) return "Gemini側が混雑しています。少し待って再試行してください。";
   return m.slice(0,90);
 }
-function localGenerate(q,n,lv){
+/* 内蔵ライブラリ（キー未接続時）。既出は除外して繰り返しを防ぐ */
+function localGenerate(q,n,avoid){
   const s=(q||"").toLowerCase();
-  const pool=SEED.filter(p=>{ const sc=sceneOf(p.s); return sc&&sc.c===S.course; });
-  return pool.map(p=>{
+  const used=new Set(avoid.map(x=>x.toLowerCase()));
+  const pool=SEED.filter(p=>{ const sc=sceneOf(p.s); return sc&&sc.c===S.course; })
+                 .filter(p=>!used.has(p.en.toLowerCase()));
+  const src=pool.length?pool:SEED.filter(p=>{const sc=sceneOf(p.s);return sc&&sc.c===S.course;});
+  return src.map(p=>{
     let v=0; const sc=sceneOf(p.s);
     if(sc){ sc.kw.forEach(k=>{ if(s.includes(k.toLowerCase())) v+=6; });
             if(s.includes(sc.label)) v+=9; }
@@ -1391,9 +1492,7 @@ function localGenerate(q,n,lv){
       const bi=s.slice(i,i+2);
       if(/[ぁ-んァ-ヶ一-龠]/.test(bi)&&(p.ja.includes(bi)||(p.note||"").includes(bi))) v+=1.2;
     }
-    if(lv==="simple") v+=(3-p.lv)*1.2;
-    if(lv==="formal") v+=(p.lv-2)*1.2;
-    return {p,v:v+Math.random()*1.5};
+    return {p,v:v+Math.random()*2};
   }).sort((a,b)=>b.v-a.v).slice(0,n).map(x=>Object.assign({},x.p,{co:S.course}));
 }
 
@@ -1406,6 +1505,7 @@ function phraseHTML(p,opt={}){
   const sc=sceneOf(p.s);
   const label=sc?sc.label:(p.s==="ai"?"AI生成":"自分の追加");
   return `<div class="pc" data-en="${esc(p.en)}">
+    ${p.ctx?`<div class="ctx">相手：${esc(p.ctx)}</div>`:""}
     <div class="en">${esc(p.en)}</div>
     <div class="kt">${esc(kt)}</div>
     ${S.set.careful&&kc&&kc!==kt?`<div class="kc">ゆっくり: ${esc(kc)}</div>`:""}
@@ -1480,13 +1580,11 @@ function renderHome(){
   const co=COURSES.find(c=>c.id===S.course)||COURSES[0];
   $("#courseGoal").textContent=co.goal;
   const mine=S.cards.filter(inCourse);
-  const avail=SEED.filter(p=>{const s=sceneOf(p.s);return s&&s.c===S.course;}).length
-    +PATTERNS.filter(p=>p.c===S.course).reduce((a,p)=>a+p.ex.length,0);
   const learned=mine.filter(c=>c.rep>0).length;
   const pct=mine.length?Math.round(learned/mine.length*100):0;
   $("#courseBar").style.width=pct+"%";
   $("#coursePct").textContent=pct+"%";
-  $("#courseNote").textContent=`カード ${mine.length} 枚（学習済み ${learned}）／追加できる表現 ${avail} 件`;
+  $("#courseNote").textContent=`カード ${mine.length} 枚（学習済み ${learned}）`;
   const pool=mine.length?mine:SEED.filter(p=>{const s=sceneOf(p.s);return s&&s.c===S.course;});
   const r=pool[Math.floor(Math.random()*pool.length)];
   $("#randomCard").innerHTML=r?phraseHTML(r):"";
@@ -1562,37 +1660,99 @@ $("#sceneChips").onclick=e=>{
   t.value=(t.value.trim()?t.value.trim()+"／":"")+c.dataset.l;
 };
 function updGenMode(){
+  const d=$("#genDepth")?$("#genDepth").value:"sentence";
   $("#genMode").innerHTML=(S.api.key
     ? `モード：AI生成（${S.api.provider==="gemini"?"Gemini":"OpenAI互換"} / ${esc(S.api.model)}）`
-    : `モード：内蔵ライブラリ`)+`<br><b style="color:var(--tx)">${esc(courseName(S.course))}</b> 向けの表現を作ります。`;
+    : `モード：内蔵ライブラリ（AIキーを入れると長い文や会話も作れます）`)
+    +`<br><b style="color:var(--tx)">${esc(courseName(S.course))}</b> 向け・${esc(DEPTHS[d].label)}`;
+  const dl=$("#depthNote");
+  if(dl) dl.textContent = {
+    chunk:"口から即座に出す部品を作ります。まずここから。",
+    sentence:"1文で言い切る練習。standard。",
+    explain:"理由・条件・数字を添えた「本番の一言」。会議で必要な長さです。",
+    dialog:"相手の発言つきで往復のやりとりを作ります。あなたの返答だけがカードになります。"
+  }[d]||"";
 }
-$("#btnGen").onclick=async()=>{
+$("#genDepth")&&($("#genDepth").onchange=()=>{
+  updGenMode();
+  $("#genCount").disabled=($("#genDepth").value==="dialog");
+});
+
+let lastQuery="", lastDepth="", extraAvoid=[];
+async function runGenerate(more){
   const q=$("#genInput").value.trim();
   if(!q) return toast("場面を入力してください");
-  const n=+$("#genCount").value,lv=$("#genLevel").value;
-  const b=$("#btnGen"); b.disabled=true; b.innerHTML='<span class="load"></span>生成中…';
+  const depth=$("#genDepth").value;
+  const n=+$("#genCount").value;
+  if(!more){ extraAvoid=[]; }
+  lastQuery=q; lastDepth=depth;
+  const avoid=[...avoidList(q,depth==="dialog"?15:30),...extraAvoid].slice(0,45);
+  const b=$("#btnGen"); b.disabled=true;
+  b.innerHTML='<span class="load"></span>'+(more?"別の言い方を探しています…":"生成中…");
   try{
     let out;
     if(S.api.key){
-      try{ out=await aiGenerate(q,n,lv,t=>{b.innerHTML='<span class="load"></span>'+t;}); }
-      catch(err){ console.warn(err); toast("AI生成に失敗："+explainErr(err)+" 内蔵ライブラリで表示します",4500);
-                  out=localGenerate(q,n,lv); }
-    } else out=localGenerate(q,n,lv);
-    S.gen=out; save(); updGenMode();
-    $("#genOut").innerHTML=`<h2 class="t">生成結果（${out.length}件・${esc(courseName(S.course))}）</h2>
-      <button class="btn sec" id="btnAddAll" style="margin-bottom:10px">すべてカードに追加</button>`
-      +out.map(p=>phraseHTML(p)).join("");
-    $("#btnAddAll").onclick=()=>{
-      let k=0; out.forEach(p=>{ if(!S.cards.some(c=>c.en===p.en)){ S.cards.push(newCard(p)); k++; }});
-      save(); renderHome();
-      qsa("#genOut .js-add").forEach(x=>{x.textContent="✓ 追加済";x.classList.add("added");x.disabled=true;});
-      toast(k+"枚を追加しました");
-    };
+      try{ out=await aiGenerate(q,n,depth,avoid,t=>{b.innerHTML='<span class="load"></span>'+t;}); }
+      catch(err){ console.warn(err);
+        toast("AI生成に失敗："+explainErr(err)+" 内蔵ライブラリで表示します",4500);
+        out=localGenerate(q,n,avoid); }
+    } else {
+      if(depth==="dialog"||depth==="explain")
+        toast("この長さはAI接続が必要です。設定でキーを入れてください。",4500);
+      out=localGenerate(q,n,avoid);
+    }
+    S.gen=out.filter(o=>o.role!=="them"); save(); updGenMode();
+    extraAvoid=[...extraAvoid,...out.map(o=>o.en)].slice(-60);
+    renderGenOut(out,depth);
   } finally { b.disabled=false; b.innerHTML="✨ フレーズを生成"; }
-};
+}
+function renderGenOut(out,depth){
+  const head=`<h2 class="t">生成結果（${esc(courseName(S.course))}・${esc(DEPTHS[depth].label)}）</h2>
+    <div class="row" style="margin-bottom:10px">
+      <button class="btn sec" id="btnAddAll">${depth==="dialog"?"自分の発言をカードに追加":"すべてカードに追加"}</button>
+      <button class="btn gh" id="btnMore">🔄 違う言い方で</button>
+    </div>`;
+  if(depth==="dialog"){
+    let ctx="";
+    const body=out.map(o=>{
+      if(o.role==="them"){
+        ctx=o.en;
+        const a=analyzeKana(o.en);
+        return `<div class="turn them" data-en="${esc(o.en)}">
+          <div class="who">相手</div><div class="tb">
+          <div class="te">${esc(o.en)}</div><div class="tk">${esc(a.kana)}</div>
+          <div class="tj">${esc(o.ja)}</div></div>
+          <button class="sbtn js-tsay">🔊</button></div>`;
+      }
+      const a=analyzeKana(o.en);
+      o.ctx=ctx;
+      return `<div class="turn you" data-en="${esc(o.en)}">
+        <div class="who">あなた</div><div class="tb">
+        <div class="te">${esc(o.en)}</div><div class="tk">${esc(a.kana)}</div>
+        <div class="tj">${esc(o.ja)}</div>
+        ${o.gr?`<div class="gram" style="margin-top:6px">文法：${esc(o.gr)}</div>`:""}
+        ${o.note?`<div class="note" style="margin-top:5px">${esc(o.note)}</div>`:""}
+        </div><button class="sbtn js-tsay">🔊</button></div>`;
+    }).join("");
+    $("#genOut").innerHTML=head+`<div class="dialog">${body}</div>`;
+    qsa("#genOut .js-tsay").forEach(b=>b.onclick=e=>speak(e.target.closest(".turn").dataset.en));
+  } else {
+    $("#genOut").innerHTML=head+out.map(p=>phraseHTML(p)).join("");
+  }
+  $("#btnAddAll").onclick=()=>{
+    let k=0;
+    out.filter(o=>o.role!=="them").forEach(p=>{
+      if(!S.cards.some(c=>c.en===p.en)){ S.cards.push(newCard(p)); k++; }});
+    save(); renderHome();
+    qsa("#genOut .js-add").forEach(x=>{x.textContent="✓ 追加済";x.classList.add("added");x.disabled=true;});
+    toast(k+"枚を追加しました");
+  };
+  $("#btnMore").onclick=()=>runGenerate(true);
+}
+$("#btnGen").onclick=()=>runGenerate(false);
 
 /* ================= 学習 ================= */
-let Q=[],qi=0,revealed=false,hintLv=0,lastSaid="";
+let Q=[],qi=0,revealed=false,hintLv=0;
 function startSession(mode){
   const d=dueAll().filter(inCourse).sort(()=>Math.random()-.5);
   const n=newAll().filter(inCourse).sort(()=>Math.random()-.5).slice(0,S.set.newMax);
@@ -1606,28 +1766,22 @@ function switchCourseAndStart(){
   toast(other.name+" に切り替えました");
   startSession("mix");
 }
-/* ヒントは押したときだけ、段階的に開く */
 function renderHint(){
   const c=Q[qi]; if(!c) return;
   const box=$("#hintBox"), btn=$("#btnHint");
-  if(hintLv===0){
-    box.innerHTML=""; box.classList.add("hidden");
-    btn.textContent="💡 ヒント";
-    btn.classList.remove("hidden");
-    return;
-  }
+  if(hintLv===0){ box.innerHTML=""; box.classList.add("hidden");
+    btn.textContent="💡 ヒント"; btn.classList.remove("hidden"); return; }
   const words=c.en.split(/\s+/);
   let h="";
   if(hintLv>=1) h+=c.ch?`<div class="hl">型：<b>${esc(c.ch)}</b></div>`
                      :`<div class="hl">語数：<b>${words.length}語</b></div>`;
-  if(hintLv>=2) h+=`<div class="hl">出だし：<b>${esc(words[0])} …</b></div>`;
+  if(hintLv>=2) h+=`<div class="hl">出だし：<b>${esc(words.slice(0,2).join(" "))} …</b></div>`;
   if(hintLv>=3) h+=`<div class="hl">頭文字：<b>${esc(words.map(w=>w[0]).join(" "))}</b></div>`;
   box.innerHTML=h; box.classList.remove("hidden");
-  btn.textContent = hintLv>=3 ? "これ以上のヒントはありません" : "💡 もう少しヒント";
-  btn.classList.toggle("hidden", hintLv>=3);
+  btn.textContent=hintLv>=3?"":"💡 もう少しヒント";
+  btn.classList.toggle("hidden",hintLv>=3);
 }
 $("#btnHint").onclick=()=>{ hintLv=Math.min(3,hintLv+1); renderHint(); };
-
 function renderStudy(){
   const area=$("#studyArea"),emp=$("#studyEmpty");
   if(!Q.length||qi>=Q.length){
@@ -1648,7 +1802,9 @@ function renderStudy(){
   }
   area.classList.remove("hidden"); emp.classList.add("hidden");
   const c=Q[qi];
-  revealed=false; hintLv=0; lastSaid="";
+  revealed=false; hintLv=0;
+  $("#stCtx").textContent=c.ctx?"相手：「"+c.ctx+"」":"";
+  $("#stCtx").style.display=c.ctx?"":"none";
   $("#stFront").textContent=c.ja;
   $("#stEn").textContent=c.en;
   const a=analyzeKana(c.en);
@@ -1663,7 +1819,6 @@ function renderStudy(){
   $("#stBack").classList.add("hidden");
   $("#grades").classList.add("hidden");
   $("#btnReveal").classList.remove("hidden");
-  $("#speakRow").classList.remove("hidden");
   $("#micResult").innerHTML=""; $("#micResult").classList.add("hidden");
   renderHint();
   $("#studyBar").style.width=(qi/Q.length*100)+"%";
@@ -1683,28 +1838,22 @@ function reveal(){
 $("#btnReveal").onclick=reveal;
 $("#btnSpeak").onclick=()=>{ if(Q[qi]) speak(Q[qi].en); };
 $("#btnSlow").onclick=()=>{ if(Q[qi]) speak(Q[qi].en,0.62); };
-
-/* ---- 発話して採点 ---- */
-function renderMic(res, said, ai, busy){
+function renderMic(res,said,ai,busy){
   const box=$("#micResult");
   box.classList.remove("hidden");
   const lab=scoreLabel(res.score);
   box.innerHTML=`
-    <div class="mtop">
-      <div class="mscore" style="color:${lab.c}">${res.score}<small>点</small></div>
+    <div class="mtop"><div class="mscore" style="color:${lab.c}">${res.score}<small>点</small></div>
       <div><div class="mlab" style="color:${lab.c}">${lab.t}</div>
-        <div class="msaid">あなた: ${esc(said)}</div></div>
-    </div>
+        <div class="msaid">あなた: ${esc(said)}</div></div></div>
     <div class="mdiff">${diffHTML(res.ops)}</div>
     <div class="mleg"><span class="w ok">一致</span><span class="w sub">違う語<i>言った語</i></span>
       <span class="w miss">言えていない</span><span class="w extra">余分</span></div>
     ${busy?`<div class="mai"><span class="load"></span>AIが添削しています…</div>`:""}
-    ${ai?`<div class="mai">
-        <div class="mbetter">より自然な言い方：<b>${esc(ai.better||"")}</b>
-          <button class="sbtn js-bsay" data-en="${esc(ai.better||"")}">🔊</button></div>
+    ${ai?`<div class="mai"><div class="mbetter">より自然な言い方：<b>${esc(ai.better||"")}</b>
+        <button class="sbtn js-bsay" data-en="${esc(ai.better||"")}">🔊</button></div>
         ${ai.why?`<div class="mwhy">${esc(ai.why)}</div>`:""}
-        ${ai.praise?`<div class="mpraise">👍 ${esc(ai.praise)}</div>`:""}
-      </div>`:""}`;
+        ${ai.praise?`<div class="mpraise">👍 ${esc(ai.praise)}</div>`:""}</div>`:""}`;
   const bs=box.querySelector(".js-bsay");
   if(bs) bs.onclick=()=>speak(bs.dataset.en);
 }
@@ -1717,27 +1866,19 @@ async function doMic(){
   $("#micResult").innerHTML=`<div class="mlisten">🎤 話してください…</div>`;
   let got="";
   startRecog(
-    (txt,isFinal)=>{
-      got=txt;
-      if(!isFinal) $("#micResult").innerHTML=`<div class="mlisten">🎤 ${esc(txt)}</div>`;
-    },
+    (txt,isFinal)=>{ got=txt; if(!isFinal) $("#micResult").innerHTML=`<div class="mlisten">🎤 ${esc(txt)}</div>`; },
     msg=>{ btn.classList.remove("rec"); btn.textContent="🎤 話す";
            $("#micResult").innerHTML=`<div class="merr">${esc(msg)}</div>`; },
     async()=>{
       btn.classList.remove("rec"); btn.textContent="🎤 話す";
-      if(!got.trim()){ return; }
-      lastSaid=got.trim();
-      const res=wordDiff(c.en,lastSaid);
-      renderMic(res,lastSaid,null,!!S.api.key);
+      if(!got.trim()) return;
+      const said=got.trim(), res=wordDiff(c.en,said);
+      renderMic(res,said,null,!!S.api.key);
       if(!revealed) reveal();
-      if(S.api.key){
-        const ai=await aiCorrect(c.en,lastSaid);
-        renderMic(res,lastSaid,ai,false);
-      }
+      if(S.api.key){ const ai=await aiCorrect(c.en,said); renderMic(res,said,ai,false); }
     });
 }
 $("#btnMic").onclick=doMic;
-
 $("#grades").onclick=e=>{
   const b=e.target.closest(".g"); if(!b) return;
   const g=+b.dataset.g,c=Q[qi];
@@ -1844,7 +1985,7 @@ $("#btnTestApi").onclick=async()=>{
   const b=$("#btnTestApi"); b.disabled=true; b.innerHTML='<span class="load"></span>接続中…';
   try{
     if(S.api.provider==="gemini"){ const best=await pickGeminiModel(); S.api.model=best; save(); fillModelSelect(); }
-    const r=await aiGenerate("お店で注文したい",2,"simple");
+    const r=await aiGenerate("お店で注文したい",2,"sentence",[]);
     toast(`接続OK（${S.api.model}）：例）`+r[0].en,5000);
   }catch(e){ console.warn(e); toast("失敗："+explainErr(e),6000); }
   finally{ b.disabled=false; b.textContent="接続テスト"; updGenMode(); }
@@ -1882,6 +2023,8 @@ window.show=show; window.startSession=startSession; window.switchCourseAndStart=
 $("#courseSel").innerHTML=COURSES.map(c=>
   `<option value="${c.id}">${esc(c.name)}（${c.weeks}週）</option>`).join("");
 $("#courseSel").value=S.course;
+$("#genDepth").innerHTML=Object.entries(DEPTHS).map(([k,v])=>
+  `<option value="${k}"${k==="sentence"?" selected":""}>${esc(v.label)}</option>`).join("");
 if(!speechSupported) $("#btnMic").classList.add("hidden");
 fillSettings();
 renderSceneChips();
