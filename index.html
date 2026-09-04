@@ -53,6 +53,8 @@ textarea{min-height:78px;line-height:1.6}
 .pc .kt{color:var(--kana);font-size:12.5px;margin-top:6px;letter-spacing:.4px;line-height:1.6}
 .pc .kc{color:#8ea4c4;font-size:11px;margin-top:3px}
 .pc .ja{color:var(--tx2);font-size:13px;margin-top:5px;line-height:1.6}
+.chip-ch{display:inline-block;font-size:11.5px;color:#9fd0ff;background:rgba(79,156,255,.10);
+border:1px solid #2a4a75;border-radius:7px;padding:4px 8px;margin-top:8px}
 .pc .note,.pc .gram{font-size:11.5px;margin-top:7px;line-height:1.65;padding-left:8px}
 .note{color:#8fd9c4;border-left:2px solid #2c6b5c}
 .gram{color:#c9b6f0;border-left:2px solid #5a4a8a}
@@ -71,7 +73,6 @@ border-radius:6px;padding:3px 6px;white-space:nowrap}
 .turn .te{font-size:15px;font-weight:600;line-height:1.5}
 .turn .tk{color:var(--kana);font-size:11.5px;margin-top:4px;line-height:1.6}
 .turn .tj{color:var(--tx2);font-size:12px;margin-top:4px;line-height:1.6}
-/* 出題 */
 .askbox{background:rgba(79,156,255,.10);border:1px solid #2a4a75;border-radius:12px;
 padding:12px;margin-bottom:14px;text-align:left}
 .askhead{font-size:10.5px;color:#9fd0ff;margin-bottom:6px;letter-spacing:.5px}
@@ -87,7 +88,7 @@ padding:20px 16px;min-height:230px;display:flex;flex-direction:column;justify-co
 .stage .kcsm{color:#8ea4c4;font-size:11.5px;margin-top:4px}
 .stage .jasm{color:var(--tx2);font-size:13.5px;margin-top:8px}
 .stage .info{font-size:11.5px;line-height:1.75;text-align:left;margin-top:9px;padding:8px 10px;border-radius:9px;background:rgba(0,0,0,.22)}
-#stNote{color:#8fd9c4}#stGram{color:#c9b6f0}#stSnd{color:#ffc98a}#stCtxJa{color:#9fd0ff}
+#stNote{color:#8fd9c4}#stGram{color:#c9b6f0}#stSnd{color:#ffc98a}#stCtxJa{color:#9fd0ff}#stChip{color:#9fd0ff}
 .hintbox{margin-top:12px;text-align:left;background:rgba(0,0,0,.25);border-radius:10px;padding:9px 11px}
 .hintbox .hl{font-size:12.5px;color:#9fd0ff;line-height:1.9}
 .hintbox .hl b{color:var(--tx);letter-spacing:.5px}
@@ -239,6 +240,7 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
         <div class="kcsm" id="stKc"></div>
         <div class="jasm" id="stJa"></div>
         <div class="info" id="stCtxJa"></div>
+        <div class="info" id="stChip"></div>
         <div class="info" id="stGram"></div>
         <div class="info" id="stNote"></div>
         <div class="info" id="stSnd"></div>
@@ -310,6 +312,15 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
     <div style="font-size:13px;font-weight:700;color:#ffd08a">このブラウザは音声認識に未対応です</div>
     <div class="note-sm" style="margin-top:6px">発話の採点は Chrome / Edge / Safari で使えます。他の機能はすべて使えます。</div>
   </div>
+
+  <h2 class="t">カードの点検</h2>
+  <div class="box">
+    <p class="note-sm" style="margin-top:0">英文・和訳・型・文法・使い方がずれているカードを検出して直します。
+    起動時にも自動で実行されます。</p>
+    <div class="note-sm" id="fixNote" style="margin-top:6px;color:#8fd9c4"></div>
+    <button class="btn sec" id="btnFixNow" style="margin-top:10px">🩺 いま点検して直す</button>
+  </div>
+
   <h2 class="t">この学習法の根拠</h2>
   <div id="methodList"></div>
 
@@ -409,7 +420,7 @@ const KD_RAW = `
 a:ア able:エイボゥ about:アバウト above:アバヴ accept:アクセプト across:アクロス action:アクション actually:アクチュアリー add:アド additional:アディショナル address:アドレス adjust:アジャスト advance:アドヴァンス after:アフター afternoon:アフタヌーン again:アゲン against:アゲンスト agenda:アジェンダ agree:アグリー agreed:アグリード ahead:アヘッド air:エア airport:エアポート aisle:アイゥ all:オール allergic:アラージック allow:アラウ already:オールレディ also:オールソウ always:オールウェイズ am:アム an:アン and:アンド angle:アングゥ another:アナザー answer:アンサー any:エニー anything:エニシング anytime:エニタイム apologize:アポロジャイズ appreciate:アプリーシエイト approach:アプロウチ approval:アプルーヴァル approve:アプルーヴ are:アー area:エリア around:アラウンド arrive:アライヴ as:アズ ask:アスク assume:アシューム assumption:アサンプション at:アット available:アヴェイラボゥ avoid:アヴォイド
 by:バイ back:バック bag:バッグ bags:バッグズ baggage:バギッジ bank:バンク be:ビー because:ビコーズ become:ビカム been:ビン before:ビフォー behind:ビハインド being:ビーイング believe:ビリーヴ below:ビロウ best:ベスト better:ベター between:ビトゥウィーン big:ビッグ bill:ビゥ bit:ビット blanket:ブランキット block:ブロック blocked:ブロックト blocker:ブロッカー blue:ブルー board:ボード boarding:ボーディング book:ブック booked:ブックト booking:ブッキング both:ボウス bottleneck:ボトゥネック bottom:ボトム box:ボックス break:ブレイク breakfast:ブレックファスト budget:バジェット bus:バス business:ビズネス busy:ビジー but:バット buy:バイ
 call:コール calling:コーリング came:ケイム can:キャン cancel:キャンセゥ car:カー card:カード care:ケア cash:キャッシュ catch:キャッチ cause:コーズ certain:サートゥン challenge:チャレンジ change:チェインジ changed:チェインジド changes:チェインジズ charge:チャージ chat:チャット check:チェック chicken:チキン choice:チョイス claim:クレイム clear:クリア close:クロウズ closed:クロウズド coffee:コーフィ cold:コウゥド come:カム comes:カムズ comment:コメント comments:コメンツ commit:コミット common:コモン company:カンパニー compare:コンペア complete:コンプリート concern:コンサーン concerns:コンサーンズ conclude:コンクルード conclusion:コンクルージョン conclusions:コンクルージョンズ condition:コンディション conditioning:コンディショニング conference:カンファレンス confirm:コンファーム conflict:コンフリクト confusion:コンフュージョン container:コンテイナー continue:コンティニュー correct:コレクト correctly:コレクトリー correlation:コーレレイション cost:コスト could:クド cover:カヴァー create:クリエイト credit:クレディット current:カレント customer:カスタマー cut:カット
-dairy:デアリー data:デイタ date:デイト day:デイ days:デイズ decide:ディサイド decision:ディシジョン defer:ディファー delay:ディレイ deliver:デリヴァー dependency:ディペンデンシー depend:ディペンド design:ディザイン dessert:デザート detail:ディーテイル details:ディーテイルズ did:ディド difference:ディファレンス different:ディファレント difficult:ディフィカゥト disagree:ディスアグリー discuss:ディスカス discussion:ディスカッション distance:ディスタンス do:ドゥ doable:ドゥーアボゥ doctor:ドクター does:ダズ doing:ドゥーイング dollars:ダラーズ done:ダン down:ダウン downtown:ダウンタウン draft:ドラフト drink:ドリンク drop:ドロップ due:デュー
+dairy:デアリー data:デイタ date:デイト day:デイ days:デイズ decide:ディサイド decision:ディシジョン defer:ディファー delay:ディレイ deliver:デリヴァー delivery:デリヴァリー dependency:ディペンデンシー depend:ディペンド design:ディザイン dessert:デザート detail:ディーテイル details:ディーテイルズ did:ディド difference:ディファレンス different:ディファレント difficult:ディフィカゥト disagree:ディスアグリー discuss:ディスカス discussion:ディスカッション distance:ディスタンス do:ドゥ doable:ドゥーアボゥ doctor:ドクター does:ダズ doing:ドゥーイング dollars:ダラーズ done:ダン down:ダウン downtown:ダウンタウン draft:ドラフト drink:ドリンク drop:ドロップ due:デュー
 each:イーチ earlier:アーリアー early:アーリー easy:イージー eat:イート echo:エコウ effect:イフェクト effort:エフォート eight:エイト either:イーザー elaborate:イラボレイト elevator:エレヴェイター else:エゥス emergency:イマージェンシー end:エンド english:イングリッシュ enough:イナフ ensure:インシュア error:エラー even:イーヴン evening:イーヴニング ever:エヴァー every:エヴリー everyone:エヴリワン everything:エヴリシング exactly:イグザクトリー example:イグザンポゥ except:イクセプト exit:エグジット expect:イクスペクト expected:イクスペクティド experience:イクスピアリエンス explain:イクスプレイン extend:イクステンド eye:アイ
 face:フェイス fact:ファクト factory:ファクトリー fail:フェイゥ failed:フェイゥド failure:フェイリャー fair:フェア fall:フォール fallback:フォールバック far:ファー fast:ファスト feedback:フィードバック feel:フィーゥ few:フュー fifteen:フィフティーン fifty:フィフティ figure:フィギュア file:ファイゥ final:ファイナゥ find:ファインド fine:ファイン finish:フィニッシュ first:ファースト fish:フィッシュ five:ファイヴ fix:フィックス flag:フラッグ flexible:フレクサボゥ flight:フライト floor:フロア fly:フライ focus:フォウカス follow:フォロウ food:フード for:フォー forward:フォーワード found:ファウンド four:フォー free:フリー front:フロント from:フロム full:フゥ further:ファーザー future:フューチャー
 gap:ギャップ gate:ゲイト gentle:ジェントゥ get:ゲット give:ギヴ given:ギヴン go:ゴウ goal:ゴウゥ going:ゴウイング good:グッド got:ガット great:グレイト ground:グラウンド group:グループ guess:ゲス
@@ -456,7 +467,6 @@ const KRULES=[["tion","ション"],["sion","ジョン"],["ture","チャー"],["o
  ["j","ジ"],["k","ク"],["l","ル"],["m","ム"],["n","ン"],["o","オ"],["p","プ"],["q","ク"],["r","ル"],
  ["s","ス"],["t","ト"],["u","ア"],["v","ヴ"],["w","ウ"],["x","クス"],["y","イ"],["z","ズ"],["'",""]];
 
-/* 子音＋母音を1音節として組む（辞書にない語・固有名詞用） */
 const CV={
  k:"カキクケコ",g:"ガギグゲゴ",s:"サシスセソ",z:"ザジズゼゾ",t:"タティトゥテト",d:"ダディドゥデド",
  n:"ナニヌネノ",h:"ハヒフヘホ",b:"バビブベボ",p:"パピプペポ",m:"マミムメモ",y:"ヤイユエヨ",
@@ -855,11 +865,11 @@ const SEED = [
 {s:"shop",lv:2,en:"Can I try this on?",ja:"試着してもいいですか。",gr:"try on＝試着する。目的語は on の前。",note:"try this on の語順に注意。"},
 {s:"shop",lv:2,en:"Do you take credit cards?",ja:"クレジットカードは使えますか。",gr:"take＝受け付ける。",note:"現金のみの店もあるので先に確認。"},
 {s:"shop",lv:2,en:"Is it walking distance?",ja:"歩ける距離ですか。",gr:"walking distance＝徒歩圏。",note:"タクシーが必要か判断できる。"},
-{s:"shop",lv:2,en:"Which line should I take?",ja:"どの路線に乗ればいいですか。",gr:"should＝〜すべき。take＝乗る。",note:"地下鉄で必須。"},
+{s:"shop",lv:2,en:"Which line should I take?",ja:"どの路線に乗ればいいですか。",gr:"Which＋名詞で「どの〜」。should＝〜すべき。take＝（乗り物に）乗る。",note:"地下鉄やバスで路線を確認するときの定番。"},
 {s:"shop",lv:3,en:"Could you show me on the map?",ja:"地図で示していただけますか。",gr:"show 人 ~＝人に見せる。",note:"聞き取れなくても地図なら分かる。最終手段。"},
 {s:"shop",lv:2,en:"I think I'm lost.",ja:"道に迷ったようです。",gr:"I think を付けると柔らかくなる。",note:"助けを求める合図として機能する。"},
 {s:"trouble",lv:2,en:"I'm calling about my reservation.",ja:"予約の件でお電話しました。",gr:"call about ~＝〜の件で電話する。",note:"電話は最初に用件を言う。英語の順序。"},
-{s:"trouble",lv:2,en:"I'd like to cancel my reservation.",ja:"予約をキャンセルしたいのですが。",gr:"I'd like to の型。",note:"キャンセル料の有無も続けて聞く。"},
+{s:"trouble",lv:2,en:"I'd like to cancel my reservation.",ja:"予約をキャンセルしたいのですが。",gr:"I'd like to＋動詞の原形。",note:"キャンセル料の有無も続けて聞く。"},
 {s:"trouble",lv:2,en:"Could you help me? It's an emergency.",ja:"助けてください。緊急です。",gr:"It is の短縮。an＋母音で始まる語。",note:"緊急時は短く。周囲に伝わることが最優先。"},
 {s:"trouble",lv:2,en:"I left my bag on the train.",ja:"電車にかばんを忘れました。",gr:"leave の過去形 left。on＋乗り物。",note:"忘れ物は leave を使う。"},
 {s:"trouble",lv:3,en:"I don't feel well.",ja:"体調が悪いです。",gr:"feel well＝気分が良い。その否定。",note:"体調不良の標準表現。"},
@@ -887,7 +897,7 @@ const SEED = [
 {s:"tech",lv:2,en:"That's still a hypothesis.",ja:"それはまだ仮説です。",gr:"hypothesis＝仮説。",note:"事実と仮説を区別する一言。"},
 {s:"tech",lv:2,en:"The difference is not statistically significant.",ja:"その差は統計的に有意ではありません。",gr:"not＋形容詞で否定。",note:"データの過剰解釈を止める。"},
 {s:"tech",lv:2,en:"These are preliminary results.",ja:"これは暫定結果です。",gr:"preliminary＝暫定の。",note:"先に言うと後で覆っても問題にならない。"},
-{s:"tech",lv:2,en:"I'd like to see the raw data.",ja:"生データを確認したいです。",gr:"I'd like to の型。",note:"慎重な姿勢を示せる。"},
+{s:"tech",lv:2,en:"I'd like to see the raw data.",ja:"生データを確認したいです。",gr:"I'd like to＋動詞の原形。",note:"慎重な姿勢を示せる。"},
 {s:"tech",lv:2,en:"Let's not jump to conclusions.",ja:"結論を急がないようにしましょう。",gr:"Let's not＋動詞の原形＝〜しないようにしよう。",note:"議論を落ち着かせる。"},
 {s:"risk",lv:1,en:"We've run into a problem.",ja:"問題が発生しました。",gr:"run into＝ぶつかる。現在完了。",note:"問題報告の第一声。"},
 {s:"risk",lv:2,en:"This could become a bottleneck.",ja:"これはボトルネックになり得ます。",gr:"could＝〜になり得る。断定を避ける。",note:"早めに言うほど対処しやすい。"},
@@ -929,7 +939,7 @@ const METHOD = [
  {t:"ヒントは自分から開けない（Bjorkの原則）",
   b:"最も効果的な想起練習は、努力を要し、ヒントを伴わないものです。そのため型や語頭のヒントは初期状態で隠しています。まず数秒、何も見ずに口に出してください。どうしても出ないときだけ段階的に開きます。"},
  {t:"会話カードは「聞いて答える」",
-  b:"会話モードで作ったカードは、相手の英語が先に流れます。まず耳で受け取り、日本語の指示にしたがって応答を作ってください。ヒントを押すと、最初に相手の発言の日本語が出ます。聞き取れなかったのか、答えを作れないのかを切り分けられます。リスニングと応答を同時に鍛える形です。"},
+  b:"会話モードで作ったカードは、相手の英語が先に流れます。まず耳で受け取り、日本語の指示にしたがって応答を作ってください。ヒントを押すと、最初に相手の発言の日本語が出ます。聞き取れなかったのか、答えを作れないのかを切り分けられます。"},
  {t:"型（チャンク）で覚える",
   b:"単語を並べて文を組み立てるのではなく、\"Could I get ___?\" のような意味の塊ごと口に入れます。ネイティブの発話の3〜5割は決まり文句です。塊で持っていると、発話時に文法を考える負荷が消えます。"},
  {t:"長さを段階的に上げる",
@@ -996,7 +1006,6 @@ function scoreLabel(n){
 const CORRECT_PROMPT=`You are an English speaking coach for a Japanese learner (TOEIC ~400).
 You are given the TARGET sentence they practiced and what they actually SAID (speech-to-text: ignore punctuation and casing).
 If a CONTEXT line is present, it is what the other person said just before; judge whether SAID is an appropriate reply to it.
-Judge SAID on its own merit as spoken English.
 Output ONLY a JSON object:
 {"ok":true|false,"better":"...","why":"...","praise":"..."}
 - "ok": true if SAID would be clearly understood by a native speaker in that situation.
@@ -1119,6 +1128,8 @@ function mergeState(local,remote){
     rmap.delete(k); return pickCard(c,r);
   });
   rmap.forEach(r=>out.cards.push(r));
+  /* 同期で入ってきたカードも整合性を直す */
+  out.cards=out.cards.map(repairCard);
   out.log=Object.assign({},remote.log||{});
   Object.entries(local.log||{}).forEach(([k,v])=>{ out.log[k]=Math.max(v,out.log[k]||0); });
   return out;
@@ -1203,28 +1214,7 @@ const DEF={ cards:[], log:{}, gen:[], course:"travel",
   set:{goal:20,newMax:8,voice:"",rate:1,careful:true,autoPlayCtx:true},
   drive:{clientId:"",lastSync:"",email:""},
   api:{provider:"gemini",model:"gemini-2.5-flash",key:"",url:"https://api.openai.com/v1/chat/completions"} };
-let S=load();
-function load(){
-  try{
-    const raw=Store.get(KEY);
-    if(!raw) return structuredClone(DEF);
-    const o=JSON.parse(raw);
-    const s=Object.assign(structuredClone(DEF),o,{
-      set:Object.assign({},DEF.set,o.set||{}),
-      api:Object.assign({},DEF.api,o.api||{}),
-      drive:Object.assign({},DEF.drive,o.drive||{})});
-    s.cards=(s.cards||[]).map(c=>{
-      const n=Object.assign({},c);
-      if(LEGACY_SCENE[n.s]) n.s=LEGACY_SCENE[n.s];
-      if(!n.kt) n.kt=toKatakana(n.en);
-      if(!n.co){ const sc=SCENES.find(x=>x.id===n.s); n.co=sc?sc.c:"biz"; }
-      return n;
-    });
-    if(!COURSES.find(c=>c.id===s.course)) s.course="travel";
-    return s;
-  }catch(e){ return structuredClone(DEF); }
-}
-function save(){ Store.set(KEY,JSON.stringify(S)); }
+
 const $=s=>document.querySelector(s);
 const qsa=s=>[...document.querySelectorAll(s)];
 const today=()=>new Date().toISOString().slice(0,10);
@@ -1235,14 +1225,99 @@ function esc(s){ return String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&l
 const sceneOf=id=>SCENES.find(x=>x.id===id);
 const courseName=id=>(COURSES.find(c=>c.id===id)||{}).name||"";
 
+/* ============================================================
+   整合性の修復
+   過去のバージョンで、型に当てはまらないフレーズに型の文法・解説を
+   紐づけてしまう不具合があった。読み込み時に正典と照合して直す。
+   ============================================================ */
+const SEED_BY_EN=(()=>{ const m=new Map();
+  SEED.forEach(p=>m.set(p.en.toLowerCase().trim(),p)); return m; })();
+const PATEX_BY_EN=(()=>{ const m=new Map();
+  PATTERNS.forEach(pt=>pt.ex.forEach(([frag,ja])=>{
+    m.set(pt.p.replace("___",frag).toLowerCase().trim(),{pt,ja});
+  })); return m; })();
+
+/* 英文が本当にその型の形をしているか（前後の固定部分で判定） */
+function patternFits(ch,en){
+  if(!ch) return false;
+  const e=String(en||"").trim().toLowerCase().replace(/[.?!]+$/,"");
+  const c=String(ch).trim().toLowerCase().replace(/[.?!]+$/,"");
+  const i=c.indexOf("___");
+  if(i<0) return e===c;
+  const pre=c.slice(0,i).trim(), suf=c.slice(i+3).trim();
+  if(pre&&!e.startsWith(pre)) return false;
+  if(suf&&!e.endsWith(suf)) return false;
+  return e.length>pre.length+suf.length;
+}
+let REPAIRED=0;
+function repairCard(c){
+  if(!c||!c.en) return c;
+  const n=Object.assign({},c);
+  const key=n.en.toLowerCase().trim();
+  let changed=false;
+  const seed=SEED_BY_EN.get(key), pex=PATEX_BY_EN.get(key);
+
+  if(seed){
+    /* 単体フレーズ：型は持たない。解説は正典で上書き */
+    if(n.ch){ delete n.ch; changed=true; }
+    if(n.gr!==seed.gr){ n.gr=seed.gr; changed=true; }
+    if(n.note!==seed.note){ n.note=seed.note; changed=true; }
+    if(n.ja!==seed.ja){ n.ja=seed.ja; changed=true; }
+    if(n.s!==seed.s){ n.s=seed.s; changed=true; }
+  } else if(pex){
+    /* 型の例文：型・解説を正典で上書き */
+    if(n.ch!==pex.pt.p){ n.ch=pex.pt.p; changed=true; }
+    if(n.gr!==pex.pt.gr){ n.gr=pex.pt.gr; changed=true; }
+    if(n.note!==pex.pt.why){ n.note=pex.pt.why; changed=true; }
+    if(n.ja!==pex.ja){ n.ja=pex.ja; changed=true; }
+    if(n.s!==pex.pt.s){ n.s=pex.pt.s; changed=true; }
+  } else if(n.ch&&!patternFits(n.ch,n.en)){
+    /* AI生成・手動：形が合わない型は誤り。外す */
+    delete n.ch; changed=true;
+  }
+  /* 発音は常に再計算（保存値を信用しない） */
+  const a=analyzeKana(n.en);
+  const snd=(a.notes||[]).join("／");
+  if(n.kt!==a.kana||n.kc!==a.careful||n.snd!==snd){
+    n.kt=a.kana; n.kc=a.careful; n.snd=snd; changed=true;
+  }
+  if(changed) REPAIRED++;
+  return n;
+}
+
+let S=load();
+function load(){
+  try{
+    const raw=Store.get(KEY);
+    if(!raw) return structuredClone(DEF);
+    const o=JSON.parse(raw);
+    const s=Object.assign(structuredClone(DEF),o,{
+      set:Object.assign({},DEF.set,o.set||{}),
+      api:Object.assign({},DEF.api,o.api||{}),
+      drive:Object.assign({},DEF.drive,o.drive||{})});
+    REPAIRED=0;
+    s.cards=(s.cards||[]).map(c=>{
+      let n=Object.assign({},c);
+      if(LEGACY_SCENE[n.s]) n.s=LEGACY_SCENE[n.s];
+      if(!n.co){ const sc=SCENES.find(x=>x.id===n.s); n.co=sc?sc.c:"biz"; }
+      return repairCard(n);
+    });
+    if(!COURSES.find(c=>c.id===s.course)) s.course="travel";
+    return s;
+  }catch(e){ return structuredClone(DEF); }
+}
+function save(){ Store.set(KEY,JSON.stringify(S)); }
+
 /* ================= SRS ================= */
 function newCard(p){
   const a=analyzeKana(p.en);
-  return { id:uid(),en:p.en,ja:p.ja,kt:p.kt||a.kana,kc:a.careful,snd:(a.notes||[]).join("／"),
+  const c={ id:uid(),en:p.en,ja:p.ja,kt:a.kana,kc:a.careful,snd:(a.notes||[]).join("／"),
     note:p.note||"",gr:p.gr||"",ch:p.ch||"",
-    ctx:p.ctx||"", ctxJa:p.ctxJa||"",           /* 会話カード：相手の発言 */
+    ctx:p.ctx||"", ctxJa:p.ctxJa||"",
     s:p.s||"custom",co:p.co||S.course,lv:p.lv||2,
     ef:2.5,rep:0,iv:0,due:today(),hist:[],made:today() };
+  if(c.ch&&!patternFits(c.ch,c.en)) c.ch="";   /* 作成時にも検証 */
+  return c;
 }
 function nextIntervals(c){
   if(c.rep===0) return {2:1,3:1,4:3};
@@ -1294,7 +1369,6 @@ function speak(text,rate,alt){
     speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(text);
     let v=VOICES.find(x=>x.name===S.set.voice)||VOICES.find(x=>/en[-_]US/i.test(x.lang))||VOICES[0];
-    /* 相手の声は別の声にして会話らしくする */
     if(alt&&VOICES.length>1){
       const other=VOICES.filter(x=>x.name!==(v&&v.name));
       v=other.find(x=>/en[-_]US/i.test(x.lang))||other[0]||v;
@@ -1308,14 +1382,13 @@ function speak(text,rate,alt){
 /* ================= 生成エンジン ================= */
 const DEPTHS={
   chunk:{ label:"短いチャンク（3〜6語）",
-    spec:`Each "en" must be a SHORT chunk of 3-6 words. No full sentences. These are building blocks to say instantly.` },
+    spec:`Each "en" must be a SHORT chunk of 3-6 words. No full sentences.` },
   sentence:{ label:"1文（標準）",
-    spec:`Each "en" must be ONE complete sentence of 8-16 words. Not a fragment, not multiple sentences.` },
+    spec:`Each "en" must be ONE complete sentence of 8-16 words.` },
   explain:{ label:"2〜3文で説明する",
     spec:`Each "en" must be 2-3 connected sentences (25-45 words total) forming a real spoken turn:
 state the point, then add a reason, a condition, a number, or a next step.
-Use connectors like "because", "so", "but", "if", "that way".
-Still use simple junior-high grammar. It must be easy to say aloud.` },
+Use connectors like "because", "so", "but", "if". Simple junior-high grammar, easy to say aloud.` },
   dialog:{ label:"会話（往復のやりとり）", spec:`DIALOGUE MODE.` }
 };
 const ANGLES=["asking politely","explaining your reason","reacting to a problem","confirming details",
@@ -1331,20 +1404,18 @@ function promptFor(course,depth,avoid,turns){
     ? `hotels, cafes, restaurants, flights, airports, phone calls, directions, shopping, trouble`
     : `progress, technical issues, risk, budget, milestones, facilitation, Q&A, negotiation`;
   const avoidBlock = avoid.length
-    ? `\nALREADY LEARNED — do NOT output these or trivial variations of them:\n${avoid.map(a=>"- "+a).join("\n")}\n` : "";
+    ? `\nALREADY LEARNED — do NOT output these or trivial variations:\n${avoid.map(a=>"- "+a).join("\n")}\n` : "";
   if(depth==="dialog"){
     return `You are an English coach for ${who}.
 Write a REALISTIC SPOKEN DIALOGUE for the situation the user gives. Context: ${topics}.
 Output ONLY a JSON array of EXACTLY ${turns} turns, alternating speakers, STARTING WITH "them".
 Each element: {"role":"them"|"you","en":"...","ja":"...","gr":"...","note":"..."}
-- "them": what the other person (staff / colleague) actually says. Natural, sometimes indirect.
-  IMPORTANT: most "them" turns should ASK A QUESTION or raise a point that requires a real answer.
-- "you": what the learner should say back. Simple junior-high grammar, easy to say aloud, but a REAL reply
-  with substance — give a reason, a number, or a condition where natural. Not one-word answers.
-- The conversation must develop: a complication or follow-up appears in the middle, and it resolves at the end.
+- "them": what the other person actually says. Most "them" turns should ASK A QUESTION needing a real answer.
+- "you": the learner's reply. Simple junior-high grammar, easy to say aloud, but a REAL reply with substance.
+- The conversation must develop: a complication appears in the middle and resolves at the end.
 - "ja": natural Japanese translation of that turn.
-- "gr": for "you" turns only, grammar note in JAPANESE, junior-high terms, max 45 chars. Empty string for "them".
-- "note": for "you" turns only, why this reply works, in JAPANESE, max 45 chars. Empty string for "them".
+- "gr": for "you" turns only, grammar note in JAPANESE about THAT sentence, junior-high terms, max 45 chars. Empty for "them".
+- "note": for "you" turns only, why this reply works, in JAPANESE, max 45 chars. Empty for "them".
 ${avoidBlock}`;
   }
   return `You are an English coach for ${who}.
@@ -1353,17 +1424,16 @@ Rules:
 - Output ONLY a JSON array. No markdown.
 - Each element: {"en":"...","ja":"...","gr":"...","note":"..."}
 - ${DEPTHS[depth].spec}
-- "ja": natural Japanese translation.
-- "gr": grammar in JAPANESE, junior-high terms only, max 45 chars.
-- "note": when/why to use it, in JAPANESE, max 45 chars.
+- "ja": natural Japanese translation of THAT sentence.
+- "gr": grammar note in JAPANESE about THAT sentence, junior-high terms only, max 45 chars.
+- "note": when/why to use THAT sentence, in JAPANESE, max 45 chars.
+- CRITICAL: "ja", "gr" and "note" must describe the SAME item's "en". Never mix them up between items.
 - VARIETY IS CRITICAL: every item must start with a DIFFERENT opening word or structure.
-  Cover different angles of the situation, not paraphrases of one idea.
 ${avoidBlock}`;
 }
 function avoidList(query,limit){
   const q=(query||"").toLowerCase();
-  const mine=S.cards.filter(inCourse);
-  return mine.map(c=>{
+  return S.cards.filter(inCourse).map(c=>{
     let v=0;
     const sc=sceneOf(c.s);
     if(sc){ sc.kw.forEach(k=>{ if(q.includes(k.toLowerCase())) v+=5; }); }
@@ -1504,18 +1574,19 @@ function localGenerate(q,n,avoid){
 
 /* ================= 表示 ================= */
 function phraseHTML(p,opt={}){
-  const a=p.kt?null:analyzeKana(p.en);
-  const kt=p.kt||(a&&a.kana)||"";
-  const kc=p.kc||(a&&a.careful)||"";
+  const a=analyzeKana(p.en);
+  const kt=a.kana, kc=a.careful;
   const inDeck=S.cards.some(c=>c.en.toLowerCase()===String(p.en).toLowerCase());
   const sc=sceneOf(p.s);
   const label=sc?sc.label:(p.s==="ai"?"AI生成":"自分の追加");
+  const ch=(p.ch&&patternFits(p.ch,p.en))?p.ch:"";
   return `<div class="pc" data-en="${esc(p.en)}">
     ${p.ctx?`<div class="ctx">相手：${esc(p.ctx)}</div>`:""}
     <div class="en">${esc(p.en)}</div>
     <div class="kt">${esc(kt)}</div>
-    ${S.set.careful&&kc&&kc!==kt?`<div class="kc">ゆっくり: ${esc(kc)}</div>`:""}
+    ${S.set.careful&&kc!==kt?`<div class="kc">ゆっくり: ${esc(kc)}</div>`:""}
     <div class="ja">${esc(p.ja)}</div>
+    ${ch?`<div class="chip-ch">型：${esc(ch)}</div>`:""}
     ${p.gr?`<div class="gram">文法：${esc(p.gr)}</div>`:""}
     ${p.note?`<div class="note">使い方：${esc(p.note)}</div>`:""}
     <div class="bar">
@@ -1591,8 +1662,7 @@ function renderHome(){
   const pct=mine.length?Math.round(learned/mine.length*100):0;
   $("#courseBar").style.width=pct+"%";
   $("#coursePct").textContent=pct+"%";
-  const conv=mine.filter(c=>c.ctx).length;
-  $("#courseNote").textContent=`カード ${mine.length} 枚（学習済み ${learned}／会話 ${conv}）`;
+  $("#courseNote").textContent=`カード ${mine.length} 枚（学習済み ${learned}／会話 ${mine.filter(c=>c.ctx).length}）`;
   const pool=mine.length?mine:SEED.filter(p=>{const s=sceneOf(p.s);return s&&s.c===S.course;});
   const r=pool[Math.floor(Math.random()*pool.length)];
   $("#randomCard").innerHTML=r?phraseHTML(r):"";
@@ -1610,7 +1680,7 @@ $("#btnAddCourse").onclick=()=>{
     pt.ex.forEach(([frag,ja])=>{
       const en=pt.p.replace("___",frag);
       if(!S.cards.some(c=>c.en===en)){
-        S.cards.push(newCard({en,ja,s:pt.s||"custom",co:pt.c,lv:2,gr:pt.gr,note:pt.why,ch:pt.p})); k++; }});
+        S.cards.push(newCard({en,ja,s:pt.s,co:pt.c,lv:2,gr:pt.gr,note:pt.why,ch:pt.p})); k++; }});
   });
   save(); renderHome();
   toast(k?`${k}枚を追加しました`:"すでに全部追加済みです",3000);
@@ -1652,7 +1722,7 @@ function renderPatterns(){
     p.ex.forEach(([f,ja])=>{
       const en=p.p.replace("___",f);
       if(!S.cards.some(c=>c.en===en)){
-        S.cards.push(newCard({en,ja,s:p.s||"custom",co:p.c,lv:2,gr:p.gr,note:p.why,ch:p.p})); k++; }});
+        S.cards.push(newCard({en,ja,s:p.s,co:p.c,lv:2,gr:p.gr,note:p.why,ch:p.p})); k++; }});
     save(); renderHome();
     toast(k?`${k}枚を追加しました`:"すでに追加済みです");
   };
@@ -1679,7 +1749,7 @@ function updGenMode(){
     chunk:"口から即座に出す部品を作ります。まずここから。",
     sentence:"1文で言い切る練習。",
     explain:"理由・条件・数字を添えた「本番の一言」。会議で必要な長さです。",
-    dialog:"相手の発言つきで往復のやりとりを作ります。あなたの返答がカードになり、学習時は相手の英語が先に流れます。"
+    dialog:"相手の発言つきで往復のやりとりを作ります。学習時は相手の英語が先に流れます。"
   }[d]||"";
   $("#rowCount").style.display=isDialog()?"none":"";
   $("#rowTurns").style.display=isDialog()?"":"none";
@@ -1691,8 +1761,7 @@ async function runGenerate(more){
   const q=$("#genInput").value.trim();
   if(!q) return toast("場面を入力してください");
   const depth=$("#genDepth").value;
-  const n=+$("#genCount").value;
-  const turns=+$("#genTurns").value;
+  const n=+$("#genCount").value, turns=+$("#genTurns").value;
   if(!more) extraAvoid=[];
   const avoid=[...avoidList(q,depth==="dialog"?15:30),...extraAvoid].slice(0,45);
   const b=$("#btnGen"); b.disabled=true;
@@ -1703,14 +1772,13 @@ async function runGenerate(more){
       try{ out=await aiGenerate(q,n,depth,avoid,t=>{b.innerHTML='<span class="load"></span>'+t;},turns); }
       catch(err){ console.warn(err);
         toast("AI生成に失敗："+explainErr(err)+" 内蔵ライブラリで表示します",4500);
-        out=localGenerate(q,n,avoid); depth==="dialog"&&(out=out.map(o=>({...o,role:"you"}))); }
+        out=localGenerate(q,n,avoid); }
     } else {
       if(depth==="dialog"||depth==="explain")
         toast("この長さはAI接続が必要です。設定でキーを入れてください。",4500);
       out=localGenerate(q,n,avoid);
     }
-    /* 会話：直前の相手の発言を自分の発言に紐づける */
-    if(depth==="dialog"){
+    if(depth==="dialog"&&out.some(o=>o.role)){
       let ctx="",ctxJa="";
       out.forEach(o=>{
         if(o.role==="them"){ ctx=o.en; ctxJa=o.ja; }
@@ -1723,12 +1791,13 @@ async function runGenerate(more){
   } finally { b.disabled=false; b.innerHTML="✨ フレーズを生成"; }
 }
 function renderGenOut(out,depth){
+  const isDlg=depth==="dialog"&&out.some(o=>o.role);
   const head=`<h2 class="t">生成結果（${esc(courseName(S.course))}・${esc(DEPTHS[depth].label)}）</h2>
     <div class="row" style="margin-bottom:10px">
-      <button class="btn sec" id="btnAddAll">${depth==="dialog"?"自分の発言をカードに追加":"すべてカードに追加"}</button>
+      <button class="btn sec" id="btnAddAll">${isDlg?"自分の発言をカードに追加":"すべてカードに追加"}</button>
       <button class="btn gh" id="btnMore">🔄 違う展開で</button>
     </div>`;
-  if(depth==="dialog"){
+  if(isDlg){
     const body=out.map(o=>{
       const a=analyzeKana(o.en);
       if(o.role==="them") return `<div class="turn them" data-en="${esc(o.en)}">
@@ -1782,13 +1851,13 @@ function switchCourseAndStart(){
   toast(other.name+" に切り替えました");
   startSession("mix");
 }
-/* ヒント：会話カードは「相手の日本語」が最初の段 */
 function hintSteps(c){
   const words=c.en.split(/\s+/);
   const steps=[];
   if(c.ctx) steps.push(`<div class="hl">相手の意味：<b>${esc(c.ctxJa||"（訳なし）")}</b></div>`);
-  steps.push(c.ch?`<div class="hl">型：<b>${esc(c.ch)}</b></div>`
-                 :`<div class="hl">語数：<b>${words.length}語</b></div>`);
+  /* 型は形が一致するときだけ出す */
+  if(c.ch&&patternFits(c.ch,c.en)) steps.push(`<div class="hl">型：<b>${esc(c.ch)}</b></div>`);
+  else steps.push(`<div class="hl">語数：<b>${words.length}語</b></div>`);
   steps.push(`<div class="hl">出だし：<b>${esc(words.slice(0,2).join(" "))} …</b></div>`);
   steps.push(`<div class="hl">頭文字：<b>${esc(words.map(w=>w[0]).join(" "))}</b></div>`);
   return steps;
@@ -1834,8 +1903,6 @@ function renderStudy(){
   area.classList.remove("hidden"); emp.classList.add("hidden");
   const c=Q[qi];
   revealed=false; hintLv=0;
-
-  /* --- 会話カード：相手の英語を出題面に置く（日本語訳は隠す） --- */
   const isConv=!!c.ctx;
   $("#askBox").classList.toggle("hidden",!isConv);
   if(isConv){
@@ -1843,21 +1910,19 @@ function renderStudy(){
     $("#askKt").textContent=analyzeKana(c.ctx).kana;
     $("#askKt").classList.toggle("hidden",!S.set.careful);
     $("#stPrompt").textContent="相手の発言に、英語で答える";
-  } else {
-    $("#stPrompt").textContent="この日本語を、英語で口に出す";
-  }
+  } else $("#stPrompt").textContent="この日本語を、英語で口に出す";
   $("#stFront").textContent=c.ja;
   $("#stEn").textContent=c.en;
   const a=analyzeKana(c.en);
-  $("#stKt").textContent=c.kt||a.kana;
-  const kc=c.kc||a.careful;
-  $("#stKc").textContent=(S.set.careful&&kc!==(c.kt||a.kana))?"ゆっくり: "+kc:"";
+  $("#stKt").textContent=a.kana;
+  $("#stKc").textContent=(S.set.careful&&a.careful!==a.kana)?"ゆっくり: "+a.careful:"";
   $("#stJa").textContent=c.ja;
   const set=(el,label,val)=>{ const e=$(el); e.textContent=val?label+val:""; e.style.display=val?"":"none"; };
   set("#stCtxJa","相手：",c.ctxJa);
+  set("#stChip","型：",(c.ch&&patternFits(c.ch,c.en))?c.ch:"");
   set("#stGram","文法：",c.gr);
   set("#stNote","使い方：",c.note);
-  set("#stSnd","音の変化：",c.snd||(a.notes||[]).join("／"));
+  set("#stSnd","音の変化：",(a.notes||[]).join("／"));
   $("#stBack").classList.add("hidden");
   $("#grades").classList.add("hidden");
   $("#btnReveal").classList.remove("hidden");
@@ -1867,7 +1932,6 @@ function renderStudy(){
   $("#stCounter").textContent=`${qi+1} / ${Q.length}　（${c.rep===0?"新規":"復習 "+c.rep+"回目"}${isConv?"・会話":""}）`;
   const iv=nextIntervals(c);
   $("#gi2").textContent=iv[2]+"日"; $("#gi3").textContent=iv[3]+"日"; $("#gi4").textContent=iv[4]+"日";
-  /* 相手の発言を自動再生 */
   if(isConv&&S.set.autoPlayCtx) setTimeout(()=>speak(c.ctx,null,true),260);
 }
 function reveal(){
@@ -2042,6 +2106,13 @@ $("#btnTestApi").onclick=async()=>{
   finally{ b.disabled=false; b.textContent="接続テスト"; updGenMode(); }
 };
 $("#btnSet").onclick=()=>show("more");
+$("#btnFixNow").onclick=()=>{
+  REPAIRED=0;
+  S.cards=S.cards.map(repairCard);
+  save(); renderHome(); renderCards();
+  toast(REPAIRED?`${REPAIRED}枚を修復しました`:"問題は見つかりませんでした",3500);
+  $("#fixNote").textContent=REPAIRED?`${REPAIRED}枚を修復しました。`:"問題は見つかりませんでした。";
+};
 $("#btnExport").onclick=()=>{
   const b=new Blob([JSON.stringify(S,null,2)],{type:"application/json"});
   const a=document.createElement("a");
@@ -2082,6 +2153,12 @@ renderSceneChips();
 renderPatterns();
 renderHome();
 bindDrive();
+/* 起動時に修復が走っていたら保存して知らせる */
+if(REPAIRED>0){
+  save();
+  $("#fixNote").textContent=`起動時に ${REPAIRED} 枚のカードを自動修復しました。`;
+  setTimeout(()=>toast(`カード ${REPAIRED} 枚の解説のずれを自動修復しました`,4500),700);
+}
 if(driveAvailable()&&S.drive.lastSync){
   setTimeout(async()=>{ try{ await driveSync(); toast("Driveと同期しました"); }
     catch(e){ console.warn("auto-sync skipped",e); } },1500);
