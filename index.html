@@ -42,7 +42,7 @@ textarea{min-height:78px;line-height:1.6}
 .btn.sec{background:var(--card2);color:var(--tx);border:1px solid var(--line);font-weight:600}
 .btn.gh{background:transparent;color:var(--tx2);border:1px solid var(--line);font-weight:600}
 .btn.sm{padding:8px 12px;font-size:12.5px;width:auto}
-.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn:disabled{opacity:.45;cursor:default}
 .row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1}
 .chips{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0 0}
 .chip{background:var(--bg2);border:1px solid var(--line);color:var(--tx2);border-radius:999px;padding:7px 12px;font-size:12px;cursor:pointer}
@@ -105,7 +105,13 @@ padding:20px 16px;min-height:230px;display:flex;flex-direction:column;justify-co
 .heat{display:grid;grid-template-columns:repeat(auto-fill,minmax(13px,1fr));gap:3px;margin-top:8px}
 .hc{aspect-ratio:1;border-radius:3px;background:#1a2740}
 .hc.l1{background:#1d4d40}.hc.l2{background:#25795f}.hc.l3{background:#2fae83}.hc.l4{background:#43e0a8}
-.empty{text-align:center;color:var(--tx2);font-size:13px;padding:34px 10px;line-height:1.8}
+.empty{text-align:center;color:var(--tx2);font-size:13px;padding:30px 10px;line-height:1.8}
+.donebig{font-size:22px;font-weight:800;color:var(--good);margin-bottom:10px}
+.donesub{font-size:13px;color:var(--tx2);line-height:1.9}
+.donenote{margin-top:14px;font-size:12px;color:var(--tx2);background:var(--card);
+border:1px solid var(--line);border-radius:10px;padding:10px 12px;line-height:1.8;
+max-width:360px;margin-left:auto;margin-right:auto}
+.donenote b{color:var(--tx)}
 .note-sm{font-size:11.5px;color:var(--tx2);line-height:1.7}
 .sp{display:flex;gap:8px;align-items:center;margin-bottom:10px}.sp input{flex:1}
 .plist{display:flex;flex-direction:column;gap:7px}
@@ -166,12 +172,28 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
 <header class="top"><div class="topin">
   <div class="logo">Biz<span>Eng</span> Trainer</div><div class="spacer"></div>
   <div class="pill fire" id="pStreak">🔥 <b>0</b>日</div>
-  <div class="pill" id="pDue">復習 <b>0</b></div>
+  <div class="pill" id="pDue">今日 <b>0</b></div>
   <button class="icobtn" id="btnSet">⚙</button>
 </div></header>
 <div class="wrap">
 
 <section class="view on" id="v-home">
+  <div class="box">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="flex:1"><div style="font-size:12px;color:var(--tx2)">今日やること</div>
+        <div style="font-size:19px;font-weight:750;margin-top:2px" id="todayTitle">—</div></div>
+      <div style="text-align:right"><div style="font-size:26px;font-weight:800" id="todayDone">0</div>
+        <div style="font-size:10.5px;color:var(--tx2)">/ <span id="todayGoal">0</span> 枚</div></div>
+    </div>
+    <div class="prog" style="margin:12px 0 8px"><i id="todayBar"></i></div>
+    <div class="note-sm" id="todaySub" style="margin-bottom:11px"></div>
+    <button class="btn" id="btnStart">▶ 今日のセッションを開始</button>
+    <button class="btn sec hidden" id="btnMoreHome" style="margin-top:8px">＋5枚 さらに進む</button>
+    <div class="row" style="margin-top:8px">
+      <button class="btn gh sm" id="btnQuickDue" style="flex:1">復習だけ</button>
+      <button class="btn gh sm" id="btnQuickConv" style="flex:1">🗣 会話だけ</button>
+    </div>
+  </div>
   <div class="box">
     <label class="lb">学習コース</label>
     <select id="courseSel"></select>
@@ -182,21 +204,6 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
       <div style="font-size:18px;font-weight:800" id="coursePct">0%</div>
     </div>
     <button class="btn sec" id="btnAddCourse" style="margin-top:10px">このコースを丸ごとカードに追加</button>
-  </div>
-  <div class="box">
-    <div style="display:flex;align-items:center;gap:10px">
-      <div style="flex:1"><div style="font-size:12px;color:var(--tx2)">今日の学習</div>
-        <div style="font-size:20px;font-weight:750;margin-top:2px" id="todayTitle">10分だけ、始めよう</div></div>
-      <div style="text-align:right"><div style="font-size:26px;font-weight:800" id="todayDone">0</div>
-        <div style="font-size:10.5px;color:var(--tx2)">/ <span id="todayGoal">20</span> 枚</div></div>
-    </div>
-    <div class="prog" style="margin:12px 0"><i id="todayBar"></i></div>
-    <button class="btn" id="btnStart">▶ 今日のセッションを開始</button>
-    <div class="row" style="margin-top:8px">
-      <button class="btn sec sm" id="btnQuickNew" style="flex:1">新規だけ</button>
-      <button class="btn sec sm" id="btnQuickDue" style="flex:1">復習だけ</button>
-      <button class="btn sec sm" id="btnQuickConv" style="flex:1">🗣 会話だけ</button>
-    </div>
   </div>
   <div class="stat">
     <div class="st"><b id="sTotal">0</b><span>総カード</span></div>
@@ -315,8 +322,7 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
 
   <h2 class="t">カードの点検</h2>
   <div class="box">
-    <p class="note-sm" style="margin-top:0">英文・和訳・型・文法・使い方がずれているカードを検出して直します。
-    起動時にも自動で実行されます。</p>
+    <p class="note-sm" style="margin-top:0">英文・和訳・型・文法・使い方がずれているカードを検出して直します。起動時にも自動で実行されます。</p>
     <div class="note-sm" id="fixNote" style="margin-top:6px;color:#8fd9c4"></div>
     <button class="btn sec" id="btnFixNow" style="margin-top:10px">🩺 いま点検して直す</button>
   </div>
@@ -381,8 +387,10 @@ code{background:var(--bg2);border:1px solid var(--line);border-radius:5px;paddin
 
   <h2 class="t">設定</h2>
   <div class="box">
-    <label class="lb">1日の目標カード数</label><input type="text" id="setGoal" inputmode="numeric">
-    <label class="lb" style="margin-top:11px">1日の新規カード上限</label><input type="text" id="setNew" inputmode="numeric">
+    <label class="lb">1日に新しく覚える枚数</label>
+    <input type="text" id="setNew" inputmode="numeric">
+    <div class="note-sm" style="margin-top:5px">この枚数だけ新規カードが出ます。復習は忘れかけたものが自動で追加されるため、
+    1日の総量はこれより多くなります。<b>8枚前後</b>が続けやすい目安です。</div>
     <label class="lb" style="margin-top:11px">読み上げ音声（米国英語）</label><select id="setVoice"></select>
     <label class="lb" style="margin-top:11px">読み上げ速度 <span id="rateLbl">1.0</span></label>
     <input type="range" id="setRate" min="0.6" max="1.2" step="0.05" value="1" style="width:100%">
@@ -857,7 +865,7 @@ const SEED = [
 {s:"air",lv:2,en:"I'm staying at the Hilton.",ja:"ヒルトンに泊まります。",gr:"at＋建物名。",note:"入国審査の3つ目。ホテル名を言えるように。"},
 {s:"air",lv:2,en:"Could I get through?",ja:"通してもらえますか。",gr:"get through＝通り抜ける。",note:"通路側の人の前を通るとき。"},
 {s:"air",lv:2,en:"Is this seat taken?",ja:"この席は空いていますか。",gr:"受け身。taken＝取られている。",note:"直訳は「取られていますか」。"},
-{s:"air",lv:2,en:"Where is the baggage claim?",ja:"手荷物受取所はどこですか。",gr:"Where is ~? の型。",note:"到着後すぐ使う。"},
+{s:"air",lv:2,en:"Where is the baggage claim?",ja:"手荷物受取所はどこですか。",gr:"Where is ~? の疑問文。",note:"到着後すぐ使う。"},
 {s:"air",lv:2,en:"My luggage didn't arrive.",ja:"荷物が届きませんでした。",gr:"didn't＋動詞の原形＝過去の否定。",note:"ロストバゲージ時の第一声。"},
 {s:"air",lv:2,en:"I missed my flight.",ja:"飛行機に乗り遅れました。",gr:"miss の過去形 missed。",note:"カウンターでこれを言えば対応が始まる。"},
 {s:"shop",lv:1,en:"I'm just looking, thanks.",ja:"見ているだけです、ありがとう。",gr:"just＝ただ〜だけ。",note:"声をかけられたときの断り方。失礼にならない。"},
@@ -936,10 +944,12 @@ const SEED = [
 ];
 
 const METHOD = [
+ {t:"1日の量は「新規の枚数」で決まる",
+  b:"学習量の上限は、その日に新しく覚える枚数（既定8枚）で管理します。復習は忘れかけたカードだけが自動で出るので、日によって増減します。今日の分（新規＋復習）を終えたら、そこで止めるのが最も効率的です。物足りない日は「さらに続ける」で新規を5枚ずつ追加できますが、翌日の復習量が増えることを覚えておいてください。"},
  {t:"ヒントは自分から開けない（Bjorkの原則）",
   b:"最も効果的な想起練習は、努力を要し、ヒントを伴わないものです。そのため型や語頭のヒントは初期状態で隠しています。まず数秒、何も見ずに口に出してください。どうしても出ないときだけ段階的に開きます。"},
  {t:"会話カードは「聞いて答える」",
-  b:"会話モードで作ったカードは、相手の英語が先に流れます。まず耳で受け取り、日本語の指示にしたがって応答を作ってください。ヒントを押すと、最初に相手の発言の日本語が出ます。聞き取れなかったのか、答えを作れないのかを切り分けられます。"},
+  b:"会話モードで作ったカードは、相手の英語が先に流れます。まず耳で受け取り、日本語の指示にしたがって応答を作ってください。ヒントを押すと、最初に相手の発言の日本語が出ます。"},
  {t:"型（チャンク）で覚える",
   b:"単語を並べて文を組み立てるのではなく、\"Could I get ___?\" のような意味の塊ごと口に入れます。ネイティブの発話の3〜5割は決まり文句です。塊で持っていると、発話時に文法を考える負荷が消えます。"},
  {t:"長さを段階的に上げる",
@@ -949,9 +959,7 @@ const METHOD = [
  {t:"声に出して採点を受ける",
   b:"黙って思い浮かべるより、実際に発話する方が定着します。🎤を押して話すと、認識結果と正解を単語単位で比較して表示します。AIを接続していれば「より自然な言い方」も添削されます。"},
  {t:"間隔反復（SM-2）",
-  b:"4段階の評価に応じて次回出題日が自動計算されます。忘れかけた頃に再会するのが最も定着します。毎日10〜15分が最も効率的です。"},
- {t:"音の変化を先に入れる",
-  b:"英語は単語をつなげて発音します。get it は「ゲリッ」、want to は「ワナ」です。カタカナ表記はこの変化を反映しています。"}
+  b:"4段階の評価に応じて次回出題日が自動計算されます。忘れかけた頃に再会するのが最も定着します。毎日10〜15分が最も効率的です。"}
 ];
 
 
@@ -1128,10 +1136,11 @@ function mergeState(local,remote){
     rmap.delete(k); return pickCard(c,r);
   });
   rmap.forEach(r=>out.cards.push(r));
-  /* 同期で入ってきたカードも整合性を直す */
   out.cards=out.cards.map(repairCard);
   out.log=Object.assign({},remote.log||{});
   Object.entries(local.log||{}).forEach(([k,v])=>{ out.log[k]=Math.max(v,out.log[k]||0); });
+  out.newLog=Object.assign({},remote.newLog||{});
+  Object.entries(local.newLog||{}).forEach(([k,v])=>{ out.newLog[k]=Math.max(v,out.newLog[k]||0); });
   return out;
 }
 async function driveSync(opts={}){
@@ -1144,9 +1153,9 @@ async function driveSync(opts={}){
     note("照合中…");
     const merged=mergeState(S,remote);
     note("保存中…");
-    await uploadRemote({cards:merged.cards,log:merged.log,set:S.set,api:S.api,
-      course:S.course,syncedAt:new Date().toISOString()});
-    S.cards=merged.cards; S.log=merged.log;
+    await uploadRemote({cards:merged.cards,log:merged.log,newLog:merged.newLog,
+      set:S.set,api:S.api,course:S.course,syncedAt:new Date().toISOString()});
+    S.cards=merged.cards; S.log=merged.log; S.newLog=merged.newLog;
     S.drive.lastSync=new Date().toISOString();
     save(); renderHome();
     if($("#v-cards").classList.contains("on")) renderCards();
@@ -1210,8 +1219,8 @@ const Store=(()=>{
     get(k){ try{ return ok?localStorage.getItem(k):(k in mem?mem[k]:null);}catch(e){return k in mem?mem[k]:null;} },
     set(k,v){ try{ ok?localStorage.setItem(k,v):(mem[k]=v);}catch(e){mem[k]=v;} } };
 })();
-const DEF={ cards:[], log:{}, gen:[], course:"travel",
-  set:{goal:20,newMax:8,voice:"",rate:1,careful:true,autoPlayCtx:true},
+const DEF={ cards:[], log:{}, newLog:{}, bonus:{}, gen:[], course:"travel",
+  set:{newMax:8,voice:"",rate:1,careful:true,autoPlayCtx:true},
   drive:{clientId:"",lastSync:"",email:""},
   api:{provider:"gemini",model:"gemini-2.5-flash",key:"",url:"https://api.openai.com/v1/chat/completions"} };
 
@@ -1225,19 +1234,13 @@ function esc(s){ return String(s??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&l
 const sceneOf=id=>SCENES.find(x=>x.id===id);
 const courseName=id=>(COURSES.find(c=>c.id===id)||{}).name||"";
 
-/* ============================================================
-   整合性の修復
-   過去のバージョンで、型に当てはまらないフレーズに型の文法・解説を
-   紐づけてしまう不具合があった。読み込み時に正典と照合して直す。
-   ============================================================ */
+/* ---- カードの整合性修復 ---- */
 const SEED_BY_EN=(()=>{ const m=new Map();
   SEED.forEach(p=>m.set(p.en.toLowerCase().trim(),p)); return m; })();
 const PATEX_BY_EN=(()=>{ const m=new Map();
   PATTERNS.forEach(pt=>pt.ex.forEach(([frag,ja])=>{
     m.set(pt.p.replace("___",frag).toLowerCase().trim(),{pt,ja});
   })); return m; })();
-
-/* 英文が本当にその型の形をしているか（前後の固定部分で判定） */
 function patternFits(ch,en){
   if(!ch) return false;
   const e=String(en||"").trim().toLowerCase().replace(/[.?!]+$/,"");
@@ -1256,26 +1259,21 @@ function repairCard(c){
   const key=n.en.toLowerCase().trim();
   let changed=false;
   const seed=SEED_BY_EN.get(key), pex=PATEX_BY_EN.get(key);
-
   if(seed){
-    /* 単体フレーズ：型は持たない。解説は正典で上書き */
     if(n.ch){ delete n.ch; changed=true; }
     if(n.gr!==seed.gr){ n.gr=seed.gr; changed=true; }
     if(n.note!==seed.note){ n.note=seed.note; changed=true; }
     if(n.ja!==seed.ja){ n.ja=seed.ja; changed=true; }
     if(n.s!==seed.s){ n.s=seed.s; changed=true; }
   } else if(pex){
-    /* 型の例文：型・解説を正典で上書き */
     if(n.ch!==pex.pt.p){ n.ch=pex.pt.p; changed=true; }
     if(n.gr!==pex.pt.gr){ n.gr=pex.pt.gr; changed=true; }
     if(n.note!==pex.pt.why){ n.note=pex.pt.why; changed=true; }
     if(n.ja!==pex.ja){ n.ja=pex.ja; changed=true; }
     if(n.s!==pex.pt.s){ n.s=pex.pt.s; changed=true; }
   } else if(n.ch&&!patternFits(n.ch,n.en)){
-    /* AI生成・手動：形が合わない型は誤り。外す */
     delete n.ch; changed=true;
   }
-  /* 発音は常に再計算（保存値を信用しない） */
   const a=analyzeKana(n.en);
   const snd=(a.notes||[]).join("／");
   if(n.kt!==a.kana||n.kc!==a.careful||n.snd!==snd){
@@ -1302,6 +1300,14 @@ function load(){
       if(!n.co){ const sc=SCENES.find(x=>x.id===n.s); n.co=sc?sc.c:"biz"; }
       return repairCard(n);
     });
+    /* 旧データ：新規投入ログが無い場合、今日ぶんを実績から推定して補う */
+    if(!o.newLog){
+      s.newLog={};
+      s.cards.forEach(c=>{
+        const first=(c.hist&&c.hist[0]&&c.hist[0].d)||null;
+        if(first) s.newLog[first]=(s.newLog[first]||0)+1;
+      });
+    }
     if(!COURSES.find(c=>c.id===s.course)) s.course="travel";
     return s;
   }catch(e){ return structuredClone(DEF); }
@@ -1316,7 +1322,7 @@ function newCard(p){
     ctx:p.ctx||"", ctxJa:p.ctxJa||"",
     s:p.s||"custom",co:p.co||S.course,lv:p.lv||2,
     ef:2.5,rep:0,iv:0,due:today(),hist:[],made:today() };
-  if(c.ch&&!patternFits(c.ch,c.en)) c.ch="";   /* 作成時にも検証 */
+  if(c.ch&&!patternFits(c.ch,c.en)) c.ch="";
   return c;
 }
 function nextIntervals(c){
@@ -1326,6 +1332,7 @@ function nextIntervals(c){
   return {2:Math.max(1,Math.round(b*1.2)),3:Math.max(1,Math.round(b*ef)),4:Math.max(1,Math.round(b*ef*1.35))};
 }
 function grade(c,g){
+  const wasNew=(c.rep===0&&(!c.hist||c.hist.length===0));
   const iv=nextIntervals(c);
   if(g===1){ c.rep=0;c.iv=0;c.ef=Math.max(1.3,c.ef-0.2);c.due=today();c.lapse=(c.lapse||0)+1; }
   else{ c.ef=Math.max(1.3,c.ef+(0.1-(4-g)*(0.08+(4-g)*0.02)));
@@ -1333,6 +1340,8 @@ function grade(c,g){
     const d=new Date(); d.setDate(d.getDate()+c.iv); c.due=d.toISOString().slice(0,10); }
   c.hist.push({d:today(),g});
   S.log[today()]=(S.log[today()]||0)+1;
+  /* 初めて触れたカードだけ「今日の新規」に計上する */
+  if(wasNew) S.newLog[today()]=(S.newLog[today()]||0)+1;
   save();
 }
 function inCourse(c){
@@ -1340,13 +1349,34 @@ function inCourse(c){
   const s=sceneOf(c.s);
   return !s||s.c===S.course;
 }
-const dueAll=()=>S.cards.filter(c=>c.due<=today()&&c.rep>0);
-const newAll=()=>S.cards.filter(c=>c.rep===0);
-function todayPool(){
-  const due=dueAll().filter(inCourse);
-  const fresh=newAll().filter(inCourse).slice(0,S.set.newMax);
-  const other=S.cards.filter(c=>!inCourse(c)&&(c.rep===0||c.due<=today())).length;
-  return {due,fresh,rest:due.length+fresh.length,other};
+/* まだ一度も学習していないカード */
+const untouched=()=>S.cards.filter(c=>!c.hist||c.hist.length===0);
+/* 今日出すべき復習（今日すでに答えたものは除く） */
+function dueToday(){
+  return S.cards.filter(c=>{
+    if(!c.hist||c.hist.length===0) return false;
+    if(c.due>today()) return false;
+    return !(c.hist[c.hist.length-1]||{}).d || c.hist[c.hist.length-1].d!==today() || c.due<=today() && c.rep===0;
+  });
+}
+/* ---- 今日の予算（これが仕様の中心） ---- */
+function newBudget(){ return (S.set.newMax||0)+(S.bonus[today()]||0); }
+function todayPlan(){
+  const introduced=S.newLog[today()]||0;
+  const budget=newBudget();
+  const left=Math.max(0,budget-introduced);
+
+  const mine=S.cards.filter(inCourse);
+  /* 復習：期限が来ていて、今日まだ正解していないもの */
+  const due=mine.filter(c=>c.hist&&c.hist.length>0&&c.due<=today()
+    &&!(c.hist[c.hist.length-1].d===today()&&c.rep>0));
+  /* 新規：予算の残りぶんだけ */
+  const fresh=mine.filter(c=>!c.hist||c.hist.length===0).slice(0,left);
+  const freshTotal=mine.filter(c=>!c.hist||c.hist.length===0).length;
+  const other=S.cards.filter(c=>!inCourse(c)&&((!c.hist||!c.hist.length)||c.due<=today())).length;
+  return { due,fresh,freshTotal,introduced,budget,left,
+           rest:due.length+fresh.length, other,
+           goal:due.length+Math.min(left,freshTotal)+introduced };
 }
 
 /* ================= TTS ================= */
@@ -1379,23 +1409,22 @@ function speak(text,rate,alt){
   }catch(e){ toast("読み上げできませんでした"); }
 }
 
-/* ================= 生成エンジン ================= */
+/* ================= 生成 ================= */
 const DEPTHS={
   chunk:{ label:"短いチャンク（3〜6語）",
     spec:`Each "en" must be a SHORT chunk of 3-6 words. No full sentences.` },
   sentence:{ label:"1文（標準）",
     spec:`Each "en" must be ONE complete sentence of 8-16 words.` },
   explain:{ label:"2〜3文で説明する",
-    spec:`Each "en" must be 2-3 connected sentences (25-45 words total) forming a real spoken turn:
-state the point, then add a reason, a condition, a number, or a next step.
-Use connectors like "because", "so", "but", "if". Simple junior-high grammar, easy to say aloud.` },
+    spec:`Each "en" must be 2-3 connected sentences (25-45 words total): state the point, then add a reason,
+a condition, a number, or a next step. Use connectors like "because", "so", "but", "if".
+Simple junior-high grammar, easy to say aloud.` },
   dialog:{ label:"会話（往復のやりとり）", spec:`DIALOGUE MODE.` }
 };
 const ANGLES=["asking politely","explaining your reason","reacting to a problem","confirming details",
  "declining or pushing back gently","offering an alternative","asking a follow-up question",
  "apologizing and fixing it","giving a number or a deadline","checking you understood correctly",
  "making a suggestion","expressing a concern"];
-
 function promptFor(course,depth,avoid,turns){
   const who = course==="travel"
     ? `a Japanese traveler in the US (TOEIC ~400: can read, cannot speak)`
@@ -1414,7 +1443,7 @@ Each element: {"role":"them"|"you","en":"...","ja":"...","gr":"...","note":"..."
 - "you": the learner's reply. Simple junior-high grammar, easy to say aloud, but a REAL reply with substance.
 - The conversation must develop: a complication appears in the middle and resolves at the end.
 - "ja": natural Japanese translation of that turn.
-- "gr": for "you" turns only, grammar note in JAPANESE about THAT sentence, junior-high terms, max 45 chars. Empty for "them".
+- "gr": for "you" turns only, grammar note in JAPANESE about THAT sentence, max 45 chars. Empty for "them".
 - "note": for "you" turns only, why this reply works, in JAPANESE, max 45 chars. Empty for "them".
 ${avoidBlock}`;
   }
@@ -1427,7 +1456,7 @@ Rules:
 - "ja": natural Japanese translation of THAT sentence.
 - "gr": grammar note in JAPANESE about THAT sentence, junior-high terms only, max 45 chars.
 - "note": when/why to use THAT sentence, in JAPANESE, max 45 chars.
-- CRITICAL: "ja", "gr" and "note" must describe the SAME item's "en". Never mix them up between items.
+- CRITICAL: "ja", "gr" and "note" must describe the SAME item's "en". Never mix them between items.
 - VARIETY IS CRITICAL: every item must start with a DIFFERENT opening word or structure.
 ${avoidBlock}`;
 }
@@ -1575,7 +1604,6 @@ function localGenerate(q,n,avoid){
 /* ================= 表示 ================= */
 function phraseHTML(p,opt={}){
   const a=analyzeKana(p.en);
-  const kt=a.kana, kc=a.careful;
   const inDeck=S.cards.some(c=>c.en.toLowerCase()===String(p.en).toLowerCase());
   const sc=sceneOf(p.s);
   const label=sc?sc.label:(p.s==="ai"?"AI生成":"自分の追加");
@@ -1583,8 +1611,8 @@ function phraseHTML(p,opt={}){
   return `<div class="pc" data-en="${esc(p.en)}">
     ${p.ctx?`<div class="ctx">相手：${esc(p.ctx)}</div>`:""}
     <div class="en">${esc(p.en)}</div>
-    <div class="kt">${esc(kt)}</div>
-    ${S.set.careful&&kc!==kt?`<div class="kc">ゆっくり: ${esc(kc)}</div>`:""}
+    <div class="kt">${esc(a.kana)}</div>
+    ${S.set.careful&&a.careful!==a.kana?`<div class="kc">ゆっくり: ${esc(a.careful)}</div>`:""}
     <div class="ja">${esc(p.ja)}</div>
     ${ch?`<div class="chip-ch">型：${esc(ch)}</div>`:""}
     ${p.gr?`<div class="gram">文法：${esc(p.gr)}</div>`:""}
@@ -1635,15 +1663,23 @@ function streak(){
   return n;
 }
 function renderHome(){
-  const done=S.log[today()]||0,goal=S.set.goal,tp=todayPool();
-  $("#todayDone").textContent=done;
-  $("#todayGoal").textContent=goal;
-  $("#todayBar").style.width=Math.min(100,done/goal*100)+"%";
-  $("#todayTitle").textContent=done>=goal?"今日の目標は達成 🎉"
-    :tp.due.length?`復習 ${tp.due.length} 枚が待っています`
-    :tp.fresh.length?`新しい表現が ${tp.fresh.length} 枚あります`:"10分だけ、始めよう";
+  const p=todayPlan();
+  const done=p.goal-p.rest;
+  $("#todayDone").textContent=Math.max(0,done);
+  $("#todayGoal").textContent=p.goal;
+  $("#todayBar").style.width=(p.goal?Math.min(100,Math.max(0,done)/p.goal*100):100)+"%";
+  $("#todayTitle").textContent = p.rest===0
+    ? (p.goal>0?"今日の分は完了 🎉":"カードを追加しましょう")
+    : p.due.length ? `復習 ${p.due.length} 枚・新規 ${p.fresh.length} 枚`
+    : `新しい表現が ${p.fresh.length} 枚`;
+  $("#todaySub").textContent = p.rest===0
+    ? (p.freshTotal>0?`未学習が ${p.freshTotal} 枚あります。物足りなければ下から追加できます。`:"すべて学習済みです。")
+    : `内訳：復習 ${p.due.length}／新規 ${p.fresh.length}（本日の新規上限 ${p.budget} 枚）`;
+  $("#btnStart").textContent = p.rest>0 ? "▶ 今日のセッションを開始" : "✓ 今日の分は完了";
+  $("#btnStart").disabled = p.rest===0;
+  $("#btnMoreHome").classList.toggle("hidden", !(p.rest===0&&p.freshTotal>0));
   $("#pStreak").innerHTML=`🔥 <b>${streak()}</b>日`;
-  $("#pDue").innerHTML=`復習 <b>${tp.due.length}</b>`;
+  $("#pDue").innerHTML=`今日 <b>${p.rest}</b>`;
   $("#sTotal").textContent=S.cards.length;
   $("#sMastered").textContent=S.cards.filter(c=>c.iv>=21).length;
   let wk=0; for(let i=0;i<7;i++){ const d=new Date(); d.setDate(d.getDate()-i); wk+=S.log[d.toISOString().slice(0,10)]||0; }
@@ -1658,15 +1694,25 @@ function renderHome(){
   const co=COURSES.find(c=>c.id===S.course)||COURSES[0];
   $("#courseGoal").textContent=co.goal;
   const mine=S.cards.filter(inCourse);
-  const learned=mine.filter(c=>c.rep>0).length;
+  const learned=mine.filter(c=>c.hist&&c.hist.length>0).length;
   const pct=mine.length?Math.round(learned/mine.length*100):0;
   $("#courseBar").style.width=pct+"%";
   $("#coursePct").textContent=pct+"%";
-  $("#courseNote").textContent=`カード ${mine.length} 枚（学習済み ${learned}／会話 ${mine.filter(c=>c.ctx).length}）`;
-  const pool=mine.length?mine:SEED.filter(p=>{const s=sceneOf(p.s);return s&&s.c===S.course;});
+  $("#courseNote").textContent=`カード ${mine.length} 枚（学習済み ${learned}／未学習 ${mine.length-learned}）`;
+  const pool=mine.length?mine:SEED.filter(x=>{const s=sceneOf(x.s);return s&&s.c===S.course;});
   const r=pool[Math.floor(Math.random()*pool.length)];
   $("#randomCard").innerHTML=r?phraseHTML(r):"";
 }
+function addBonus(n){
+  const p=todayPlan();
+  if(p.freshTotal<=0) return toast("未学習のカードがありません",3000);
+  S.bonus[today()]=(S.bonus[today()]||0)+n;
+  save(); renderHome();
+  const q=todayPlan();
+  toast(`新規を ${Math.min(n,q.fresh.length)} 枚追加しました`,2600);
+  startSession("mix");
+}
+$("#btnMoreHome").onclick=()=>addBonus(5);
 $("#courseSel").onchange=e=>{
   S.course=e.target.value; save();
   renderHome(); renderPatterns(); renderSceneChips(); updGenMode();
@@ -1683,10 +1729,9 @@ $("#btnAddCourse").onclick=()=>{
         S.cards.push(newCard({en,ja,s:pt.s,co:pt.c,lv:2,gr:pt.gr,note:pt.why,ch:pt.p})); k++; }});
   });
   save(); renderHome();
-  toast(k?`${k}枚を追加しました`:"すでに全部追加済みです",3000);
+  toast(k?`${k}枚を追加しました（1日 ${S.set.newMax} 枚ずつ出題されます）`:"すでに全部追加済みです",4000);
 };
 $("#btnStart").onclick=()=>startSession("mix");
-$("#btnQuickNew").onclick=()=>startSession("new");
 $("#btnQuickDue").onclick=()=>startSession("due");
 $("#btnQuickConv").onclick=()=>startSession("conv");
 
@@ -1755,7 +1800,6 @@ function updGenMode(){
   $("#rowTurns").style.display=isDialog()?"":"none";
 }
 $("#genDepth").onchange=updGenMode;
-
 let extraAvoid=[];
 async function runGenerate(more){
   const q=$("#genInput").value.trim();
@@ -1826,7 +1870,7 @@ function renderGenOut(out,depth){
       if(!S.cards.some(c=>c.en===p.en)){ S.cards.push(newCard(p)); k++; }});
     save(); renderHome();
     qsa("#genOut .js-add").forEach(x=>{x.textContent="✓ 追加済";x.classList.add("added");x.disabled=true;});
-    toast(k+"枚を追加しました");
+    toast(`${k}枚を追加しました（1日 ${S.set.newMax} 枚ずつ出題されます）`,4000);
   };
   $("#btnMore").onclick=()=>runGenerate(true);
 }
@@ -1835,13 +1879,16 @@ $("#btnGen").onclick=()=>runGenerate(false);
 /* ================= 学習 ================= */
 let Q=[],qi=0,revealed=false,hintLv=0;
 function startSession(mode){
-  const d=dueAll().filter(inCourse).sort(()=>Math.random()-.5);
-  const n=newAll().filter(inCourse).sort(()=>Math.random()-.5).slice(0,S.set.newMax);
+  const p=todayPlan();
   if(mode==="conv"){
-    Q=S.cards.filter(c=>inCourse(c)&&c.ctx&&(c.rep===0||c.due<=today())).sort(()=>Math.random()-.5);
+    Q=S.cards.filter(c=>inCourse(c)&&c.ctx&&((!c.hist||!c.hist.length)||c.due<=today())).sort(()=>Math.random()-.5);
     if(!Q.length) return toast("会話カードがありません。生成タブの「会話」で作れます。",4000);
+  } else if(mode==="due"){
+    Q=p.due.slice().sort(()=>Math.random()-.5);
+    if(!Q.length) return toast("今日の復習はありません",2600);
+  } else {
+    Q=p.due.slice().sort(()=>Math.random()-.5).concat(p.fresh.slice().sort(()=>Math.random()-.5));
   }
-  else Q=mode==="due"?d:mode==="new"?n:d.concat(n);
   qi=0; show("study"); renderStudy();
 }
 function switchCourseAndStart(){
@@ -1855,7 +1902,6 @@ function hintSteps(c){
   const words=c.en.split(/\s+/);
   const steps=[];
   if(c.ctx) steps.push(`<div class="hl">相手の意味：<b>${esc(c.ctxJa||"（訳なし）")}</b></div>`);
-  /* 型は形が一致するときだけ出す */
   if(c.ch&&patternFits(c.ch,c.en)) steps.push(`<div class="hl">型：<b>${esc(c.ch)}</b></div>`);
   else steps.push(`<div class="hl">語数：<b>${words.length}語</b></div>`);
   steps.push(`<div class="hl">出だし：<b>${esc(words.slice(0,2).join(" "))} …</b></div>`);
@@ -1887,17 +1933,33 @@ function renderStudy(){
   if(!Q.length||qi>=Q.length){
     area.classList.add("hidden"); emp.classList.remove("hidden");
     $("#studyBar").style.width="100%";
-    const t=todayPool();
-    emp.innerHTML=S.cards.length===0
-      ? `カードがまだありません。<br>ホームの「このコースを丸ごとカードに追加」から始めましょう。<br><br><button class="btn sm" onclick="show('home')">ホームへ</button>`
-      : t.rest>0
-      ? `今日はあと <b style="color:var(--tx)">${t.rest}</b> 枚あります。<br><br><button class="btn sm" onclick="startSession('mix')">▶ セッションを開始</button>`
-      : t.other>0
-      ? `<b style="color:var(--tx)">${esc(courseName(S.course))}</b> の今日の分は終わりです 🎉<br>
-         別のコースに <b style="color:var(--tx)">${t.other}</b> 枚残っています。<br><br>
-         <button class="btn sm" onclick="switchCourseAndStart()">別コースに切り替えて続ける</button><br>
-         <button class="btn gh sm" style="margin-top:8px" onclick="show('home')">ホームへ</button>`
-      : `今日の分は終わりです 🎉<br>やり過ぎず、明日また来てください。<br><br><button class="btn sm" onclick="show('home')">ホームへ</button>`;
+    const p=todayPlan();
+    let html;
+    if(S.cards.length===0){
+      html=`カードがまだありません。<br>ホームの「このコースを丸ごとカードに追加」から始めましょう。
+        <br><br><button class="btn sm" onclick="show('home')">ホームへ</button>`;
+    } else if(p.rest>0){
+      html=`今日はあと <b style="color:var(--tx)">${p.rest}</b> 枚あります。
+        <br><br><button class="btn sm" onclick="startSession('mix')">▶ 続ける</button>`;
+    } else {
+      /* 今日のノルマ達成 */
+      html=`<div class="donebig">🎉 今日の分は完了</div>
+        <div class="donesub">新規 ${p.introduced} 枚・回答 ${S.log[today()]||0} 回。<br>
+        ここで止めるのが最も効率的です。</div>`;
+      if(p.freshTotal>0){
+        html+=`<div class="donenote">未学習が <b>${p.freshTotal}</b> 枚残っています。<br>
+          追加すると翌日以降の復習量が増えます。</div>
+          <div class="row" style="margin-top:12px;max-width:340px;margin-left:auto;margin-right:auto">
+            <button class="btn sec sm" onclick="addBonus(5)">＋5枚 進む</button>
+            <button class="btn sec sm" onclick="addBonus(10)">＋10枚 進む</button>
+          </div>`;
+      } else if(p.other>0){
+        html+=`<div class="donenote">別のコースに <b>${p.other}</b> 枚あります。</div>
+          <button class="btn sm" style="margin-top:10px" onclick="switchCourseAndStart()">別コースに切り替える</button>`;
+      }
+      html+=`<br><button class="btn gh sm" style="margin-top:12px" onclick="show('home')">ホームへ</button>`;
+    }
+    emp.innerHTML=html;
     renderHome(); return;
   }
   area.classList.remove("hidden"); emp.classList.add("hidden");
@@ -1929,7 +1991,8 @@ function renderStudy(){
   $("#micResult").innerHTML=""; $("#micResult").classList.add("hidden");
   renderHint();
   $("#studyBar").style.width=(qi/Q.length*100)+"%";
-  $("#stCounter").textContent=`${qi+1} / ${Q.length}　（${c.rep===0?"新規":"復習 "+c.rep+"回目"}${isConv?"・会話":""}）`;
+  const isNew=!c.hist||c.hist.length===0;
+  $("#stCounter").textContent=`${qi+1} / ${Q.length}　（${isNew?"新規":"復習 "+c.rep+"回目"}${isConv?"・会話":""}）`;
   const iv=nextIntervals(c);
   $("#gi2").textContent=iv[2]+"日"; $("#gi3").textContent=iv[3]+"日"; $("#gi4").textContent=iv[4]+"日";
   if(isConv&&S.set.autoPlayCtx) setTimeout(()=>speak(c.ctx,null,true),260);
@@ -1992,7 +2055,8 @@ $("#btnMic").onclick=doMic;
 $("#grades").onclick=e=>{
   const b=e.target.closest(".g"); if(!b) return;
   const g=+b.dataset.g,c=Q[qi];
-  grade(c,g); if(g===1) Q.push(c);
+  grade(c,g);
+  if(g===1) Q.push(c);   /* 同一セッション内で再出題（新規計上は済んでいる） */
   qi++; renderStudy();
 };
 document.addEventListener("keydown",e=>{
@@ -2011,16 +2075,21 @@ let tagFilter="";
 function renderCards(){
   const q=$("#qSearch").value.trim().toLowerCase();
   const used=[...new Set(S.cards.map(c=>c.s))];
-  $("#tagChips").innerHTML=[`<button class="chip ${tagFilter===""?"on":""}" data-t="">すべて (${S.cards.length})</button>`,
+  $("#tagChips").innerHTML=[
+    `<button class="chip ${tagFilter===""?"on":""}" data-t="">すべて (${S.cards.length})</button>`,
+    `<button class="chip ${tagFilter==="__new"?"on":""}" data-t="__new">未学習 (${untouched().length})</button>`,
     `<button class="chip ${tagFilter==="__conv"?"on":""}" data-t="__conv">会話 (${S.cards.filter(c=>c.ctx).length})</button>`]
     .concat(used.map(s=>{
       const sc=sceneOf(s);
       const l=sc?sc.label:(s==="ai"?"AI生成":"自分の追加");
       return `<button class="chip ${tagFilter===s?"on":""}" data-t="${esc(s)}">${esc(l)} (${S.cards.filter(c=>c.s===s).length})</button>`;
     })).join("");
-  const list=S.cards.filter(c=>
-      (!tagFilter||(tagFilter==="__conv"?!!c.ctx:c.s===tagFilter))&&
-      (!q||(c.en+c.ja+(c.note||"")).toLowerCase().includes(q)))
+  const list=S.cards.filter(c=>{
+      if(tagFilter==="__conv") return !!c.ctx;
+      if(tagFilter==="__new")  return !c.hist||!c.hist.length;
+      if(tagFilter) return c.s===tagFilter;
+      return true;
+    }).filter(c=>!q||(c.en+c.ja+(c.note||"")).toLowerCase().includes(q))
     .sort((a,b)=>a.due<b.due?-1:1);
   $("#cardList").innerHTML=list.length?list.map(c=>phraseHTML(c,{del:true,due:true})).join("")
     :`<div class="empty">カードがありません。</div>`;
@@ -2067,7 +2136,7 @@ $("#setProvider").onchange=e=>{
   GEMINI_MODELS=[]; fillModelSelect(); syncProviderUI();
 };
 function fillSettings(){
-  $("#setGoal").value=S.set.goal; $("#setNew").value=S.set.newMax;
+  $("#setNew").value=S.set.newMax;
   $("#setRate").value=S.set.rate; $("#rateLbl").textContent=(+S.set.rate).toFixed(2);
   $("#setCareful").checked=!!S.set.careful;
   $("#setAutoPlay").checked=!!S.set.autoPlayCtx;
@@ -2079,8 +2148,7 @@ function fillSettings(){
 }
 $("#setRate").oninput=e=>$("#rateLbl").textContent=(+e.target.value).toFixed(2);
 $("#btnSaveSet").onclick=()=>{
-  S.set.goal=Math.max(1,+$("#setGoal").value||20);
-  S.set.newMax=Math.max(0,+$("#setNew").value||8);
+  S.set.newMax=Math.max(0,Math.min(60,+$("#setNew").value||8));
   S.set.rate=+$("#setRate").value||1;
   S.set.voice=$("#setVoice").value||"";
   S.set.careful=$("#setCareful").checked;
@@ -2110,8 +2178,8 @@ $("#btnFixNow").onclick=()=>{
   REPAIRED=0;
   S.cards=S.cards.map(repairCard);
   save(); renderHome(); renderCards();
-  toast(REPAIRED?`${REPAIRED}枚を修復しました`:"問題は見つかりませんでした",3500);
   $("#fixNote").textContent=REPAIRED?`${REPAIRED}枚を修復しました。`:"問題は見つかりませんでした。";
+  toast(REPAIRED?`${REPAIRED}枚を修復しました`:"問題は見つかりませんでした",3500);
 };
 $("#btnExport").onclick=()=>{
   const b=new Blob([JSON.stringify(S,null,2)],{type:"application/json"});
@@ -2141,7 +2209,8 @@ $("#btnReset").onclick=()=>{
 };
 
 /* ================= 起動 ================= */
-window.show=show; window.startSession=startSession; window.switchCourseAndStart=switchCourseAndStart;
+window.show=show; window.startSession=startSession;
+window.switchCourseAndStart=switchCourseAndStart; window.addBonus=addBonus;
 $("#courseSel").innerHTML=COURSES.map(c=>
   `<option value="${c.id}">${esc(c.name)}（${c.weeks}週）</option>`).join("");
 $("#courseSel").value=S.course;
@@ -2153,7 +2222,6 @@ renderSceneChips();
 renderPatterns();
 renderHome();
 bindDrive();
-/* 起動時に修復が走っていたら保存して知らせる */
 if(REPAIRED>0){
   save();
   $("#fixNote").textContent=`起動時に ${REPAIRED} 枚のカードを自動修復しました。`;
